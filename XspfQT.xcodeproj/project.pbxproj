@@ -24,6 +24,7 @@
 		F49C31EC0E682D66007F2DEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C31EB0E682D66007F2DEC /* Foundation.framework */; };
 		F49C31F10E682D79007F2DEC /* XspfTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F00E682D79007F2DEC /* XspfTrackList.m */; };
 		F49C31F60E682E2B007F2DEC /* XspfTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F50E682E2B007F2DEC /* XspfTrack.m */; };
+		F4D99B1F0E6B0F59006D72F4 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		F49C31F00E682D79007F2DEC /* XspfTrackList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfTrackList.m; sourceTree = "<group>"; };
 		F49C31F40E682E2B007F2DEC /* XspfTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfTrack.h; sourceTree = "<group>"; };
 		F49C31F50E682E2B007F2DEC /* XspfTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfTrack.m; sourceTree = "<group>"; };
+		F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
 				F49C304D0E68284C007F2DEC /* QTKit.framework in Frameworks */,
 				F49C31EC0E682D66007F2DEC /* Foundation.framework in Frameworks */,
+				F4D99B1F0E6B0F59006D72F4 /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +88,7 @@
 		1058C7A8FEA54F5311CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */,
 				F49C304C0E68284C007F2DEC /* QTKit.framework */,
 				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
 				13E42FBA07B3F13500E4EEF1 /* CoreData.framework */,

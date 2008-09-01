@@ -20,6 +20,9 @@
 	
 	QTMovie *qtMovie;
 	NSTimer *updateTime;
+	
+	NSPoint prevMouse;
+	NSDate *prevMouseMovedDate;
 }
 
 - (IBAction)toggleFullScreenMode:(id)sender;

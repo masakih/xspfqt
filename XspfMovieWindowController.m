@@ -56,6 +56,8 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 
 - (void)awakeFromNib
 {
+	prevMouseMovedDate = [[NSDate dateWithTimeIntervalSinceNow:0.0] retain];
+	
 	id d = [self document];
 //	NSLog(@"Add Observed! %@", d);
 	[d addObserver:self
@@ -94,7 +96,6 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 						  context:context];
 }
 
-
 - (void)setQtMovie:(QTMovie *)qt
 {
 	if(qtMovie == qt) return;
@@ -108,6 +109,11 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	if(qt) {
 		[nc addObserver:self selector:@selector(didEndMovie:) name:QTMovieDidEndNotification object:qt];
 	}
+	
+	if(qtMovie) {
+		[qt setVolume:[qtMovie volume]];
+		[qt setMuted:[qtMovie muted]];
+	}
 	[qtMovie autorelease];
 	qtMovie = [qt retain];
 	[self synchronizeWindowTitleWithDocumentName];
@@ -118,6 +124,7 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 {
 	return qtMovie;
 }
+
 
 - (NSSize)fitSizeToSize:(NSSize)toSize
 {
@@ -148,7 +155,53 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	[qtView performSelectorOnMainThread:@selector(play:) withObject:self waitUntilDone:NO];
 }
 
-
+- (void)enterFullScreen
+{
+//	if([qtView respondsToSelector:@selector(isInFullScreenMode)]) {
+//		// System is 10.5 or later.
+//		id op = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES]
+//											forKey:@"NSFullScreenModeAllScreens"];
+//		[qtView enterFullScreenMode:[NSScreen mainScreen]
+//						withOptions:op];
+//		NSLog(@"Use enterFullScreen:withOptions:");
+//	} else {
+		NSWindow *w = [self fullscreenWindow];
+		
+		nomalModeSavedFrame = [qtView frame];
+		
+		[w setContentView:qtView];
+		
+//		[NSMenu setMenuBarVisible:NO];
+		SetSystemUIMode (kUIModeAllHidden, kUIOptionAutoShowMenuBar);
+		
+		[[self window] orderOut:self];
+		[w makeKeyAndOrderFront:self];
+		[w makeFirstResponder:qtView];
+//	}
+	
+}
+- (void)exitFullScreen
+{
+//	if([qtView respondsToSelector:@selector(isInFullScreenMode)]) {
+//		// System is 10.5 or later.
+//		[qtView exitFullScreenModeWithOptions:nil];
+//	} else {
+		NSWindow *w = [self fullscreenWindow];
+		
+		[qtView retain];
+		{
+			[qtView removeFromSuperview];
+			[qtView setFrame:nomalModeSavedFrame];
+			[[[self window] contentView] addSubview:qtView];
+		}
+		[qtView release];
+		
+		[NSMenu setMenuBarVisible:YES];
+		[w orderOut:self];
+		[[self window] makeKeyAndOrderFront:self];
+		[w makeFirstResponder:qtView];
+//	}
+}
 - (IBAction)turnUpVolume:(id)sender
 {
 	NSNumber *cv = [self valueForKeyPath:@"qtMovie.volume"];
@@ -163,35 +216,11 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 }
 - (IBAction)toggleFullScreenMode:(id)sender
 {
-	NSWindow *w = [self fullscreenWindow];
-	
 	if(fullscreenMode) {
-		
-		[qtView retain];
-		{
-			[qtView removeFromSuperview];
-			[qtView setFrame:nomalModeSavedFrame];
-			[[[self window] contentView] addSubview:qtView];
-		}
-		[qtView release];
-		
-		[NSMenu setMenuBarVisible:YES];
-		[w orderOut:self];
-		[[self window] makeKeyAndOrderFront:self];
-		[w makeFirstResponder:qtView];
-		
+		[self exitFullScreen];
 		fullscreenMode = NO;
 	} else {
-		nomalModeSavedFrame = [qtView frame];
-		
-		[w setContentView:qtView];
-		
-		[NSMenu setMenuBarVisible:NO];
-		
-		[[self window] orderOut:self];
-		[w makeKeyAndOrderFront:self];
-		[w makeFirstResponder:qtView];
-		
+		[self enterFullScreen];
 		fullscreenMode = YES;
 	}
 }
@@ -223,6 +252,18 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	if(qt) {
 		[qt willChangeValueForKey:@"currentTime"];
 		[qt didChangeValueForKey:@"currentTime"];
+	}
+	
+	// Hide cursor and controller, if mouse didn't move for 3 seconds.
+	NSPoint mouse = [NSEvent mouseLocation];
+	if(!NSEqualPoints(prevMouse, mouse)) {
+		prevMouse = mouse;
+		[prevMouseMovedDate autorelease];
+		prevMouseMovedDate = [[NSDate dateWithTimeIntervalSinceNow:0.0] retain];
+	} else if(fullscreenMode && [prevMouseMovedDate timeIntervalSinceNow] < -3.0 ) {
+		[NSCursor setHiddenUntilMouseMoves:YES];
+		//
+		// hide controller.
 	}
 }
 
