@@ -169,12 +169,12 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 		
 		nomalModeSavedFrame = [qtView frame];
 		
+		[[self window] orderOut:self];
 		[w setContentView:qtView];
 		
 //		[NSMenu setMenuBarVisible:NO];
 		SetSystemUIMode (kUIModeAllHidden, kUIOptionAutoShowMenuBar);
 		
-		[[self window] orderOut:self];
 		[w makeKeyAndOrderFront:self];
 		[w makeFirstResponder:qtView];
 //	}
@@ -223,6 +223,37 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 		[self enterFullScreen];
 		fullscreenMode = YES;
 	}
+}
+
+- (IBAction)forwardTagValueSecends:(id)sender
+{
+	if(![sender respondsToSelector:@selector(tag)]) return;
+	
+	int tag = [sender tag];
+	if(tag == 0) return;
+	
+	QTTime current = [[self qtMovie] currentTime];
+	NSTimeInterval cur;
+	if(!QTGetTimeInterval(current, &cur)) return;
+	
+	QTTime new = QTMakeTimeWithTimeInterval(cur + tag);
+	id newValue = [NSValue valueWithQTTime:new];
+	[[self qtMovie] setValue:newValue forKey:@"currentTime"];
+}
+- (IBAction)backwardTagValueSecends:(id)sender
+{
+	if(![sender respondsToSelector:@selector(tag)]) return;
+	
+	int tag = [sender tag];
+	if(tag == 0) return;
+	
+	QTTime current = [[self qtMovie] currentTime];
+	NSTimeInterval cur;
+	if(!QTGetTimeInterval(current, &cur)) return;
+	
+	QTTime new = QTMakeTimeWithTimeInterval(cur - tag);
+	id newValue = [NSValue valueWithQTTime:new];
+	[[self qtMovie] setValue:newValue forKey:@"currentTime"];
 }
 
 - (NSWindow *)fullscreenWindow

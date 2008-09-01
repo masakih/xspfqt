@@ -26,6 +26,8 @@
 }
 
 - (IBAction)toggleFullScreenMode:(id)sender;
+- (IBAction)forwardTagValueSecends:(id)sender;
+- (IBAction)backwardTagValueSecends:(id)sender;
 
 - (void)play;
 
