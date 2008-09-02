@@ -237,8 +237,7 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	if(!QTGetTimeInterval(current, &cur)) return;
 	
 	QTTime new = QTMakeTimeWithTimeInterval(cur + tag);
-	id newValue = [NSValue valueWithQTTime:new];
-	[[self qtMovie] setValue:newValue forKey:@"currentTime"];
+	[[self qtMovie] setCurrentTime:new];
 }
 - (IBAction)backwardTagValueSecends:(id)sender
 {
@@ -252,8 +251,7 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	if(!QTGetTimeInterval(current, &cur)) return;
 	
 	QTTime new = QTMakeTimeWithTimeInterval(cur - tag);
-	id newValue = [NSValue valueWithQTTime:new];
-	[[self qtMovie] setValue:newValue forKey:@"currentTime"];
+	[[self qtMovie] setCurrentTime:new];
 }
 
 - (NSWindow *)fullscreenWindow
