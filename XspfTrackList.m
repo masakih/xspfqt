@@ -38,6 +38,7 @@
 - (void)dealloc
 {
 	[tracks release];
+	[title release];
 	
 	[super dealloc];
 }

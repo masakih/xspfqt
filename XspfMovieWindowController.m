@@ -19,10 +19,11 @@
 
 @implementation XspfMovieWindowController
 
+#pragma mark ### Static variables ###
 static const float sVolumeDelta = 0.2;
 static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 
-- (id)initWithWindowNibName:(NSString *)windowNibName
+- (id)init
 {
 	if(self = [super initWithWindowNibName:@"XspfDocument"]) {
 		//
@@ -50,6 +51,9 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	[fullscreenWindow release];
 	
 	[qtMovie release];
+	[updateTime release];
+	
+	[prevMouseMovedDate release];
 		
 	[super dealloc];
 }
@@ -76,6 +80,8 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	
 	[self play];
 }
+
+#pragma mark ### KVO & KVC ###
 - (void)observeValueForKeyPath:(NSString *)keyPath
 					  ofObject:(id)object
 						change:(NSDictionary *)change
@@ -125,7 +131,7 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	return qtMovie;
 }
 
-
+#pragma mark ### Other functions ###
 - (NSSize)fitSizeToSize:(NSSize)toSize
 {
 	QTMovie *curMovie = [self qtMovie];
@@ -134,6 +140,7 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	NSSize qtViewSize = [qtView frame].size;
 	NSSize currentWindowSize = [[self window] frame].size;
 	
+	// Area size without QTMovieView.
 	NSSize delta = NSMakeSize(currentWindowSize.width - qtViewSize.width,
 							  currentWindowSize.height - qtViewSize.height);
 	
@@ -199,9 +206,27 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 		[NSMenu setMenuBarVisible:YES];
 		[w orderOut:self];
 		[[self window] makeKeyAndOrderFront:self];
-		[w makeFirstResponder:qtView];
+		[[self window] makeFirstResponder:qtView];
 //	}
 }
+
+- (NSWindow *)fullscreenWindow
+{
+	if(fullscreenWindow) return fullscreenWindow;
+	
+	NSRect mainScreenRect = [[NSScreen mainScreen] frame];
+	fullscreenWindow = [[XspfFullScreenWindow alloc] initWithContentRect:mainScreenRect
+															   styleMask:NSBorderlessWindowMask
+																 backing:NSBackingStoreBuffered
+																   defer:YES];
+	[fullscreenWindow setReleasedWhenClosed:NO];
+	[fullscreenWindow setBackgroundColor:[NSColor blackColor]];
+	[fullscreenWindow setDelegate:self];
+	
+	return fullscreenWindow;
+}
+
+#pragma mark ### Actions ###
 - (IBAction)turnUpVolume:(id)sender
 {
 	NSNumber *cv = [self valueForKeyPath:@"qtMovie.volume"];
@@ -216,12 +241,12 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 }
 - (IBAction)toggleFullScreenMode:(id)sender
 {
-	if(fullscreenMode) {
+	if(fullScreenMode) {
 		[self exitFullScreen];
-		fullscreenMode = NO;
+		fullScreenMode = NO;
 	} else {
 		[self enterFullScreen];
-		fullscreenMode = YES;
+		fullScreenMode = YES;
 	}
 }
 
@@ -254,22 +279,7 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	[[self qtMovie] setCurrentTime:new];
 }
 
-- (NSWindow *)fullscreenWindow
-{
-	if(fullscreenWindow) return fullscreenWindow;
-	
-	NSRect mainScreenRect = [[NSScreen mainScreen] frame];
-	fullscreenWindow = [[XspfFullScreenWindow alloc] initWithContentRect:mainScreenRect
-															   styleMask:NSBorderlessWindowMask
-																 backing:NSBackingStoreBuffered
-																   defer:YES];
-	[fullscreenWindow setReleasedWhenClosed:NO];
-	[fullscreenWindow setBackgroundColor:[NSColor blackColor]];
-	[fullscreenWindow setDelegate:self];
-	
-	return fullscreenWindow;
-}
-
+#pragma mark ### Notification & Timer ###
 - (void)didEndMovie:(id)notification
 {
 	[[[self document] trackList] next];
@@ -279,6 +289,7 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 {
 	QTMovie *qt = [self qtMovie];
 	if(qt) {
+		// force update time indicator.
 		[qt willChangeValueForKey:@"currentTime"];
 		[qt didChangeValueForKey:@"currentTime"];
 	}
@@ -289,29 +300,46 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 		prevMouse = mouse;
 		[prevMouseMovedDate autorelease];
 		prevMouseMovedDate = [[NSDate dateWithTimeIntervalSinceNow:0.0] retain];
-	} else if(fullscreenMode && [prevMouseMovedDate timeIntervalSinceNow] < -3.0 ) {
+	} else if(fullScreenMode && [prevMouseMovedDate timeIntervalSinceNow] < -3.0 ) {
 		[NSCursor setHiddenUntilMouseMoves:YES];
 		//
 		// hide controller.
 	}
 }
 
+#pragma mark ### NSResponder ###
 - (void)cancelOperation:(id)sender
 {
-	if(fullscreenMode) {
+	if(fullScreenMode) {
 		[self toggleFullScreenMode:self];
 	}
 }
 
+#pragma mark ### NSMenu valivation ###
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
+{
+	if([menuItem action] == @selector(toggleFullScreenMode:)) {
+		if(fullScreenMode) {
+			[menuItem setTitle:NSLocalizedString(@"Exit Full Screen", @"Exit Full Screen")];
+		} else {
+			[menuItem setTitle:NSLocalizedString(@"Full Screen", @"Full Screen")];
+		}
+		return YES;
+	}
+	
+	return YES;
+}
+
+#pragma mark ### NSApplication Delegate ###
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
-	if(fullscreenMode) {
+	if(fullScreenMode) {
 		[self toggleFullScreenMode:self];
 	}
 	[[self document] removeObserver:self forKeyPath:kCurrentIndexKeyPath];
 }
 
-
+#pragma mark ### NSWindow Delegate ###
 - (BOOL)windowShouldClose:(id)sender
 {
 	[qtView pause:self];

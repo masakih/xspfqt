@@ -35,7 +35,7 @@
 	playListWindowController = [[XspfPlayListWindowController alloc] init];
 	[self addWindowController:playListWindowController];
 	
-	movieWindowController = [[[XspfMovieWindowController alloc] initWithWindowNibName:@""] autorelease];
+	id movieWindowController = [[[XspfMovieWindowController alloc] init] autorelease];
 	[self addWindowController:movieWindowController];
 	[movieWindowController setQtMovie:[[self trackList] qtMovie]];
 }
@@ -76,9 +76,9 @@
     // For applications targeted for Panther or earlier systems, you should use the deprecated API -loadDataRepresentation:ofType. In this case you can also choose to override -readFromFile:ofType: or -loadFileWrapperRepresentation:ofType: instead.
     
 	NSError *error = nil;
-	NSXMLDocument *d = [[NSXMLDocument alloc] initWithData:data
-												   options:0
-													 error:&error];
+	NSXMLDocument *d = [[[NSXMLDocument alloc] initWithData:data
+													options:0
+													  error:&error] autorelease];
 	NSXMLElement *root = [d rootElement];
 	
 	NSArray *trackListElems;

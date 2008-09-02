@@ -16,7 +16,7 @@
 	
 	NSWindow *fullscreenWindow;
 	NSRect nomalModeSavedFrame;
-	BOOL fullscreenMode;
+	BOOL fullScreenMode;
 	
 	QTMovie *qtMovie;
 	NSTimer *updateTime;

@@ -16,7 +16,7 @@
 @interface XspfDocument : NSDocument
 {
 	XspfTrackList* trackList;
-	XspfMovieWindowController *movieWindowController;
+//	XspfMovieWindowController *movieWindowController;
 	NSWindowController *playListWindowController;
 }
 
