@@ -389,4 +389,13 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 {
 	return [self fitSizeToSize:frameSize];
 }
+- (void)windowDidMove:(NSNotification *)notification
+{
+	if(fullscreenWindow && [notification object] == fullscreenWindow) {
+		NSRect r = [fullscreenWindow frame];
+		if(!NSEqualRects(r, NSZeroRect)) {
+			[fullscreenWindow setFrameOrigin:NSZeroPoint];
+		}
+	}
+}
 @end
