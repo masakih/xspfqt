@@ -145,10 +145,10 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	id window = [self window];
 	NSRect frame = [window frame];
 	NSSize newSize = [self fitSizeToSize:frame.size];
+	frame.origin.y += frame.size.height - newSize.height;
 	frame.size = newSize;
-	frame.origin.y -= frame.size.height - newSize.height;
 	
-	[window setFrame:frame display:YES];
+	[window setFrame:frame display:YES animate:YES];
 }
 - (NSSize)fitSizeToSize:(NSSize)toSize
 {
