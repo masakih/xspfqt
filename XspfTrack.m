@@ -38,10 +38,10 @@
 	elems = [element elementsForName:@"duration"];
 	if(elems && [elems count] != 0) {
 		t = [[elems objectAtIndex:0] stringValue];
+		NSTimeInterval ti = [t doubleValue] / 1000;
+		QTTime q = QTMakeTimeWithTimeInterval(ti);
+		[self setSavedDateWithQTTime:q];
 	}
-	NSTimeInterval ti = [t doubleValue] / 1000;
-	QTTime q = QTMakeTimeWithTimeInterval(ti);
-	[self setSavedDateWithQTTime:q];
 	
 	return self;
 }
