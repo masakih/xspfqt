@@ -19,6 +19,8 @@
 	QTMovie *movie;
 	
 	NSDate *savedDate;
+	
+	BOOL isPlayed;
 }
 
 - (void)setLocation:(NSURL *)location;

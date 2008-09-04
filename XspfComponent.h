@@ -24,4 +24,6 @@
 - (BOOL)isSelected;
 - (void)select;
 - (void)deselect;
+- (void)setIsPlayed:(BOOL)state;
+- (BOOL)isPlayed;
 @end
