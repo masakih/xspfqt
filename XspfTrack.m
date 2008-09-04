@@ -8,6 +8,9 @@
 
 #import "XspfTrack.h"
 
+@interface XspfTrack (Private)
+- (void)setSavedDateWithQTTime:(QTTime)qttime;
+@end
 
 @implementation XspfTrack
 - (id)initWithXMLElement:(NSXMLElement *)element
@@ -31,6 +34,14 @@
 		t = [[elems objectAtIndex:0] stringValue];
 	}
 	[self setTitle:t];
+	
+	elems = [element elementsForName:@"duration"];
+	if(elems && [elems count] != 0) {
+		t = [[elems objectAtIndex:0] stringValue];
+	}
+	NSTimeInterval ti = [t doubleValue] / 1000;
+	QTTime q = QTMakeTimeWithTimeInterval(ti);
+	[self setSavedDateWithQTTime:q];
 	
 	return self;
 }
@@ -77,15 +88,23 @@
 {
 	return title;
 }
+- (void)setSavedDateWithQTTime:(QTTime)qttime
+{
+	id t = [NSValueTransformer valueTransformerForName:@"XspfQTTimeDateTransformer"];
+	savedDate = [[t transformedValue:[NSValue valueWithQTTime:qttime]] retain];
+}
+- (NSDate *)savedDate
+{
+	return savedDate;
+}
 - (NSDate *)duration
 {
 	if(savedDate) return savedDate;
 	
 	if(!movie) return nil;
 	
-	id t = [NSValueTransformer valueTransformerForName:@"XspfQTTimeDateTransformer"];
-	savedDate = [[t transformedValue:[NSValue valueWithQTTime:[movie duration]]] retain];
-	return savedDate;
+	[self setSavedDateWithQTTime:[movie duration]];
+	return [self savedDate];
 }
 - (QTMovie *)qtMovie
 {
