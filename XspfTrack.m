@@ -115,15 +115,60 @@
 	movie = [[QTMovie alloc] initWithURL:[self location]
 								   error:&error];
 	
+	{
+		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+//		[nc addObserver:self
+//			   selector:@selector(notifee:)
+//				   name:@"QTMoviePrerollCompleteNotification"
+//				 object:movie];
+		[nc addObserver:self
+			   selector:@selector(notifee:)
+				   name:@"QTMovieRateDidChangeNotification"
+				 object:movie];
+//		[nc addObserver:self
+//			   selector:@selector(notifee:)
+//				   name:@"QTMovieDidEndNotification"
+//				 object:movie];
+	}
+	
+	
 	[self willChangeValueForKey:@"duration"];
 	[self didChangeValueForKey:@"duration"];
 	
 	return movie;
 }
+- (void)setIsPlayed:(BOOL)state
+{
+	isPlayed = state;
+}
+- (BOOL)isPlayed
+{
+	return isPlayed;
+}
 - (void)purgeQTMovie
 {
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc removeObserver:self
+				  name:nil
+				object:movie];
+	
 	[movie release];
 	movie = nil;
+}
+
+- (void)notifee:(id)notification
+{
+//	NSLog(@"Notifed: name -> (%@)\ndict -> (%@)", [notification name], [notification userInfo]);
+	
+	NSNumber *rateValue = [[notification userInfo] objectForKey:QTMovieRateDidChangeNotificationParameter];
+	if(rateValue) {
+		float rate = [rateValue doubleValue];
+		if(rate == 0) {
+			[self setIsPlayed:NO];
+		} else if(rate == 1) {
+			[self setIsPlayed:YES];
+		}
+	}
 }
 
 - (NSString *)description
