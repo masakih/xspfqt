@@ -13,6 +13,7 @@
 
 
 @interface XspfMovieWindowController (Private)
+- (void)sizeTofitWidnow;
 - (NSSize)fitSizeToSize:(NSSize)toSize;
 - (NSWindow *)fullscreenWindow;
 @end
@@ -26,7 +27,6 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 - (id)init
 {
 	if(self = [super initWithWindowNibName:@"XspfDocument"]) {
-		//
 		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 		[nc addObserver:self
 			   selector:@selector(applicationWillTerminate:)
@@ -57,7 +57,6 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 		
 	[super dealloc];
 }
-
 - (void)awakeFromNib
 {
 	prevMouseMovedDate = [[NSDate dateWithTimeIntervalSinceNow:0.0] retain];
@@ -73,15 +72,7 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 		   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 		   context:NULL];
 	
-	
-	id window = [self window];
-	NSRect frame = [window frame];
-	NSSize newSize = [self fitSizeToSize:frame.size];
-	frame.size = newSize;
-	frame.origin.y -= frame.size.height - newSize.height;
-	
-	[window setFrame:frame display:YES];
-	
+	[self sizeTofitWidnow];
 	[self play];
 }
 
@@ -139,6 +130,8 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	qtMovie = [qt retain];
 	[self synchronizeWindowTitleWithDocumentName];
 	
+	[self sizeTofitWidnow];
+	
 	[self play];
 }
 - (QTMovie *)qtMovie
@@ -147,6 +140,16 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 }
 
 #pragma mark ### Other functions ###
+- (void)sizeTofitWidnow
+{
+	id window = [self window];
+	NSRect frame = [window frame];
+	NSSize newSize = [self fitSizeToSize:frame.size];
+	frame.size = newSize;
+	frame.origin.y -= frame.size.height - newSize.height;
+	
+	[window setFrame:frame display:YES];
+}
 - (NSSize)fitSizeToSize:(NSSize)toSize
 {
 	QTMovie *curMovie = [self qtMovie];
@@ -183,50 +186,36 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 
 - (void)enterFullScreen
 {
-//	if([qtView respondsToSelector:@selector(isInFullScreenMode)]) {
-//		// System is 10.5 or later.
-//		id op = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES]
-//											forKey:@"NSFullScreenModeAllScreens"];
-//		[qtView enterFullScreenMode:[NSScreen mainScreen]
-//						withOptions:op];
-//		NSLog(@"Use enterFullScreen:withOptions:");
-//	} else {
-		NSWindow *w = [self fullscreenWindow];
-		
-		nomalModeSavedFrame = [qtView frame];
-		
-		[[self window] orderOut:self];
-		[w setContentView:qtView];
-		
-//		[NSMenu setMenuBarVisible:NO];
-		SetSystemUIMode (kUIModeAllHidden, kUIOptionAutoShowMenuBar);
-		
-		[w makeKeyAndOrderFront:self];
-		[w makeFirstResponder:qtView];
-//	}
+	NSWindow *w = [self fullscreenWindow];
 	
+	nomalModeSavedFrame = [qtView frame];
+	
+	[[self window] orderOut:self];
+	[w setContentView:qtView];
+	
+//	[NSMenu setMenuBarVisible:NO];
+	SetSystemUIMode (kUIModeAllHidden, kUIOptionAutoShowMenuBar);
+	
+	[w makeKeyAndOrderFront:self];
+	[w makeFirstResponder:qtView];	
 }
 - (void)exitFullScreen
 {
-//	if([qtView respondsToSelector:@selector(isInFullScreenMode)]) {
-//		// System is 10.5 or later.
-//		[qtView exitFullScreenModeWithOptions:nil];
-//	} else {
-		NSWindow *w = [self fullscreenWindow];
-		
-		[qtView retain];
-		{
-			[qtView removeFromSuperview];
-			[qtView setFrame:nomalModeSavedFrame];
-			[[[self window] contentView] addSubview:qtView];
-		}
-		[qtView release];
-		
-		[NSMenu setMenuBarVisible:YES];
-		[w orderOut:self];
-		[[self window] makeKeyAndOrderFront:self];
-		[[self window] makeFirstResponder:qtView];
-//	}
+	
+	NSWindow *w = [self fullscreenWindow];
+	
+	[qtView retain];
+	{
+		[qtView removeFromSuperview];
+		[qtView setFrame:nomalModeSavedFrame];
+		[[[self window] contentView] addSubview:qtView];
+	}
+	[qtView release];
+	
+	[NSMenu setMenuBarVisible:YES];
+	[w orderOut:self];
+	[[self window] makeKeyAndOrderFront:self];
+	[[self window] makeFirstResponder:qtView];
 }
 
 - (NSWindow *)fullscreenWindow
@@ -249,10 +238,8 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 - (IBAction)togglePlayAndPause:(id)sender
 {
 	if([[self valueForKeyPath:@"document.trackList.isPlayed"] boolValue]) {
-//		[sender setTitle:@"||"];
 		[self pause];
 	} else {
-//		[sender setTitle:@">"];
 		[self play];
 	}
 }
@@ -313,7 +300,6 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 - (void)didEndMovie:(id)notification
 {
 	[[[self document] trackList] next];
-//	[self setQtMovie:[[[self document] trackList] qtMovie]];
 }
 - (void)updateTimeIfNeeded:(id)timer
 {
