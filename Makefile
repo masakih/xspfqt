@@ -1,4 +1,4 @@
-
+// encoding=utf-8
 PRODUCT_NAME=XspfQT
 PRODUCT_EXTENSION=app
 BUILD_PATH=./build
@@ -19,7 +19,7 @@ all:
 	@echo do  nothig.
 	@echo use target tagging 
 
-tagging:
+tagging: update_svn
 	@echo "Tagging the $(VERSION) (x) release of XspfQT project."
 	REV=`LC_ALL=C svn info | awk '/Last Changed Rev/ {print $$4}'` ;	\
 	echo svn copy $(HEAD) $(TAGS_DIR)/release-$(VERSION).$${REV}
