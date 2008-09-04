@@ -54,10 +54,19 @@
 }
 - (void)select
 {
+	[self willChangeValueForKey:@"isSelected"];
 	isSelected = YES;
+	[self didChangeValueForKey:@"isSelected"];
 }
 - (void)deselect
 {
+	[self willChangeValueForKey:@"isSelected"];
 	isSelected = NO;
+	[self didChangeValueForKey:@"isSelected"];
+}
+- (void)setIsPlayed:(BOOL)state {} // do nothing.
+- (BOOL)isPlayed
+{
+	return NO;
 }
 @end

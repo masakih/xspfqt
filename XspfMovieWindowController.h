@@ -13,6 +13,7 @@
 @interface XspfMovieWindowController : NSWindowController
 {
 	IBOutlet QTMovieView *qtView;
+	IBOutlet NSButton *playButton;
 	
 	NSWindow *fullscreenWindow;
 	NSRect nomalModeSavedFrame;
@@ -25,6 +26,7 @@
 	NSDate *prevMouseMovedDate;
 }
 
+- (IBAction)togglePlayAndPause:(id)sender;
 - (IBAction)toggleFullScreenMode:(id)sender;
 - (IBAction)forwardTagValueSecends:(id)sender;
 - (IBAction)backwardTagValueSecends:(id)sender;

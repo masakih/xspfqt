@@ -37,10 +37,28 @@
 }
 - (void)dealloc
 {
+	[[self currentTrack] removeObserver:self forKeyPath:@"isPlayed"];
+	
 	[tracks release];
 	[title release];
 	
 	[super dealloc];
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath
+					  ofObject:(id)object
+						change:(NSDictionary *)change
+					   context:(void *)context
+{
+	if([keyPath isEqual:@"isPlayed"]) {
+		[self willChangeValueForKey:@"isPlayed"];
+		[self didChangeValueForKey:@"isPlayed"];
+		return;
+	}
+	
+	[super observeValueForKeyPath:keyPath
+						 ofObject:object
+						   change:change
+						  context:context];
 }
 - (void)setCurrentIndex:(unsigned)index
 {
@@ -50,27 +68,38 @@
 	if([tracks count] <= index) return;
 	
 	[self willChangeValueForKey:@"qtMovie"];
+	[self willChangeValueForKey:@"currentTrack"];
 	prev = currentIndex;
 	currentIndex = index;
 	[self didChangeValueForKey:@"qtMovie"];
+	[self didChangeValueForKey:@"currentTrack"];
 	
+	[self willChangeValueForKey:@"isPlayed"];
+	XspfTrack *t= nil;
 	@try {
-		XspfTrack *t = [tracks objectAtIndex:prev];
-		[t purgeQTMovie];
-		[t willChangeValueForKey:@"isSelected"];
-		[t deselect];
-		[t didChangeValueForKey:@"isSelected"];
-		
-		XspfComponent *t2 = [self currentTrack];
-		[t2 willChangeValueForKey:@"isSelected"];
-		[t2 select];
-		[t2 didChangeValueForKey:@"isSelected"];
+		t = [tracks objectAtIndex:prev];
+		[t removeObserver:self forKeyPath:@"isPlayed"];
 	}
 	@catch (id ex) {
 		if(![[ex name] isEqualTo:NSRangeException]) {
+			NSLog(@"Exception ### named %@", [ex name]);
 			@throw;
 		}
 	}
+	
+	if(t) {
+		[t purgeQTMovie];
+		[t deselect];
+	}
+	
+	XspfComponent *t2 = [self currentTrack];
+	[t2 select];
+	[t2 addObserver:self
+		 forKeyPath:@"isPlayed"
+			options:NSKeyValueObservingOptionNew
+			context:NULL];
+	[self didChangeValueForKey:@"isPlayed"];
+
 }
 - (unsigned)currentIndex
 {
@@ -117,5 +146,13 @@
 {
 	return title;
 }
-
+- (void)setIsPlayed:(BOOL)state {}
+- (BOOL)isPlayed
+{
+	XspfComponent *t = [self currentTrack];
+	if(t) {
+		return [t isPlayed];
+	}
+	return NO;
+}
 @end

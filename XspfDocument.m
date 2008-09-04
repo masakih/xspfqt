@@ -82,10 +82,8 @@
 	NSXMLElement *root = [d rootElement];
 	
 	NSArray *trackListElems;
-	trackListElems = [root elementsForName:@"trackList"];
-	//	NSLog(@"trackList -> %@", trackListElems);
-	
-	if([trackListElems count] < 1) {
+	trackListElems = [root elementsForName:@"trackList"];	
+	if(!trackListElems || [trackListElems count] < 1) {
 		if ( outError != NULL ) {
 			*outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:unimpErr userInfo:NULL];
 		}

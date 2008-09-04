@@ -68,6 +68,10 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 		forKeyPath:kCurrentIndexKeyPath
 		   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 		   context:NULL];
+	[d addObserver:self
+		forKeyPath:@"trackList.isPlayed"
+		   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+		   context:NULL];
 	
 	
 	id window = [self window];
@@ -95,6 +99,17 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 		[self setQtMovie:[self valueForKeyPath:@"document.trackList.qtMovie"]];
 		return;
 	}
+	if([keyPath isEqual:@"trackList.isPlayed"]) {
+		id new = [change objectForKey:NSKeyValueChangeNewKey];
+		
+		if([new boolValue]) {
+			[playButton setTitle:@"||"];
+		} else {
+			[playButton setTitle:@">"];
+		}
+		return;
+	}
+	
 	
 	[super observeValueForKeyPath:keyPath
 						 ofObject:object
@@ -160,6 +175,10 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 - (void)play
 {
 	[qtView performSelectorOnMainThread:@selector(play:) withObject:self waitUntilDone:NO];
+}
+- (void)pause
+{
+	[qtView performSelectorOnMainThread:@selector(pause:) withObject:self waitUntilDone:NO];
 }
 
 - (void)enterFullScreen
@@ -227,6 +246,17 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 }
 
 #pragma mark ### Actions ###
+- (IBAction)togglePlayAndPause:(id)sender
+{
+	if([[self valueForKeyPath:@"document.trackList.isPlayed"] boolValue]) {
+//		[sender setTitle:@"||"];
+		[self pause];
+	} else {
+//		[sender setTitle:@">"];
+		[self play];
+	}
+}
+
 - (IBAction)turnUpVolume:(id)sender
 {
 	NSNumber *cv = [self valueForKeyPath:@"qtMovie.volume"];
@@ -337,6 +367,7 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 		[self toggleFullScreenMode:self];
 	}
 	[[self document] removeObserver:self forKeyPath:kCurrentIndexKeyPath];
+	[[self document] removeObserver:self forKeyPath:@"trackList.isPlayed"];
 }
 
 #pragma mark ### NSWindow Delegate ###
@@ -346,6 +377,7 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	[self setQtMovie:nil];
 	
 	[[self document] removeObserver:self forKeyPath:kCurrentIndexKeyPath];
+	[[self document] removeObserver:self forKeyPath:@"trackList.isPlayed"];
 	[self setShouldCloseDocument:YES];
 	
 	[updateTime release];
