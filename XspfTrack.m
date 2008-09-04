@@ -111,10 +111,11 @@
 	if(![QTMovie canInitWithURL:[self location]]) return nil;
 	
 	NSError *error = nil;
-	
-	movie = [[QTMovie alloc] initWithURL:[self location]
-								   error:&error];
-	
+	NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
+						   [self location], QTMovieURLAttribute,
+						   [NSNumber numberWithBool:NO], QTMovieOpenAsyncOKAttribute,
+						   nil];
+	movie = [[QTMovie alloc] initWithAttributes:attrs error:&error];
 	{
 		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 //		[nc addObserver:self
