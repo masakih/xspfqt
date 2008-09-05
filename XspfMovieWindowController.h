@@ -30,6 +30,8 @@
 - (IBAction)toggleFullScreenMode:(id)sender;
 - (IBAction)forwardTagValueSecends:(id)sender;
 - (IBAction)backwardTagValueSecends:(id)sender;
+- (IBAction)nextTrack:(id)sender;
+- (IBAction)previousTrack:(id)sender;
 
 - (void)play;
 

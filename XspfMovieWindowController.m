@@ -201,7 +201,6 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 }
 - (void)exitFullScreen
 {
-	
 	NSWindow *w = [self fullscreenWindow];
 	
 	[qtView retain];
@@ -294,6 +293,14 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	
 	QTTime new = QTMakeTimeWithTimeInterval(cur - tag);
 	[[self qtMovie] setCurrentTime:new];
+}
+- (IBAction)nextTrack:(id)sender
+{
+	[[[self document] trackList] next];
+}
+- (IBAction)previousTrack:(id)sender
+{
+	[[[self document] trackList] previous];
 }
 
 #pragma mark ### Notification & Timer ###
