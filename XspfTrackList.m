@@ -28,7 +28,7 @@
 		NSXMLElement *trackElem = [elems objectAtIndex:i];
 		XspfTrack *track = [XspfTrack xspfComponemtWithXMLElement:trackElem];
 		if(track) {
-			[tracks addObject:track];
+			[self addChild:track];
 		}
 	}
 	[self setCurrentIndex:0];
@@ -59,6 +59,10 @@
 						 ofObject:object
 						   change:change
 						  context:context];
+}
+- (void)setSelectionIndex:(unsigned)index
+{
+	[self setCurrentIndex:index];
 }
 - (void)setCurrentIndex:(unsigned)index
 {
@@ -105,10 +109,6 @@
 {
 	return currentIndex;
 }
-- (NSArray *)children
-{
-	return tracks;
-}
 
 - (void)next
 {
@@ -118,6 +118,49 @@
 {
 	[self setCurrentIndex:[self currentIndex] - 1];
 }
+- (NSArray *)children
+{
+	return tracks;
+}
+- (BOOL)isLeaf
+{
+	return NO;
+}
+
+// primitive.
+- (void)insertChild:(XspfComponent *)child atIndex:(unsigned)index
+{
+	if(!child) return;
+	if(![child isKindOfClass:[XspfComponent class]]) {
+		NSLog(@"addChild: argument class is MUST kind of XspfComponent. "
+			  @"but argument class is %@<%p>.",
+			  NSStringFromClass([child class]), child);
+		return;
+	}
+	[tracks insertObject:child atIndex:index];
+	[child setParent:self];
+}
+// primitive.
+- (void)removeChild:(XspfComponent *)child
+{
+	if(!child) return;
+	if(![tracks containsObject:child]) return;
+	
+	[child setParent:nil];
+	[tracks removeObject:child];
+}
+
+- (void)addChild:(XspfComponent *)child
+{
+	unsigned num = [tracks count];
+	[self insertChild:child atIndex:num];
+}
+- (void)removeChildAtIndex:(unsigned)index
+{
+	id child = [tracks objectAtIndex:index];
+	[self removeChild:child];
+}
+
 - (NSString *)description
 {
 	return [tracks description];
@@ -136,16 +179,6 @@
 	return [[self currentTrack] qtMovie];
 }
 
-- (void)setTitle:(NSString *)t
-{
-	if(title == t) return;
-	[title autorelease];
-	title = [t copy];
-}
-- (NSString *)title
-{
-	return title;
-}
 - (void)setIsPlayed:(BOOL)state {}
 - (BOOL)isPlayed
 {
