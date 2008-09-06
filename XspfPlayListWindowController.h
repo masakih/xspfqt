@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class XspfTrackList;
 @interface XspfPlayListWindowController : NSWindowController
 {
 	IBOutlet NSOutlineView *listView;

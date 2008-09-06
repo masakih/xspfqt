@@ -10,20 +10,20 @@
 #import <Cocoa/Cocoa.h>
 #import <QTKit/QTKit.h>
 
-@class XspfTrackList;
+@class XspfComponent;
 @class XspfMovieWindowController;
 
 @interface XspfDocument : NSDocument
 {
-	XspfTrackList* trackList;
+	XspfComponent* trackList;
 //	XspfMovieWindowController *movieWindowController;
 	NSWindowController *playListWindowController;
 }
 
 - (IBAction)showPlayList:(id)sender;
 
-- (void)setTrackList:(XspfTrackList *)newList;
-- (XspfTrackList *)trackList;
+- (void)setTrackList:(XspfComponent *)newList;
+- (XspfComponent *)trackList;
 
 - (void)setPlayTrackindex:(unsigned)index;
 
