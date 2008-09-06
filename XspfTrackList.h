@@ -12,17 +12,12 @@
 
 @interface XspfTrackList : XspfComponent
 {
-	NSString *title;
 	NSMutableArray *tracks;
 	
 	unsigned currentIndex;
-	
 }
 
 - (void)setCurrentIndex:(unsigned)index;
 - (unsigned)currentIndex;
-- (XspfComponent *)currentTrack;
-- (void)next;
-- (void)previous;
 
 @end

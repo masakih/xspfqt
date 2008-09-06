@@ -14,7 +14,6 @@
 @interface XspfTrack : XspfComponent
 {
 	NSURL *location;
-	NSString *title;
 	
 	QTMovie *movie;
 	

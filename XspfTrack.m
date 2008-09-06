@@ -76,18 +76,6 @@
 	return [[self location] absoluteString];
 }
 
-- (void)setTitle:(NSString *)t
-{
-	if(title == t) return;
-	if([title isEqualToString:t]) return;
-	
-	[title autorelease];
-	title = [t retain];
-}
-- (NSString *)title
-{
-	return title;
-}
 - (void)setSavedDateWithQTTime:(QTTime)qttime
 {
 	id t = [NSValueTransformer valueTransformerForName:@"XspfQTTimeDateTransformer"];
@@ -146,6 +134,16 @@
 {
 	return isPlayed;
 }
+- (void)next
+{
+	[[self parent] next];
+}
+- (void)previous
+{
+	[[self parent] previous];
+}
+
+
 - (void)purgeQTMovie
 {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];

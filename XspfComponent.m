@@ -7,9 +7,18 @@
 //
 
 #import "XspfComponent.h"
-
+#import "XspfPlaceholderComponent.h"
 
 @implementation XspfComponent
+
++ (id) allocWithZone : (NSZone *) zone
+{
+	if ([self class] == [XspfComponent class]) {
+		return [XspfPlaceholderComponent sharedInstance];
+	}
+	
+	return [super allocWithZone : zone];
+}
 
 + (id)xspfComponemtWithXMLElement:(NSXMLElement *)element
 {
@@ -33,20 +42,54 @@
 {
 	return nil;
 }
-
+- (XspfComponent *)parent
+{
+	return parent;
+}
 - (NSArray *)children
 {
 	return nil;
 }
+- (unsigned)childrenCount
+{
+	return [[self children] count];
+}
+- (BOOL)isLeaf
+{
+	return YES;
+}
 
-- (void)setTitle:(NSString *)title
+- (void)setParent:(XspfComponent *)new
+{
+	parent = new;
+}
+- (void)addChild:(XspfComponent *)child
 {
 	[self doesNotRecognizeSelector:_cmd];
 }
-- (NSString *)title
+- (void)removeChild:(XspfComponent *)child
 {
 	[self doesNotRecognizeSelector:_cmd];
-	return nil;
+}
+- (void)insertChild:(XspfComponent *)child atIndex:(unsigned)index
+{
+	[self doesNotRecognizeSelector:_cmd];
+}
+- (void)removeChildAtIndex:(unsigned)index
+{
+	[self doesNotRecognizeSelector:_cmd];
+}
+- (void)setTitle:(NSString *)new
+{
+	if(title == new) return;
+	if([title isEqualTo:new]) return;
+	
+	[title autorelease];
+	title = [new copy];
+}
+- (NSString *)title
+{
+	return title;
 }
 - (BOOL)isSelected
 {
@@ -64,9 +107,80 @@
 	isSelected = NO;
 	[self didChangeValueForKey:@"isSelected"];
 }
+- (void)setSelectionIndex:(unsigned)index
+{
+	[self doesNotRecognizeSelector:_cmd];
+	
+	// 現在値と違うなら現在値をdeselect
+	
+	// 新しい値をselect
+}
+- (BOOL)setSelectionIndexPath:(NSIndexPath *)indexPath
+{
+	unsigned length = [indexPath length];
+	if(length == 0) {
+		return NO;
+	}
+	unsigned firstIndex = [indexPath indexAtPosition:0];
+	if(firstIndex > [self childrenCount]) {
+		return NO;
+	}
+	
+	XspfComponent *firstIndexedChild = [[self children] objectAtIndex:firstIndex];
+	if(length != 1) {
+		NSIndexPath *deletedFirstIndex = nil;
+		unsigned *indexP = NULL;
+		@try {
+			indexP = calloc(sizeof(unsigned), length - 1);
+			if(!indexP) {
+				[NSException raise:NSMallocException
+							format:@"Not enough memory"];
+			}
+			[indexPath getIndexes:indexP];
+			deletedFirstIndex = [NSIndexPath indexPathWithIndexes:indexP + 1
+														   length:length - 1];
+		}
+		@catch (id ex) {
+			@throw;
+		}
+		@finally{
+			free(indexP);
+		}
+		if(!deletedFirstIndex ||
+		   ![firstIndexedChild setSelectionIndexPath:deletedFirstIndex]) {
+			return NO;
+		}
+	} else {
+		[self setSelectionIndex:firstIndex];
+	}
+	if(!isSelected) {
+		[self select];
+	}
+	[selectionIndexPath autorelease];
+	selectionIndexPath = [indexPath retain];
+	
+	return YES;
+}
+- (NSIndexPath *)selectionIndexPath
+{
+	return selectionIndexPath;
+}
 - (void)setIsPlayed:(BOOL)state {} // do nothing.
 - (BOOL)isPlayed
 {
 	return NO;
 }
+- (XspfComponent *)currentTrack
+{
+	return self;
+}
+- (void)next
+{
+	[self doesNotRecognizeSelector:_cmd];
+}
+- (void)previous
+{
+	[self doesNotRecognizeSelector:_cmd];
+}
+
 @end
