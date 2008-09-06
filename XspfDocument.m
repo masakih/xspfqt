@@ -7,13 +7,13 @@
 //
 
 #import "XspfDocument.h"
-#import "XspfTrackList.h"
+#import "XspfComponent.h"
 #import "XspfMovieWindowController.h"
 #import "XspfPlayListWindowController.h"
 
 @interface XspfDocument (Private)
-- (void)setTrackList:(XspfTrackList *)newList;
-- (XspfTrackList *)trackList;
+- (void)setTrackList:(XspfComponent *)newList;
+- (XspfComponent *)trackList;
 @end
 
 @implementation XspfDocument
@@ -90,7 +90,7 @@
 		return NO;
 	}
 	
-	id t = [XspfTrackList xspfComponemtWithXMLElement:[trackListElems objectAtIndex:0]];
+	id t = [XspfComponent xspfComponemtWithXMLElement:[trackListElems objectAtIndex:0]];
 	[t setTitle:[[[self fileURL] path] lastPathComponent]];
 	[self setTrackList:t];
 //	NSLog(@"trackList -> %@", trackList);
@@ -123,21 +123,21 @@
 	[playListWindowController showWindow:self];
 }
 
-- (void)setTrackList:(XspfTrackList *)newList
+- (void)setTrackList:(XspfComponent *)newList
 {
 	if(trackList == newList) return;
 	
 	[trackList autorelease];
 	trackList = [newList retain];
 }
-- (XspfTrackList *)trackList
+- (XspfComponent *)trackList
 {
 	return trackList;
 }
 
 - (void)setPlayTrackindex:(unsigned)index
 {
-	[[self trackList] setCurrentIndex:index];
+	[[self trackList] setSelectionIndex:index];
 }
 @end
 

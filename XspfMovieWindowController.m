@@ -8,7 +8,7 @@
 
 #import "XspfMovieWindowController.h"
 #import "XspfDocument.h"
-#import "XspfTrackList.h"
+#import "XspfComponent.h"
 #import "XspfFullScreenWindow.h"
 
 
