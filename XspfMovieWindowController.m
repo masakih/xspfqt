@@ -372,7 +372,6 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	
 	[[self document] removeObserver:self forKeyPath:kQTMovieKeyPath];
 	[[self document] removeObserver:self forKeyPath:kIsPlayedKeyPath];
-	[self setShouldCloseDocument:YES];
 	
 	[updateTime release];
 	updateTime = nil;

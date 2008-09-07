@@ -38,6 +38,7 @@
 	[self addWindowController:playListWindowController];
 	
 	movieWindowController = [[XspfMovieWindowController alloc] init];
+	[movieWindowController setShouldCloseDocument:YES];
 	[self addWindowController:movieWindowController];
 	[movieWindowController setQtMovie:[[self trackList] qtMovie]];
 }
@@ -113,6 +114,7 @@
 {
 	[trackList release];
 	[playListWindowController release];
+	[movieWindowController release];
 	
 	[super dealloc];
 }
@@ -126,6 +128,19 @@
 	
 	return [super displayName];
 }
+- (void)close
+{
+	[self removeWindowController:playListWindowController];
+	[playListWindowController release];
+	playListWindowController = nil;
+	
+	[self removeWindowController:movieWindowController];
+	[movieWindowController release];
+	movieWindowController = nil;
+	
+	[super close];
+}
+
 - (IBAction)togglePlayAndPause:(id)sender
 {
 	[movieWindowController togglePlayAndPause:sender];
@@ -174,6 +189,7 @@
 	
 	return d;
 }
+
 - (IBAction)dump:(id)sender
 {	
 	NSString *s = [[[NSString alloc] initWithData:[self outputData]
