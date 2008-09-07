@@ -22,7 +22,7 @@
 
 #pragma mark ### Static variables ###
 static const float sVolumeDelta = 0.2;
-static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
+static NSString *const kQTMovieKeyPath = @"trackList.qtMovie";
 
 - (id)init
 {
@@ -64,7 +64,7 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	id d = [self document];
 //	NSLog(@"Add Observed! %@", d);
 	[d addObserver:self
-		forKeyPath:kCurrentIndexKeyPath
+		forKeyPath:kQTMovieKeyPath
 		   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 		   context:NULL];
 	[d addObserver:self
@@ -83,7 +83,7 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 					   context:(void *)context
 {
 //	NSLog(@"Observed!");
-	if([keyPath isEqual:kCurrentIndexKeyPath]) {
+	if([keyPath isEqual:kQTMovieKeyPath]) {
 		id old = [change objectForKey:NSKeyValueChangeOldKey];
 		id new = [change objectForKey:NSKeyValueChangeNewKey];
 		if([old isEqual:new]) return;
@@ -359,7 +359,7 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	if(fullScreenMode) {
 		[self toggleFullScreenMode:self];
 	}
-	[[self document] removeObserver:self forKeyPath:kCurrentIndexKeyPath];
+	[[self document] removeObserver:self forKeyPath:kQTMovieKeyPath];
 	[[self document] removeObserver:self forKeyPath:@"trackList.isPlayed"];
 }
 
@@ -369,7 +369,7 @@ static NSString *const kCurrentIndexKeyPath = @"trackList.currentIndex";
 	[qtView pause:self];
 	[self setQtMovie:nil];
 	
-	[[self document] removeObserver:self forKeyPath:kCurrentIndexKeyPath];
+	[[self document] removeObserver:self forKeyPath:kQTMovieKeyPath];
 	[[self document] removeObserver:self forKeyPath:@"trackList.isPlayed"];
 	[self setShouldCloseDocument:YES];
 	

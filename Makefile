@@ -49,7 +49,7 @@ updateRevision: update_svn
 	mv -f $(INFO_PLIST).r $(INFO_PLIST) ;	\
 
 restorInfoPlist:
-	if [ -f $(INFO_PLIST).bak ] ; then cp -f $(INFO_PLIST).bak $(INFO_PLIST) ; fi
+	if [ -f $(INFO_PLIST).bak ] ; then mv -f $(INFO_PLIST).bak $(INFO_PLIST) ; fi
 
 update_svn:
 	svn up
