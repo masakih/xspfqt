@@ -14,6 +14,8 @@
 @interface XspfDocument (Private)
 - (void)setTrackList:(XspfComponent *)newList;
 - (XspfComponent *)trackList;
+- (NSXMLDocument *)XMLDocument;
+- (NSData *)outputData;
 @end
 
 @implementation XspfDocument
@@ -60,7 +62,12 @@
     // You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
 
     // For applications targeted for Panther or earlier systems, you should use the deprecated API -dataRepresentationOfType:. In this case you can also choose to override -fileWrapperRepresentationOfType: or -writeToFile:ofType: instead.
-
+		
+	return [self outputData];
+	//
+	//
+	//
+	
     if ( outError != NULL ) {
 		*outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:unimpErr userInfo:NULL];
 	}
@@ -138,6 +145,36 @@
 - (void)setPlayTrackindex:(unsigned)index
 {
 	[[self trackList] setSelectionIndex:index];
+}
+
+- (NSData *)outputData
+{
+	return [[self XMLDocument] XMLDataWithOptions:NSXMLNodePrettyPrint];
+}
+- (NSXMLDocument *)XMLDocument;
+{
+	id element = [[self trackList] XMLElement];
+	
+	id root = [NSXMLElement elementWithName:@"playlist"];
+	[root addChild:element];
+	[root addAttribute:[NSXMLNode attributeWithName:@"version"
+										stringValue:@"0"]];
+	[root addAttribute:[NSXMLNode attributeWithName:@"xmlns"
+										stringValue:@"http://xspf.org/ns/0/"]];
+	
+	
+	id d = [[[NSXMLDocument alloc] initWithRootElement:root] autorelease];
+	[d setVersion:@"1.0"];
+	[d setCharacterEncoding:@"UTF-8"];
+	
+	return d;
+}
+- (IBAction)dump:(id)sender
+{	
+	NSString *s = [[[NSString alloc] initWithData:[self outputData]
+										 encoding:NSUTF8StringEncoding] autorelease];
+	
+	NSLog(@"%@", s);
 }
 @end
 

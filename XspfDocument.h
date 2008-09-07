@@ -21,6 +21,7 @@
 }
 
 - (IBAction)showPlayList:(id)sender;
+- (IBAction)dump:(id)sender;
 
 - (void)setTrackList:(XspfComponent *)newList;
 - (XspfComponent *)trackList;
