@@ -140,7 +140,7 @@
 //				 object:movie];
 		[nc addObserver:self
 			   selector:@selector(notifee:)
-				   name:@"QTMovieRateDidChangeNotification"
+				   name:QTMovieRateDidChangeNotification
 				 object:movie];
 //		[nc addObserver:self
 //			   selector:@selector(notifee:)
@@ -171,7 +171,11 @@
 	[[self parent] previous];
 }
 
-
+- (void)deselect
+{
+	[self purgeQTMovie];
+	[super deselect];
+}
 - (void)purgeQTMovie
 {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -179,6 +183,7 @@
 				  name:nil
 				object:movie];
 	
+	NSLog(@"Purge! retain count is %u", [movie retainCount]);
 	[movie release];
 	movie = nil;
 }
