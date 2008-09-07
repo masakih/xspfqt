@@ -98,7 +98,9 @@
 	}
 	
 	id t = [XspfComponent xspfComponemtWithXMLElement:[trackListElems objectAtIndex:0]];
-	[t setTitle:[[[self fileURL] path] lastPathComponent]];
+	if(![t title]) {
+		[t setTitle:[[[self fileURL] path] lastPathComponent]];
+	}
 	[self setTrackList:t];
 //	NSLog(@"trackList -> %@", trackList);
 	
