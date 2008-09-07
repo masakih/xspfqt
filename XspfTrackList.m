@@ -44,6 +44,18 @@
 	
 	[super dealloc];
 }
+- (NSXMLElement *)XMLElement
+{
+	id node = [NSXMLElement elementWithName:@"trackList"];
+	
+	NSEnumerator *tracksEnum = [tracks objectEnumerator];
+	id n;
+	while(n = [tracksEnum nextObject]) {
+		[node addChild:[n XMLElement]];
+	}
+	
+	return node;
+}
 - (void)observeValueForKeyPath:(NSString *)keyPath
 					  ofObject:(id)object
 						change:(NSDictionary *)change

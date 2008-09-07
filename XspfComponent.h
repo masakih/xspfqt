@@ -21,6 +21,8 @@
 + (id)xspfComponemtWithXMLElement:(NSXMLElement *)element;
 - (id)initWithXMLElement:(NSXMLElement *)element;
 
+- (NSXMLElement *)XMLElement;
+
 - (QTMovie *)qtMovie;
 
 - (void)setTitle:(NSString *)title;

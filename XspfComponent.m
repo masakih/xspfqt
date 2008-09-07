@@ -34,6 +34,11 @@
 	return nil;
 }
 
+- (NSXMLElement *)XMLElement
+{
+	[self doesNotRecognizeSelector:_cmd];
+}
+
 - (QTMovie *)qtMovie
 {
 	return nil;

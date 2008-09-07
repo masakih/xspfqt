@@ -10,6 +10,7 @@
 
 @interface XspfTrack (Private)
 - (void)setSavedDateWithQTTime:(QTTime)qttime;
+- (NSDate *)duration;
 @end
 
 @implementation XspfTrack
@@ -53,6 +54,34 @@
 	[savedDate release];
 	
 	[super dealloc];
+}
+- (NSXMLElement *)XMLElement
+{
+	id node = [NSXMLElement elementWithName:@"track"];
+	
+	id locElem = [NSXMLElement elementWithName:@"location" stringValue:[self locationString]];
+	if(locElem) {
+		[node addChild:locElem];
+	}
+	id titleElem = [NSXMLElement elementWithName:@"title" stringValue:[self title]];
+	if(titleElem) {
+		[node addChild:titleElem];
+	}
+	
+	id d = [self duration];
+	if(d) {
+		NSTimeInterval t = [d timeIntervalSince1970];
+		t += [[NSTimeZone systemTimeZone] secondsFromGMT];
+		unsigned long long scaledT = (unsigned long long)t;
+		scaledT *= 1000;
+		id durationElem = [NSXMLElement elementWithName:@"duration"
+											stringValue:[NSString stringWithFormat:@"%qu", scaledT]];
+		if(durationElem) {
+			[node addChild:durationElem];
+		}
+	}
+	
+	return node;
 }
 - (void)setLocation:(NSURL *)loc
 {
