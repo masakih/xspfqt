@@ -33,6 +33,13 @@
 	
 	return nil;
 }
+- (void)dealloc
+{
+	[title release];
+	[selectionIndexPath release];
+	
+	[super dealloc];
+}
 
 - (NSXMLElement *)XMLElement
 {

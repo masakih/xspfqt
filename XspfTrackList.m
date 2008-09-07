@@ -15,12 +15,17 @@
 {
 	self = [super init];
 	
-	NSArray *elems = [element elementsForName:@"track"];
+	NSArray *elems = [element elementsForName:@"title"];
+	if(elems && [elems count] != 0) {
+		NSString *t = [[elems objectAtIndex:0] stringValue];
+		[self setTitle:t];
+	}
+	
+	elems = [element elementsForName:@"track"];
 	if(!elems) {
 		[self release];
 		return nil;
 	}
-	
 	tracks = [[NSMutableArray alloc] init];
 	
 	unsigned i, count;
@@ -40,13 +45,17 @@
 	[[self currentTrack] removeObserver:self forKeyPath:@"isPlayed"];
 	
 	[tracks release];
-	[title release];
 	
 	[super dealloc];
 }
 - (NSXMLElement *)XMLElement
 {
 	id node = [NSXMLElement elementWithName:@"trackList"];
+	
+	id titleElem = [NSXMLElement elementWithName:@"title" stringValue:[self title]];
+	if(titleElem) {
+		[node addChild:titleElem];
+	}
 	
 	NSEnumerator *tracksEnum = [tracks objectEnumerator];
 	id n;

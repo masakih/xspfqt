@@ -23,6 +23,7 @@
 #pragma mark ### Static variables ###
 static const float sVolumeDelta = 0.2;
 static NSString *const kQTMovieKeyPath = @"trackList.qtMovie";
+static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 
 - (id)init
 {
@@ -68,7 +69,7 @@ static NSString *const kQTMovieKeyPath = @"trackList.qtMovie";
 		   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 		   context:NULL];
 	[d addObserver:self
-		forKeyPath:@"trackList.isPlayed"
+		forKeyPath:kIsPlayedKeyPath
 		   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 		   context:NULL];
 	
@@ -90,7 +91,7 @@ static NSString *const kQTMovieKeyPath = @"trackList.qtMovie";
 		[self setQtMovie:[self valueForKeyPath:@"document.trackList.qtMovie"]];
 		return;
 	}
-	if([keyPath isEqual:@"trackList.isPlayed"]) {
+	if([keyPath isEqual:kIsPlayedKeyPath]) {
 		id new = [change objectForKey:NSKeyValueChangeNewKey];
 		
 		if([new boolValue]) {
@@ -360,7 +361,7 @@ static NSString *const kQTMovieKeyPath = @"trackList.qtMovie";
 		[self toggleFullScreenMode:self];
 	}
 	[[self document] removeObserver:self forKeyPath:kQTMovieKeyPath];
-	[[self document] removeObserver:self forKeyPath:@"trackList.isPlayed"];
+	[[self document] removeObserver:self forKeyPath:kIsPlayedKeyPath];
 }
 
 #pragma mark ### NSWindow Delegate ###
@@ -370,7 +371,7 @@ static NSString *const kQTMovieKeyPath = @"trackList.qtMovie";
 	[self setQtMovie:nil];
 	
 	[[self document] removeObserver:self forKeyPath:kQTMovieKeyPath];
-	[[self document] removeObserver:self forKeyPath:@"trackList.isPlayed"];
+	[[self document] removeObserver:self forKeyPath:kIsPlayedKeyPath];
 	[self setShouldCloseDocument:YES];
 	
 	[updateTime release];
