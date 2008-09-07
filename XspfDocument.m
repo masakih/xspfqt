@@ -37,7 +37,7 @@
 	playListWindowController = [[XspfPlayListWindowController alloc] init];
 	[self addWindowController:playListWindowController];
 	
-	id movieWindowController = [[[XspfMovieWindowController alloc] init] autorelease];
+	movieWindowController = [[XspfMovieWindowController alloc] init];
 	[self addWindowController:movieWindowController];
 	[movieWindowController setQtMovie:[[self trackList] qtMovie]];
 }
@@ -124,7 +124,10 @@
 	
 	return [super displayName];
 }
-
+- (IBAction)togglePlayAndPause:(id)sender
+{
+	[movieWindowController togglePlayAndPause:sender];
+}
 - (IBAction)showPlayList:(id)sender
 {
 	[playListWindowController showWindow:self];
