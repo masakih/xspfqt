@@ -15,3 +15,7 @@
 }
 
 @end
+
+
+@interface XspfThowSpacebarKeyDownOutlineView : NSOutlineView
+@end

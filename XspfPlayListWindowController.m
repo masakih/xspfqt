@@ -37,11 +37,36 @@
 	}
 }
 
+- (void)keyDown:(NSEvent *)theEvent
+{
+	if([theEvent isARepeat]) return;
+	
+	unsigned short code = [theEvent keyCode];
+	if(code == 49 /* space bar */) {
+		[[self document] togglePlayAndPause:self];
+	}
+}
+
 - (BOOL)windowShouldClose:(id)sender
 {
 	[sender orderOut:self];
 	
 	return NO;
+}
+
+@end
+
+@implementation XspfThowSpacebarKeyDownOutlineView
+- (void)keyDown:(NSEvent *)theEvent
+{
+	unsigned short code = [theEvent keyCode];
+	if(code == 49 /* space bar */) {
+		if(_delegate && [_delegate respondsToSelector:@selector(keyDown:)]) {
+			[_delegate keyDown:theEvent];
+		}
+	}
+	
+	[super keyDown:theEvent];
 }
 
 @end
