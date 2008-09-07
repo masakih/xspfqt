@@ -10,6 +10,10 @@
 #import "XspfDocument.h"
 
 
+@interface XspfPlayListWindowController(Private)
+- (void)setObserveObject:(id)new;
+@end
+
 @implementation XspfPlayListWindowController
 
 - (id)init
@@ -20,7 +24,20 @@
 - (void)awakeFromNib
 {
 	[listView setDoubleAction:@selector(changeCurrentTrack:)];
-//	[[self window] setReleasedWhenClosed:NO];
+	[[self window] setReleasedWhenClosed:NO];
+	
+	[trackListTree addObserver:self
+					forKeyPath:@"selection"
+					   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+					   context:NULL];
+	[self setObserveObject:[trackListTree valueForKeyPath:@"selection.self"]];
+}
+- (void)dealloc
+{
+	[trackListTree removeObserver:self forKeyPath:@"selection"];
+	[self setObserveObject:nil];
+	
+	[super dealloc];
 }
 
 - (IBAction)changeCurrentTrack:(id)sender
@@ -52,6 +69,38 @@
 	[sender orderOut:self];
 	
 	return NO;
+}
+- (void)setObserveObject:(id)new
+{
+	if(obseveObject == new) return;
+	
+	[obseveObject removeObserver:self forKeyPath:@"title"];
+	
+	obseveObject = new;
+	[obseveObject addObserver:self
+				   forKeyPath:@"title"
+					  options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+					  context:NULL];
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if([keyPath isEqualTo:@"selection"]) {
+		id new = [object valueForKeyPath:@"selection.self"];
+		[self setObserveObject:new];
+	}
+	
+	if([keyPath isEqualTo:@"title"]) {
+		id new = [change objectForKey:NSKeyValueChangeNewKey];
+		id old = [change objectForKey:NSKeyValueChangeOldKey];
+		
+		if(new == old) return;
+		if([new isEqualTo:old]) return;
+		
+		id um = [[self document] undoManager];
+		[um registerUndoWithTarget:obseveObject
+						  selector:@selector(setTitle:)
+							object:old];
+	}
 }
 
 @end
