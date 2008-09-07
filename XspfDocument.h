@@ -16,10 +16,11 @@
 @interface XspfDocument : NSDocument
 {
 	XspfComponent* trackList;
-//	XspfMovieWindowController *movieWindowController;
+	XspfMovieWindowController *movieWindowController;
 	NSWindowController *playListWindowController;
 }
 
+- (IBAction)togglePlayAndPause:(id)sender;
 - (IBAction)showPlayList:(id)sender;
 - (IBAction)dump:(id)sender;
 
