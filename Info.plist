@@ -14,17 +14,13 @@
 			<key>CFBundleTypeIconFile</key>
 			<string></string>
 			<key>CFBundleTypeName</key>
-			<string>XML Shareable Playlist Format</string>
+			<string>DocumentType</string>
 			<key>CFBundleTypeOSTypes</key>
 			<array>
 				<string>????</string>
 			</array>
 			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.masakih.XspfQT.xspf</string>
-			</array>
+			<string>Viewer</string>
 			<key>NSDocumentClass</key>
 			<string>XspfDocument</string>
 		</dict>
