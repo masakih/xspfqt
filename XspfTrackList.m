@@ -7,7 +7,6 @@
 //
 
 #import "XspfTrackList.h"
-#import "XspfTrack.h"
 
 
 @implementation XspfTrackList
@@ -31,7 +30,7 @@
 	unsigned i, count;
 	for(i = 0, count = [elems count]; i < count; i++) {
 		NSXMLElement *trackElem = [elems objectAtIndex:i];
-		XspfTrack *track = [XspfTrack xspfComponemtWithXMLElement:trackElem];
+		XspfComponent *track = [XspfComponent xspfComponemtWithXMLElement:trackElem];
 		if(track) {
 			[self addChild:track];
 		}
@@ -100,7 +99,7 @@
 	[self didChangeValueForKey:@"currentTrack"];
 	
 	[self willChangeValueForKey:@"isPlayed"];
-	XspfTrack *t= nil;
+	XspfComponent *t= nil;
 	@try {
 		t = [tracks objectAtIndex:prev];
 		[t removeObserver:self forKeyPath:@"isPlayed"];
@@ -113,7 +112,6 @@
 	}
 	
 	if(t) {
-		[t purgeQTMovie];
 		[t deselect];
 	}
 	
