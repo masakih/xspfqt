@@ -49,7 +49,6 @@
 - (void)dealloc
 {
 	[location release];
-	[title release];
 	[movie release];
 	[savedDate release];
 	
