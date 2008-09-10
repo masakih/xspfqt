@@ -11,13 +11,13 @@
 
 @implementation XspfComponent
 
-+ (id) allocWithZone : (NSZone *) zone
++ (id) allocWithZone:(NSZone *) zone
 {
 	if ([self class] == [XspfComponent class]) {
 		return [XspfPlaceholderComponent sharedInstance];
 	}
 	
-	return [super allocWithZone : zone];
+	return [super allocWithZone:zone];
 }
 
 + (id)xspfComponemtWithXMLElement:(NSXMLElement *)element
@@ -27,9 +27,9 @@
 - (id)initWithXMLElement:(NSXMLElement *)element
 {
 	[super init];
-	[self doesNotRecognizeSelector:_cmd];
-	
 	[self release];
+	
+	[self doesNotRecognizeSelector:_cmd];
 	
 	return nil;
 }
@@ -145,7 +145,7 @@
 		NSIndexPath *deletedFirstIndex = nil;
 		unsigned *indexP = NULL;
 		@try {
-			indexP = calloc(sizeof(unsigned), length - 1);
+			indexP = calloc(sizeof(unsigned), length);
 			if(!indexP) {
 				[NSException raise:NSMallocException
 							format:@"Not enough memory"];
