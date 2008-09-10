@@ -13,6 +13,7 @@
 
 
 @interface XspfMovieWindowController (Private)
+- (NSSize)windowSizeWithoutQTView;
 - (void)sizeTofitWidnow;
 - (NSSize)fitSizeToSize:(NSSize)toSize;
 - (NSWindow *)fullscreenWindow;
@@ -141,6 +142,22 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 }
 
 #pragma mark ### Other functions ###
+- (NSSize)windowSizeWithoutQTView
+{
+	if(windowSizeWithoutQTView.width == 0
+	   && windowSizeWithoutQTView.height == 0) {
+		QTMovie *curMovie = [self qtMovie];
+		if(!curMovie) return windowSizeWithoutQTView;
+		
+		NSSize qtViewSize = [qtView frame].size;
+		NSSize currentWindowSize = [[self window] frame].size;
+		
+		windowSizeWithoutQTView = NSMakeSize(currentWindowSize.width - qtViewSize.width,
+											 currentWindowSize.height - qtViewSize.height);
+	}
+	
+	return windowSizeWithoutQTView;
+}
 - (void)sizeTofitWidnow
 {
 	id window = [self window];
@@ -156,12 +173,8 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	QTMovie *curMovie = [self qtMovie];
 	if(!curMovie) return toSize;
 	
-	NSSize qtViewSize = [qtView frame].size;
-	NSSize currentWindowSize = [[self window] frame].size;
-	
 	// Area size without QTMovieView.
-	NSSize delta = NSMakeSize(currentWindowSize.width - qtViewSize.width,
-							  currentWindowSize.height - qtViewSize.height);
+	NSSize delta = [self windowSizeWithoutQTView];
 	
 	NSSize movieSize = [[curMovie attributeForKey:QTMovieNaturalSizeAttribute] sizeValue];
 	
@@ -386,7 +399,7 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 {
 	if(fullscreenWindow && [notification object] == fullscreenWindow) {
 		NSRect r = [fullscreenWindow frame];
-		if(!NSEqualRects(r, NSZeroRect)) {
+		if(!NSEqualPoints(r.origin, NSZeroPoint)) {
 			[fullscreenWindow setFrameOrigin:NSZeroPoint];
 		}
 	}

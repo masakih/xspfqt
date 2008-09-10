@@ -24,6 +24,8 @@
 	
 	NSPoint prevMouse;
 	NSDate *prevMouseMovedDate;
+	
+	NSSize windowSizeWithoutQTView;
 }
 
 - (IBAction)togglePlayAndPause:(id)sender;
