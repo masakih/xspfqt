@@ -132,6 +132,8 @@
 						   [NSNumber numberWithBool:NO], QTMovieOpenAsyncOKAttribute,
 						   nil];
 	movie = [[QTMovie alloc] initWithAttributes:attrs error:&error];
+//	movie = [[QTMovie alloc] initWithURL:[self location] error:&error];
+	
 	{
 		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 //		[nc addObserver:self
@@ -173,7 +175,9 @@
 
 - (void)deselect
 {
-	[self purgeQTMovie];
+	[self performSelector:@selector(purgeQTMovie)
+			   withObject:nil
+			   afterDelay:0.5];
 	[super deselect];
 }
 - (void)purgeQTMovie
@@ -183,7 +187,9 @@
 				  name:nil
 				object:movie];
 	
-	NSLog(@"Purge! retain count is %u", [movie retainCount]);
+//	[movie invalidate];
+//	NSLog(@"Purge! retain count is %u", [movie retainCount]);
+	
 	[movie release];
 	movie = nil;
 }
