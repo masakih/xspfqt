@@ -19,9 +19,9 @@
 }
 
 + (id)xspfComponemtWithXMLElement:(NSXMLElement *)element;
-- (id)initWithXMLElement:(NSXMLElement *)element;
+- (id)initWithXMLElement:(NSXMLElement *)element; // abstract.
 
-- (NSXMLElement *)XMLElement;
+- (NSXMLElement *)XMLElement; // abstract.
 
 - (QTMovie *)qtMovie;
 
