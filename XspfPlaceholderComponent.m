@@ -63,12 +63,13 @@ static XspfPlaceholderComponent *sharedInstance = nil;
 - (id)initWithXMLElement:(NSXMLElement *)element
 {
 	NSString *name = [element name];
-	if([name isEqualTo:@""]) return nil;
+	if(!name) return nil;
+	if([name isEqualToString:@""]) return nil;
 	
-	if([name isEqualTo:@"trackList"]) {
+	if([name isEqualToString:@"trackList"]) {
 		return [[XspfTrackList alloc] initWithXMLElement:element];
 	}
-	if([name isEqualTo:@"track"]) {
+	if([name isEqualToString:@"track"]) {
 		return [[XspfTrack alloc] initWithXMLElement:element];
 	}
 	
