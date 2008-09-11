@@ -49,12 +49,11 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc removeObserver:self];
+	
+	[self setQtMovie:nil];
 		
 	[fullscreenWindow release];
-	
-	[qtMovie release];
 	[updateTime release];
-	
 	[prevMouseMovedDate release];
 		
 	[super dealloc];
@@ -85,14 +84,12 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 					   context:(void *)context
 {
 //	NSLog(@"Observed!");
-	if([keyPath isEqual:kQTMovieKeyPath]) {
-		id old = [change objectForKey:NSKeyValueChangeOldKey];
+	if([keyPath isEqualToString:kQTMovieKeyPath]) {
 		id new = [change objectForKey:NSKeyValueChangeNewKey];
-		if([old isEqual:new]) return;
-		[self setQtMovie:[self valueForKeyPath:@"document.trackList.qtMovie"]];
+		[self setQtMovie:new];
 		return;
 	}
-	if([keyPath isEqual:kIsPlayedKeyPath]) {
+	if([keyPath isEqualToString:kIsPlayedKeyPath]) {
 		id new = [change objectForKey:NSKeyValueChangeNewKey];
 		
 		if([new boolValue]) {
@@ -130,10 +127,11 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	}
 	[qtMovie autorelease];
 	qtMovie = [qt retain];
+	
+	if(!qtMovie) return;
+	
 	[self synchronizeWindowTitleWithDocumentName];
-	
 	[self sizeTofitWidnow];
-	
 	[self play];
 }
 - (QTMovie *)qtMovie
@@ -243,11 +241,16 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	[fullscreenWindow setReleasedWhenClosed:NO];
 	[fullscreenWindow setBackgroundColor:[NSColor blackColor]];
 	[fullscreenWindow setDelegate:self];
+	[fullscreenWindow setWindowController:self];
 	
 	return fullscreenWindow;
 }
 
 #pragma mark ### Actions ###
+- (IBAction)playedTrack:(id)sender
+{
+	// do noting.
+}
 - (IBAction)togglePlayAndPause:(id)sender
 {
 	if([[self valueForKeyPath:@"document.trackList.isPlayed"] boolValue]) {
@@ -310,10 +313,12 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 }
 - (IBAction)nextTrack:(id)sender
 {
+	[qtView pause:sender];
 	[[[self document] trackList] next];
 }
 - (IBAction)previousTrack:(id)sender
 {
+	[qtView pause:sender];
 	[[[self document] trackList] previous];
 }
 
@@ -362,6 +367,13 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 			[menuItem setTitle:NSLocalizedString(@"Full Screen", @"Full Screen")];
 		}
 		return YES;
+	}
+	if([menuItem tag] == 10000) {
+		NSString *title = [self valueForKeyPath:@"document.trackList.currentTrack.title"];
+		if(title) {
+			[menuItem setTitle:title];
+		}
+		return NO;
 	}
 	
 	return YES;

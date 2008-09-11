@@ -69,7 +69,7 @@
 						change:(NSDictionary *)change
 					   context:(void *)context
 {
-	if([keyPath isEqual:@"isPlayed"]) {
+	if([keyPath isEqualToString:@"isPlayed"]) {
 		[self willChangeValueForKey:@"isPlayed"];
 		[self didChangeValueForKey:@"isPlayed"];
 		return;
@@ -95,8 +95,8 @@
 	[self willChangeValueForKey:@"currentTrack"];
 	prev = currentIndex;
 	currentIndex = index;
-	[self didChangeValueForKey:@"qtMovie"];
 	[self didChangeValueForKey:@"currentTrack"];
+	[self didChangeValueForKey:@"qtMovie"];
 	
 	[self willChangeValueForKey:@"isPlayed"];
 	XspfComponent *t= nil;
@@ -105,7 +105,7 @@
 		[t removeObserver:self forKeyPath:@"isPlayed"];
 	}
 	@catch (id ex) {
-		if(![[ex name] isEqualTo:NSRangeException]) {
+		if(![[ex name] isEqualToString:NSRangeException]) {
 			NSLog(@"Exception ### named %@", [ex name]);
 			@throw;
 		}

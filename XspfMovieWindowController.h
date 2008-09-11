@@ -28,6 +28,7 @@
 	NSSize windowSizeWithoutQTView;
 }
 
+- (IBAction)playedTrack:(id)sender;
 - (IBAction)togglePlayAndPause:(id)sender;
 - (IBAction)toggleFullScreenMode:(id)sender;
 - (IBAction)forwardTagValueSecends:(id)sender;

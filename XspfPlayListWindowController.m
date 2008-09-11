@@ -84,12 +84,12 @@
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if([keyPath isEqualTo:@"selection"]) {
+	if([keyPath isEqualToString:@"selection"]) {
 		id new = [object valueForKeyPath:@"selection.self"];
 		[self setObserveObject:new];
 	}
 	
-	if([keyPath isEqualTo:@"title"]) {
+	if([keyPath isEqualToString:@"title"]) {
 		id new = [change objectForKey:NSKeyValueChangeNewKey];
 		id old = [change objectForKey:NSKeyValueChangeOldKey];
 		

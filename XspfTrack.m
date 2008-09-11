@@ -177,7 +177,7 @@
 {
 	[self performSelector:@selector(purgeQTMovie)
 			   withObject:nil
-			   afterDelay:0.5];
+			   afterDelay:4.5];
 	[super deselect];
 }
 - (void)purgeQTMovie
@@ -188,7 +188,7 @@
 				object:movie];
 	
 //	[movie invalidate];
-//	NSLog(@"Purge! retain count is %u", [movie retainCount]);
+	NSLog(@"Purge! retain count is %u", [movie retainCount]);
 	
 	[movie release];
 	movie = nil;
@@ -200,7 +200,7 @@
 	
 	NSNumber *rateValue = [[notification userInfo] objectForKey:QTMovieRateDidChangeNotificationParameter];
 	if(rateValue) {
-		float rate = [rateValue doubleValue];
+		float rate = [rateValue floatValue];
 		if(rate == 0) {
 			[self setIsPlayed:NO];
 		} else if(rate == 1) {
