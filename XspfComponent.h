@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <QTKit/QTKit.h>
 
-@interface XspfComponent : NSObject
+@interface XspfComponent : NSObject <NSCoding>
 {
 	NSString *title;
 	BOOL isSelected;
