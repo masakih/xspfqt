@@ -8,6 +8,7 @@
 
 #import "XspfPlayListWindowController.h"
 #import "XspfDocument.h"
+#import "XspfComponent.h"
 
 
 @interface XspfPlayListWindowController(Private)
@@ -15,6 +16,8 @@
 @end
 
 @implementation XspfPlayListWindowController
+
+static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 
 - (id)init
 {
@@ -33,6 +36,8 @@
 	[self setObserveObject:[trackListTree valueForKeyPath:@"selection.self"]];
 	
 	[listView expandItem:[listView itemAtRow:0]];
+	
+	[listView registerForDraggedTypes:[NSArray arrayWithObject:XspfQTPlayListItemType]];
 }
 - (void)dealloc
 {
@@ -103,6 +108,72 @@
 						  selector:@selector(setTitle:)
 							object:old];
 	}
+}
+
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView
+		 writeItems:(NSArray *)items
+	   toPasteboard:(NSPasteboard *)pasteboard
+{
+	if([items count] > 1) return NO;
+	
+	id item = [[items objectAtIndex:0] representedObject];
+	
+	if(![item isKindOfClass:[XspfComponent class]]) {
+		NSLog(@"Ouch! %@", NSStringFromClass([item class]));
+		return NO;
+	}
+	if(![item isLeaf]) return NO;
+	
+	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:item];
+	if(!data) {
+		NSLog(@"Could not archive.");
+		return NO;
+	}
+	
+	[pasteboard declareTypes:[NSArray arrayWithObject:XspfQTPlayListItemType]
+					   owner:self];
+	[pasteboard setData:data
+				forType:XspfQTPlayListItemType];
+	return YES;
+}
+- (NSDragOperation)outlineView:(NSOutlineView *)outlineView
+				  validateDrop:(id <NSDraggingInfo>)info
+				  proposedItem:(id)item
+			proposedChildIndex:(NSInteger)index
+{
+	if([item isLeaf]) {
+		return NSDragOperationNone;
+	}
+	
+	id pb = [info draggingPasteboard];
+	
+	if(![[pb types] containsObject:XspfQTPlayListItemType]) {
+		return NSDragOperationNone;
+	}
+	
+	return NSDragOperationMove;
+}
+- (BOOL)outlineView:(NSOutlineView *)outlineView
+		 acceptDrop:(id <NSDraggingInfo>)info
+			   item:(id)item
+		 childIndex:(NSInteger)index
+{
+	if([item isLeaf]) {
+		return NO;
+	}
+	
+	id pb = [info draggingPasteboard];
+	
+	NSData *data = [pb dataForType:XspfQTPlayListItemType];
+	if(!data) return NO;
+	
+	id newItem = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	if(!newItem) return NO;
+	
+	NSLog(@"new item class is %@\n%@", NSStringFromClass([newItem class]), newItem);
+	
+	return NO;
 }
 
 @end
