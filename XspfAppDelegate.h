@@ -11,7 +11,7 @@
 
 @interface XspfAppDelegate : NSObject
 {
-
+	NSWindow *mainWindowStore;
 }
 
 @end
