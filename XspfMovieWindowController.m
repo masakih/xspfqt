@@ -247,10 +247,6 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 }
 
 #pragma mark ### Actions ###
-- (IBAction)playedTrack:(id)sender
-{
-	// do noting.
-}
 - (IBAction)togglePlayAndPause:(id)sender
 {
 	if([[self valueForKeyPath:@"document.trackList.isPlayed"] boolValue]) {
@@ -368,13 +364,13 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 		}
 		return YES;
 	}
-	if([menuItem tag] == 10000) {
-		NSString *title = [self valueForKeyPath:@"document.trackList.currentTrack.title"];
-		if(title) {
-			[menuItem setTitle:title];
-		}
-		return NO;
-	}
+//	if([menuItem tag] == 10000) {
+//		NSString *title = [self valueForKeyPath:@"document.trackList.currentTrack.title"];
+//		if(title) {
+//			[menuItem setTitle:title];
+//		}
+//		return NO;
+//	}
 	
 	return YES;
 }
