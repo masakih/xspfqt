@@ -31,6 +31,8 @@
 					   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 					   context:NULL];
 	[self setObserveObject:[trackListTree valueForKeyPath:@"selection.self"]];
+	
+	[listView expandItem:[listView itemAtRow:0]];
 }
 - (void)dealloc
 {
