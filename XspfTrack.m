@@ -124,6 +124,10 @@
 }
 - (QTMovie *)qtMovie
 {
+	if(movie) {
+		[[self class] cancelPreviousPerformRequestsWithTarget:self];
+		return movie;
+	}
 	if(![QTMovie canInitWithURL:[self location]]) return nil;
 	
 	NSError *error = nil;
@@ -175,9 +179,11 @@
 
 - (void)deselect
 {
+	[movie stop];
 	[self performSelector:@selector(purgeQTMovie)
 			   withObject:nil
 			   afterDelay:4.5];
+	[self setIsPlayed:NO];
 	[super deselect];
 }
 - (void)purgeQTMovie
@@ -207,6 +213,19 @@
 			[self setIsPlayed:YES];
 		}
 	}
+}
+
+- (NSUInteger)hash
+{
+	return [location hash];
+}
+- (BOOL)isEqual:(XspfTrack *)other
+{
+	if(![other isMemberOfClass:[XspfTrack class]]) return NO;
+	if(![[other location] isEqual:location]) return NO;
+	if(![[other title] isEqualToString:[self title]]) return NO;
+	
+	return YES;
 }
 
 - (NSString *)description
