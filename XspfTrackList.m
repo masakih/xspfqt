@@ -41,7 +41,7 @@
 }
 - (void)dealloc
 {
-	[[self currentTrack] removeObserver:self forKeyPath:@"isPlayed"];
+	[self setCurrentIndex:NSNotFound];
 	
 	[tracks release];
 	
@@ -80,6 +80,37 @@
 						   change:change
 						  context:context];
 }
+
+// this mothod not check toTrack and fromTrack are in tracks array.
+// Do not call directly.
+- (void)changeObserveFrom:(XspfComponent *)fromTrack to:(XspfComponent *)toTrack
+{
+	@try {
+		[fromTrack removeObserver:self forKeyPath:@"isPlayed"];
+		[toTrack addObserver:self
+				  forKeyPath:@"isPlayed"
+					 options:NSKeyValueObservingOptionNew
+					 context:NULL];
+	}
+	@catch (id ex) {
+		if(![[ex name] isEqualToString:NSRangeException]) {
+			NSLog(@"Exception ### named %@", [ex name]);
+			@throw;
+		}
+	}
+	@finally {
+		NSLog(@"Prev -> %@\nNew -> %@", fromTrack, toTrack);
+		[self willChangeValueForKey:@"qtMovie"];
+		[self willChangeValueForKey:@"currentTrack"];
+		[self willChangeValueForKey:@"isPlayed"];
+		[fromTrack deselect];
+		[toTrack select];
+		[self didChangeValueForKey:@"isPlayed"];
+		[self didChangeValueForKey:@"currentTrack"];
+		[self didChangeValueForKey:@"qtMovie"];
+	}
+}	
+
 - (void)setSelectionIndex:(unsigned)index
 {
 	[self setCurrentIndex:index];
@@ -89,20 +120,14 @@
 	unsigned prev;
 	
 	if(index < 0) return;
-	if([tracks count] <= index) return;
+	if([tracks count] <= index && index != NSNotFound) return;
 	
-	[self willChangeValueForKey:@"qtMovie"];
-	[self willChangeValueForKey:@"currentTrack"];
 	prev = currentIndex;
 	currentIndex = index;
-	[self didChangeValueForKey:@"currentTrack"];
-	[self didChangeValueForKey:@"qtMovie"];
 	
-	[self willChangeValueForKey:@"isPlayed"];
 	XspfComponent *t= nil;
 	@try {
 		t = [tracks objectAtIndex:prev];
-		[t removeObserver:self forKeyPath:@"isPlayed"];
 	}
 	@catch (id ex) {
 		if(![[ex name] isEqualToString:NSRangeException]) {
@@ -110,19 +135,9 @@
 			@throw;
 		}
 	}
-	
-	if(t) {
-		[t deselect];
-	}
-	
 	XspfComponent *t2 = [self currentTrack];
-	[t2 select];
-	[t2 addObserver:self
-		 forKeyPath:@"isPlayed"
-			options:NSKeyValueObservingOptionNew
-			context:NULL];
-	[self didChangeValueForKey:@"isPlayed"];
-
+	
+	[self changeObserveFrom:t to:t2];
 }
 - (unsigned)currentIndex
 {
@@ -165,8 +180,33 @@
 	if(!child) return;
 	if(![tracks containsObject:child]) return;
 	
+	NSUInteger index = [tracks indexOfObject:child];
+	BOOL isSelectedItem = [child isSelected];
+	BOOL mustChangeSelection = NO;
+		
+	if(index <= currentIndex) {
+		mustChangeSelection = YES;
+	}
+	
+	[self willChangeValueForKey:@"children"];
+	[[child retain] autorelease];
 	[child setParent:nil];
 	[tracks removeObject:child];
+	
+	if(mustChangeSelection) {
+		// ### CAUTION ###
+		// this line directly change currentIndex.
+		currentIndex--;
+		
+		id newSelection = nil;
+		id oldSelection = nil;
+		if(isSelectedItem) {
+			oldSelection = child;
+			newSelection = [self currentTrack];
+		}
+		[self changeObserveFrom:oldSelection to:newSelection];
+	}
+	[self didChangeValueForKey:@"children"];
 }
 
 - (void)addChild:(XspfComponent *)child
