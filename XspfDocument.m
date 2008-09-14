@@ -20,6 +20,9 @@
 
 @implementation XspfDocument
 
+NSString *XspfDocumentWillCloseNotification = @"XspfDocumentWillCloseNotification";
+
+
 - (id)init
 {
     self = [super init];
@@ -130,6 +133,9 @@
 }
 - (void)close
 {
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc postNotificationName:XspfDocumentWillCloseNotification object:self];
+	
 	[self removeWindowController:playListWindowController];
 	[playListWindowController release];
 	playListWindowController = nil;
