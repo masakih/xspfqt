@@ -194,7 +194,7 @@
 				object:movie];
 	
 //	[movie invalidate];
-	NSLog(@"Purge! retain count is %u", [movie retainCount]);
+//	NSLog(@"Purge! retain count is %u", [movie retainCount]);
 	
 	[movie release];
 	movie = nil;
