@@ -37,7 +37,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	
 	[listView expandItem:[listView itemAtRow:0]];
 	
-	[listView registerForDraggedTypes:[NSArray arrayWithObject:XspfQTPlayListItemType]];
+//	[listView registerForDraggedTypes:[NSArray arrayWithObject:XspfQTPlayListItemType]];
 }
 - (void)dealloc
 {
@@ -69,6 +69,16 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	if(code == 49 /* space bar */) {
 		[[self document] togglePlayAndPause:self];
 	}
+}
+- (void)deleteBackward:(id)sender
+{
+	id selection = [[trackListTree selection] representedObject];
+	[[self document] removeItem:selection];
+}
+- (void)deleteForward:(id)sender
+{
+	id selection = [[trackListTree selection] representedObject];
+	[[self document] removeItem:selection];
 }
 
 - (BOOL)windowShouldClose:(id)sender
@@ -171,9 +181,10 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	id newItem = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 	if(!newItem) return NO;
 	
-	NSLog(@"new item class is %@\n%@", NSStringFromClass([newItem class]), newItem);
+//	NSLog(@"new item class is %@\n%@", NSStringFromClass([newItem class]), newItem);
+	[[self document] removeItem:newItem];
 	
-	return NO;
+	return YES;
 }
 
 @end
