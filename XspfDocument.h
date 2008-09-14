@@ -33,3 +33,5 @@
 - (void)removeItem:(XspfComponent *)item;
 
 @end
+
+extern NSString *XspfDocumentWillCloseNotification;
