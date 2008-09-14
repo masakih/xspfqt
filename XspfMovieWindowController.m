@@ -77,6 +77,16 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	[self play];
 }
 
+- (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName
+{
+	id title = [self valueForKeyPath:@"document.trackList.currentTrack.title"];
+	if(title) {
+		return [NSString stringWithFormat:@"%@ - %@",
+				displayName, title];
+	}
+	return displayName;
+}
+
 #pragma mark ### KVO & KVC ###
 - (void)observeValueForKeyPath:(NSString *)keyPath
 					  ofObject:(id)object
@@ -111,7 +121,7 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 {
 	if(qtMovie == qt) return;
 	if([qtMovie isEqual:qt]) return;
-	if(qt == [NSNull null]) qt = nil;
+	if(qt == (id)[NSNull null]) qt = nil;
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	
