@@ -99,7 +99,7 @@
 		}
 	}
 	@finally {
-		NSLog(@"Prev -> %@\nNew -> %@", fromTrack, toTrack);
+//		NSLog(@"Prev -> %@\nNew -> %@", fromTrack, toTrack);
 		[self willChangeValueForKey:@"qtMovie"];
 		[self willChangeValueForKey:@"currentTrack"];
 		[self willChangeValueForKey:@"isPlayed"];

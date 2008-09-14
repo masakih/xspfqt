@@ -8,6 +8,7 @@
 
 #import "XspfAppDelegate.h"
 #import "XspfValueTransformers.h"
+#import "XspfQTInformationWindowController.h"
 
 @implementation XspfAppDelegate
 
@@ -44,10 +45,32 @@
 {
 	// do noting.
 }
+- (IBAction)openInformationPanel:(id)sender
+{
+	XspfQTInformationWindowController *wc;
+	wc = [XspfQTInformationWindowController sharedInstance];
+	[wc showWindow:sender];
+}
+- (IBAction)togglePlayAndPause:(id)sender
+{
+	[[mainWindowStore windowController] togglePlayAndPause:sender];
+}
+- (IBAction)nextTrack:(id)sender
+{
+	[[mainWindowStore windowController] nextTrack:sender];
+}
+- (IBAction)previousTrack:(id)sender
+{
+	[[mainWindowStore windowController] previousTrack:sender];
+}
 
 #pragma mark ### NSMenu valivation ###
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
+	if([menuItem action] == @selector(openInformationPanel:)) {
+		return YES;
+	}
+	
 	if([menuItem tag] == 10000) {
 		NSWindow *m = mainWindowStore;
 		if(!m) {
@@ -67,19 +90,6 @@
 	
 	return YES;
 }
-- (IBAction)togglePlayAndPause:(id)sender
-{
-	[[mainWindowStore windowController] togglePlayAndPause:sender];
-}
-- (IBAction)nextTrack:(id)sender
-{
-	[[mainWindowStore windowController] nextTrack:sender];
-}
-- (IBAction)previousTrack:(id)sender
-{
-	[[mainWindowStore windowController] previousTrack:sender];
-}
-
 
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender
 {

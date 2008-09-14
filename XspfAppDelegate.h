@@ -14,4 +14,6 @@
 	NSWindow *mainWindowStore;
 }
 
+- (IBAction)openInformationPanel:(id)sender;
+- (IBAction)playedTrack:(id)sender;
 @end
