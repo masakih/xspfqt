@@ -111,6 +111,7 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 {
 	if(qtMovie == qt) return;
 	if([qtMovie isEqual:qt]) return;
+	if(qt == [NSNull null]) qt = nil;
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	
@@ -195,7 +196,10 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 {
 	[qtView performSelectorOnMainThread:@selector(pause:) withObject:self waitUntilDone:NO];
 }
-
+- (void)stop
+{
+	[qtView performSelectorOnMainThread:@selector(pause:) withObject:self waitUntilDone:YES];
+}
 - (void)enterFullScreen
 {
 	NSWindow *w = [self fullscreenWindow];
