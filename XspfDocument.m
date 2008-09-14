@@ -121,16 +121,16 @@ NSString *XspfDocumentWillCloseNotification = @"XspfDocumentWillCloseNotificatio
 	
 	[super dealloc];
 }
-- (NSString *)displayName
-{
-	NSString *trackTitle = [[[self trackList] currentTrack] title];
-	if(trackTitle) {
-		return [NSString stringWithFormat:@"%@ - %@",
-				[super displayName], trackTitle];
-	}
-	
-	return [super displayName];
-}
+//- (NSString *)displayName
+//{
+//	NSString *trackTitle = [[[self trackList] currentTrack] title];
+//	if(trackTitle) {
+//		return [NSString stringWithFormat:@"%@ - %@",
+//				[super displayName], trackTitle];
+//	}
+//	
+//	return [super displayName];
+//}
 - (void)close
 {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
