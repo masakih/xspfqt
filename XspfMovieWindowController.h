@@ -36,6 +36,7 @@
 - (IBAction)previousTrack:(id)sender;
 
 - (void)play;
+- (void)stop;
 
 - (void)setQtMovie:(QTMovie *)qt;
 - (QTMovie *)qtMovie;
