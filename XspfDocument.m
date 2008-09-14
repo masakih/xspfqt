@@ -190,6 +190,16 @@
 	return d;
 }
 
+- (void)insertItem:(XspfComponent *)item atIndex:(NSInteger)index
+{
+	//
+}
+- (void)removeItem:(XspfComponent *)item
+{
+	[movieWindowController stop];
+	[[self trackList] removeChild:item];
+}
+
 - (IBAction)dump:(id)sender
 {	
 	NSString *s = [[[NSString alloc] initWithData:[self outputData]
