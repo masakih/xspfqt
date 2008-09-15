@@ -11,6 +11,8 @@
 
 @implementation XspfComponent
 
+static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLStringCodingKey";
+
 + (id) allocWithZone:(NSZone *) zone
 {
 	if ([self class] == [XspfComponent class]) {
@@ -200,14 +202,14 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 	NSString *string = [[self XMLElement] XMLString];
-	[aCoder encodeObject:string forKey:@"XspfQTComponentXMLStringCodingKey"];
+	[aCoder encodeObject:string forKey:XspfQTComponentXMLStringCodingKey];
 }
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
 	[super init];
 	[self autorelease];
 	
-	id string = [aDecoder decodeObjectForKey:@"XspfQTComponentXMLStringCodingKey"];
+	id string = [aDecoder decodeObjectForKey:XspfQTComponentXMLStringCodingKey];
 	
 	NSError *error = nil;
 	NSXMLElement *element = [[[NSXMLElement alloc] initWithXMLString:string error:&error] autorelease];

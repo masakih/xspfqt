@@ -45,18 +45,11 @@ NSString *XspfDocumentWillCloseNotification = @"XspfDocumentWillCloseNotificatio
 	[self addWindowController:movieWindowController];
 	[movieWindowController setQtMovie:[[self trackList] qtMovie]];
 }
-//- (NSString *)windowNibName
-//{
-//    // Override returning the nib file name of the document
-//    // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
-//    return @"MyDocument";
-//}
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)windowController
 {
     [super windowControllerDidLoadNib:windowController];
     // Add any code here that needs to be executed once the windowController has loaded the document's window.
-//	[self setQtMovie:[[self trackList] qtMovie]];
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
@@ -105,10 +98,7 @@ NSString *XspfDocumentWillCloseNotification = @"XspfDocumentWillCloseNotificatio
 	if(![t title]) {
 		[t setTitle:[[[self fileURL] path] lastPathComponent]];
 	}
-	[self setTrackList:t];
-//	NSLog(@"trackList -> %@", trackList);
-	
-//	[self setQtMovie:[[self trackList] qtMovie]];
+	[self setTrackList:t];	
 	
     return YES;
 }
@@ -121,16 +111,7 @@ NSString *XspfDocumentWillCloseNotification = @"XspfDocumentWillCloseNotificatio
 	
 	[super dealloc];
 }
-//- (NSString *)displayName
-//{
-//	NSString *trackTitle = [[[self trackList] currentTrack] title];
-//	if(trackTitle) {
-//		return [NSString stringWithFormat:@"%@ - %@",
-//				[super displayName], trackTitle];
-//	}
-//	
-//	return [super displayName];
-//}
+
 - (void)close
 {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -177,7 +158,7 @@ NSString *XspfDocumentWillCloseNotification = @"XspfDocumentWillCloseNotificatio
 {
 	return [[self XMLDocument] XMLDataWithOptions:NSXMLNodePrettyPrint];
 }
-- (NSXMLDocument *)XMLDocument;
+- (NSXMLDocument *)XMLDocument
 {
 	id element = [[self trackList] XMLElement];
 	

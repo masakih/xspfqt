@@ -140,10 +140,6 @@
 	
 	{
 		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-//		[nc addObserver:self
-//			   selector:@selector(notifee:)
-//				   name:@"QTMoviePrerollCompleteNotification"
-//				 object:movie];
 		[nc addObserver:self
 			   selector:@selector(notifee:)
 				   name:QTMovieRateDidChangeNotification
@@ -153,7 +149,6 @@
 //				   name:@"QTMovieDidEndNotification"
 //				 object:movie];
 	}
-	
 	
 	[self willChangeValueForKey:@"duration"];
 	[self didChangeValueForKey:@"duration"];
@@ -183,7 +178,6 @@
 	[self performSelector:@selector(purgeQTMovie)
 			   withObject:nil
 			   afterDelay:4.5];
-//	[self setIsPlayed:NO];
 	[super deselect];
 }
 - (void)purgeQTMovie
@@ -193,7 +187,6 @@
 				  name:nil
 				object:movie];
 	
-//	[movie invalidate];
 //	NSLog(@"Purge! retain count is %u", [movie retainCount]);
 	
 	[movie release];
