@@ -1,5 +1,5 @@
 //
-//  XspfValueTransformers.m
+//  XspfQTValueTransformers.m
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
@@ -8,7 +8,7 @@
 
 #import <QTKit/QTKit.h>
 
-#import "XspfValueTransformers.h"
+#import "XspfQTValueTransformers.h"
 
 
 @implementation XspfQTTimeTransformer

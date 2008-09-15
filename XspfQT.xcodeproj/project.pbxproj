@@ -10,23 +10,23 @@
 		8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */; };
 		8D15AC2E0486D014006FF6A4 /* XspfDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B4FDCFA73011CA2CEA /* XspfDocument.nib */; };
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
-		8D15AC310486D014006FF6A4 /* XspfDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* XspfDocument.m */; settings = {ATTRIBUTES = (); }; };
+		8D15AC310486D014006FF6A4 /* XspfQTDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* XspfQTDocument.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
-		F441DCA50E69B82B009320B6 /* XspfMovieWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DCA40E69B82B009320B6 /* XspfMovieWindowController.m */; };
-		F441DE580E6A2B5F009320B6 /* XspfValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE570E6A2B5F009320B6 /* XspfValueTransformers.m */; };
-		F441DE5C0E6A2BDA009320B6 /* XspfAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE5B0E6A2BDA009320B6 /* XspfAppDelegate.m */; };
-		F441DECB0E6A399D009320B6 /* XspfFullScreenWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DECA0E6A399D009320B6 /* XspfFullScreenWindow.m */; };
-		F441E0680E6A5131009320B6 /* XspfPlayListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F441E0670E6A5131009320B6 /* XspfPlayListWindowController.m */; };
+		F441DCA50E69B82B009320B6 /* XspfQTMovieWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DCA40E69B82B009320B6 /* XspfQTMovieWindowController.m */; };
+		F441DE580E6A2B5F009320B6 /* XspfQTValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE570E6A2B5F009320B6 /* XspfQTValueTransformers.m */; };
+		F441DE5C0E6A2BDA009320B6 /* XspfQTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE5B0E6A2BDA009320B6 /* XspfQTAppDelegate.m */; };
+		F441DECB0E6A399D009320B6 /* XspfQTFullScreenWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DECA0E6A399D009320B6 /* XspfQTFullScreenWindow.m */; };
+		F441E0680E6A5131009320B6 /* XspfQTPlayListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F441E0670E6A5131009320B6 /* XspfQTPlayListWindowController.m */; };
 		F441E06B0E6A5289009320B6 /* XspfPlayList.nib in Resources */ = {isa = PBXBuildFile; fileRef = F441E0690E6A5289009320B6 /* XspfPlayList.nib */; };
-		F46870240E71963E00B4DAED /* XspfPlaceholderComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F46870230E71963E00B4DAED /* XspfPlaceholderComponent.m */; };
+		F46870240E71963E00B4DAED /* XspfQTPlaceholderComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */; };
 		F48FDF160E7D4EBE001C33F3 /* XspfQTImformation.nib in Resources */ = {isa = PBXBuildFile; fileRef = F48FDF140E7D4EBE001C33F3 /* XspfQTImformation.nib */; };
 		F48FDF190E7D4EE7001C33F3 /* XspfQTInformationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48FDF180E7D4EE7001C33F3 /* XspfQTInformationWindowController.m */; };
 		F49C304D0E68284C007F2DEC /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C304C0E68284C007F2DEC /* QTKit.framework */; };
-		F49C31CD0E682C3B007F2DEC /* XspfComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31CC0E682C3B007F2DEC /* XspfComponent.m */; };
+		F49C31CD0E682C3B007F2DEC /* XspfQTComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31CC0E682C3B007F2DEC /* XspfQTComponent.m */; };
 		F49C31EC0E682D66007F2DEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C31EB0E682D66007F2DEC /* Foundation.framework */; };
-		F49C31F10E682D79007F2DEC /* XspfTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F00E682D79007F2DEC /* XspfTrackList.m */; };
-		F49C31F60E682E2B007F2DEC /* XspfTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F50E682E2B007F2DEC /* XspfTrack.m */; };
+		F49C31F10E682D79007F2DEC /* XspfQTTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */; };
+		F49C31F60E682E2B007F2DEC /* XspfQTTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */; };
 		F4D99B1F0E6B0F59006D72F4 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,8 +34,8 @@
 		089C1660FE840EACC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FBA07B3F13500E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
-		2A37F4ACFDCFA73011CA2CEA /* XspfDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfDocument.m; sourceTree = "<group>"; };
-		2A37F4AEFDCFA73011CA2CEA /* XspfDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfDocument.h; sourceTree = "<group>"; };
+		2A37F4ACFDCFA73011CA2CEA /* XspfQTDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTDocument.m; sourceTree = "<group>"; };
+		2A37F4AEFDCFA73011CA2CEA /* XspfQTDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTDocument.h; sourceTree = "<group>"; };
 		2A37F4B0FDCFA73011CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2A37F4B5FDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/XspfDocument.nib; sourceTree = "<group>"; };
 		2A37F4B7FDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
@@ -43,30 +43,30 @@
 		32DBCF750370BD2300C91783 /* XspfQT_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQT_Prefix.pch; sourceTree = "<group>"; };
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* XspfQT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XspfQT.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F441DCA30E69B82B009320B6 /* XspfMovieWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfMovieWindowController.h; sourceTree = "<group>"; };
-		F441DCA40E69B82B009320B6 /* XspfMovieWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfMovieWindowController.m; sourceTree = "<group>"; };
-		F441DE560E6A2B5F009320B6 /* XspfValueTransformers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfValueTransformers.h; sourceTree = "<group>"; };
-		F441DE570E6A2B5F009320B6 /* XspfValueTransformers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfValueTransformers.m; sourceTree = "<group>"; };
-		F441DE5A0E6A2BDA009320B6 /* XspfAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfAppDelegate.h; sourceTree = "<group>"; };
-		F441DE5B0E6A2BDA009320B6 /* XspfAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfAppDelegate.m; sourceTree = "<group>"; };
-		F441DEC90E6A399D009320B6 /* XspfFullScreenWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfFullScreenWindow.h; sourceTree = "<group>"; };
-		F441DECA0E6A399D009320B6 /* XspfFullScreenWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfFullScreenWindow.m; sourceTree = "<group>"; };
-		F441E0660E6A5131009320B6 /* XspfPlayListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfPlayListWindowController.h; sourceTree = "<group>"; };
-		F441E0670E6A5131009320B6 /* XspfPlayListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfPlayListWindowController.m; sourceTree = "<group>"; };
+		F441DCA30E69B82B009320B6 /* XspfQTMovieWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTMovieWindowController.h; sourceTree = "<group>"; };
+		F441DCA40E69B82B009320B6 /* XspfQTMovieWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTMovieWindowController.m; sourceTree = "<group>"; };
+		F441DE560E6A2B5F009320B6 /* XspfQTValueTransformers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTValueTransformers.h; sourceTree = "<group>"; };
+		F441DE570E6A2B5F009320B6 /* XspfQTValueTransformers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTValueTransformers.m; sourceTree = "<group>"; };
+		F441DE5A0E6A2BDA009320B6 /* XspfQTAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTAppDelegate.h; sourceTree = "<group>"; };
+		F441DE5B0E6A2BDA009320B6 /* XspfQTAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTAppDelegate.m; sourceTree = "<group>"; };
+		F441DEC90E6A399D009320B6 /* XspfQTFullScreenWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTFullScreenWindow.h; sourceTree = "<group>"; };
+		F441DECA0E6A399D009320B6 /* XspfQTFullScreenWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTFullScreenWindow.m; sourceTree = "<group>"; };
+		F441E0660E6A5131009320B6 /* XspfQTPlayListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlayListWindowController.h; sourceTree = "<group>"; };
+		F441E0670E6A5131009320B6 /* XspfQTPlayListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlayListWindowController.m; sourceTree = "<group>"; };
 		F441E06A0E6A5289009320B6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/XspfPlayList.nib; sourceTree = "<group>"; };
-		F46870220E71963E00B4DAED /* XspfPlaceholderComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfPlaceholderComponent.h; sourceTree = "<group>"; };
-		F46870230E71963E00B4DAED /* XspfPlaceholderComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfPlaceholderComponent.m; sourceTree = "<group>"; };
+		F46870220E71963E00B4DAED /* XspfQTPlaceholderComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlaceholderComponent.h; sourceTree = "<group>"; };
+		F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlaceholderComponent.m; sourceTree = "<group>"; };
 		F48FDF150E7D4EBE001C33F3 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/XspfQTImformation.nib; sourceTree = "<group>"; };
 		F48FDF170E7D4EE7001C33F3 /* XspfQTInformationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTInformationWindowController.h; sourceTree = "<group>"; };
 		F48FDF180E7D4EE7001C33F3 /* XspfQTInformationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTInformationWindowController.m; sourceTree = "<group>"; };
 		F49C304C0E68284C007F2DEC /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
-		F49C31CB0E682C3B007F2DEC /* XspfComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfComponent.h; sourceTree = "<group>"; };
-		F49C31CC0E682C3B007F2DEC /* XspfComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfComponent.m; sourceTree = "<group>"; };
+		F49C31CB0E682C3B007F2DEC /* XspfQTComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTComponent.h; sourceTree = "<group>"; };
+		F49C31CC0E682C3B007F2DEC /* XspfQTComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTComponent.m; sourceTree = "<group>"; };
 		F49C31EB0E682D66007F2DEC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		F49C31EF0E682D79007F2DEC /* XspfTrackList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfTrackList.h; sourceTree = "<group>"; };
-		F49C31F00E682D79007F2DEC /* XspfTrackList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfTrackList.m; sourceTree = "<group>"; };
-		F49C31F40E682E2B007F2DEC /* XspfTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfTrack.h; sourceTree = "<group>"; };
-		F49C31F50E682E2B007F2DEC /* XspfTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfTrack.m; sourceTree = "<group>"; };
+		F49C31EF0E682D79007F2DEC /* XspfQTTrackList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTTrackList.h; sourceTree = "<group>"; };
+		F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTTrackList.m; sourceTree = "<group>"; };
+		F49C31F40E682E2B007F2DEC /* XspfQTTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTTrack.h; sourceTree = "<group>"; };
+		F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTTrack.m; sourceTree = "<group>"; };
 		F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -128,28 +128,28 @@
 		2A37F4ABFDCFA73011CA2CEA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F441DE5A0E6A2BDA009320B6 /* XspfAppDelegate.h */,
-				F441DE5B0E6A2BDA009320B6 /* XspfAppDelegate.m */,
-				2A37F4AEFDCFA73011CA2CEA /* XspfDocument.h */,
-				2A37F4ACFDCFA73011CA2CEA /* XspfDocument.m */,
-				F441DCA30E69B82B009320B6 /* XspfMovieWindowController.h */,
-				F441DCA40E69B82B009320B6 /* XspfMovieWindowController.m */,
-				F441DEC90E6A399D009320B6 /* XspfFullScreenWindow.h */,
-				F441DECA0E6A399D009320B6 /* XspfFullScreenWindow.m */,
-				F441E0660E6A5131009320B6 /* XspfPlayListWindowController.h */,
-				F441E0670E6A5131009320B6 /* XspfPlayListWindowController.m */,
+				F441DE5A0E6A2BDA009320B6 /* XspfQTAppDelegate.h */,
+				F441DE5B0E6A2BDA009320B6 /* XspfQTAppDelegate.m */,
+				2A37F4AEFDCFA73011CA2CEA /* XspfQTDocument.h */,
+				2A37F4ACFDCFA73011CA2CEA /* XspfQTDocument.m */,
+				F441DCA30E69B82B009320B6 /* XspfQTMovieWindowController.h */,
+				F441DCA40E69B82B009320B6 /* XspfQTMovieWindowController.m */,
+				F441DEC90E6A399D009320B6 /* XspfQTFullScreenWindow.h */,
+				F441DECA0E6A399D009320B6 /* XspfQTFullScreenWindow.m */,
+				F441E0660E6A5131009320B6 /* XspfQTPlayListWindowController.h */,
+				F441E0670E6A5131009320B6 /* XspfQTPlayListWindowController.m */,
 				F48FDF170E7D4EE7001C33F3 /* XspfQTInformationWindowController.h */,
 				F48FDF180E7D4EE7001C33F3 /* XspfQTInformationWindowController.m */,
-				F49C31CB0E682C3B007F2DEC /* XspfComponent.h */,
-				F49C31CC0E682C3B007F2DEC /* XspfComponent.m */,
-				F46870220E71963E00B4DAED /* XspfPlaceholderComponent.h */,
-				F46870230E71963E00B4DAED /* XspfPlaceholderComponent.m */,
-				F49C31F40E682E2B007F2DEC /* XspfTrack.h */,
-				F49C31F50E682E2B007F2DEC /* XspfTrack.m */,
-				F49C31EF0E682D79007F2DEC /* XspfTrackList.h */,
-				F49C31F00E682D79007F2DEC /* XspfTrackList.m */,
-				F441DE560E6A2B5F009320B6 /* XspfValueTransformers.h */,
-				F441DE570E6A2B5F009320B6 /* XspfValueTransformers.m */,
+				F49C31CB0E682C3B007F2DEC /* XspfQTComponent.h */,
+				F49C31CC0E682C3B007F2DEC /* XspfQTComponent.m */,
+				F46870220E71963E00B4DAED /* XspfQTPlaceholderComponent.h */,
+				F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */,
+				F49C31F40E682E2B007F2DEC /* XspfQTTrack.h */,
+				F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */,
+				F49C31EF0E682D79007F2DEC /* XspfQTTrackList.h */,
+				F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */,
+				F441DE560E6A2B5F009320B6 /* XspfQTValueTransformers.h */,
+				F441DE570E6A2B5F009320B6 /* XspfQTValueTransformers.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -243,17 +243,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D15AC310486D014006FF6A4 /* XspfDocument.m in Sources */,
+				8D15AC310486D014006FF6A4 /* XspfQTDocument.m in Sources */,
 				8D15AC320486D014006FF6A4 /* main.m in Sources */,
-				F49C31CD0E682C3B007F2DEC /* XspfComponent.m in Sources */,
-				F49C31F10E682D79007F2DEC /* XspfTrackList.m in Sources */,
-				F49C31F60E682E2B007F2DEC /* XspfTrack.m in Sources */,
-				F441DCA50E69B82B009320B6 /* XspfMovieWindowController.m in Sources */,
-				F441DE580E6A2B5F009320B6 /* XspfValueTransformers.m in Sources */,
-				F441DE5C0E6A2BDA009320B6 /* XspfAppDelegate.m in Sources */,
-				F441DECB0E6A399D009320B6 /* XspfFullScreenWindow.m in Sources */,
-				F441E0680E6A5131009320B6 /* XspfPlayListWindowController.m in Sources */,
-				F46870240E71963E00B4DAED /* XspfPlaceholderComponent.m in Sources */,
+				F49C31CD0E682C3B007F2DEC /* XspfQTComponent.m in Sources */,
+				F49C31F10E682D79007F2DEC /* XspfQTTrackList.m in Sources */,
+				F49C31F60E682E2B007F2DEC /* XspfQTTrack.m in Sources */,
+				F441DCA50E69B82B009320B6 /* XspfQTMovieWindowController.m in Sources */,
+				F441DE580E6A2B5F009320B6 /* XspfQTValueTransformers.m in Sources */,
+				F441DE5C0E6A2BDA009320B6 /* XspfQTAppDelegate.m in Sources */,
+				F441DECB0E6A399D009320B6 /* XspfQTFullScreenWindow.m in Sources */,
+				F441E0680E6A5131009320B6 /* XspfQTPlayListWindowController.m in Sources */,
+				F46870240E71963E00B4DAED /* XspfQTPlaceholderComponent.m in Sources */,
 				F48FDF190E7D4EE7001C33F3 /* XspfQTInformationWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

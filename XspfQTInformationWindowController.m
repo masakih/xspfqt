@@ -7,7 +7,7 @@
 //
 
 #import "XspfQTInformationWindowController.h"
-#import "XspfDocument.h"
+#import "XspfQTDocument.h"
 
 
 @implementation XspfQTInformationWindowController
@@ -92,7 +92,7 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 			 object:NSApp];
 	[nc addObserver:self
 		   selector:@selector(xspfDocumentWillCloseNotification:)
-			   name:XspfDocumentWillCloseNotification
+			   name:XspfQTDocumentWillCloseNotification
 			 object:nil];
 	
 }

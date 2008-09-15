@@ -1,19 +1,19 @@
 //
-//  XspfTrack.m
+//  XspfQTTrack.m
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/29.
 //  Copyright 2008 masakih. All rights reserved.
 //
 
-#import "XspfTrack.h"
+#import "XspfQTTrack.h"
 
-@interface XspfTrack (Private)
+@interface XspfQTTrack (Private)
 - (void)setSavedDateWithQTTime:(QTTime)qttime;
 - (NSDate *)duration;
 @end
 
-@implementation XspfTrack
+@implementation XspfQTTrack
 - (id)initWithXMLElement:(NSXMLElement *)element
 {
 	self = [super init];
@@ -212,9 +212,9 @@
 {
 	return [location hash];
 }
-- (BOOL)isEqual:(XspfTrack *)other
+- (BOOL)isEqual:(XspfQTTrack *)other
 {
-	if(![other isMemberOfClass:[XspfTrack class]]) return NO;
+	if(![other isMemberOfClass:[XspfQTTrack class]]) return NO;
 	if(![[other location] isEqual:location]) return NO;
 	if(![[other title] isEqualToString:[self title]]) return NO;
 	

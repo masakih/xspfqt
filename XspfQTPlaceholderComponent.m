@@ -1,19 +1,19 @@
 //
-//  XspfPlaceholderComponent.m
+//  XspfQTPlaceholderComponent.m
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/09/06.
 //  Copyright 2008 masakih. All rights reserved.
 //
 
-#import "XspfPlaceholderComponent.h"
-#import "XspfTrackList.h"
-#import "XspfTrack.h"
+#import "XspfQTPlaceholderComponent.h"
+#import "XspfQTTrackList.h"
+#import "XspfQTTrack.h"
 
-@implementation XspfPlaceholderComponent
-static XspfPlaceholderComponent *sharedInstance = nil;
+@implementation XspfQTPlaceholderComponent
+static XspfQTPlaceholderComponent *sharedInstance = nil;
 
-+ (XspfPlaceholderComponent *)sharedInstance
++ (XspfQTPlaceholderComponent *)sharedInstance
 {
     @synchronized(self) {
         if (sharedInstance == nil) {
@@ -67,10 +67,10 @@ static XspfPlaceholderComponent *sharedInstance = nil;
 	if([name isEqualToString:@""]) return nil;
 	
 	if([name isEqualToString:@"trackList"]) {
-		return [[XspfTrackList alloc] initWithXMLElement:element];
+		return [[XspfQTTrackList alloc] initWithXMLElement:element];
 	}
 	if([name isEqualToString:@"track"]) {
-		return [[XspfTrack alloc] initWithXMLElement:element];
+		return [[XspfQTTrack alloc] initWithXMLElement:element];
 	}
 	
 	return nil;

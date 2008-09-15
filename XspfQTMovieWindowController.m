@@ -1,25 +1,25 @@
 //
-//  XspfMovieWindowController.m
+//  XspfQTMovieWindowController.m
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
 //  Copyright 2008 masakih. All rights reserved.
 //
 
-#import "XspfMovieWindowController.h"
-#import "XspfDocument.h"
-#import "XspfComponent.h"
-#import "XspfFullScreenWindow.h"
+#import "XspfQTMovieWindowController.h"
+#import "XspfQTDocument.h"
+#import "XspfQTComponent.h"
+#import "XspfQTFullScreenWindow.h"
 
 
-@interface XspfMovieWindowController (Private)
+@interface XspfQTMovieWindowController (Private)
 - (NSSize)windowSizeWithoutQTView;
 - (void)sizeTofitWidnow;
 - (NSSize)fitSizeToSize:(NSSize)toSize;
 - (NSWindow *)fullscreenWindow;
 @end
 
-@implementation XspfMovieWindowController
+@implementation XspfQTMovieWindowController
 
 #pragma mark ### Static variables ###
 static const float sVolumeDelta = 0.2;
@@ -251,7 +251,7 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	if(fullscreenWindow) return fullscreenWindow;
 	
 	NSRect mainScreenRect = [[NSScreen mainScreen] frame];
-	fullscreenWindow = [[XspfFullScreenWindow alloc] initWithContentRect:mainScreenRect
+	fullscreenWindow = [[XspfQTFullScreenWindow alloc] initWithContentRect:mainScreenRect
 															   styleMask:NSBorderlessWindowMask
 																 backing:NSBackingStoreBuffered
 																   defer:YES];

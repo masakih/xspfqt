@@ -1,5 +1,5 @@
 //
-//  XspfTrackList.h
+//  XspfQTTrackList.h
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/29.
@@ -7,10 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "XspfComponent.h"
+#import "XspfQTComponent.h"
 
 
-@interface XspfTrackList : XspfComponent
+@interface XspfQTTrackList : XspfQTComponent
 {
 	NSMutableArray *tracks;
 	
