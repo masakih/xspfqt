@@ -24,13 +24,6 @@
 {
 	if(!value) return nil;
 	
-//	static first = YES;
-//	if(first) {
-//		first = NO;
-//		NSLog(@"%@ in value class -> %@", NSStringFromSelector(_cmd), NSStringFromClass([value class]));
-//		NSLog(@"value -> %@", value);
-//	}
-	
 	QTTime t = [value QTTimeValue];
 	NSTimeInterval res;
 	
@@ -41,13 +34,6 @@
 - (id)reverseTransformedValue:(id)value
 {
 	if(!value) return nil;
-	
-//	static first = YES;
-//	if(first) {
-//		first = NO;
-//		NSLog(@"%@ in value class -> %@", NSStringFromSelector(_cmd), NSStringFromClass([value class]));
-//		NSLog(@"value -> %@", value);
-//	}
 	
 	QTTime t = QTMakeTimeWithTimeInterval([value doubleValue]);
 	
@@ -68,13 +54,6 @@
 {
 	if(!value) return nil;
 	
-//	static first = YES;
-//	if(first) {
-//		first = NO;
-//		NSLog(@"%@ in value class -> %@", NSStringFromSelector(_cmd), NSStringFromClass([value class]));
-//		NSLog(@"value -> %@", value);
-//	}
-	
 	QTTime t = [value QTTimeValue];
 	NSTimeInterval res;
 	
@@ -84,20 +63,4 @@
 	
 	return [NSDate dateWithTimeIntervalSince1970:res];
 }
-//- (id)reverseTransformedValue:(id)value
-//{
-//	if(!value) return nil;
-//	
-//	static first = YES;
-//	if(first) {
-//		first = NO;
-//		NSLog(@"%@ in value class -> %@", NSStringFromSelector(_cmd), NSStringFromClass([value class]));
-//		NSLog(@"value -> %@", value);
-//	}
-//	NSTimeInterval val = [value timeIntervalSinceReferenceDate];
-//	val += [[NSTimeZone systemTimeZone] secondsFromGMT];
-//	QTTime t = QTMakeTimeWithTimeInterval(val);
-//	
-//	return [NSValue valueWithQTTime:t];
-//}
 @end
