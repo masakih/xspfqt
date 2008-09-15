@@ -1,5 +1,5 @@
 //
-//  XspfAppDelegate.h
+//  XspfQTAppDelegate.h
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface XspfAppDelegate : NSObject
+@interface XspfQTAppDelegate : NSObject
 {
 	NSWindow *mainWindowStore;
 }

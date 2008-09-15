@@ -1,16 +1,16 @@
 //
-//  XspfAppDelegate.m
+//  XspfQTAppDelegate.m
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
 //  Copyright 2008 masakih. All rights reserved.
 //
 
-#import "XspfAppDelegate.h"
-#import "XspfValueTransformers.h"
+#import "XspfQTAppDelegate.h"
+#import "XspfQTValueTransformers.h"
 #import "XspfQTInformationWindowController.h"
 
-@implementation XspfAppDelegate
+@implementation XspfQTAppDelegate
 
 + (void)initialize
 {

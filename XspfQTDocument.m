@@ -1,26 +1,26 @@
 //
-//  MyDocument.m
+//  XspfQTDocument.m
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/29.
 //  Copyright masakih 2008 . All rights reserved.
 //
 
-#import "XspfDocument.h"
-#import "XspfComponent.h"
-#import "XspfMovieWindowController.h"
-#import "XspfPlayListWindowController.h"
+#import "XspfQTDocument.h"
+#import "XspfQTComponent.h"
+#import "XspfQTMovieWindowController.h"
+#import "XspfQTPlayListWindowController.h"
 
-@interface XspfDocument (Private)
-- (void)setTrackList:(XspfComponent *)newList;
-- (XspfComponent *)trackList;
+@interface XspfQTDocument (Private)
+- (void)setTrackList:(XspfQTComponent *)newList;
+- (XspfQTComponent *)trackList;
 - (NSXMLDocument *)XMLDocument;
 - (NSData *)outputData;
 @end
 
-@implementation XspfDocument
+@implementation XspfQTDocument
 
-NSString *XspfDocumentWillCloseNotification = @"XspfDocumentWillCloseNotification";
+NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotification";
 
 
 - (id)init
@@ -37,10 +37,10 @@ NSString *XspfDocumentWillCloseNotification = @"XspfDocumentWillCloseNotificatio
 
 - (void)makeWindowControllers
 {
-	playListWindowController = [[XspfPlayListWindowController alloc] init];
+	playListWindowController = [[XspfQTPlayListWindowController alloc] init];
 	[self addWindowController:playListWindowController];
 	
-	movieWindowController = [[XspfMovieWindowController alloc] init];
+	movieWindowController = [[XspfQTMovieWindowController alloc] init];
 	[movieWindowController setShouldCloseDocument:YES];
 	[self addWindowController:movieWindowController];
 	[movieWindowController setQtMovie:[[self trackList] qtMovie]];
@@ -94,7 +94,7 @@ NSString *XspfDocumentWillCloseNotification = @"XspfDocumentWillCloseNotificatio
 		return NO;
 	}
 	
-	id t = [XspfComponent xspfComponemtWithXMLElement:[trackListElems objectAtIndex:0]];
+	id t = [XspfQTComponent xspfComponemtWithXMLElement:[trackListElems objectAtIndex:0]];
 	if(![t title]) {
 		[t setTitle:[[[self fileURL] path] lastPathComponent]];
 	}
@@ -115,7 +115,7 @@ NSString *XspfDocumentWillCloseNotification = @"XspfDocumentWillCloseNotificatio
 - (void)close
 {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	[nc postNotificationName:XspfDocumentWillCloseNotification object:self];
+	[nc postNotificationName:XspfQTDocumentWillCloseNotification object:self];
 	
 	[self removeWindowController:playListWindowController];
 	[playListWindowController release];
@@ -137,14 +137,14 @@ NSString *XspfDocumentWillCloseNotification = @"XspfDocumentWillCloseNotificatio
 	[playListWindowController showWindow:self];
 }
 
-- (void)setTrackList:(XspfComponent *)newList
+- (void)setTrackList:(XspfQTComponent *)newList
 {
 	if(trackList == newList) return;
 	
 	[trackList autorelease];
 	trackList = [newList retain];
 }
-- (XspfComponent *)trackList
+- (XspfQTComponent *)trackList
 {
 	return trackList;
 }
@@ -177,11 +177,11 @@ NSString *XspfDocumentWillCloseNotification = @"XspfDocumentWillCloseNotificatio
 	return d;
 }
 
-- (void)insertItem:(XspfComponent *)item atIndex:(NSInteger)index
+- (void)insertItem:(XspfQTComponent *)item atIndex:(NSInteger)index
 {
 	//
 }
-- (void)removeItem:(XspfComponent *)item
+- (void)removeItem:(XspfQTComponent *)item
 {
 	[movieWindowController stop];
 	[[self trackList] removeChild:item];

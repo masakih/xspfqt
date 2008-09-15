@@ -1,5 +1,5 @@
 //
-//  XspfComponent.h
+//  XspfQTComponent.h
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/29.
@@ -9,13 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import <QTKit/QTKit.h>
 
-@interface XspfComponent : NSObject <NSCoding>
+@interface XspfQTComponent : NSObject <NSCoding>
 {
 	NSString *title;
 	BOOL isSelected;
 	NSIndexPath *selectionIndexPath;
 	
-	XspfComponent *parent;	// not retained.
+	XspfQTComponent *parent;	// not retained.
 }
 
 + (id)xspfComponemtWithXMLElement:(NSXMLElement *)element;
@@ -36,23 +36,23 @@
 - (BOOL)setSelectionIndexPath:(NSIndexPath *)indexPath;
 - (NSIndexPath *)selectionIndexPath;
 
-- (XspfComponent *)currentTrack;	// default self;
+- (XspfQTComponent *)currentTrack;	// default self;
 - (void)next;						// abstract.
 - (void)previous;					// abstract.
 
 - (void)setIsPlayed:(BOOL)state;
 - (BOOL)isPlayed;
 
-- (XspfComponent *)parent;
+- (XspfQTComponent *)parent;
 - (NSArray *)children;		// default nil.
 - (unsigned)childrenCount;	// default [[self children] count].
 - (BOOL)isLeaf;				// default YES.
 
-- (void)addChild:(XspfComponent *)child;	// not implemented.
-- (void)removeChild:(XspfComponent *)child;	// not implemented.
-- (void)insertChild:(XspfComponent *)child atIndex:(unsigned)index;	// not implemented.
+- (void)addChild:(XspfQTComponent *)child;	// not implemented.
+- (void)removeChild:(XspfQTComponent *)child;	// not implemented.
+- (void)insertChild:(XspfQTComponent *)child atIndex:(unsigned)index;	// not implemented.
 - (void)removeChildAtIndex:(unsigned)index;	//not implemented.
-- (void)setParent:(XspfComponent *)parent;	// Do not call directly. call in only -addChild: method.
+- (void)setParent:(XspfQTComponent *)parent;	// Do not call directly. call in only -addChild: method.
 
 
 @end

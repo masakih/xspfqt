@@ -1,5 +1,5 @@
 //
-//  XspfMovieWindowController.h
+//  XspfQTMovieWindowController.h
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
@@ -10,7 +10,7 @@
 #import <QTKit/QTKit.h>
 
 
-@interface XspfMovieWindowController : NSWindowController
+@interface XspfQTMovieWindowController : NSWindowController
 {
 	IBOutlet QTMovieView *qtView;
 	IBOutlet NSButton *playButton;

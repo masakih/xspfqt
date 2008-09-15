@@ -1,15 +1,15 @@
 //
-//  XspfFullScreenWindow.m
+//  XspfQTFullScreenWindow.m
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
 //  Copyright 2008 masakih. All rights reserved.
 //
 
-#import "XspfFullScreenWindow.h"
+#import "XspfQTFullScreenWindow.h"
 
 
-@implementation XspfFullScreenWindow
+@implementation XspfQTFullScreenWindow
 - (BOOL)canBecomeKeyWindow
 {
 	return YES;

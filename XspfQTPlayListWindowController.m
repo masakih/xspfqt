@@ -1,21 +1,21 @@
 //
-//  XspfPlayListWindowController.m
+//  XspfQTPlayListWindowController.m
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
 //  Copyright 2008 masakih. All rights reserved.
 //
 
-#import "XspfPlayListWindowController.h"
-#import "XspfDocument.h"
-#import "XspfComponent.h"
+#import "XspfQTPlayListWindowController.h"
+#import "XspfQTDocument.h"
+#import "XspfQTComponent.h"
 
 
-@interface XspfPlayListWindowController(Private)
+@interface XspfQTPlayListWindowController(Private)
 - (void)setObserveObject:(id)new;
 @end
 
-@implementation XspfPlayListWindowController
+@implementation XspfQTPlayListWindowController
 
 static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 
@@ -129,7 +129,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	
 	id item = [[items objectAtIndex:0] representedObject];
 	
-	if(![item isKindOfClass:[XspfComponent class]]) {
+	if(![item isKindOfClass:[XspfQTComponent class]]) {
 		NSLog(@"Ouch! %@", NSStringFromClass([item class]));
 		return NO;
 	}
@@ -189,7 +189,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 
 @end
 
-@implementation XspfThowSpacebarKeyDownOutlineView
+@implementation XspfQTThrowSpacebarKeyDownOutlineView
 - (void)keyDown:(NSEvent *)theEvent
 {
 	unsigned short code = [theEvent keyCode];

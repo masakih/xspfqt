@@ -1,5 +1,5 @@
 //
-//  XspfTrack.h
+//  XspfQTTrack.h
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/29.
@@ -8,10 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import <QTKit/QTKit.h>
-#import "XspfComponent.h"
+#import "XspfQTComponent.h"
 
 
-@interface XspfTrack : XspfComponent
+@interface XspfQTTrack : XspfQTComponent
 {
 	NSURL *location;
 	

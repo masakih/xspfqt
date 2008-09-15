@@ -1,15 +1,15 @@
 //
-//  XspfTrackList.m
+//  XspfQTTrackList.m
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/29.
 //  Copyright 2008 masakih. All rights reserved.
 //
 
-#import "XspfTrackList.h"
+#import "XspfQTTrackList.h"
 
 
-@implementation XspfTrackList
+@implementation XspfQTTrackList
 - (id)initWithXMLElement:(NSXMLElement *)element
 {
 	self = [super init];
@@ -30,7 +30,7 @@
 	unsigned i, count;
 	for(i = 0, count = [elems count]; i < count; i++) {
 		NSXMLElement *trackElem = [elems objectAtIndex:i];
-		XspfComponent *track = [XspfComponent xspfComponemtWithXMLElement:trackElem];
+		XspfQTComponent *track = [XspfQTComponent xspfComponemtWithXMLElement:trackElem];
 		if(track) {
 			[self addChild:track];
 		}
@@ -84,7 +84,7 @@
 
 // this mothod not check toTrack and fromTrack are in tracks array.
 // Do not call directly.
-- (void)changeObserveFrom:(XspfComponent *)fromTrack to:(XspfComponent *)toTrack
+- (void)changeObserveFrom:(XspfQTComponent *)fromTrack to:(XspfQTComponent *)toTrack
 {
 	if(fromTrack == toTrack) return;
 	
@@ -129,7 +129,7 @@
 	[self didChangeValueForKey:@"currentTrack"];
 	[self didChangeValueForKey:@"qtMovie"];
 	
-	XspfComponent *t= nil;
+	XspfQTComponent *t= nil;
 	@try {
 		t = [tracks objectAtIndex:prev];
 	}
@@ -139,7 +139,7 @@
 			@throw;
 		}
 	}
-	XspfComponent *t2 = [self currentTrack];
+	XspfQTComponent *t2 = [self currentTrack];
 	
 	[self changeObserveFrom:t to:t2];
 }
@@ -166,11 +166,11 @@
 }
 
 // primitive.
-- (void)insertChild:(XspfComponent *)child atIndex:(unsigned)index
+- (void)insertChild:(XspfQTComponent *)child atIndex:(unsigned)index
 {
 	if(!child) return;
-	if(![child isKindOfClass:[XspfComponent class]]) {
-		NSLog(@"addChild: argument class is MUST kind of XspfComponent. "
+	if(![child isKindOfClass:[XspfQTComponent class]]) {
+		NSLog(@"addChild: argument class is MUST kind of XspfQTComponent. "
 			  @"but argument class is %@<%p>.",
 			  NSStringFromClass([child class]), child);
 		return;
@@ -179,7 +179,7 @@
 	[child setParent:self];
 }
 // primitive.
-- (void)removeChild:(XspfComponent *)child
+- (void)removeChild:(XspfQTComponent *)child
 {
 	if(!child) return;
 	if(![tracks containsObject:child]) return;
@@ -217,7 +217,7 @@
 	}
 }
 
-- (void)addChild:(XspfComponent *)child
+- (void)addChild:(XspfQTComponent *)child
 {
 	unsigned num = [tracks count];
 	[self insertChild:child atIndex:num];
@@ -233,7 +233,7 @@
 	return [tracks description];
 }
 
-- (XspfComponent *)currentTrack
+- (XspfQTComponent *)currentTrack
 {
 	if([tracks count] > currentIndex) {
 		return [tracks objectAtIndex:currentIndex];
@@ -249,7 +249,7 @@
 - (void)setIsPlayed:(BOOL)state {}
 - (BOOL)isPlayed
 {
-	XspfComponent *t = [self currentTrack];
+	XspfQTComponent *t = [self currentTrack];
 	if(t) {
 		return [t isPlayed];
 	}

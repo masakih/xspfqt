@@ -1,5 +1,5 @@
 //
-//  XspfFullScreenWindow.h
+//  XspfQTFullScreenWindow.h
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface XspfFullScreenWindow : NSWindow
+@interface XspfQTFullScreenWindow : NSWindow
 {
 
 }

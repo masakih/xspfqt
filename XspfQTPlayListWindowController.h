@@ -1,5 +1,5 @@
 //
-//  XspfPlayListWindowController.h
+//  XspfQTPlayListWindowController.h
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface XspfPlayListWindowController : NSWindowController
+@interface XspfQTPlayListWindowController : NSWindowController
 {
 	IBOutlet NSOutlineView *listView;
 	IBOutlet NSTreeController *trackListTree;
@@ -19,5 +19,5 @@
 @end
 
 
-@interface XspfThowSpacebarKeyDownOutlineView : NSOutlineView
+@interface XspfQTThrowSpacebarKeyDownOutlineView : NSOutlineView
 @end

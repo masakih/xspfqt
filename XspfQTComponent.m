@@ -1,22 +1,22 @@
 //
-//  XspfComponent.m
+//  XspfQTComponent.m
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/29.
 //  Copyright 2008 masakih. All rights reserved.
 //
 
-#import "XspfComponent.h"
-#import "XspfPlaceholderComponent.h"
+#import "XspfQTComponent.h"
+#import "XspfQTPlaceholderComponent.h"
 
-@implementation XspfComponent
+@implementation XspfQTComponent
 
 static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLStringCodingKey";
 
 + (id) allocWithZone:(NSZone *) zone
 {
-	if ([self class] == [XspfComponent class]) {
-		return [XspfPlaceholderComponent sharedInstance];
+	if ([self class] == [XspfQTComponent class]) {
+		return [XspfQTPlaceholderComponent sharedInstance];
 	}
 	
 	return [super allocWithZone:zone];
@@ -58,7 +58,7 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 {
 	return nil;
 }
-- (XspfComponent *)parent
+- (XspfQTComponent *)parent
 {
 	return parent;
 }
@@ -75,19 +75,19 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 	return YES;
 }
 
-- (void)setParent:(XspfComponent *)new
+- (void)setParent:(XspfQTComponent *)new
 {
 	parent = new;
 }
-- (void)addChild:(XspfComponent *)child
+- (void)addChild:(XspfQTComponent *)child
 {
 	[self doesNotRecognizeSelector:_cmd];
 }
-- (void)removeChild:(XspfComponent *)child
+- (void)removeChild:(XspfQTComponent *)child
 {
 	[self doesNotRecognizeSelector:_cmd];
 }
-- (void)insertChild:(XspfComponent *)child atIndex:(unsigned)index
+- (void)insertChild:(XspfQTComponent *)child atIndex:(unsigned)index
 {
 	[self doesNotRecognizeSelector:_cmd];
 }
@@ -142,7 +142,7 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 		return NO;
 	}
 	
-	XspfComponent *firstIndexedChild = [[self children] objectAtIndex:firstIndex];
+	XspfQTComponent *firstIndexedChild = [[self children] objectAtIndex:firstIndex];
 	if(length != 1) {
 		NSIndexPath *deletedFirstIndex = nil;
 		unsigned *indexP = NULL;
@@ -186,7 +186,7 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 {
 	return NO;
 }
-- (XspfComponent *)currentTrack
+- (XspfQTComponent *)currentTrack
 {
 	return self;
 }
