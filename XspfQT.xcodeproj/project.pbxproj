@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */; };
-		8D15AC2E0486D014006FF6A4 /* XspfDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B4FDCFA73011CA2CEA /* XspfDocument.nib */; };
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		8D15AC310486D014006FF6A4 /* XspfQTDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* XspfQTDocument.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -18,8 +17,9 @@
 		F441DE5C0E6A2BDA009320B6 /* XspfQTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE5B0E6A2BDA009320B6 /* XspfQTAppDelegate.m */; };
 		F441DECB0E6A399D009320B6 /* XspfQTFullScreenWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DECA0E6A399D009320B6 /* XspfQTFullScreenWindow.m */; };
 		F441E0680E6A5131009320B6 /* XspfQTPlayListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F441E0670E6A5131009320B6 /* XspfQTPlayListWindowController.m */; };
-		F441E06B0E6A5289009320B6 /* XspfPlayList.nib in Resources */ = {isa = PBXBuildFile; fileRef = F441E0690E6A5289009320B6 /* XspfPlayList.nib */; };
 		F46870240E71963E00B4DAED /* XspfQTPlaceholderComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */; };
+		F47E2B1C0E7E87DD00DB1BE6 /* XspfQTDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = F47E2B1A0E7E87DD00DB1BE6 /* XspfQTDocument.nib */; };
+		F47E2B1F0E7E87FD00DB1BE6 /* XspfQTPlayList.nib in Resources */ = {isa = PBXBuildFile; fileRef = F47E2B1D0E7E87FD00DB1BE6 /* XspfQTPlayList.nib */; };
 		F48FDF160E7D4EBE001C33F3 /* XspfQTImformation.nib in Resources */ = {isa = PBXBuildFile; fileRef = F48FDF140E7D4EBE001C33F3 /* XspfQTImformation.nib */; };
 		F48FDF190E7D4EE7001C33F3 /* XspfQTInformationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48FDF180E7D4EE7001C33F3 /* XspfQTInformationWindowController.m */; };
 		F49C304D0E68284C007F2DEC /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C304C0E68284C007F2DEC /* QTKit.framework */; };
@@ -37,7 +37,6 @@
 		2A37F4ACFDCFA73011CA2CEA /* XspfQTDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTDocument.m; sourceTree = "<group>"; };
 		2A37F4AEFDCFA73011CA2CEA /* XspfQTDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTDocument.h; sourceTree = "<group>"; };
 		2A37F4B0FDCFA73011CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2A37F4B5FDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/XspfDocument.nib; sourceTree = "<group>"; };
 		2A37F4B7FDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		32DBCF750370BD2300C91783 /* XspfQT_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQT_Prefix.pch; sourceTree = "<group>"; };
@@ -53,9 +52,10 @@
 		F441DECA0E6A399D009320B6 /* XspfQTFullScreenWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTFullScreenWindow.m; sourceTree = "<group>"; };
 		F441E0660E6A5131009320B6 /* XspfQTPlayListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlayListWindowController.h; sourceTree = "<group>"; };
 		F441E0670E6A5131009320B6 /* XspfQTPlayListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlayListWindowController.m; sourceTree = "<group>"; };
-		F441E06A0E6A5289009320B6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/XspfPlayList.nib; sourceTree = "<group>"; };
 		F46870220E71963E00B4DAED /* XspfQTPlaceholderComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlaceholderComponent.h; sourceTree = "<group>"; };
 		F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlaceholderComponent.m; sourceTree = "<group>"; };
+		F47E2B1B0E7E87DD00DB1BE6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/XspfQTDocument.nib; sourceTree = "<group>"; };
+		F47E2B1E0E7E87FD00DB1BE6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/XspfQTPlayList.nib; sourceTree = "<group>"; };
 		F48FDF150E7D4EBE001C33F3 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/XspfQTImformation.nib; sourceTree = "<group>"; };
 		F48FDF170E7D4EE7001C33F3 /* XspfQTInformationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTInformationWindowController.h; sourceTree = "<group>"; };
 		F48FDF180E7D4EE7001C33F3 /* XspfQTInformationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTInformationWindowController.m; sourceTree = "<group>"; };
@@ -167,8 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */,
-				2A37F4B4FDCFA73011CA2CEA /* XspfDocument.nib */,
-				F441E0690E6A5289009320B6 /* XspfPlayList.nib */,
+				F47E2B1A0E7E87DD00DB1BE6 /* XspfQTDocument.nib */,
+				F47E2B1D0E7E87FD00DB1BE6 /* XspfQTPlayList.nib */,
 				F48FDF140E7D4EBE001C33F3 /* XspfQTImformation.nib */,
 				8D15AC360486D014006FF6A4 /* Info.plist */,
 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
@@ -229,10 +229,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */,
-				8D15AC2E0486D014006FF6A4 /* XspfDocument.nib in Resources */,
 				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
-				F441E06B0E6A5289009320B6 /* XspfPlayList.nib in Resources */,
 				F48FDF160E7D4EBE001C33F3 /* XspfQTImformation.nib in Resources */,
+				F47E2B1C0E7E87DD00DB1BE6 /* XspfQTDocument.nib in Resources */,
+				F47E2B1F0E7E87FD00DB1BE6 /* XspfQTPlayList.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,14 +269,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		2A37F4B4FDCFA73011CA2CEA /* XspfDocument.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2A37F4B5FDCFA73011CA2CEA /* English */,
-			);
-			name = XspfDocument.nib;
-			sourceTree = "<group>";
-		};
 		2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -285,12 +277,20 @@
 			name = MainMenu.nib;
 			sourceTree = "<group>";
 		};
-		F441E0690E6A5289009320B6 /* XspfPlayList.nib */ = {
+		F47E2B1A0E7E87DD00DB1BE6 /* XspfQTDocument.nib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F441E06A0E6A5289009320B6 /* English */,
+				F47E2B1B0E7E87DD00DB1BE6 /* English */,
 			);
-			name = XspfPlayList.nib;
+			name = XspfQTDocument.nib;
+			sourceTree = "<group>";
+		};
+		F47E2B1D0E7E87FD00DB1BE6 /* XspfQTPlayList.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F47E2B1E0E7E87FD00DB1BE6 /* English */,
+			);
+			name = XspfQTPlayList.nib;
 			sourceTree = "<group>";
 		};
 		F48FDF140E7D4EBE001C33F3 /* XspfQTImformation.nib */ = {
