@@ -28,7 +28,7 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 
 - (id)init
 {
-	if(self = [super initWithWindowNibName:@"XspfDocument"]) {
+	if(self = [super initWithWindowNibName:@"XspfQTDocument"]) {
 		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 		[nc addObserver:self
 			   selector:@selector(applicationWillTerminate:)

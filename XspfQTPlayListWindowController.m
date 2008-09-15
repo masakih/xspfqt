@@ -21,7 +21,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 
 - (id)init
 {
-	return [super initWithWindowNibName:@"XspfPlayList"];
+	return [super initWithWindowNibName:@"XspfQTPlayList"];
 }
 
 - (void)awakeFromNib
