@@ -35,7 +35,7 @@
 			[self addChild:track];
 		}
 	}
-	[self setCurrentIndex:0];
+	[self setCurrentIndex:NSNotFound];
 	
 	return self;
 }
@@ -70,6 +70,7 @@
 					   context:(void *)context
 {
 	if([keyPath isEqualToString:@"isPlayed"]) {
+//		NSLog(@"Observe key path(%@).", keyPath);
 		[self willChangeValueForKey:@"isPlayed"];
 		[self didChangeValueForKey:@"isPlayed"];
 		return;
@@ -85,14 +86,17 @@
 // Do not call directly.
 - (void)changeObserveFrom:(XspfComponent *)fromTrack to:(XspfComponent *)toTrack
 {
+	if(fromTrack == toTrack) return;
+	
 	@try {
-		[fromTrack removeObserver:self forKeyPath:@"isPlayed"];
 		[toTrack addObserver:self
 				  forKeyPath:@"isPlayed"
 					 options:NSKeyValueObservingOptionNew
 					 context:NULL];
+		[fromTrack removeObserver:self forKeyPath:@"isPlayed"];
 	}
 	@catch (id ex) {
+//		NSLog(@"Caught exception(%@).",ex);
 		if(![[ex name] isEqualToString:NSRangeException]) {
 			NSLog(@"Exception ### named %@", [ex name]);
 			@throw;
@@ -100,14 +104,10 @@
 	}
 	@finally {
 //		NSLog(@"Prev -> %@\nNew -> %@", fromTrack, toTrack);
-		[self willChangeValueForKey:@"qtMovie"];
-		[self willChangeValueForKey:@"currentTrack"];
 		[self willChangeValueForKey:@"isPlayed"];
 		[fromTrack deselect];
 		[toTrack select];
 		[self didChangeValueForKey:@"isPlayed"];
-		[self didChangeValueForKey:@"currentTrack"];
-		[self didChangeValueForKey:@"qtMovie"];
 	}
 }	
 
@@ -122,8 +122,12 @@
 	if(index < 0) return;
 	if([tracks count] <= index && index != NSNotFound) return;
 	
+	[self willChangeValueForKey:@"qtMovie"];
+	[self willChangeValueForKey:@"currentTrack"];
 	prev = currentIndex;
 	currentIndex = index;
+	[self didChangeValueForKey:@"currentTrack"];
+	[self didChangeValueForKey:@"qtMovie"];
 	
 	XspfComponent *t= nil;
 	@try {
@@ -192,11 +196,16 @@
 	[[child retain] autorelease];
 	[child setParent:nil];
 	[tracks removeObject:child];
+	[self didChangeValueForKey:@"children"];
 	
 	if(mustChangeSelection) {
 		// ### CAUTION ###
 		// this line directly change currentIndex.
+		[self willChangeValueForKey:@"qtMovie"];
+		[self willChangeValueForKey:@"currentTrack"];
 		currentIndex--;
+		[self didChangeValueForKey:@"currentTrack"];
+		[self didChangeValueForKey:@"qtMovie"];
 		
 		id newSelection = nil;
 		id oldSelection = nil;
@@ -206,7 +215,6 @@
 		}
 		[self changeObserveFrom:oldSelection to:newSelection];
 	}
-	[self didChangeValueForKey:@"children"];
 }
 
 - (void)addChild:(XspfComponent *)child

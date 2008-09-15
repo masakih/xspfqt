@@ -21,7 +21,8 @@ all:
 
 tagging: update_svn
 	@echo "Tagging the $(VERSION) (x) release of XspfQT project."
-	REV=`LC_ALL=C svn info | awk '/Last Changed Rev/ {print $$4}'` ;	\
+	@echo ""
+	@REV=`LC_ALL=C svn info | awk '/Last Changed Rev/ {print $$4}'` ;	\
 	echo svn copy $(HEAD) $(TAGS_DIR)/release-$(VERSION).$${REV}
 
 Localizable: BSTRADocument.m
