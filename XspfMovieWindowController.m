@@ -53,7 +53,7 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	[self setQtMovie:nil];
 		
 	[fullscreenWindow release];
-	[updateTime release];
+	[updateTime invalidate];
 	[prevMouseMovedDate release];
 		
 	[super dealloc];
@@ -73,6 +73,8 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 		   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 		   context:NULL];
 	
+	[self setValue:[NSNumber numberWithInt:0]
+		forKeyPath:@"document.trackList.selectionIndex"];
 	[self sizeTofitWidnow];
 	[self play];
 }
@@ -101,7 +103,7 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	}
 	if([keyPath isEqualToString:kIsPlayedKeyPath]) {
 		id new = [change objectForKey:NSKeyValueChangeNewKey];
-		
+//		NSLog(@"Observed!");
 		if([new boolValue]) {
 			[playButton setTitle:@"||"];
 		} else {
@@ -408,7 +410,7 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	[[self document] removeObserver:self forKeyPath:kQTMovieKeyPath];
 	[[self document] removeObserver:self forKeyPath:kIsPlayedKeyPath];
 	
-	[updateTime release];
+	[updateTime invalidate];
 	updateTime = nil;
 	
 	return YES;
