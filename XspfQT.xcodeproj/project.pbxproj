@@ -128,28 +128,28 @@
 		2A37F4ABFDCFA73011CA2CEA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F441DE5A0E6A2BDA009320B6 /* XspfAppDelegate.h */,
+				F441DE5B0E6A2BDA009320B6 /* XspfAppDelegate.m */,
 				2A37F4AEFDCFA73011CA2CEA /* XspfDocument.h */,
 				2A37F4ACFDCFA73011CA2CEA /* XspfDocument.m */,
 				F441DCA30E69B82B009320B6 /* XspfMovieWindowController.h */,
 				F441DCA40E69B82B009320B6 /* XspfMovieWindowController.m */,
-				F46870220E71963E00B4DAED /* XspfPlaceholderComponent.h */,
-				F46870230E71963E00B4DAED /* XspfPlaceholderComponent.m */,
-				F49C31CB0E682C3B007F2DEC /* XspfComponent.h */,
-				F49C31CC0E682C3B007F2DEC /* XspfComponent.m */,
-				F49C31F40E682E2B007F2DEC /* XspfTrack.h */,
-				F49C31F50E682E2B007F2DEC /* XspfTrack.m */,
-				F49C31EF0E682D79007F2DEC /* XspfTrackList.h */,
-				F49C31F00E682D79007F2DEC /* XspfTrackList.m */,
-				F441DE560E6A2B5F009320B6 /* XspfValueTransformers.h */,
-				F441DE570E6A2B5F009320B6 /* XspfValueTransformers.m */,
-				F441DE5A0E6A2BDA009320B6 /* XspfAppDelegate.h */,
-				F441DE5B0E6A2BDA009320B6 /* XspfAppDelegate.m */,
 				F441DEC90E6A399D009320B6 /* XspfFullScreenWindow.h */,
 				F441DECA0E6A399D009320B6 /* XspfFullScreenWindow.m */,
 				F441E0660E6A5131009320B6 /* XspfPlayListWindowController.h */,
 				F441E0670E6A5131009320B6 /* XspfPlayListWindowController.m */,
 				F48FDF170E7D4EE7001C33F3 /* XspfQTInformationWindowController.h */,
 				F48FDF180E7D4EE7001C33F3 /* XspfQTInformationWindowController.m */,
+				F49C31CB0E682C3B007F2DEC /* XspfComponent.h */,
+				F49C31CC0E682C3B007F2DEC /* XspfComponent.m */,
+				F46870220E71963E00B4DAED /* XspfPlaceholderComponent.h */,
+				F46870230E71963E00B4DAED /* XspfPlaceholderComponent.m */,
+				F49C31F40E682E2B007F2DEC /* XspfTrack.h */,
+				F49C31F50E682E2B007F2DEC /* XspfTrack.m */,
+				F49C31EF0E682D79007F2DEC /* XspfTrackList.h */,
+				F49C31F00E682D79007F2DEC /* XspfTrackList.m */,
+				F441DE560E6A2B5F009320B6 /* XspfValueTransformers.h */,
+				F441DE570E6A2B5F009320B6 /* XspfValueTransformers.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -166,10 +166,10 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F48FDF140E7D4EBE001C33F3 /* XspfQTImformation.nib */,
-				F441E0690E6A5289009320B6 /* XspfPlayList.nib */,
 				2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */,
 				2A37F4B4FDCFA73011CA2CEA /* XspfDocument.nib */,
+				F441E0690E6A5289009320B6 /* XspfPlayList.nib */,
+				F48FDF140E7D4EBE001C33F3 /* XspfQTImformation.nib */,
 				8D15AC360486D014006FF6A4 /* Info.plist */,
 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
 			);
