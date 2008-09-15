@@ -81,10 +81,11 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 
 - (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName
 {
-	id title = [self valueForKeyPath:@"document.trackList.currentTrack.title"];
-	if(title) {
+	id title1 = [self valueForKeyPath:@"document.trackList.title"];
+	id title2 = [self valueForKeyPath:@"document.trackList.currentTrack.title"];
+	if(title1 && title2) {
 		return [NSString stringWithFormat:@"%@ - %@",
-				displayName, title];
+				title1, title2];
 	}
 	return displayName;
 }
