@@ -183,7 +183,7 @@
 	[self performSelector:@selector(purgeQTMovie)
 			   withObject:nil
 			   afterDelay:4.5];
-	[self setIsPlayed:NO];
+//	[self setIsPlayed:NO];
 	[super deselect];
 }
 - (void)purgeQTMovie
