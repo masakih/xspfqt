@@ -8,6 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="3"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -34,7 +35,7 @@
 				<nil key="NSViewClass"/>
 				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<object class="NSView" key="NSWindowView" id="518928136">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -259,9 +260,11 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{276, 378}</string>
+					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 832}}</string>
 				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
+				<string key="NSFrameAutosaveName">PlaylistPanel</string>
 			</object>
 			<object class="NSTreeController" id="503229908">
 				<object class="NSMutableArray" key="NSDeclaredKeys">
@@ -714,10 +717,23 @@
 							<string>NSTreeController</string>
 						</object>
 					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="1011433538">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">XspfQTPlayListWindowController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">XspfQTPlayListWindowController</string>
+					<string key="superclassName">NSWindowController</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
 					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">XspfQTThrowSpacebarKeyDownOutlineView</string>
+					<string key="superclassName">NSOutlineView</string>
+					<reference key="sourceIdentifier" ref="1011433538"/>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">XspfQTThrowSpacebarKeyDownOutlineView</string>
