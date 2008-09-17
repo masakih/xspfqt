@@ -162,6 +162,8 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 		return NSDragOperationNone;
 	}
 	
+	if(index == -1) return NSDragOperationNone;
+	
 	return NSDragOperationMove;
 }
 - (BOOL)outlineView:(NSOutlineView *)outlineView
@@ -182,7 +184,28 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	if(!newItem) return NO;
 	
 //	NSLog(@"new item class is %@\n%@", NSStringFromClass([newItem class]), newItem);
-	[[self document] removeItem:newItem];
+	id doc = [self document];
+	NSInteger oldIndex = [[doc trackList] indexOfChild:newItem];
+	
+	if(oldIndex == index) return YES;
+	if(oldIndex < index) {
+		index--;
+	}
+	
+	// change archive to original.
+	newItem = [[doc trackList] childAtIndex:oldIndex];
+	
+	BOOL mustSelectionChange = NO;
+	if([newItem isSelected]) {
+		mustSelectionChange = YES;
+	}
+	
+	[doc removeItem:newItem];
+	[doc insertItem:newItem atIndex:index];
+	
+	if(mustSelectionChange) {
+		[doc setPlayTrackindex:index];
+	}
 	
 	return YES;
 }
