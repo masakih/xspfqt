@@ -197,8 +197,22 @@
 			  NSStringFromClass([child class]), child);
 		return;
 	}
+	
+	[self willChangeValueForKey:@"children"];
 	[tracks insertObject:child atIndex:index];
 	[child setParent:self];
+	[self didChangeValueForKey:@"children"];
+	
+	// 選択アイテムの前に挿入される場合は、currentIndexを変更する。
+	// ### CAUTION ###
+	// this line directly change currentIndex.
+	if(index <= currentIndex) {
+		[self willChangeValueForKey:@"qtMovie"];
+		[self willChangeValueForKey:@"currentTrack"];
+		currentIndex++;
+		[self didChangeValueForKey:@"currentTrack"];
+		[self didChangeValueForKey:@"qtMovie"];
+	}
 }
 // primitive.
 - (void)removeChild:(XspfQTComponent *)child
@@ -208,7 +222,7 @@
 	
 	NSUInteger index = [tracks indexOfObject:child];
 	// for archive to original
-	child = [tracks objectAtIndex:index];
+//	child = [tracks objectAtIndex:index]; in XspfQTPlayListWindowController
 	
 	BOOL isSelectedItem = [child isSelected];
 	BOOL mustChangeSelection = NO;
