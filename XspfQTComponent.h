@@ -46,6 +46,8 @@
 - (XspfQTComponent *)parent;
 - (NSArray *)children;		// default nil.
 - (unsigned)childrenCount;	// default [[self children] count].
+- (NSUInteger)indexOfChild:(XspfQTComponent *)child;	// default [[self children] indexOfObject:].
+- (XspfQTComponent *)childAtIndex:(NSUInteger)index;	// default [[self children] objectAtIndex:].
 - (BOOL)isLeaf;				// default YES.
 
 - (void)addChild:(XspfQTComponent *)child;	// not implemented.

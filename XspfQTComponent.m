@@ -74,6 +74,15 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 {
 	return YES;
 }
+- (NSUInteger)indexOfChild:(XspfQTComponent *)child
+{
+	return [[self children] indexOfObject:child];
+}
+- (XspfQTComponent *)childAtIndex:(NSUInteger)index
+{
+	return [[self children] objectAtIndex:index];
+}
+
 
 - (void)setParent:(XspfQTComponent *)new
 {
