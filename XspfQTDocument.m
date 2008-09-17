@@ -183,7 +183,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 }
 - (void)removeItem:(XspfQTComponent *)item
 {
-	[movieWindowController stop];
+//	[movieWindowController stop];
 	[[self trackList] removeChild:item];
 }
 
