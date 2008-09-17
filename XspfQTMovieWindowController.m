@@ -55,7 +55,7 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	[fullscreenWindow release];
 	[updateTime invalidate];
 	[prevMouseMovedDate release];
-		
+	
 	[super dealloc];
 }
 - (void)awakeFromNib
