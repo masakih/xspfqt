@@ -37,7 +37,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	
 	[listView expandItem:[listView itemAtRow:0]];
 	
-//	[listView registerForDraggedTypes:[NSArray arrayWithObject:XspfQTPlayListItemType]];
+	[listView registerForDraggedTypes:[NSArray arrayWithObject:XspfQTPlayListItemType]];
 }
 - (void)dealloc
 {

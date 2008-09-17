@@ -35,7 +35,8 @@
 			[self addChild:track];
 		}
 	}
-	[self setCurrentIndex:NSNotFound];
+//	[self setCurrentIndex:NSNotFound];
+	currentIndex = NSNotFound;
 	
 	return self;
 }
@@ -86,6 +87,8 @@
 // Do not call directly.
 - (void)changeObserveFrom:(XspfQTComponent *)fromTrack to:(XspfQTComponent *)toTrack
 {
+//	NSLog(@"Change From %@ to %@.", fromTrack, toTrack);
+	
 	if(fromTrack == toTrack) return;
 	
 	@try {
@@ -93,14 +96,33 @@
 				  forKeyPath:@"isPlayed"
 					 options:NSKeyValueObservingOptionNew
 					 context:NULL];
-		[fromTrack removeObserver:self forKeyPath:@"isPlayed"];
 	}
-	@catch (id ex) {
-//		NSLog(@"Caught exception(%@).",ex);
+	@catch (NSException *ex) {
+		NSLog(@"Caught exception(%@).",ex);
 		if(![[ex name] isEqualToString:NSRangeException]) {
 			NSLog(@"Exception ### named %@", [ex name]);
 			@throw;
 		}
+	}
+	@catch (id ex2) {
+		NSLog(@"Caught exception(%@).",ex2);
+	}
+	
+	
+	@try {
+		[fromTrack removeObserver:self forKeyPath:@"isPlayed"];
+	}
+	@catch (NSException *ex) {
+		NSLog(@"Caught exception(%@).",ex);
+		NSLog(@"FromTrack is %@", fromTrack);
+		if(![[ex name] isEqualToString:NSRangeException]) {
+			NSLog(@"Exception ### named %@", [ex name]);
+			@throw;
+		}
+	}
+	@catch (id ex2) {
+		NSLog(@"Caught exception(%@).",ex2);
+		NSLog(@"FromTrack is %@", fromTrack);
 	}
 	@finally {
 //		NSLog(@"Prev -> %@\nNew -> %@", fromTrack, toTrack);
@@ -185,9 +207,12 @@
 	if(![tracks containsObject:child]) return;
 	
 	NSUInteger index = [tracks indexOfObject:child];
+	// for archive to original
+	child = [tracks objectAtIndex:index];
+	
 	BOOL isSelectedItem = [child isSelected];
 	BOOL mustChangeSelection = NO;
-		
+	
 	if(index <= currentIndex) {
 		mustChangeSelection = YES;
 	}
@@ -198,14 +223,25 @@
 	[tracks removeObject:child];
 	[self didChangeValueForKey:@"children"];
 	
+//	NSLog(@"current %u >= remove %u ... %@", currentIndex, index, mustChangeSelection ? @"YES": @"NO");
 	if(mustChangeSelection) {
 		// ### CAUTION ###
 		// this line directly change currentIndex.
+		NSUInteger newIndex = currentIndex - 1;
+		if(currentIndex == 0) {
+			if([self childrenCount] == 0) {
+				newIndex = NSNotFound;
+			} else {
+				newIndex = 0;
+			}
+		}
 		[self willChangeValueForKey:@"qtMovie"];
 		[self willChangeValueForKey:@"currentTrack"];
-		currentIndex--;
+		currentIndex = newIndex;
 		[self didChangeValueForKey:@"currentTrack"];
 		[self didChangeValueForKey:@"qtMovie"];
+		
+//		NSLog(@"is selected ? %@", isSelectedItem ? @"YES": @"NO");
 		
 		id newSelection = nil;
 		id oldSelection = nil;
