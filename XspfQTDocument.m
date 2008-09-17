@@ -179,11 +179,10 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 
 - (void)insertItem:(XspfQTComponent *)item atIndex:(NSInteger)index
 {
-	//
+	[[self trackList] insertChild:item atIndex:index];
 }
 - (void)removeItem:(XspfQTComponent *)item
 {
-//	[movieWindowController stop];
 	[[self trackList] removeChild:item];
 }
 
