@@ -60,7 +60,11 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 		[[self document] setPlayTrackindex:[selectionIndexPath indexAtPosition:1]];
 	}
 }
-
+- (IBAction)delete:(id)sender
+{
+	id selection = [trackListTree valueForKeyPath:@"selection.self"];
+	[[self document] removeItem:selection];
+}
 - (void)keyDown:(NSEvent *)theEvent
 {
 	if([theEvent isARepeat]) return;
@@ -70,10 +74,23 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 		[[self document] togglePlayAndPause:self];
 	}
 	if(code == 51 /* delete key */) {
-		id selection = [trackListTree valueForKeyPath:@"selection.self"];// representedObject];
-//		NSLog(@"new item class is %@\n%@", NSStringFromClass([selection class]), selection);
-		[[self document] removeItem:selection];
+		[self delete:self];
 	}
+}
+
+#pragma mark ### NSMenu valivation ###
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
+{
+	if([menuItem action] == @selector(delete:)) {
+		if([[trackListTree selectedObjects] count] == 0) {
+			return NO;
+		}
+		if(![[trackListTree valueForKeyPath:@"selection.isLeaf"] boolValue]) {
+			return NO;
+		}
+	}
+	
+	return YES;
 }
 
 - (BOOL)windowShouldClose:(id)sender
@@ -182,6 +199,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	id doc = [self document];
 	NSInteger oldIndex = [[doc trackList] indexOfChild:newItem];
 	
+	if(oldIndex == NSNotFound) return NO;
 	if(oldIndex == index) return YES;
 	if(oldIndex < index) {
 		index--;
