@@ -29,7 +29,7 @@
 
 - (void)setPlayTrackindex:(unsigned)index;
 
-- (void)insertItem:(XspfQTComponent *)item atIndex:(NSInteger)index;
+- (void)insertItem:(XspfQTComponent *)item atIndex:(NSUInteger)index;
 - (void)removeItem:(XspfQTComponent *)item;
 
 @end

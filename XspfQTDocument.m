@@ -177,12 +177,19 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	return d;
 }
 
-- (void)insertItem:(XspfQTComponent *)item atIndex:(NSInteger)index
+- (void)insertItem:(XspfQTComponent *)item atIndex:(NSUInteger)index
 {
+	id undo = [self undoManager];
+	[undo registerUndoWithTarget:self selector:@selector(removeItem:) object:item];
 	[[self trackList] insertChild:item atIndex:index];
 }
 - (void)removeItem:(XspfQTComponent *)item
 {
+	NSUInteger index = [[self trackList] indexOfChild:item];
+	if(index == NSNotFound) return;
+	
+	id undo = [self undoManager];
+	[[undo prepareWithInvocationTarget:self] insertItem:item atIndex:index];
 	[[self trackList] removeChild:item];
 }
 
