@@ -63,7 +63,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 - (IBAction)delete:(id)sender
 {
 	id selection = [trackListTree valueForKeyPath:@"selection.self"];
-	[[self document] removeItem:selection];
+	[[self document] removeComponent:selection];
 }
 - (void)keyDown:(NSEvent *)theEvent
 {
@@ -219,8 +219,8 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 		if(mustSelectionChange) {
 			[[undo prepareWithInvocationTarget:doc] setPlayTrackindex:oldIndex];
 		}
-		[doc removeItem:newItem];
-		[doc insertItem:newItem atIndex:index];
+		[doc removeComponent:newItem];
+		[doc insertComponent:newItem atIndex:index];
 	}
 	[undo endUndoGrouping];
 	
