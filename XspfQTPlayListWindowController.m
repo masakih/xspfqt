@@ -69,16 +69,11 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	if(code == 49 /* space bar */) {
 		[[self document] togglePlayAndPause:self];
 	}
-}
-- (void)deleteBackward:(id)sender
-{
-	id selection = [[trackListTree selection] representedObject];
-	[[self document] removeItem:selection];
-}
-- (void)deleteForward:(id)sender
-{
-	id selection = [[trackListTree selection] representedObject];
-	[[self document] removeItem:selection];
+	if(code == 51 /* delete key */) {
+		id selection = [trackListTree valueForKeyPath:@"selection.self"];// representedObject];
+//		NSLog(@"new item class is %@\n%@", NSStringFromClass([selection class]), selection);
+		[[self document] removeItem:selection];
+	}
 }
 
 - (BOOL)windowShouldClose:(id)sender
@@ -200,8 +195,16 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 		mustSelectionChange = YES;
 	}
 	
-	[doc removeItem:newItem];
-	[doc insertItem:newItem atIndex:index];
+	id undo = [doc undoManager];
+	[undo beginUndoGrouping];
+	{
+		if(mustSelectionChange) {
+			[[undo prepareWithInvocationTarget:doc] setPlayTrackindex:oldIndex];
+		}
+		[doc removeItem:newItem];
+		[doc insertItem:newItem atIndex:index];
+	}
+	[undo endUndoGrouping];
 	
 	if(mustSelectionChange) {
 		[doc setPlayTrackindex:index];
@@ -215,14 +218,10 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 @implementation XspfQTThrowSpacebarKeyDownOutlineView
 - (void)keyDown:(NSEvent *)theEvent
 {
-	unsigned short code = [theEvent keyCode];
-	if(code == 49 /* space bar */) {
-		if(_delegate && [_delegate respondsToSelector:@selector(keyDown:)]) {
-			[_delegate keyDown:theEvent];
-		}
+	if(_delegate && [_delegate respondsToSelector:@selector(keyDown:)]) {
+		[_delegate keyDown:theEvent];
 	}
 	
 	[super keyDown:theEvent];
 }
-
 @end
