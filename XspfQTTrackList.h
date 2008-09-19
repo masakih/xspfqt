@@ -15,6 +15,8 @@
 	NSMutableArray *tracks;
 	
 	unsigned currentIndex;
+	
+	XspfQTComponent *selectedComponent;
 }
 
 - (void)setCurrentIndex:(unsigned)index;
