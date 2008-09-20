@@ -32,6 +32,9 @@
 - (void)insertComponent:(XspfQTComponent *)item atIndex:(NSUInteger)index;
 - (void)removeComponent:(XspfQTComponent *)item;
 
+// throw self, if can not insert.
+- (void)insertComponentFromURL:(NSURL *)url atIndex:(NSUInteger)index;
+
 @end
 
 extern NSString *XspfQTDocumentWillCloseNotification;
