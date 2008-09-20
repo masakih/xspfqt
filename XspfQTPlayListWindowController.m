@@ -53,8 +53,6 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	if([selections count] == 0) return;
 	
 	NSIndexPath *selectionIndexPath = [trackListTree selectionIndexPath];
-//	NSLog(@"Selection %@", selectionIndexPath);
-//	NSLog(@"Selection index %d", [selectionIndexPath indexAtPosition:1]);
 	
 	if([selectionIndexPath length] > 1) {
 		[[self document] setPlayTrackindex:[selectionIndexPath indexAtPosition:1]];
@@ -171,6 +169,9 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	id pb = [info draggingPasteboard];
 	
 	if(![[pb types] containsObject:XspfQTPlayListItemType]) {
+		//
+		// ##### insert files? ##### 
+		//
 		return NSDragOperationNone;
 	}
 	
@@ -190,16 +191,25 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	id pb = [info draggingPasteboard];
 	
 	NSData *data = [pb dataForType:XspfQTPlayListItemType];
-	if(!data) return NO;
+	if(!data) {
+		//
+		// ##### insert files? ##### 
+		//
+		return NO;
+	}
 	
 	id newItem = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 	if(!newItem) return NO;
 	
-//	NSLog(@"new item class is %@\n%@", NSStringFromClass([newItem class]), newItem);
 	id doc = [self document];
 	NSInteger oldIndex = [[doc trackList] indexOfChild:newItem];
 	
-	if(oldIndex == NSNotFound) return NO;
+	if(oldIndex == NSNotFound) {
+		// from other list.
+		[doc insertComponent:newItem atIndex:index];
+		return YES;
+	}
+	
 	if(oldIndex == index) return YES;
 	if(oldIndex < index) {
 		index--;
