@@ -37,7 +37,11 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	
 	[listView expandItem:[listView itemAtRow:0]];
 	
-	[listView registerForDraggedTypes:[NSArray arrayWithObject:XspfQTPlayListItemType]];
+	[listView registerForDraggedTypes:[NSArray arrayWithObjects:
+									   XspfQTPlayListItemType,
+									   NSFilenamesPboardType,
+									   NSURLPboardType,
+									   nil]];
 }
 - (void)dealloc
 {
@@ -130,6 +134,72 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	}
 }
 
+- (void)insertItemURL:(NSURL *)url atIndex:(NSUInteger)index
+{
+	if(![QTMovie canInitWithURL:url]) {		
+		@throw self;
+	}
+	
+//	NSLog(@"URL is %@", url);
+	@try {
+		[[self document] insertComponentFromURL:url atIndex:index];
+	}
+	@catch(XspfQTDocument *doc) {
+		@throw self;
+	}
+}
+- (BOOL)canInsertItemFromPasteboard:(NSPasteboard *)pb
+{
+	if([[pb types] containsObject:NSFilenamesPboardType] ||
+	   [[pb types] containsObject:NSURLPboardType]) {
+		
+		// ##### Check is playable. #####
+		if([QTMovie canInitWithPasteboard:pb]) {
+			return YES;
+		}
+	}
+	
+	return NO;
+}
+- (void)insertItemFromPasteboard:(NSPasteboard *)pb atIndex:(NSUInteger)index
+{
+	// check filenames.
+	if([[pb types] containsObject:NSFilenamesPboardType]) {
+		BOOL hasSuccesItem = NO;
+		
+		id plist = [pb propertyListForType:NSFilenamesPboardType];
+		if(![plist isKindOfClass:[NSArray class]]) {
+			@throw self;
+		}
+		NSEnumerator *reverse = [plist reverseObjectEnumerator];
+		for(id obj in reverse) {
+			NSURL *fileURL = [NSURL fileURLWithPath:obj];
+			@try {
+				[self insertItemURL:fileURL atIndex:index];
+			}
+			@catch(XspfQTPlayListWindowController *me) {
+				continue;
+			}
+			hasSuccesItem = YES;
+		}
+		
+		if(!hasSuccesItem) {
+			@throw self;
+		}
+		return;
+	}
+	
+	// check URL
+	if([[pb types] containsObject:NSURLPboardType]) {
+		id url = [NSURL URLFromPasteboard:pb];
+		if(url) {
+			[self insertItemURL:url atIndex:index];
+			return;
+		}
+	}
+	
+	@throw self;
+}
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView
 		 writeItems:(NSArray *)items
@@ -169,9 +239,10 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	id pb = [info draggingPasteboard];
 	
 	if(![[pb types] containsObject:XspfQTPlayListItemType]) {
-		//
 		// ##### insert files? ##### 
-		//
+		if([self canInsertItemFromPasteboard:pb]) {
+			return NSDragOperationCopy;
+		}
 		return NSDragOperationNone;
 	}
 	
@@ -192,10 +263,14 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	
 	NSData *data = [pb dataForType:XspfQTPlayListItemType];
 	if(!data) {
-		//
-		// ##### insert files? ##### 
-		//
-		return NO;
+		// ##### insert files? #####
+		@try {
+			[self insertItemFromPasteboard:pb atIndex:index];
+		}
+		@catch(XspfQTPlayListWindowController *me) {
+			return NO;
+		}
+		return YES;
 	}
 	
 	id newItem = [NSKeyedUnarchiver unarchiveObjectWithData:data];
