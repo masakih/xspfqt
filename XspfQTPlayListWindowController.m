@@ -186,6 +186,8 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 		if(!hasSuccesItem) {
 			@throw self;
 		}
+//		id undo = [[self document] undoManager];
+//		[undo setActionName:NSLocalizedString(@"Insert movie(s)", @"Undo Action Name Insert movie(s)")];
 		return;
 	}
 	
@@ -298,16 +300,8 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 		mustSelectionChange = YES;
 	}
 	
-	id undo = [doc undoManager];
-	[undo beginUndoGrouping];
-	{
-		if(mustSelectionChange) {
-			[[undo prepareWithInvocationTarget:doc] setPlayTrackindex:oldIndex];
-		}
-		[doc removeComponent:newItem];
-		[doc insertComponent:newItem atIndex:index];
-	}
-	[undo endUndoGrouping];
+	[doc removeComponent:newItem];
+	[doc insertComponent:newItem atIndex:index];
 	
 	if(mustSelectionChange) {
 		[doc setPlayTrackindex:index];
