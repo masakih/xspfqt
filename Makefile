@@ -25,10 +25,10 @@ tagging: update_svn
 	@REV=`LC_ALL=C svn info | awk '/Last Changed Rev/ {print $$4}'` ;	\
 	echo svn copy $(HEAD) $(TAGS_DIR)/release-$(VERSION).$${REV}
 
-Localizable: BSTRADocument.m
-	genstrings -o English.lproj $<
+Localizable: XspfQTMovieWindowController.m XspfQTPlayListWindowController.m
+	genstrings -o English.lproj $^
 	(cd English.lproj; ${MAKE} $@;)
-	genstrings -o Japanese.lproj $<
+	genstrings -o Japanese.lproj $^
 	(cd Japanese.lproj; ${MAKE} $@;)
 
 checkLocalizable:
