@@ -34,6 +34,34 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
     }
     return self;
 }
+- (id)initWithType:(NSString *)typeName error:(NSError **)outError
+{
+	[self init];
+	
+	NSString *xmlElem;
+	xmlElem = [NSString stringWithString:@"<trackList></trackList>"];
+	
+	NSError *error = nil;
+	NSXMLElement *element = [[[NSXMLElement alloc] initWithXMLString:xmlElem error:&error] autorelease];
+	if(error) {
+		if(outError) {
+			*outError = error;
+		}
+		[self autorelease];
+		return nil;
+	}
+	
+	id new = [XspfQTComponent xspfComponemtWithXMLElement:element];
+	if(!new) {
+		[self autorelease];
+		return nil;
+	}
+	
+	[new setTitle:@"Untitled"];
+	[self setTrackList:new];
+	
+	return self;
+}
 
 - (void)makeWindowControllers
 {
@@ -200,6 +228,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 - (void)insertComponent:(XspfQTComponent *)item atIndex:(NSUInteger)index
 {
 	id undo = [self undoManager];
+//	[undo setActionName:NSLocalizedString(@"Insert movie", @"Undo Action Name Insert movie")];
 	[undo registerUndoWithTarget:self selector:@selector(removeComponent:) object:item];
 	[[self trackList] insertChild:item atIndex:index];
 }
@@ -209,6 +238,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	if(index == NSNotFound) return;
 	
 	id undo = [self undoManager];
+//	[undo setActionName:NSLocalizedString(@"Remove movie", @"Undo Action Name Remove movie")];
 	[[undo prepareWithInvocationTarget:self] insertComponent:item atIndex:index];
 	[[self trackList] removeChild:item];
 }
