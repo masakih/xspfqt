@@ -28,6 +28,8 @@
 	NSSize windowSizeWithoutQTView;
 }
 
+- (IBAction)turnUpVolume:(id)sender;
+- (IBAction)turnDownVolume:(id)sender;
 - (IBAction)togglePlayAndPause:(id)sender;
 - (IBAction)toggleFullScreenMode:(id)sender;
 - (IBAction)forwardTagValueSecends:(id)sender;
