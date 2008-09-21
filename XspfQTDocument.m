@@ -59,7 +59,6 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	movieWindowController = [[XspfQTMovieWindowController alloc] init];
 	[movieWindowController setShouldCloseDocument:YES];
 	[self addWindowController:movieWindowController];
-	[movieWindowController setQtMovie:[[self trackList] qtMovie]];
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
