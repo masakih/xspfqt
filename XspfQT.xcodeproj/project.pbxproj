@@ -27,6 +27,7 @@
 		F49C31EC0E682D66007F2DEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C31EB0E682D66007F2DEC /* Foundation.framework */; };
 		F49C31F10E682D79007F2DEC /* XspfQTTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */; };
 		F49C31F60E682E2B007F2DEC /* XspfQTTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */; };
+		F4D7CCCB0E868BFC0042F96C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4D7CCC90E868BFC0042F96C /* Localizable.strings */; };
 		F4D99B1F0E6B0F59006D72F4 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,14 @@
 		F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTTrackList.m; sourceTree = "<group>"; };
 		F49C31F40E682E2B007F2DEC /* XspfQTTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTTrack.h; sourceTree = "<group>"; };
 		F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTTrack.m; sourceTree = "<group>"; };
+		F4D7CCBF0E868B4C0042F96C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		F4D7CCC00E868B4C0042F96C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/XspfQTDocument.nib; sourceTree = "<group>"; };
+		F4D7CCC10E868B4D0042F96C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/XspfQTImformation.nib; sourceTree = "<group>"; };
+		F4D7CCC20E868B4D0042F96C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/XspfQTPlayList.nib; sourceTree = "<group>"; };
+		F4D7CCCA0E868BFC0042F96C /* Japanese */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F4D7CCCC0E868C090042F96C /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F4D7CCEA0E8690E90042F96C /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = English; path = English.lproj/Localizable.strings.sed; sourceTree = "<group>"; };
+		F4D7CCEB0E8690F90042F96C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text; name = Japanese; path = Japanese.lproj/Localizable.strings.sed; sourceTree = "<group>"; };
 		F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +175,8 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F4D7CCE90E8690E90042F96C /* Localizable.strings.sed */,
+				F4D7CCC90E868BFC0042F96C /* Localizable.strings */,
 				2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */,
 				F47E2B1A0E7E87DD00DB1BE6 /* XspfQTDocument.nib */,
 				F47E2B1D0E7E87FD00DB1BE6 /* XspfQTPlayList.nib */,
@@ -233,6 +244,7 @@
 				F48FDF160E7D4EBE001C33F3 /* XspfQTImformation.nib in Resources */,
 				F47E2B1C0E7E87DD00DB1BE6 /* XspfQTDocument.nib in Resources */,
 				F47E2B1F0E7E87FD00DB1BE6 /* XspfQTPlayList.nib in Resources */,
+				F4D7CCCB0E868BFC0042F96C /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +285,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2A37F4B7FDCFA73011CA2CEA /* English */,
+				F4D7CCBF0E868B4C0042F96C /* Japanese */,
 			);
 			name = MainMenu.nib;
 			sourceTree = "<group>";
@@ -281,6 +294,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F47E2B1B0E7E87DD00DB1BE6 /* English */,
+				F4D7CCC00E868B4C0042F96C /* Japanese */,
 			);
 			name = XspfQTDocument.nib;
 			sourceTree = "<group>";
@@ -289,6 +303,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F47E2B1E0E7E87FD00DB1BE6 /* English */,
+				F4D7CCC20E868B4D0042F96C /* Japanese */,
 			);
 			name = XspfQTPlayList.nib;
 			sourceTree = "<group>";
@@ -297,8 +312,27 @@
 			isa = PBXVariantGroup;
 			children = (
 				F48FDF150E7D4EBE001C33F3 /* English */,
+				F4D7CCC10E868B4D0042F96C /* Japanese */,
 			);
 			name = XspfQTImformation.nib;
+			sourceTree = "<group>";
+		};
+		F4D7CCC90E868BFC0042F96C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4D7CCCA0E868BFC0042F96C /* Japanese */,
+				F4D7CCCC0E868C090042F96C /* English */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		F4D7CCE90E8690E90042F96C /* Localizable.strings.sed */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4D7CCEA0E8690E90042F96C /* English */,
+				F4D7CCEB0E8690F90042F96C /* Japanese */,
+			);
+			name = Localizable.strings.sed;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
