@@ -13,6 +13,11 @@
 
 @interface XspfQTPlayListWindowController(Private)
 - (void)setObserveObject:(id)new;
+
+- (void)insertItem:(id)item atIndex:(NSUInteger)index;
+- (void)removeItem:(id)item;
+- (void)moveItem:(id)item toIndex:(NSUInteger)index;
+- (void)insertItemFromURL:(id)item atIndex:(NSUInteger)index;
 @end
 
 @implementation XspfQTPlayListWindowController
@@ -65,7 +70,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 - (IBAction)delete:(id)sender
 {
 	id selection = [trackListTree valueForKeyPath:@"selection.self"];
-	[[self document] removeComponent:selection];
+	[self removeItem:selection];
 }
 - (void)keyDown:(NSEvent *)theEvent
 {
@@ -134,6 +139,32 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	}
 }
 
+- (void)insertItemFromURL:(id)item atIndex:(NSUInteger)index
+{
+	id doc = [self document];
+	[doc insertComponentFromURL:item atIndex:index];
+	[[doc undoManager] setActionName:NSLocalizedString(@"Insert Movie", @"Undo Action Name Insert Movie")];
+}
+- (void)insertItem:(id)item atIndex:(NSUInteger)index
+{
+	id doc = [self document];
+	[doc insertComponent:item atIndex:index];
+	[[doc undoManager] setActionName:NSLocalizedString(@"Insert Movie", @"Undo Action Name Insert Movie")];
+}
+- (void)removeItem:(id)item
+{
+	id doc = [self document];
+	[doc removeComponent:item];
+	[[doc undoManager] setActionName:NSLocalizedString(@"Remove Movie", @"Undo Action Name Remove Movie")];
+}
+- (void)moveItem:(id)item toIndex:(NSUInteger)index
+{
+	id doc = [self document];
+	[doc removeComponent:item];
+	[doc insertComponent:item atIndex:index];
+	[[doc undoManager] setActionName:NSLocalizedString(@"Move Movie", @"Undo Action Name Move Movie")];
+}
+
 - (void)insertItemURL:(NSURL *)url atIndex:(NSUInteger)index
 {
 	if(![QTMovie canInitWithURL:url]) {		
@@ -142,7 +173,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	
 //	NSLog(@"URL is %@", url);
 	@try {
-		[[self document] insertComponentFromURL:url atIndex:index];
+		[self insertItemFromURL:url atIndex:index];
 	}
 	@catch(XspfQTDocument *doc) {
 		@throw self;
@@ -186,8 +217,6 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 		if(!hasSuccesItem) {
 			@throw self;
 		}
-//		id undo = [[self document] undoManager];
-//		[undo setActionName:NSLocalizedString(@"Insert movie(s)", @"Undo Action Name Insert movie(s)")];
 		return;
 	}
 	
@@ -283,7 +312,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	
 	if(oldIndex == NSNotFound) {
 		// from other list.
-		[doc insertComponent:newItem atIndex:index];
+		[self insertItem:newItem atIndex:index];
 		return YES;
 	}
 	
@@ -300,8 +329,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 		mustSelectionChange = YES;
 	}
 	
-	[doc removeComponent:newItem];
-	[doc insertComponent:newItem atIndex:index];
+	[self moveItem:newItem toIndex:index];
 	
 	if(mustSelectionChange) {
 		[doc setPlayTrackindex:index];
