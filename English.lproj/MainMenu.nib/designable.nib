@@ -8,7 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="443"/>
+			<integer value="449"/>
+			<integer value="81"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -234,7 +235,7 @@
 							<string key="NSTitle">File</string>
 							<object class="NSMutableArray" key="NSMenuItems">
 								<bool key="EncodedWithXMLCoder">YES</bool>
-								<object class="NSMenuItem" id="662168469">
+								<object class="NSMenuItem" id="160779061">
 									<reference key="NSMenu" ref="720053764"/>
 									<string key="NSTitle">New</string>
 									<string key="NSKeyEquiv">n</string>
@@ -1173,7 +1174,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">newDocument:</string>
 						<reference key="source" ref="1014"/>
-						<reference key="destination" ref="662168469"/>
+						<reference key="destination" ref="160779061"/>
 					</object>
 					<int key="connectionID">471</int>
 				</object>
@@ -1284,7 +1285,7 @@
 							<reference ref="305413969"/>
 							<reference ref="99516502"/>
 							<reference ref="118021812"/>
-							<reference ref="662168469"/>
+							<reference ref="160779061"/>
 						</object>
 						<reference key="parent" ref="379814623"/>
 					</object>
@@ -1755,7 +1756,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">470</int>
-						<reference key="object" ref="662168469"/>
+						<reference key="object" ref="160779061"/>
 						<reference key="parent" ref="720053764"/>
 					</object>
 				</object>
@@ -1814,6 +1815,7 @@
 					<string>202.ImportedFromIB2</string>
 					<string>203.IBPluginDependency</string>
 					<string>203.ImportedFromIB2</string>
+					<string>205.IBEditorWindowLastContentRect</string>
 					<string>205.IBPluginDependency</string>
 					<string>205.ImportedFromIB2</string>
 					<string>205.editorWindowContentRectSynchronizationRect</string>
@@ -1841,6 +1843,7 @@
 					<string>29.WindowOrigin</string>
 					<string>29.editorWindowContentRectSynchronizationRect</string>
 					<string>295.IBPluginDependency</string>
+					<string>296.IBEditorWindowLastContentRect</string>
 					<string>296.IBPluginDependency</string>
 					<string>296.editorWindowContentRectSynchronizationRect</string>
 					<string>299.IBPluginDependency</string>
@@ -1963,6 +1966,7 @@
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
+					<string>{{255, 442}, {154, 153}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{{138, 636}, {154, 153}}</string>
@@ -1984,12 +1988,13 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{{301, 716}, {197, 73}}</string>
-					<string>{{129, 595}, {421, 20}}</string>
+					<string>{{520, 580}, {421, 20}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{74, 862}</string>
 					<string>{{12, 789}, {421, 20}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>{{299, 542}, {172, 53}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{182, 736}, {172, 53}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2019,7 +2024,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{764, 713}, {189, 93}}</string>
+					<string>{{517, 638}, {189, 93}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{1, 705}, {189, 93}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2051,7 +2056,7 @@
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<string>{{213, 392}, {199, 203}}</string>
+					<string>{{604, 377}, {199, 203}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{{96, 606}, {182, 183}}</string>

@@ -290,6 +290,10 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 		return NO;
 	}
 	
+	if(index == -1) {
+		index = [[[self document] trackList] childrenCount];
+	}
+	
 	id pb = [info draggingPasteboard];
 	
 	NSData *data = [pb dataForType:XspfQTPlayListItemType];
