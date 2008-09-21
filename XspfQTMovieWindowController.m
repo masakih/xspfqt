@@ -29,12 +29,6 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 - (id)init
 {
 	if(self = [super initWithWindowNibName:@"XspfQTDocument"]) {
-		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-		[nc addObserver:self
-			   selector:@selector(applicationWillTerminate:)
-				   name:NSApplicationWillTerminateNotification
-				 object:NSApp];
-		
 		updateTime = [NSTimer scheduledTimerWithTimeInterval:0.3
 													  target:self
 													selector:@selector(updateTimeIfNeeded:)
@@ -62,16 +56,22 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 {
 	prevMouseMovedDate = [[NSDate dateWithTimeIntervalSinceNow:0.0] retain];
 	
-	id d = [self document];
-//	NSLog(@"Add Observed! %@", d);
-	[d addObserver:self
-		forKeyPath:kQTMovieKeyPath
-		   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-		   context:NULL];
-	[d addObserver:self
-		forKeyPath:kIsPlayedKeyPath
-		   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-		   context:NULL];
+	id doc = [self document];
+//	NSLog(@"Add Observed! %@", doc);
+	[doc addObserver:self
+		  forKeyPath:kQTMovieKeyPath
+			 options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+			 context:NULL];
+	[doc addObserver:self
+		  forKeyPath:kIsPlayedKeyPath
+			 options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+			 context:NULL];
+	
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc addObserver:self
+		   selector:@selector(documentWillClose:)
+			   name:XspfQTDocumentWillCloseNotification
+			 object:doc];
 	
 	[self setValue:[NSNumber numberWithInt:0]
 		forKeyPath:@"document.trackList.selectionIndex"];
@@ -385,14 +385,20 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	return YES;
 }
 
-#pragma mark ### NSApplication Delegate ###
-- (void)applicationWillTerminate:(NSNotification *)notification
+#pragma mark ### XspfQTDocument Notification ###
+- (void)documentWillClose:(NSNotification *)notification
 {
+	id doc = [notification object];
+//	NSLog(@"Remove Observed! %@", doc);
 	if(fullScreenMode) {
 		[self toggleFullScreenMode:self];
 	}
-	[[self document] removeObserver:self forKeyPath:kQTMovieKeyPath];
-	[[self document] removeObserver:self forKeyPath:kIsPlayedKeyPath];
+	
+	[doc removeObserver:self forKeyPath:kQTMovieKeyPath];
+	[doc removeObserver:self forKeyPath:kIsPlayedKeyPath];
+	
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc removeObserver:self name:XspfQTDocumentWillCloseNotification object:doc];
 }
 
 #pragma mark ### NSWindow Delegate ###
@@ -400,9 +406,6 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 {
 	[qtView pause:self];
 	[self setQtMovie:nil];
-	
-	[[self document] removeObserver:self forKeyPath:kQTMovieKeyPath];
-	[[self document] removeObserver:self forKeyPath:kIsPlayedKeyPath];
 	
 	[updateTime invalidate];
 	updateTime = nil;
