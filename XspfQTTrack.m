@@ -101,7 +101,11 @@
 }
 - (NSString *)locationString
 {
-	return [[self location] absoluteString];
+//	return [[self location] absoluteString];
+	return [NSString stringWithFormat:@"%@://%@%@",
+			[location scheme],
+			[location isFileURL] ? @"" : [location host],
+	[[location path] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
 - (void)setSavedDateWithQTTime:(QTTime)qttime
