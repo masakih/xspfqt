@@ -15,13 +15,13 @@
 	if(self = [super init]) {
 		[self setCurrentIndex:NSNotFound];
 		
-		NSArray *elems = [element elementsForName:@"title"];
-		if(elems && [elems count] != 0) {
-			NSString *t = [[elems objectAtIndex:0] stringValue];
-			[self setTitle:t];
-		}
+//		NSArray *elems = [element elementsForName:@"title"];
+//		if(elems && [elems count] != 0) {
+//			NSString *t = [[elems objectAtIndex:0] stringValue];
+//			[self setTitle:t];
+//		}
 		
-		elems = [element elementsForName:@"track"];
+		NSArray *elems = [element elementsForName:@"track"];
 		if(!elems) {
 			[self release];
 			return nil;
@@ -51,11 +51,11 @@
 - (NSXMLElement *)XMLElement
 {
 	id node = [NSXMLElement elementWithName:@"trackList"];
-	
-	id titleElem = [NSXMLElement elementWithName:@"title" stringValue:[self title]];
-	if(titleElem) {
-		[node addChild:titleElem];
-	}
+//	
+//	id titleElem = [NSXMLElement elementWithName:@"title" stringValue:[self title]];
+//	if(titleElem) {
+//		[node addChild:titleElem];
+//	}
 	
 	NSEnumerator *tracksEnum = [tracks objectEnumerator];
 	id n;
