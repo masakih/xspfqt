@@ -8,6 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="8"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -34,7 +35,7 @@
 				<nil key="NSViewClass"/>
 				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<object class="NSView" key="NSWindowView" id="518928136">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -259,6 +260,7 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{276, 378}</string>
+					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 832}}</string>
 				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
@@ -271,6 +273,7 @@
 					<string>title</string>
 					<string>duration</string>
 					<string>isSelected</string>
+					<string>isLeaf</string>
 				</object>
 				<string key="NSObjectClassName">XspfQTComponent</string>
 				<bool key="NSEditable">YES</bool>
@@ -480,6 +483,22 @@
 					</object>
 					<int key="connectionID">71</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">editable: arrangedObjects.isLeaf</string>
+						<reference key="source" ref="889613751"/>
+						<reference key="destination" ref="503229908"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="889613751"/>
+							<reference key="NSDestination" ref="503229908"/>
+							<string key="NSLabel">editable: arrangedObjects.isLeaf</string>
+							<string key="NSBinding">editable</string>
+							<string key="NSKeyPath">arrangedObjects.isLeaf</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">74</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -680,7 +699,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">71</int>
+			<int key="maxID">74</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

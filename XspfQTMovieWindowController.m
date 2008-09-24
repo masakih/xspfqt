@@ -189,6 +189,7 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	NSSize delta = [self windowSizeWithoutQTView];
 	
 	NSSize movieSize = [[curMovie attributeForKey:QTMovieNaturalSizeAttribute] sizeValue];
+	if(movieSize.width == 0) return toSize;
 	
 	float targetViewWidth = toSize.width - delta.width;
 	float targetViewHeight = targetViewWidth * (movieSize.height / movieSize.width);
@@ -196,9 +197,7 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	targetViewWidth += delta.width;
 	targetViewHeight += delta.height;
 	
-	NSSize newSize = NSMakeSize(targetViewWidth, targetViewHeight);
-	
-	return newSize;
+	return NSMakeSize(targetViewWidth, targetViewHeight);
 }
 
 - (void)play
@@ -223,7 +222,7 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	[w setContentView:qtView];
 	
 //	[NSMenu setMenuBarVisible:NO];
-	SetSystemUIMode (kUIModeAllHidden, kUIOptionAutoShowMenuBar);
+	SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar);
 	
 	[w makeKeyAndOrderFront:self];
 	[w makeFirstResponder:qtView];	
@@ -242,8 +241,10 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	
 	[NSMenu setMenuBarVisible:YES];
 	[w orderOut:self];
+	
 	[[self window] makeKeyAndOrderFront:self];
 	[[self window] makeFirstResponder:qtView];
+	[self sizeTofitWidnow];
 }
 
 - (NSWindow *)fullscreenWindow
