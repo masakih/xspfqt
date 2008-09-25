@@ -13,7 +13,7 @@
 	IBOutlet NSOutlineView *listView;
 	IBOutlet NSTreeController *trackListTree;
 	
-	id obseveObject;
+	id observedObject;
 }
 
 @end
