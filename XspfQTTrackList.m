@@ -15,22 +15,15 @@
 	if(self = [super init]) {
 		[self setCurrentIndex:NSNotFound];
 		
-//		NSArray *elems = [element elementsForName:@"title"];
-//		if(elems && [elems count] != 0) {
-//			NSString *t = [[elems objectAtIndex:0] stringValue];
-//			[self setTitle:t];
-//		}
-		
 		NSArray *elems = [element elementsForName:@"track"];
 		if(!elems) {
 			[self release];
 			return nil;
 		}
+		
 		tracks = [[NSMutableArray alloc] init];
 		
-		unsigned i, count;
-		for(i = 0, count = [elems count]; i < count; i++) {
-			NSXMLElement *trackElem = [elems objectAtIndex:i];
+		for(NSXMLElement *trackElem in elems) {
 			XspfQTComponent *track = [XspfQTComponent xspfComponemtWithXMLElement:trackElem];
 			if(track) {
 				[self addChild:track];
@@ -51,15 +44,8 @@
 - (NSXMLElement *)XMLElement
 {
 	id node = [NSXMLElement elementWithName:@"trackList"];
-//	
-//	id titleElem = [NSXMLElement elementWithName:@"title" stringValue:[self title]];
-//	if(titleElem) {
-//		[node addChild:titleElem];
-//	}
 	
-	NSEnumerator *tracksEnum = [tracks objectEnumerator];
-	id n;
-	while(n = [tracksEnum nextObject]) {
+	for(id n in tracks) {
 		[node addChild:[n XMLElement]];
 	}
 	
