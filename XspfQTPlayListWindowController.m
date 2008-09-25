@@ -22,11 +22,19 @@
 
 @implementation XspfQTPlayListWindowController
 
+#pragma mark ### Static variables ###
 static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 
 - (id)init
 {
 	return [super initWithWindowNibName:@"XspfQTPlayList"];
+}
+- (void)dealloc
+{
+	[trackListTree removeObserver:self forKeyPath:@"selection"];
+	[self setObserveObject:nil];
+	
+	[super dealloc];
 }
 
 - (void)awakeFromNib
@@ -48,14 +56,8 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 									   NSURLPboardType,
 									   nil]];
 }
-- (void)dealloc
-{
-	[trackListTree removeObserver:self forKeyPath:@"selection"];
-	[self setObserveObject:nil];
-	
-	[super dealloc];
-}
 
+#pragma mark ### Actions ###
 - (IBAction)changeCurrentTrack:(id)sender
 {
 	id selections = [trackListTree selectedObjects];
@@ -100,20 +102,23 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	return YES;
 }
 
+#pragma mark ### NSWindow Delegate ###
 - (BOOL)windowShouldClose:(id)sender
 {
 	[sender orderOut:self];
 	
 	return NO;
 }
+
+#pragma mark ### KVO & KVC ###
 - (void)setObserveObject:(id)new
 {
-	if(obseveObject == new) return;
+	if(observedObject == new) return;
 	
-	[obseveObject removeObserver:self forKeyPath:@"title"];
+	[observedObject removeObserver:self forKeyPath:@"title"];
 	
-	obseveObject = new;
-	[obseveObject addObserver:self
+	observedObject = new;
+	[observedObject addObserver:self
 				   forKeyPath:@"title"
 					  options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 					  context:NULL];
@@ -133,12 +138,13 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 		if([new isEqualTo:old]) return;
 		
 		id um = [[self document] undoManager];
-		[um registerUndoWithTarget:obseveObject
+		[um registerUndoWithTarget:observedObject
 						  selector:@selector(setTitle:)
 							object:old];
 	}
 }
 
+#pragma mark ### DataStructure Operations ###
 - (void)insertItemFromURL:(id)item atIndex:(NSUInteger)index
 {
 	id doc = [self document];
@@ -232,6 +238,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	@throw self;
 }
 
+#pragma mark ### NSOutlineView DataSource ###
 - (BOOL)outlineView:(NSOutlineView *)outlineView
 		 writeItems:(NSArray *)items
 	   toPasteboard:(NSPasteboard *)pasteboard
