@@ -67,6 +67,14 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 	return self;
 }
 
+- (void)notify
+{
+	[self willChangeValueForKey:@"movieAttributes"];
+	[self didChangeValueForKey:@"movieAttributes"];
+	[self willChangeValueForKey:@"currentTrack"];
+	[self didChangeValueForKey:@"currentTrack"];
+}
+
 - (void)windowDidLoad
 {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -142,10 +150,7 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 					   context:(void *)context
 {
 	if([keyPath isEqualToString:@"trackList.qtMovie"]) {
-		[self willChangeValueForKey:@"movieAttributes"];
-		[self didChangeValueForKey:@"movieAttributes"];
-		[self willChangeValueForKey:@"currentTrack"];
-		[self didChangeValueForKey:@"currentTrack"];
+		[self notify];
 	}
 }
 
@@ -153,17 +158,18 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 {
 	id doc = [notification object];
 	
+	if(![observedDocs containsObject:doc]) return;
+	
 	[doc removeObserver:self forKeyPath:@"trackList.qtMovie"];
 	[observedDocs removeObject:doc];
 	[docController setContent:nil];
+	[currentTrackController setContent:nil];
+	
+	[self notify];
 }
 - (void)notifee:(id)notification
 {
-	[self willChangeValueForKey:@"movieAttributes"];
-	[self didChangeValueForKey:@"movieAttributes"];
-	[self willChangeValueForKey:@"currentTrack"];
-	[self didChangeValueForKey:@"currentTrack"];
+	[self notify];
 }
-
 
 @end
