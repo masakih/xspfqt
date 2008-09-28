@@ -221,13 +221,13 @@
 
 - (NSUInteger)hash
 {
-	return [location hash];
+	return [[self locationString] hash];
 }
 - (BOOL)isEqual:(XspfQTTrack *)other
 {
 	if(![other isMemberOfClass:[XspfQTTrack class]]) return NO;
-	if(![[other location] isEqual:location]) return NO;
-	if(![[other title] isEqualToString:[self title]]) return NO;
+	if(![[self locationString] isEqual:[other locationString]]) return NO;
+	if(![[self title] isEqualToString:[other title]]) return NO;
 	
 	return YES;
 }
