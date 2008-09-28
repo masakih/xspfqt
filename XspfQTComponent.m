@@ -30,7 +30,12 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 {
 	return [XspfQTPlaceholderComponent xspfTrackList];
 }
-
++ (id)xspfComponentWithXMLElementString:(NSString *)string error:(NSError **)outError
+{
+	[self doesNotRecognizeSelector:_cmd];
+	
+	return nil;
+}
 + (id)xspfComponemtWithXMLElement:(NSXMLElement *)element
 {
 	return [[[self alloc] initWithXMLElement:element] autorelease];
