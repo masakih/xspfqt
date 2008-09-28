@@ -12,6 +12,7 @@
 		8D15AC310486D014006FF6A4 /* XspfQTDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* XspfQTDocument.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		F429BD700E8F969A006EB717 /* XspfQTPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */; };
 		F441DCA50E69B82B009320B6 /* XspfQTMovieWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DCA40E69B82B009320B6 /* XspfQTMovieWindowController.m */; };
 		F441DE580E6A2B5F009320B6 /* XspfQTValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE570E6A2B5F009320B6 /* XspfQTValueTransformers.m */; };
 		F441DE5C0E6A2BDA009320B6 /* XspfQTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE5B0E6A2BDA009320B6 /* XspfQTAppDelegate.m */; };
@@ -43,6 +44,8 @@
 		32DBCF750370BD2300C91783 /* XspfQT_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQT_Prefix.pch; sourceTree = "<group>"; };
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* XspfQT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XspfQT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F429BD6E0E8F969A006EB717 /* XspfQTPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlaylist.h; sourceTree = "<group>"; };
+		F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlaylist.m; sourceTree = "<group>"; };
 		F441DCA30E69B82B009320B6 /* XspfQTMovieWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTMovieWindowController.h; sourceTree = "<group>"; };
 		F441DCA40E69B82B009320B6 /* XspfQTMovieWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTMovieWindowController.m; sourceTree = "<group>"; };
 		F441DE560E6A2B5F009320B6 /* XspfQTValueTransformers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTValueTransformers.h; sourceTree = "<group>"; };
@@ -153,10 +156,12 @@
 				F49C31CC0E682C3B007F2DEC /* XspfQTComponent.m */,
 				F46870220E71963E00B4DAED /* XspfQTPlaceholderComponent.h */,
 				F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */,
-				F49C31F40E682E2B007F2DEC /* XspfQTTrack.h */,
-				F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */,
+				F429BD6E0E8F969A006EB717 /* XspfQTPlaylist.h */,
+				F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */,
 				F49C31EF0E682D79007F2DEC /* XspfQTTrackList.h */,
 				F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */,
+				F49C31F40E682E2B007F2DEC /* XspfQTTrack.h */,
+				F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */,
 				F441DE560E6A2B5F009320B6 /* XspfQTValueTransformers.h */,
 				F441DE570E6A2B5F009320B6 /* XspfQTValueTransformers.m */,
 			);
@@ -267,6 +272,7 @@
 				F441E0680E6A5131009320B6 /* XspfQTPlayListWindowController.m in Sources */,
 				F46870240E71963E00B4DAED /* XspfQTPlaceholderComponent.m in Sources */,
 				F48FDF190E7D4EE7001C33F3 /* XspfQTInformationWindowController.m in Sources */,
+				F429BD700E8F969A006EB717 /* XspfQTPlaylist.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

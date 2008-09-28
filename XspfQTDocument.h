@@ -15,7 +15,7 @@
 
 @interface XspfQTDocument : NSDocument
 {
-	XspfQTComponent* trackList;
+	XspfQTComponent* playlist;
 	XspfQTMovieWindowController *movieWindowController;
 	NSWindowController *playListWindowController;
 }
@@ -24,7 +24,6 @@
 - (IBAction)showPlayList:(id)sender;
 - (IBAction)dump:(id)sender;
 
-- (void)setTrackList:(XspfQTComponent *)newList;
 - (XspfQTComponent *)trackList;
 
 - (void)setPlayTrackindex:(unsigned)index;

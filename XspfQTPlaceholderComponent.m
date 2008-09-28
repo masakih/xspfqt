@@ -7,6 +7,7 @@
 //
 
 #import "XspfQTPlaceholderComponent.h"
+#import "XspfQTPlaylist.h"
 #import "XspfQTTrackList.h"
 #import "XspfQTTrack.h"
 
@@ -60,17 +61,72 @@ static XspfQTPlaceholderComponent *sharedInstance = nil;
 }
 
 #pragma mark ### initializers ###
++ (id)xspfComponentWithXMLElementString:(NSString *)string error:(NSError **)outError
+{
+	NSString *xmlElem;
+	xmlElem = [NSString stringWithString:string];
+	
+	NSError *error = nil;
+	NSXMLElement *element = [[[NSXMLElement alloc] initWithXMLString:xmlElem error:&error] autorelease];
+	if(error) {
+		if(outError) {
+			*outError = error;
+		}
+		[self autorelease];
+		return nil;
+	}
+	
+	id component = [XspfQTComponent xspfComponemtWithXMLElement:element];
+	
+	return component;
+}
++ (id)xspfPlaylist
+{
+	id newTrackList = [self xspfTrackList];
+	if(!newTrackList) return nil;
+	
+	NSError *error = nil;
+	id newPlaylist = [self xspfComponentWithXMLElementString:@"<playlist></playlist>" error:&error];
+	if(!newPlaylist) {
+		if(error) {
+			NSLog(@"%@", error);
+		}
+		return nil;
+	}
+	[newPlaylist addChild:newTrackList];
+	
+	return newPlaylist;
+}
++ (id)xspfTrackList
+{
+	NSError *error = nil;
+	id newTrackList = [self xspfComponentWithXMLElementString:@"<trackList></trackList>" error:&error];
+	if(!newTrackList) {
+		if(error) {
+			NSLog(@"%@", error);
+		}
+		return nil;
+	}
+	
+	[newTrackList setTitle:@"Untitled"];
+	
+	return newTrackList;
+}
+
 - (id)initWithXMLElement:(NSXMLElement *)element
 {
 	NSString *name = [element name];
 	if(!name) return nil;
 	if([name isEqualToString:@""]) return nil;
 	
+	if([name isEqualToString:@"track"]) {
+		return [[XspfQTTrack alloc] initWithXMLElement:element];
+	}
 	if([name isEqualToString:@"trackList"]) {
 		return [[XspfQTTrackList alloc] initWithXMLElement:element];
 	}
-	if([name isEqualToString:@"track"]) {
-		return [[XspfQTTrack alloc] initWithXMLElement:element];
+	if([name isEqualToString:@"playlist"]) {
+		return [[XspfQTPlaylist alloc] initWithXMLElement:element];
 	}
 	
 	return nil;

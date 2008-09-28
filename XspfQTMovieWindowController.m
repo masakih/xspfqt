@@ -87,6 +87,10 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 		return [NSString stringWithFormat:@"%@ - %@",
 				title1, title2];
 	}
+	if(title2) {
+		return [NSString stringWithFormat:@"%@ - %@",
+				displayName, title2];
+	}
 	return displayName;
 }
 

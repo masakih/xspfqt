@@ -18,6 +18,9 @@
 	XspfQTComponent *parent;	// not retained.
 }
 
++ (id)xspfPlaylist;
++ (id)xspfTrackList;
+
 + (id)xspfComponemtWithXMLElement:(NSXMLElement *)element;
 - (id)initWithXMLElement:(NSXMLElement *)element; // abstract.
 
