@@ -37,6 +37,7 @@
 - (void)select;
 - (void)deselect;
 - (void)setSelectionIndex:(unsigned)index;
+- (unsigned)selectionIndex;
 - (BOOL)setSelectionIndexPath:(NSIndexPath *)indexPath;
 - (NSIndexPath *)selectionIndexPath;
 

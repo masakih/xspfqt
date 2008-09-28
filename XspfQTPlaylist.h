@@ -7,16 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "XspfQTComponent.h"
+#import "XspfQTContainerComponent.h"
 
 
-@interface XspfQTPlaylist : XspfQTComponent
+@interface XspfQTPlaylist : XspfQTContainerComponent
 {
-	NSMutableArray *trackLists;
-	
-	unsigned selectionIndex;
-	
-	XspfQTComponent *selectedComponent;
 }
 
 @end

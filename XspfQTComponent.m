@@ -32,9 +32,7 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 }
 + (id)xspfComponentWithXMLElementString:(NSString *)string error:(NSError **)outError
 {
-	[self doesNotRecognizeSelector:_cmd];
-	
-	return nil;
+	return [XspfQTPlaceholderComponent xspfComponentWithXMLElementString:string error:outError];
 }
 + (id)xspfComponemtWithXMLElement:(NSXMLElement *)element
 {
@@ -153,6 +151,12 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 	// 現在値と違うなら現在値をdeselect
 	
 	// 新しい値をselect
+}
+- (unsigned)selectionIndex
+{
+	[self doesNotRecognizeSelector:_cmd];
+	
+	return NSNotFound;
 }
 - (BOOL)setSelectionIndexPath:(NSIndexPath *)indexPath
 {
