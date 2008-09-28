@@ -76,7 +76,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	
 	NSArray *trackListElems;
 	trackListElems = [root elementsForName:@"trackList"];	
-	if(!trackListElems || [trackListElems count] < 1) {
+	if(!trackListElems) {
 		if ( outError != NULL ) {
 			*outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:unimpErr userInfo:NULL];
 		}
@@ -154,7 +154,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	id root = [NSXMLElement elementWithName:@"playlist"];
 	[root addChild:element];
 	[root addAttribute:[NSXMLNode attributeWithName:@"version"
-										stringValue:@"0"]];
+										stringValue:@"1"]];
 	[root addAttribute:[NSXMLNode attributeWithName:@"xmlns"
 										stringValue:@"http://xspf.org/ns/0/"]];
 	
