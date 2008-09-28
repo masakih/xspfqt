@@ -33,6 +33,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	}
 	
 	[self setPlaylist:newPlaylist];
+//	NSLog(@"new playlist is (%@)%@", NSStringFromClass([[self playlist] class]), [self playlist]);
 	
 	return self;
 }
@@ -58,14 +59,25 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	NSXMLDocument *d = [[[NSXMLDocument alloc] initWithData:data
 													options:0
 													  error:&error] autorelease];
+	if(error) {
+		NSLog(@"%@", error);
+		*outError = error;
+		return NO;
+	}
 	NSXMLElement *root = [d rootElement];
 	id pl = [XspfQTComponent xspfComponemtWithXMLElement:root];
+	if(!pl) {
+		NSLog(@"Can not create XspfQTComponent.");
+		return NO;
+	}
 	[self setPlaylist:pl];
 	
 	id t = [self trackList];
 	if(![t title]) {
 		[t setTitle:[[[self fileURL] path] lastPathComponent]];
 	}
+	
+//	NSLog(@"open playlist is (%@)%@", NSStringFromClass([[self playlist] class]), [self playlist]);
 	
     return YES;
 }
@@ -170,7 +182,10 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 - (void)removeComponent:(XspfQTComponent *)item
 {
 	NSUInteger index = [[self trackList] indexOfChild:item];
-	if(index == NSNotFound) return;
+	if(index == NSNotFound) {
+		NSLog(@"Con not found item (%@)", item); 
+		return;
+	}
 	
 	id undo = [self undoManager];
 	[[undo prepareWithInvocationTarget:self] insertComponent:item atIndex:index];
