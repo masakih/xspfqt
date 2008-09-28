@@ -31,6 +31,7 @@
 	elems = [element elementsForName:@"title"];
 	if(!elems || [elems count] == 0) {
 		t = [[self locationString] lastPathComponent];
+		t = [t stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	} else {
 		t = [[elems objectAtIndex:0] stringValue];
 	}
@@ -141,7 +142,13 @@
 						   nil];
 	movie = [[QTMovie alloc] initWithAttributes:attrs error:&error];
 //	movie = [[QTMovie alloc] initWithURL:[self location] error:&error];
-	
+	if(error) {
+		NSLog(@"%@", error);
+		return nil;
+	}
+	if(!movie) {
+		return nil;
+	}
 	{
 		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 		[nc addObserver:self
