@@ -148,13 +148,13 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 			   [url absoluteString]];
 	
 	NSError *error = nil;
-	NSXMLElement *element = [[[NSXMLElement alloc] initWithXMLString:xmlElem error:&error] autorelease];
+	id new = [XspfQTComponent xspfComponentWithXMLElementString:xmlElem
+														  error:&error];
 	if(error) {
 		NSLog(@"%@", error);
 		@throw self;
 	}
 	
-	id new = [XspfQTComponent xspfComponemtWithXMLElement:element];
 	if(!new) {
 		@throw self;
 	}

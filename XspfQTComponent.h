@@ -20,6 +20,7 @@
 
 + (id)xspfPlaylist;
 + (id)xspfTrackList;
++ (id)xspfComponentWithXMLElementString:(NSString *)string error:(NSError **)outError;
 
 + (id)xspfComponemtWithXMLElement:(NSXMLElement *)element;
 - (id)initWithXMLElement:(NSXMLElement *)element; // abstract.
