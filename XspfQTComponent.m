@@ -22,6 +22,15 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 	return [super allocWithZone:zone];
 }
 
++ (id)xspfPlaylist
+{
+	return [XspfQTPlaceholderComponent xspfPlaylist];
+}
++ (id)xspfTrackList
+{
+	return [XspfQTPlaceholderComponent xspfTrackList];
+}
+
 + (id)xspfComponemtWithXMLElement:(NSXMLElement *)element
 {
 	return [[[self alloc] initWithXMLElement:element] autorelease];

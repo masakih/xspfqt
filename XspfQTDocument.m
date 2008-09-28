@@ -12,8 +12,8 @@
 #import "XspfQTPlayListWindowController.h"
 
 @interface XspfQTDocument (Private)
-- (void)setTrackList:(XspfQTComponent *)newList;
-- (XspfQTComponent *)trackList;
+- (void)setPlaylist:(XspfQTComponent *)newList;
+- (XspfQTComponent *)playlist;
 - (NSXMLDocument *)XMLDocument;
 - (NSData *)outputData;
 @end
@@ -26,27 +26,13 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 {
 	[self init];
 	
-	NSString *xmlElem;
-	xmlElem = [NSString stringWithString:@"<trackList></trackList>"];
-	
-	NSError *error = nil;
-	NSXMLElement *element = [[[NSXMLElement alloc] initWithXMLString:xmlElem error:&error] autorelease];
-	if(error) {
-		if(outError) {
-			*outError = error;
-		}
+	id newPlaylist = [XspfQTComponent xspfPlaylist];
+	if(!newPlaylist) {
 		[self autorelease];
 		return nil;
 	}
 	
-	id new = [XspfQTComponent xspfComponemtWithXMLElement:element];
-	if(!new) {
-		[self autorelease];
-		return nil;
-	}
-	
-	[new setTitle:@"Untitled"];
-	[self setTrackList:new];
+	[self setPlaylist:newPlaylist];
 	
 	return self;
 }
@@ -73,28 +59,20 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 													options:0
 													  error:&error] autorelease];
 	NSXMLElement *root = [d rootElement];
+	id pl = [XspfQTComponent xspfComponemtWithXMLElement:root];
+	[self setPlaylist:pl];
 	
-	NSArray *trackListElems;
-	trackListElems = [root elementsForName:@"trackList"];	
-	if(!trackListElems) {
-		if ( outError != NULL ) {
-			*outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:unimpErr userInfo:NULL];
-		}
-		return NO;
-	}
-	
-	id t = [XspfQTComponent xspfComponemtWithXMLElement:[trackListElems objectAtIndex:0]];
+	id t = [self trackList];
 	if(![t title]) {
 		[t setTitle:[[[self fileURL] path] lastPathComponent]];
 	}
-	[self setTrackList:t];	
 	
     return YES;
 }
 
 - (void)dealloc
 {
-	[trackList release];
+	[playlist release];
 	[playListWindowController release];
 	[movieWindowController release];
 	
@@ -126,16 +104,21 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	[playListWindowController showWindow:self];
 }
 
-- (void)setTrackList:(XspfQTComponent *)newList
+- (void)setPlaylist:(XspfQTComponent *)newList
 {
-	if(trackList == newList) return;
+	if(playlist == newList) return;
 	
-	[trackList autorelease];
-	trackList = [newList retain];
+	[playlist autorelease];
+	playlist = [newList retain];
 }
+- (XspfQTComponent *)playlist
+{
+	return playlist;
+}
+
 - (XspfQTComponent *)trackList
 {
-	return trackList;
+	return [playlist childAtIndex:0];
 }
 
 - (void)setPlayTrackindex:(unsigned)index
@@ -149,15 +132,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 }
 - (NSXMLDocument *)XMLDocument
 {
-	id element = [[self trackList] XMLElement];
-	
-	id root = [NSXMLElement elementWithName:@"playlist"];
-	[root addChild:element];
-	[root addAttribute:[NSXMLNode attributeWithName:@"version"
-										stringValue:@"1"]];
-	[root addAttribute:[NSXMLNode attributeWithName:@"xmlns"
-										stringValue:@"http://xspf.org/ns/0/"]];
-	
+	id root = [[self playlist] XMLElement];
 	
 	id d = [[[NSXMLDocument alloc] initWithRootElement:root] autorelease];
 	[d setVersion:@"1.0"];
