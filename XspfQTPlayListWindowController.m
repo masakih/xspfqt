@@ -351,7 +351,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 
 @end
 
-@implementation XspfQTThrowSpacebarKeyDownOutlineView
+@implementation XspfQTPlaylistOutlineView
 - (void)keyDown:(NSEvent *)theEvent
 {
 	if(_delegate && [_delegate respondsToSelector:@selector(keyDown:)]) {

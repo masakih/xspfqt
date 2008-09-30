@@ -19,5 +19,5 @@
 @end
 
 
-@interface XspfQTThrowSpacebarKeyDownOutlineView : NSOutlineView
+@interface XspfQTPlaylistOutlineView : NSOutlineView
 @end
