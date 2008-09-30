@@ -672,7 +672,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>XspfQTThrowSpacebarKeyDownOutlineView</string>
+					<string>XspfQTPlaylistOutlineView</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>
@@ -728,7 +728,7 @@
 							<string>NSTreeController</string>
 						</object>
 					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="1011433538">
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">XspfQTPlayListWindowController.h</string>
 					</object>
@@ -742,12 +742,7 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">XspfQTThrowSpacebarKeyDownOutlineView</string>
-					<string key="superclassName">NSOutlineView</string>
-					<reference key="sourceIdentifier" ref="1011433538"/>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">XspfQTThrowSpacebarKeyDownOutlineView</string>
+					<string key="className">XspfQTPlaylistOutlineView</string>
 					<string key="superclassName">NSOutlineView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
