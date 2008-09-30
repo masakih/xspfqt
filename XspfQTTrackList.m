@@ -40,12 +40,4 @@
 	return node;
 }
 
-- (unsigned)currentIndex
-{
-	return [self selectionIndex];
-}
-- (void)setCurrentIndex:(unsigned)index
-{
-	[self setSelectionIndex:index];
-}
 @end
