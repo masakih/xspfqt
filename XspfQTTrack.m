@@ -219,15 +219,11 @@
 	}
 }
 
-- (NSUInteger)hash
+
+- (BOOL)isEqual:(id)other
 {
-	return [[self locationString] hash];
-}
-- (BOOL)isEqual:(XspfQTTrack *)other
-{
-	if(![other isMemberOfClass:[XspfQTTrack class]]) return NO;
+	if(![super isEqual:other]) return NO;
 	if(![[self locationString] isEqual:[other locationString]]) return NO;
-	if(![[self title] isEqualToString:[other title]]) return NO;
 	
 	return YES;
 }
