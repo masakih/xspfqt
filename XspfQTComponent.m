@@ -248,4 +248,16 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 	return [[[self class] alloc] initWithXMLElement:element];
 }
 
+- (NSUInteger)hash
+{
+	return [[self title] hash];
+}
+- (BOOL)isEqual:(id)other
+{
+	if(![other isMemberOfClass:[self class]]) return NO;
+	if(![[self title] isEqualToString:[other title]]) return NO;
+	
+	return YES;
+}
+
 @end
