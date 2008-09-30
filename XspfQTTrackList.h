@@ -13,8 +13,4 @@
 @interface XspfQTTrackList : XspfQTContainerComponent
 {
 }
-
-- (void)setCurrentIndex:(unsigned)index;
-- (unsigned)currentIndex;
-
 @end
