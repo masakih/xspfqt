@@ -24,7 +24,7 @@
 		return nil;
 	}
 	
-	NSString *loc = [[elems objectAtIndex:0] stringValue];;
+	NSString *loc = [[elems objectAtIndex:0] stringValue];
 	[self setLocationString:loc];
 	
 	NSString *t;
@@ -102,11 +102,10 @@
 }
 - (NSString *)locationString
 {
-//	return [[self location] absoluteString];
-	return [NSString stringWithFormat:@"%@://%@%@",
-			[location scheme],
-			[location isFileURL] ? @"" : [location host],
-	[[location path] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+	NSString *str = [[self location] absoluteString];
+	
+	return [str stringByReplacingOccurrencesOfString:@"//localhost/"
+										  withString:@"///"];
 }
 
 - (void)setSavedDateWithQTTime:(QTTime)qttime
