@@ -61,61 +61,6 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 	
 	return nil;
 }
-
-- (QTMovie *)qtMovie
-{
-	return nil;
-}
-- (NSDate *)duration
-{
-	return nil;
-}
-- (XspfQTComponent *)parent
-{
-	return parent;
-}
-- (NSArray *)children
-{
-	return nil;
-}
-- (unsigned)childrenCount
-{
-	return [[self children] count];
-}
-- (BOOL)isLeaf
-{
-	return YES;
-}
-- (NSUInteger)indexOfChild:(XspfQTComponent *)child
-{
-	return [[self children] indexOfObject:child];
-}
-- (XspfQTComponent *)childAtIndex:(NSUInteger)index
-{
-	return [[self children] objectAtIndex:index];
-}
-
-
-- (void)setParent:(XspfQTComponent *)new
-{
-	parent = new;
-}
-- (void)addChild:(XspfQTComponent *)child
-{
-	[self doesNotRecognizeSelector:_cmd];
-}
-- (void)removeChild:(XspfQTComponent *)child
-{
-	[self doesNotRecognizeSelector:_cmd];
-}
-- (void)insertChild:(XspfQTComponent *)child atIndex:(unsigned)index
-{
-	[self doesNotRecognizeSelector:_cmd];
-}
-- (void)removeChildAtIndex:(unsigned)index
-{
-	[self doesNotRecognizeSelector:_cmd];
-}
 - (void)setTitle:(NSString *)new
 {
 	if(title == new) return;
@@ -128,6 +73,49 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 {
 	return title;
 }
+- (QTMovie *)qtMovie
+{
+	return nil;
+}
+
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+	NSString *string = [[self XMLElement] XMLString];
+	[aCoder encodeObject:string forKey:XspfQTComponentXMLStringCodingKey];
+}
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	[super init];
+	[self autorelease];
+	
+	id string = [aDecoder decodeObjectForKey:XspfQTComponentXMLStringCodingKey];
+	
+	NSError *error = nil;
+	NSXMLElement *element = [[[NSXMLElement alloc] initWithXMLString:string error:&error] autorelease];
+	if(error) {
+		NSLog(@"%@", error);
+		return nil;
+	}
+	
+	return [[[self class] alloc] initWithXMLElement:element];
+}
+
+- (NSUInteger)hash
+{
+	return [[self title] hash];
+}
+- (BOOL)isEqual:(id)other
+{
+	if(![other isMemberOfClass:[self class]]) return NO;
+	if(![[self title] isEqualToString:[other title]]) return NO;
+	
+	return YES;
+}
+@end
+
+@implementation XspfQTComponent(XspfComponentOtherMethods)
+#pragma mark #### XspfComponentSelection ####
 - (BOOL)isSelected
 {
 	return isSelected;
@@ -143,20 +131,6 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 	[self willChangeValueForKey:@"isSelected"];
 	isSelected = NO;
 	[self didChangeValueForKey:@"isSelected"];
-}
-- (void)setSelectionIndex:(unsigned)index
-{
-	[self doesNotRecognizeSelector:_cmd];
-	
-	// 現在値と違うなら現在値をdeselect
-	
-	// 新しい値をselect
-}
-- (unsigned)selectionIndex
-{
-	[self doesNotRecognizeSelector:_cmd];
-	
-	return NSNotFound;
 }
 - (BOOL)setSelectionIndexPath:(NSIndexPath *)indexPath
 {
@@ -217,47 +191,36 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 {
 	return self;
 }
-- (void)next
-{
-	[self doesNotRecognizeSelector:_cmd];
-}
-- (void)previous
-{
-	[self doesNotRecognizeSelector:_cmd];
-}
 
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
-	NSString *string = [[self XMLElement] XMLString];
-	[aCoder encodeObject:string forKey:XspfQTComponentXMLStringCodingKey];
-}
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-	[super init];
-	[self autorelease];
-	
-	id string = [aDecoder decodeObjectForKey:XspfQTComponentXMLStringCodingKey];
-	
-	NSError *error = nil;
-	NSXMLElement *element = [[[NSXMLElement alloc] initWithXMLString:string error:&error] autorelease];
-	if(error) {
-		NSLog(@"%@", error);
-		return nil;
-	}
-	
-	return [[[self class] alloc] initWithXMLElement:element];
-}
 
-- (NSUInteger)hash
+#pragma mark #### XspfConainerComponent ####
+- (void)setParent:(XspfQTComponent *)new
 {
-	return [[self title] hash];
+	parent = new;
 }
-- (BOOL)isEqual:(id)other
+- (XspfQTComponent *)parent
 {
-	if(![other isMemberOfClass:[self class]]) return NO;
-	if(![[self title] isEqualToString:[other title]]) return NO;
-	
+	return parent;
+}
+- (NSArray *)children
+{
+	return nil;
+}
+- (unsigned)childrenCount
+{
+	return [[self children] count];
+}
+- (BOOL)isLeaf
+{
 	return YES;
+}
+- (NSUInteger)indexOfChild:(XspfQTComponent *)child
+{
+	return [[self children] indexOfObject:child];
+}
+- (XspfQTComponent *)childAtIndex:(NSUInteger)index
+{
+	return [[self children] objectAtIndex:index];
 }
 
 @end
