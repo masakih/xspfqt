@@ -31,7 +31,9 @@
 
 - (void)setTitle:(NSString *)title;
 - (NSString *)title;
+@end
 
+@interface XspfQTComponent (XspfComponentSelection)
 // selection for playing.
 - (BOOL)isSelected;
 - (void)select;
@@ -41,13 +43,15 @@
 - (BOOL)setSelectionIndexPath:(NSIndexPath *)indexPath;
 - (NSIndexPath *)selectionIndexPath;
 
-- (XspfQTComponent *)currentTrack;	// default self;
-- (void)next;						// abstract.
-- (void)previous;					// abstract.
-
 - (void)setIsPlayed:(BOOL)state;
 - (BOOL)isPlayed;
 
+- (XspfQTComponent *)currentTrack;	// default self;
+- (void)next;						// abstract.
+- (void)previous;					// abstract.
+@end
+
+@interface XspfQTComponent(XspfConainerComponent)
 - (XspfQTComponent *)parent;
 - (NSArray *)children;		// default nil.
 - (unsigned)childrenCount;	// default [[self children] count].
@@ -60,6 +64,4 @@
 - (void)insertChild:(XspfQTComponent *)child atIndex:(unsigned)index;	// not implemented.
 - (void)removeChildAtIndex:(unsigned)index;	//not implemented.
 - (void)setParent:(XspfQTComponent *)parent;	// Do not call directly. call in only -addChild: method.
-
-
 @end
