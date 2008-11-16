@@ -22,7 +22,7 @@
 @implementation XspfQTMovieWindowController
 
 #pragma mark ### Static variables ###
-static const float sVolumeDelta = 0.2;
+static const float sVolumeDelta = 0.1;
 static NSString *const kQTMovieKeyPath = @"trackList.qtMovie";
 static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 
@@ -233,8 +233,6 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 }
 - (void)exitFullScreen
 {
-	NSWindow *w = [self fullscreenWindow];
-	
 	[qtView retain];
 	{
 		[qtView removeFromSuperview];
@@ -243,12 +241,28 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	}
 	[qtView release];
 	
+	[self sizeTofitWidnow];
+	NSSize movieSize = [[[self qtMovie] attributeForKey:QTMovieNaturalSizeAttribute] sizeValue];
+	if(movieSize.width != 0) {
+		NSRect windowRect = [[self window] frame];
+		
+		CGFloat contentViewHeight = [[[self window] contentView] frame].size.height;
+		NSRect newViewRect = nomalModeSavedFrame;
+		newViewRect.size.height = newViewRect.size.width * (movieSize.height / movieSize.width);
+		newViewRect.origin.y = contentViewHeight - newViewRect.size.height;
+		
+		NSSize delta = [self windowSizeWithoutQTView];
+		windowRect.size.height = newViewRect.size.height + delta.height;
+		[[self window] setFrame:windowRect display:NO];
+		
+		[qtView setFrame:newViewRect];
+	}
+	
 	[NSMenu setMenuBarVisible:YES];
-	[w orderOut:self];
+	[[self fullscreenWindow] orderOut:self];
 	
 	[[self window] makeKeyAndOrderFront:self];
 	[[self window] makeFirstResponder:qtView];
-	[self sizeTofitWidnow];
 }
 
 - (NSWindow *)fullscreenWindow
@@ -257,9 +271,9 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	
 	NSRect mainScreenRect = [[NSScreen mainScreen] frame];
 	fullscreenWindow = [[XspfQTFullScreenWindow alloc] initWithContentRect:mainScreenRect
-															   styleMask:NSBorderlessWindowMask
-																 backing:NSBackingStoreBuffered
-																   defer:YES];
+																 styleMask:NSBorderlessWindowMask
+																   backing:NSBackingStoreBuffered
+																	 defer:YES];
 	[fullscreenWindow setReleasedWhenClosed:NO];
 	[fullscreenWindow setBackgroundColor:[NSColor blackColor]];
 	[fullscreenWindow setDelegate:self];
