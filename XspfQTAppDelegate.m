@@ -18,6 +18,8 @@
 									forName:@"XspfQTTimeTransformer"];
 	[NSValueTransformer setValueTransformer:[[[XspfQTTimeDateTransformer alloc] init] autorelease]
 									forName:@"XspfQTTimeDateTransformer"];
+	[NSValueTransformer setValueTransformer:[[[XspfQTSizeToStringTransformer alloc] init] autorelease]
+									forName:@"XspfQTSizeToStringTransformer"];
 }
 
 - (void)awakeFromNib

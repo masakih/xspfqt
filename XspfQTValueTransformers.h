@@ -13,3 +13,6 @@
 @end
 @interface XspfQTTimeDateTransformer : NSValueTransformer
 @end
+
+@interface XspfQTSizeToStringTransformer : NSValueTransformer
+@end

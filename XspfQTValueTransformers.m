@@ -64,3 +64,24 @@
 	return [NSDate dateWithTimeIntervalSince1970:res];
 }
 @end
+
+
+@implementation XspfQTSizeToStringTransformer
++ (Class)transformedValueClass
+{
+	return [NSString class];
+}
++ (BOOL)allowsReverseTransformation
+{
+	return NO;
+}
+- (id)transformedValue:(id)value
+{
+	if(!value) return nil;
+	
+	NSSize size = [value sizeValue];
+	
+	return [NSString stringWithFormat:@"%.0f X %.0f", size.width, size.height];
+}
+@end
+
