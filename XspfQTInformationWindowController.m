@@ -70,9 +70,13 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 - (void)notify
 {
 	[self willChangeValueForKey:@"movieAttributes"];
-	[self didChangeValueForKey:@"movieAttributes"];
+	[self performSelector:@selector(didChangeValueForKey:)
+			   withObject:@"movieAttributes"
+			   afterDelay:0.0];
 	[self willChangeValueForKey:@"currentTrack"];
-	[self didChangeValueForKey:@"currentTrack"];
+	[self performSelector:@selector(didChangeValueForKey:)
+			   withObject:@"currentTrack"
+			   afterDelay:0.0];
 }
 
 - (void)windowDidLoad
@@ -88,6 +92,11 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 			 object:nil];
 	[nc addObserver:self
 		   selector:@selector(notifee:)
+			   name:NSWindowDidResizeNotification
+			 object:nil];
+	
+	[nc addObserver:self
+		   selector:@selector(notifee:)
 			   name:NSApplicationDidBecomeActiveNotification
 			 object:NSApp];
 	[nc addObserver:self
@@ -98,6 +107,7 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 		   selector:@selector(notifee:)
 			   name:NSApplicationDidHideNotification
 			 object:NSApp];
+	
 	[nc addObserver:self
 		   selector:@selector(xspfDocumentWillCloseNotification:)
 			   name:XspfQTDocumentWillCloseNotification
