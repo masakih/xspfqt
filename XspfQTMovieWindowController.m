@@ -204,6 +204,17 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	return NSMakeSize(targetViewWidth, targetViewHeight);
 }
 
+- (NSSize)windowSizeFromMovieSize:(NSSize)movieSize
+{
+	
+	//
+}
+
+- (void)setMovieSize:(NSSize)movieSize
+{
+	//
+}
+
 - (void)play
 {
 	[qtView performSelectorOnMainThread:@selector(play:) withObject:self waitUntilDone:NO];
@@ -353,6 +364,50 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	[qtView pause:sender];
 	[[[self document] trackList] previous];
 }
+
+- (IBAction)normalSize:(id)sender
+{
+	if(fullScreenMode) return;
+	
+	QTMovie *curMovie = [self qtMovie];
+	if(!curMovie) return;
+	
+	NSSize movieSize = [[curMovie attributeForKey:QTMovieNaturalSizeAttribute] sizeValue];
+	if(movieSize.width == 0) return;
+	
+	[self setMovieSize:movieSize];
+}
+- (IBAction)halfSize:(id)sender
+{
+	if(fullScreenMode) return;
+	
+	QTMovie *curMovie = [self qtMovie];
+	if(!curMovie) return;
+	
+	NSSize movieSize = [[curMovie attributeForKey:QTMovieNaturalSizeAttribute] sizeValue];
+	if(movieSize.width == 0) return;
+	
+	movieSize.width *= 0.5;
+	movieSize.height *= 0.5;
+	
+	[self setMovieSize:movieSize];
+}
+- (IBAction)doubleSize:(id)sender
+{
+	if(fullScreenMode) return;
+	
+	QTMovie *curMovie = [self qtMovie];
+	if(!curMovie) return;
+	
+	NSSize movieSize = [[curMovie attributeForKey:QTMovieNaturalSizeAttribute] sizeValue];
+	if(movieSize.width == 0) return;
+	
+	movieSize.width *= 2;
+	movieSize.height *= 2;
+	
+	[self setMovieSize:movieSize];
+}
+- (IBAction)screenSize:(id)sender;
 
 #pragma mark ### Notification & Timer ###
 - (void)didEndMovie:(id)notification

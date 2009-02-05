@@ -36,6 +36,10 @@
 - (IBAction)backwardTagValueSecends:(id)sender;
 - (IBAction)nextTrack:(id)sender;
 - (IBAction)previousTrack:(id)sender;
+- (IBAction)normalSize:(id)sender;
+- (IBAction)halfSize:(id)sender;
+- (IBAction)doubleSize:(id)sender;
+- (IBAction)screenSize:(id)sender;
 
 - (void)play;
 - (void)stop;
