@@ -17,23 +17,27 @@
 - (void)sizeTofitWidnow;
 - (NSSize)fitSizeToSize:(NSSize)toSize;
 - (NSWindow *)fullscreenWindow;
+- (void)startedMovie;
+- (void)stopedMovie;
 @end
 
 @implementation XspfQTMovieWindowController
 
 #pragma mark ### Static variables ###
 static const float sVolumeDelta = 0.1;
+static const NSTimeInterval sUpdateTimeInterval = 0.01;
 static NSString *const kQTMovieKeyPath = @"trackList.qtMovie";
 static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
+static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 
 - (id)init
 {
 	if(self = [super initWithWindowNibName:@"XspfQTDocument"]) {
-		updateTime = [NSTimer scheduledTimerWithTimeInterval:0.3
-													  target:self
-													selector:@selector(updateTimeIfNeeded:)
-													userInfo:NULL
-													 repeats:YES];
+//		updateTime = [NSTimer scheduledTimerWithTimeInterval:sUpdateTimeInterval
+//													  target:self
+//													selector:@selector(updateTimeIfNeeded:)
+//													userInfo:NULL
+//													 repeats:YES];
 	}
 	
 	return self;
@@ -47,7 +51,7 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	[self setQtMovie:nil];
 		
 	[fullscreenWindow release];
-	[updateTime invalidate];
+	[self stopedMovie];
 	[prevMouseMovedDate release];
 	
 	[super dealloc];
@@ -110,9 +114,9 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 		id new = [change objectForKey:NSKeyValueChangeNewKey];
 //		NSLog(@"Observed!");
 		if([new boolValue]) {
-			[playButton setTitle:@"||"];
+			[self startedMovie];
 		} else {
-			[playButton setTitle:@">"];
+			[self stopedMovie];
 		}
 		return;
 	}
@@ -208,13 +212,42 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 {
 	
 	//
+	
+	return NSZeroSize;
 }
 
 - (void)setMovieSize:(NSSize)movieSize
 {
 	//
 }
-
+- (void)startedMovie
+{
+	[playButton setTitle:@"||"];
+	
+	@synchronized(self) {
+		if(updateTime) return;
+		
+		updateTime = [[NSTimer timerWithTimeInterval:sUpdateTimeInterval
+											  target:self
+											selector:@selector(updateTimeIfNeeded:)
+											userInfo:NULL
+											 repeats:YES] retain];
+		
+		NSRunLoop *currentLoop = [NSRunLoop currentRunLoop];
+		[currentLoop addTimer:updateTime forMode:NSDefaultRunLoopMode];
+	}
+}
+		
+- (void)stopedMovie
+{
+	[playButton setTitle:@">"];
+	
+	@synchronized(self) {
+		[updateTime invalidate];
+		[updateTime release];
+		updateTime = nil;
+	}
+}
 - (void)play
 {
 	[qtView performSelectorOnMainThread:@selector(play:) withObject:self waitUntilDone:NO];
@@ -305,15 +338,15 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 
 - (IBAction)turnUpVolume:(id)sender
 {
-	NSNumber *cv = [self valueForKeyPath:@"qtMovie.volume"];
+	NSNumber *cv = [self valueForKeyPath:kVolumeKeyPath];
 	cv = [NSNumber numberWithFloat:[cv floatValue] + sVolumeDelta];
-	[self setValue:cv forKeyPath:@"qtMovie.volume"];
+	[self setValue:cv forKeyPath:kVolumeKeyPath];
 }
 - (IBAction)turnDownVolume:(id)sender
 {
-	NSNumber *cv = [self valueForKeyPath:@"qtMovie.volume"];
+	NSNumber *cv = [self valueForKeyPath:kVolumeKeyPath];
 	cv = [NSNumber numberWithFloat:[cv floatValue] - sVolumeDelta];
-	[self setValue:cv forKeyPath:@"qtMovie.volume"];
+	[self setValue:cv forKeyPath:kVolumeKeyPath];
 }
 - (IBAction)toggleFullScreenMode:(id)sender
 {
@@ -407,7 +440,11 @@ static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 	
 	[self setMovieSize:movieSize];
 }
-- (IBAction)screenSize:(id)sender;
+- (IBAction)screenSize:(id)sender
+{
+	//
+	//
+}
 
 #pragma mark ### Notification & Timer ###
 - (void)didEndMovie:(id)notification
