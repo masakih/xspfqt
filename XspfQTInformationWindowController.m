@@ -77,6 +77,14 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 	[self performSelector:@selector(didChangeValueForKey:)
 			   withObject:@"currentTrack"
 			   afterDelay:0.0];
+	[self willChangeValueForKey:@"soundTrackAttributes"];
+	[self performSelector:@selector(didChangeValueForKey:)
+			   withObject:@"soundTrackAttributes"
+			   afterDelay:0.0];
+	[self willChangeValueForKey:@"videoTrackAttributes"];
+	[self performSelector:@selector(didChangeValueForKey:)
+			   withObject:@"videoTrackAttributes"
+			   afterDelay:0.0];
 }
 
 - (void)windowDidLoad
@@ -124,10 +132,9 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 	[super dealloc];
 }
 
-- (id)currentTrack
+- (void)addObservingDocument:(id)doc
 {
-	id doc = [[NSDocumentController sharedDocumentController] currentDocument];
-	if(!doc) return nil;
+	if(!doc) return;
 	
 	if(![observedDocs containsObject:doc]) {
 		[doc addObserver:self
@@ -136,6 +143,12 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 				 context:NULL];
 		[observedDocs addObject:doc];
 	}
+}
+- (id)currentTrack
+{
+	id doc = [[NSDocumentController sharedDocumentController] currentDocument];
+	if(!doc) return nil;
+	[self addObservingDocument:doc];
 	
 	return [doc valueForKeyPath:@"trackList.currentTrack"];
 }
@@ -143,17 +156,35 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 {
 	id doc = [[NSDocumentController sharedDocumentController] currentDocument];
 	if(!doc) return nil;
-	
-	if(![observedDocs containsObject:doc]) {
-		[doc addObserver:self
-			  forKeyPath:@"trackList.qtMovie"
-				 options:0
-				 context:NULL];
-		[observedDocs addObject:doc];
-	}
+	[self addObservingDocument:doc];
 	
 	return [doc valueForKeyPath:@"trackList.qtMovie.movieAttributes"];
 }
+- (id)soundTrackAttributes
+{
+	id doc = [[NSDocumentController sharedDocumentController] currentDocument];
+	if(!doc) return nil;
+	[self addObservingDocument:doc];
+	
+	id movie = [doc valueForKeyPath:@"trackList.qtMovie"];
+	NSArray *soundTracks = [movie tracksOfMediaType:QTMediaTypeSound];
+	if(!soundTracks ||[soundTracks count] == 0) return nil;
+	
+	return [[soundTracks objectAtIndex:0] trackAttributes];
+}
+- (id)videoTrackAttributes
+{
+	id doc = [[NSDocumentController sharedDocumentController] currentDocument];
+	if(!doc) return nil;
+	[self addObservingDocument:doc];
+	
+	id movie = [doc valueForKeyPath:@"trackList.qtMovie"];
+	NSArray *videoTracks = [movie tracksOfMediaType:QTMediaTypeVideo];
+	if(!videoTracks ||[videoTracks count] == 0) return nil;
+	
+	return [[videoTracks objectAtIndex:0] trackAttributes];
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath
 					  ofObject:(id)object
 						change:(NSDictionary *)change
