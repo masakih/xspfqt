@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="6"/>
+			<integer value="5"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -34,7 +34,7 @@
 				<string key="NSWindowClass">NSPanel</string>
 				<nil key="NSViewClass"/>
 				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
-				<string key="NSWindowContentMinSize">{288, 367}</string>
+				<string key="NSWindowContentMinSize">{288, 431}</string>
 				<object class="NSView" key="NSWindowView" id="117016103">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
@@ -364,7 +364,7 @@
 					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 832}}</string>
-				<string key="NSMinSize">{288, 386}</string>
+				<string key="NSMinSize">{288, 450}</string>
 				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<string key="NSFrameAutosaveName">Information</string>
 			</object>
@@ -450,22 +450,6 @@
 						</object>
 					</object>
 					<int key="connectionID">17</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: selection.QTMovieDataSizeAttribute</string>
-						<reference key="source" ref="199260623"/>
-						<reference key="destination" ref="364340557"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="199260623"/>
-							<reference key="NSDestination" ref="364340557"/>
-							<string key="NSLabel">value: selection.QTMovieDataSizeAttribute</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">selection.QTMovieDataSizeAttribute</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">20</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -707,6 +691,26 @@
 					</object>
 					<int key="connectionID">97</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: selection.QTMovieDataSizeAttribute</string>
+						<reference key="source" ref="199260623"/>
+						<reference key="destination" ref="364340557"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="199260623"/>
+							<reference key="NSDestination" ref="364340557"/>
+							<string key="NSLabel">value: selection.QTMovieDataSizeAttribute</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">selection.QTMovieDataSizeAttribute</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSValueTransformerName</string>
+								<string key="NS.object.0">XspfQTFileSizeStringTransformer</string>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">98</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -757,7 +761,6 @@
 							<reference ref="1049413128"/>
 							<reference ref="810864600"/>
 							<reference ref="898455210"/>
-							<reference ref="199260623"/>
 							<reference ref="110531497"/>
 							<reference ref="948125884"/>
 							<reference ref="975244999"/>
@@ -770,6 +773,7 @@
 							<reference ref="560270336"/>
 							<reference ref="509515436"/>
 							<reference ref="622203633"/>
+							<reference ref="199260623"/>
 						</object>
 						<reference key="parent" ref="1036981410"/>
 					</object>
@@ -1162,7 +1166,7 @@
 					<reference ref="9"/>
 					<reference ref="9"/>
 					<string>{3.40282e+38, 3.40282e+38}</string>
-					<string>{288, 367}</string>
+					<string>{288, 431}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSMutableArray">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1213,7 +1217,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">97</int>
+			<int key="maxID">98</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

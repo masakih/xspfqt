@@ -16,3 +16,6 @@
 
 @interface XspfQTSizeToStringTransformer : NSValueTransformer
 @end
+
+@interface XspfQTFileSizeStringTransformer : NSValueTransformer
+@end
