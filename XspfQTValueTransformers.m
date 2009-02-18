@@ -85,3 +85,37 @@
 }
 @end
 
+@implementation XspfQTFileSizeStringTransformer
++ (Class)transformedValueClass
+{
+	return [NSString class];
+}
++ (BOOL)allowsReverseTransformation
+{
+	return NO;
+}
+- (id)transformedValue:(id)value
+{
+	if(!value) return nil;
+	
+	double dSize = [value longLongValue];
+	
+	if(dSize < 1024) {
+		return [NSString stringWithFormat:@"%.0f Byte", dSize];
+	}
+	
+	dSize /= 1024;
+	if(dSize < 1024) {
+		return [NSString stringWithFormat:@"%.2f KB", dSize];
+	}
+	
+	dSize /= 1024;
+	if(dSize < 1024) {
+		return [NSString stringWithFormat:@"%.2f MB", dSize];
+	}
+	
+	dSize /= 1024;
+	return [NSString stringWithFormat:@"%.2f GB", dSize];
+}
+@end
+
