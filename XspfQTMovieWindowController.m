@@ -218,7 +218,18 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 
 - (void)setMovieSize:(NSSize)movieSize
 {
-	//
+	NSRect newFrame = [[self window] frame];
+	NSSize newSize;
+	
+	newSize = [self windowSizeWithoutQTView];
+	newSize.width += movieSize.width;
+	newSize.height += movieSize.height;
+	
+	newFrame.origin.y -= newSize.height - newFrame.size.height;	
+	newFrame.size = newSize;
+	
+	NSWindow *w = [self window];
+	[w setFrame:newFrame display:YES animate:YES];
 }
 - (void)startedMovie
 {
@@ -491,6 +502,20 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 			[menuItem setTitle:NSLocalizedString(@"Full Screen", @"Full Screen")];
 		}
 		return YES;
+	}
+	
+	if([menuItem action] == @selector(screenSize:)) {
+		return NO;
+	}
+	
+	if([menuItem action] == @selector(normalSize:)
+	   || [menuItem action] == @selector(halfSize:)
+	   || [menuItem action] == @selector(doubleSize:)) {
+		if(fullScreenMode) {
+			return NO;
+		} else {
+			return YES;
+		}
 	}
 	
 	return YES;

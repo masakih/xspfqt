@@ -260,7 +260,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	}
 	
 	[pasteboard declareTypes:[NSArray arrayWithObject:XspfQTPlayListItemType]
-					   owner:self];
+					   owner:nil];
 	[pasteboard setData:data
 				forType:XspfQTPlayListItemType];
 	return YES;
