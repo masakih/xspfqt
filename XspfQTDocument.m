@@ -16,6 +16,8 @@
 - (XspfQTComponent *)playlist;
 - (NSXMLDocument *)XMLDocument;
 - (NSData *)outputData;
+
+- (NSData *)dataFromURL:(NSURL *)url error:(NSError **)outError;
 @end
 
 @implementation XspfQTDocument
@@ -53,8 +55,58 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	return [self outputData];
 }
 
+- (BOOL)readFromURL:(NSURL *)absoluteURL ofType:(NSString *)typeName error:(NSError **)outError
+{
+	*outError = nil;
+	
+	if(![typeName isEqualToString:@"QuickTime Movie"]) {
+		NSData *data = [self dataFromURL:absoluteURL error:outError];
+		if(!data) return NO;
+		
+		return [self readFromData:data ofType:typeName error:outError];
+	}
+	
+	NSString *xmlElem;
+	xmlElem = [NSString stringWithFormat:@"<track><location>%@</location></track>",
+			   [absoluteURL absoluteString]];
+	
+	NSError *error = nil;
+	id new = [XspfQTComponent xspfComponentWithXMLElementString:xmlElem
+														  error:&error];
+	if(error) {
+		NSLog(@"%@", error);
+		if(outError) {
+			*outError = error;
+		}
+		return NO;
+	}
+	
+	id pl = [XspfQTComponent xspfPlaylist];
+	if(!pl) {
+		return NO;
+	}
+	
+	[[[pl children] objectAtIndex:0] addChild:new];
+	
+	[self setPlaylist:pl];
+	id t = [self trackList];
+	if(![t title]) {
+		[t setTitle:[[[self fileURL] path] lastPathComponent]];
+	}
+	
+	[self setFileType:@"XML Shareable Playlist Format"];
+	[self setFileURL:nil];
+	
+	return YES;
+}
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
 {
+	*outError = nil;
+	
+	if(![typeName isEqualToString:@"XML Shareable Playlist Format"]) {
+		return NO;
+	}
+	
 	NSError *error = nil;
 	NSXMLDocument *d = [[[NSXMLDocument alloc] initWithData:data
 													options:0
@@ -190,6 +242,24 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	id undo = [self undoManager];
 	[[undo prepareWithInvocationTarget:self] insertComponent:item atIndex:index];
 	[[self trackList] removeChild:item];
+}
+
+- (NSData *)dataFromURL:(NSURL *)url error:(NSError **)outError
+{
+	NSURLRequest *req = [NSURLRequest requestWithURL:url];
+	NSURLResponse *res = nil;
+	NSError *err = nil;
+	NSData *data = [NSURLConnection sendSynchronousRequest:req
+										 returningResponse:&res
+													 error:&err];
+	if(err) {
+		if(outError) {
+			*outError = err;
+		}
+		return nil;
+	}
+	
+	return data;
 }
 
 - (IBAction)dump:(id)sender
