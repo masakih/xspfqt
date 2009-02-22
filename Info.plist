@@ -23,6 +23,43 @@
 			<string>Editor</string>
 			<key>NSDocumentClass</key>
 			<string>XspfQTDocument</string>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>XML</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>mov</string>
+				<string>avi</string>
+				<string>mpg</string>
+				<string>mpeg</string>
+				<string>mp4</string>
+				<string>mpg4</string>
+				<string>mqv</string>
+			</array>
+			<key>CFBundleTypeMIMETypes</key>
+			<array>
+				<string>video/quicktime</string>
+				<string>video/mp4</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>QuickTime Movie</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>MooV</string>
+				<string>moov</string>
+				<string>qtlk</string>
+				<string>MPEG</string>
+				<string>mpg4</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSDocumentClass</key>
+			<string>XspfQTDocument</string>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>XML</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
