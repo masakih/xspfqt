@@ -26,6 +26,8 @@
 	NSDate *prevMouseMovedDate;
 	
 	NSSize windowSizeWithoutQTView;
+	
+	BOOL isExchangingFullScreen;
 }
 
 - (IBAction)turnUpVolume:(id)sender;
