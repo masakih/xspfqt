@@ -15,5 +15,6 @@
 }
 
 - (void)setIsExchangingFullScreen:(BOOL)flag;
+- (CGFloat)titlebarHeight;
 
 @end

@@ -41,4 +41,8 @@ static CGFloat titlebarHeight = 0;
 {
 	isExchangingFullScreen = flag;
 }
+- (CGFloat)titlebarHeight
+{
+	return titlebarHeight;
+}
 @end
