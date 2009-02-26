@@ -271,51 +271,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 {
 	[qtView performSelectorOnMainThread:@selector(pause:) withObject:self waitUntilDone:YES];
 }
-
-const CGDisplayBlendFraction grayComp = 0.0;
-- (CGDisplayFadeReservationToken)fade1
-{
-	CGDisplayErr err;
-	CGDisplayFadeReservationToken token;
-	
-	err = CGAcquireDisplayFadeReservation(kCGMaxDisplayReservationInterval, &token);
-	if(err == kCGErrorSuccess) {
-		err = CGDisplayFade( token, 0.8,
-							kCGDisplayBlendNormal, kCGDisplayBlendSolidColor,
-							grayComp, grayComp, grayComp,
-							FALSE);
-		
-		return token;
-	}
-	return 0;
-}
-- (void)fade2:(CGDisplayFadeReservationToken)token
-{
-	CGDisplayErr err;
-	
-	if(token == 0) return;
-	
-	err = CGDisplayFade(token, 0.3,
-						kCGDisplayBlendSolidColor, kCGDisplayBlendNormal,
-						0, 0, 0,
-						FALSE);
-    err = CGReleaseDisplayFadeReservation(token);
-}
-- (void)fade3
-{
-	CGDisplayErr err;
-	CGDisplayFadeReservationToken token;
-	
-	err = CGAcquireDisplayFadeReservation(kCGMaxDisplayReservationInterval, &token);
-	if(err == kCGErrorSuccess) {
-		
-		err = CGDisplayFade(token, 0.8,
-							kCGDisplayBlendSolidColor, kCGDisplayBlendNormal,
-							0, 0, 0,
-							FALSE);
-		err = CGReleaseDisplayFadeReservation(token);
-	}
-}
 - (void)enterFullScreen
 {
 	NSWindow *w = [self fullscreenWindow];
@@ -325,36 +280,27 @@ const CGDisplayBlendFraction grayComp = 0.0;
 	XspfQTMovieWindow *player = (XspfQTMovieWindow *)[self window];
 	NSRect originalWFrame = [player frame];
 	
-	//	[NSMenu setMenuBarVisible:NO];
 	SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar);
 	
 	NSRect newWFrame = [[NSScreen mainScreen] frame];
 //	NSLog(@"screen ->\t%@",NSStringFromRect(newWFrame));
 	
-	NSSize delta = [self windowSizeWithoutQTView];
-	newWFrame.size.width += delta.width;
-	newWFrame.size.height += delta.height;
-	newWFrame.origin.y -= delta.height;
-//	newWFrame.size = [self fitSizeToSize:[[NSScreen mainScreen] frame].size];
+	newWFrame.size.width += windowSizeWithoutQTView.width;
+	newWFrame.size.height += windowSizeWithoutQTView.height;
+	newWFrame.origin.y -= windowSizeWithoutQTView.height;
 //	NSLog(@"window ->\t%@",NSStringFromRect(newWFrame));
 	
 	isExchangingFullScreen = YES;
 	[player setIsExchangingFullScreen:YES];
 	
-	[player setLevel:CGShieldingWindowLevel()+1];
-	CGDisplayFadeReservationToken token;
-	token = [self fade1];
 	[player setFrame:newWFrame display:YES animate:YES];
-	[self fade2:token];
-	[player setLevel:NSNormalWindowLevel];
 	
 	[player setIsExchangingFullScreen:NO];
 	isExchangingFullScreen = NO;
 //	NSLog(@"new window ->\t%@",NSStringFromRect([player frame]));
 	
-	
-	[w makeKeyAndOrderFront:self];
 	[w setContentView:qtView];
+	[w makeKeyAndOrderFront:self];
 	
 	[w makeFirstResponder:qtView];
 	
@@ -398,8 +344,6 @@ const CGDisplayBlendFraction grayComp = 0.0;
 		[[player contentView] addSubview:qtView];
 	}
 	[qtView release];
-	
-	[self fade3];
 	
 	[player makeKeyAndOrderFront:self];
 	[player makeFirstResponder:qtView];
