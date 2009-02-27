@@ -10,6 +10,8 @@
 #import "XspfQTDocument.h"
 
 
+static NSString *const XspfDocumentQtMovieKeyPath = @"trackList.qtMovie";
+
 @implementation XspfQTInformationWindowController
 static XspfQTInformationWindowController *sharedInstance = nil;
 
@@ -103,18 +105,14 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 			   name:NSWindowDidResizeNotification
 			 object:nil];
 	
-	[nc addObserver:self
-		   selector:@selector(notifee:)
-			   name:NSApplicationDidBecomeActiveNotification
-			 object:NSApp];
-	[nc addObserver:self
-		   selector:@selector(notifee:)
-			   name:NSApplicationDidHideNotification
-			 object:NSApp];
-	[nc addObserver:self
-		   selector:@selector(notifee:)
-			   name:NSApplicationDidHideNotification
-			 object:NSApp];
+//	[nc addObserver:self
+//		   selector:@selector(notifee:)
+//			   name:NSApplicationDidBecomeActiveNotification
+//			 object:NSApp];
+//	[nc addObserver:self
+//		   selector:@selector(notifee:)
+//			   name:NSApplicationDidHideNotification
+//			 object:NSApp];
 	
 	[nc addObserver:self
 		   selector:@selector(xspfDocumentWillCloseNotification:)
@@ -138,7 +136,7 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 	
 	if(![observedDocs containsObject:doc]) {
 		[doc addObserver:self
-			  forKeyPath:@"trackList.qtMovie"
+			  forKeyPath:XspfDocumentQtMovieKeyPath
 				 options:0
 				 context:NULL];
 		[observedDocs addObject:doc];
@@ -160,29 +158,26 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 	
 	return [doc valueForKeyPath:@"trackList.qtMovie.movieAttributes"];
 }
-- (id)soundTrackAttributes
+
+- (id)trackAttributesByType:(NSString *)type
 {
 	id doc = [[NSDocumentController sharedDocumentController] currentDocument];
 	if(!doc) return nil;
 	[self addObservingDocument:doc];
 	
-	id movie = [doc valueForKeyPath:@"trackList.qtMovie"];
-	NSArray *soundTracks = [movie tracksOfMediaType:QTMediaTypeSound];
-	if(!soundTracks ||[soundTracks count] == 0) return nil;
+	id movie = [doc valueForKeyPath:XspfDocumentQtMovieKeyPath];
+	NSArray *tracks = [movie tracksOfMediaType:type];
+	if(!tracks || [tracks count] == 0) return nil;
 	
-	return [[soundTracks objectAtIndex:0] trackAttributes];
+	return [[tracks objectAtIndex:0] trackAttributes];
+}
+- (id)soundTrackAttributes
+{
+	return [self trackAttributesByType:QTMediaTypeSound];
 }
 - (id)videoTrackAttributes
 {
-	id doc = [[NSDocumentController sharedDocumentController] currentDocument];
-	if(!doc) return nil;
-	[self addObservingDocument:doc];
-	
-	id movie = [doc valueForKeyPath:@"trackList.qtMovie"];
-	NSArray *videoTracks = [movie tracksOfMediaType:QTMediaTypeVideo];
-	if(!videoTracks ||[videoTracks count] == 0) return nil;
-	
-	return [[videoTracks objectAtIndex:0] trackAttributes];
+	return [self trackAttributesByType:QTMediaTypeVideo];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -190,7 +185,7 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 						change:(NSDictionary *)change
 					   context:(void *)context
 {
-	if([keyPath isEqualToString:@"trackList.qtMovie"]) {
+	if([keyPath isEqualToString:XspfDocumentQtMovieKeyPath]) {
 		[self notify];
 	}
 }
@@ -201,7 +196,7 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 	
 	if(![observedDocs containsObject:doc]) return;
 	
-	[doc removeObserver:self forKeyPath:@"trackList.qtMovie"];
+	[doc removeObserver:self forKeyPath:XspfDocumentQtMovieKeyPath];
 	[observedDocs removeObject:doc];
 	[docController setContent:nil];
 	[currentTrackController setContent:nil];
