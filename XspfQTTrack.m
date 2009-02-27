@@ -212,7 +212,7 @@
 		float rate = [rateValue floatValue];
 		if(rate == 0) {
 			[self setIsPlayed:NO];
-		} else if(rate == 1) {
+		} else {
 			[self setIsPlayed:YES];
 		}
 	}
