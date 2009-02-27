@@ -17,8 +17,8 @@
 - (void)sizeTofitWidnow;
 - (NSSize)fitSizeToSize:(NSSize)toSize;
 - (NSWindow *)fullscreenWindow;
-- (void)startedMovie;
-- (void)stopedMovie;
+- (void)movieDidStart;
+- (void)movieDidPause;
 @end
 
 @implementation XspfQTMovieWindowController
@@ -32,13 +32,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 
 - (id)init
 {
-	if(self = [super initWithWindowNibName:@"XspfQTDocument"]) {
-//		updateTime = [NSTimer scheduledTimerWithTimeInterval:sUpdateTimeInterval
-//													  target:self
-//													selector:@selector(updateTimeIfNeeded:)
-//													userInfo:NULL
-//													 repeats:YES];
-	}
+	self = [super initWithWindowNibName:@"XspfQTDocument"];
 	
 	return self;
 }
@@ -51,7 +45,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	[self setQtMovie:nil];
 		
 	[fullscreenWindow release];
-	[self stopedMovie];
+	[self movieDidPause];
 	[prevMouseMovedDate release];
 	
 	[super dealloc];
@@ -61,7 +55,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	prevMouseMovedDate = [[NSDate dateWithTimeIntervalSinceNow:0.0] retain];
 	
 	id doc = [self document];
-//	NSLog(@"Add Observed! %@", doc);
+	
 	[doc addObserver:self
 		  forKeyPath:kQTMovieKeyPath
 			 options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
@@ -104,7 +98,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 						change:(NSDictionary *)change
 					   context:(void *)context
 {
-//	NSLog(@"Observed!");
 	if([keyPath isEqualToString:kQTMovieKeyPath]) {
 		id new = [change objectForKey:NSKeyValueChangeNewKey];
 		[self setQtMovie:new];
@@ -112,20 +105,13 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	}
 	if([keyPath isEqualToString:kIsPlayedKeyPath]) {
 		id new = [change objectForKey:NSKeyValueChangeNewKey];
-//		NSLog(@"Observed!");
 		if([new boolValue]) {
-			[self startedMovie];
+			[self movieDidStart];
 		} else {
-			[self stopedMovie];
+			[self movieDidPause];
 		}
 		return;
 	}
-	
-	
-	[super observeValueForKeyPath:keyPath
-						 ofObject:object
-						   change:change
-						  context:context];
 }
 
 - (void)setQtMovie:(QTMovie *)qt
@@ -140,7 +126,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 		[nc removeObserver:self name:nil object:qtMovie];
 	}
 	if(qt) {
-		[nc addObserver:self selector:@selector(didEndMovie:) name:QTMovieDidEndNotification object:qt];
+		[nc addObserver:self selector:@selector(movieDidEndNotification:) name:QTMovieDidEndNotification object:qt];
 	}
 	
 	if(qtMovie) {
@@ -162,6 +148,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 
 #pragma mark ### Other functions ###
+// Area size without QTMovieView.
 - (NSSize)windowSizeWithoutQTView
 {
 	if(windowSizeWithoutQTView.width == 0
@@ -193,7 +180,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	QTMovie *curMovie = [self qtMovie];
 	if(!curMovie) return toSize;
 	
-	// Area size without QTMovieView.
 	NSSize delta = [self windowSizeWithoutQTView];
 	
 	NSSize movieSize = [[curMovie attributeForKey:QTMovieNaturalSizeAttribute] sizeValue];
@@ -231,7 +217,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	NSWindow *w = [self window];
 	[w setFrame:newFrame display:YES animate:YES];
 }
-- (void)startedMovie
+- (void)movieDidStart
 {
 	[playButton setTitle:@"||"];
 	
@@ -249,7 +235,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	}
 }
 		
-- (void)stopedMovie
+- (void)movieDidPause
 {
 	[playButton setTitle:@">"];
 	
@@ -334,7 +320,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	
 	isExchangingFullScreen = NO;
 	
-	// move QView.
+	// move QTView.
 	[qtView retain];
 	{
 		[qtView removeFromSuperview];
@@ -494,7 +480,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 
 #pragma mark ### Notification & Timer ###
-- (void)didEndMovie:(id)notification
+- (void)movieDidEndNotification:(id)notification
 {
 	[[[self document] trackList] next];
 }
