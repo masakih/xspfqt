@@ -16,9 +16,8 @@
 }
 - (void)cancelOperation:(id)sender
 {
-	id d = [self delegate];
-	if(d && [d respondsToSelector:_cmd]) {
-		[d performSelector:_cmd withObject:sender];
+	if(_delegate && [_delegate respondsToSelector:_cmd]) {
+		[_delegate cancelOperation:sender];
 	}
 	
 	[super cancelOperation:sender];
