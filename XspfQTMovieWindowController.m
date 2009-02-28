@@ -285,6 +285,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	isExchangingFullScreen = NO;
 //	NSLog(@"new window ->\t%@",NSStringFromRect([player frame]));
 	
+//	[w disableScreenUpdatesUntilFlush];
 	[w setContentView:qtView];
 	[w makeKeyAndOrderFront:self];
 	
@@ -323,18 +324,22 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	// move QTView.
 	[qtView retain];
 	{
-		[qtView removeFromSuperview];
+//		[qtView removeFromSuperview];
 		NSRect fViewRec = [qtView frame];
+		
+		// for do not flushing qtview.
+		[fullscreenWindow setContentView:[[[NSView alloc] initWithFrame:fViewRec] autorelease]];
+		
 		fViewRec.origin.y += windowSizeWithoutQTView.height - [player titlebarHeight];
 		[qtView setFrame:fViewRec];
 		[[player contentView] addSubview:qtView];
 	}
 	[qtView release];
 	
-	[player makeKeyAndOrderFront:self];
+	[player orderFront:self];
 	[player makeFirstResponder:qtView];
 	
-	[[self fullscreenWindow] orderOut:self];
+	[fullscreenWindow orderOut:self];
 	
 	[player setFrame:windowRect display:YES animate:YES];
 	
