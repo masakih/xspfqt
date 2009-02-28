@@ -185,7 +185,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	return [playlist childAtIndex:0];
 }
 
-- (void)setPlayTrackindex:(unsigned)index
+- (void)setPlayingTrackIndex:(unsigned)index
 {
 	[[self trackList] setSelectionIndex:index];
 }
