@@ -16,7 +16,7 @@
 	IBOutlet NSButton *playButton;
 	
 	NSWindow *fullscreenWindow;
-	NSRect nomalModeSavedFrame;
+	NSRect normalModeSavedFrame;
 	BOOL fullScreenMode;
 	
 	QTMovie *qtMovie;
@@ -27,7 +27,7 @@
 	
 	NSSize windowSizeWithoutQTView;
 	
-	BOOL isExchangingFullScreen;
+	BOOL isChangingFullScreen;
 }
 
 - (IBAction)turnUpVolume:(id)sender;

@@ -11,10 +11,10 @@
 
 @interface XspfQTMovieWindow : NSWindow
 {
-	BOOL isExchangingFullScreen;
+	BOOL isChangingFullScreen;
 }
 
-- (void)setIsExchangingFullScreen:(BOOL)flag;
+- (void)setIsChangingFullScreen:(BOOL)flag;
 - (CGFloat)titlebarHeight;
 
 @end

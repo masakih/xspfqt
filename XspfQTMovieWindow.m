@@ -26,7 +26,7 @@ static CGFloat titlebarHeight = 0;
 }
 - (NSRect)constrainFrameRect:(NSRect)frameRect toScreen:(NSScreen *)screen
 {
-	if(!isExchangingFullScreen) {
+	if(!isChangingFullScreen) {
 		return [super constrainFrameRect:frameRect toScreen:screen];
 	}
 	
@@ -37,9 +37,9 @@ static CGFloat titlebarHeight = 0;
 	return frameRect;
 }
 
-- (void)setIsExchangingFullScreen:(BOOL)flag
+- (void)setIsChangingFullScreen:(BOOL)flag
 {
-	isExchangingFullScreen = flag;
+	isChangingFullScreen = flag;
 }
 - (CGFloat)titlebarHeight
 {

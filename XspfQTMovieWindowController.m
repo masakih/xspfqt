@@ -261,7 +261,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 {
 	NSWindow *w = [self fullscreenWindow];
 	
-	nomalModeSavedFrame = [qtView frame];
+	normalModeSavedFrame = [qtView frame];
 	
 	XspfQTMovieWindow *player = (XspfQTMovieWindow *)[self window];
 	NSRect originalWFrame = [player frame];
@@ -276,13 +276,13 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	newWFrame.origin.y -= windowSizeWithoutQTView.height;
 //	NSLog(@"window ->\t%@",NSStringFromRect(newWFrame));
 	
-	isExchangingFullScreen = YES;
-	[player setIsExchangingFullScreen:YES];
+	isChangingFullScreen = YES;
+	[player setIsChangingFullScreen:YES];
 	
 	[player setFrame:newWFrame display:YES animate:YES];
 	
-	[player setIsExchangingFullScreen:NO];
-	isExchangingFullScreen = NO;
+	[player setIsChangingFullScreen:NO];
+	isChangingFullScreen = NO;
 //	NSLog(@"new window ->\t%@",NSStringFromRect([player frame]));
 	
 //	[w disableScreenUpdatesUntilFlush];
@@ -303,14 +303,14 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	NSRect windowRect = originalWFrame;
 	NSSize movieSize = [[[self qtMovie] attributeForKey:QTMovieNaturalSizeAttribute] sizeValue];
 	if(movieSize.width != 0) {		
-		CGFloat newViewHeight =  nomalModeSavedFrame.size.width * (movieSize.height / movieSize.width);
+		CGFloat newViewHeight =  normalModeSavedFrame.size.width * (movieSize.height / movieSize.width);
 		
 		windowRect.size.height = newViewHeight + windowSizeWithoutQTView.height;
 		windowRect.origin.y -= windowRect.size.height - originalWFrame.size.height + [player titlebarHeight];
 	}
 	
-	isExchangingFullScreen = YES;
-	[player setIsExchangingFullScreen:YES];
+	isChangingFullScreen = YES;
+	[player setIsChangingFullScreen:YES];
 	
 	// caluculate screen size window frame.
 	NSRect screenWFrame = [[NSScreen mainScreen] frame];	
@@ -319,7 +319,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	screenWFrame.origin.y -= windowSizeWithoutQTView.height;
 	[player setFrame:screenWFrame display:NO];
 	
-	isExchangingFullScreen = NO;
+	isChangingFullScreen = NO;
 	
 	// move QTView.
 	[qtView retain];
@@ -344,7 +344,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	[player setFrame:windowRect display:YES animate:YES];
 	
 	[NSMenu setMenuBarVisible:YES];
-	[player setIsExchangingFullScreen:NO];
+	[player setIsChangingFullScreen:NO];
 }
 
 - (NSWindow *)fullscreenWindow
@@ -577,7 +577,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 - (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
 {
-	if(isExchangingFullScreen) return frameSize;
+	if(isChangingFullScreen) return frameSize;
 	
 	return [self fitSizeToSize:frameSize];
 }
