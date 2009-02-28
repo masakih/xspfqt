@@ -69,24 +69,36 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 	return self;
 }
 
++ (NSSet *)keyPathsForValuesAffectingMovieAttributes
+{
+	return [NSSet setWithObject:@"currentTrack"];
+}
++ (NSSet *)keyPathsForValuesAffectingSoundTrackAttributes
+{
+	return [NSSet setWithObject:@"currentTrack"];
+}
++ (NSSet *)keyPathsForValuesAffectingVideoTrackAttributes
+{
+	return [NSSet setWithObject:@"currentTrack"];
+}
 - (void)notify
 {
-	[self willChangeValueForKey:@"movieAttributes"];
-	[self performSelector:@selector(didChangeValueForKey:)
-			   withObject:@"movieAttributes"
-			   afterDelay:0.0];
+//	[self willChangeValueForKey:@"movieAttributes"];
+//	[self performSelector:@selector(didChangeValueForKey:)
+//			   withObject:@"movieAttributes"
+//			   afterDelay:0.0];
 	[self willChangeValueForKey:@"currentTrack"];
 	[self performSelector:@selector(didChangeValueForKey:)
 			   withObject:@"currentTrack"
 			   afterDelay:0.0];
-	[self willChangeValueForKey:@"soundTrackAttributes"];
-	[self performSelector:@selector(didChangeValueForKey:)
-			   withObject:@"soundTrackAttributes"
-			   afterDelay:0.0];
-	[self willChangeValueForKey:@"videoTrackAttributes"];
-	[self performSelector:@selector(didChangeValueForKey:)
-			   withObject:@"videoTrackAttributes"
-			   afterDelay:0.0];
+//	[self willChangeValueForKey:@"soundTrackAttributes"];
+//	[self performSelector:@selector(didChangeValueForKey:)
+//			   withObject:@"soundTrackAttributes"
+//			   afterDelay:0.0];
+//	[self willChangeValueForKey:@"videoTrackAttributes"];
+//	[self performSelector:@selector(didChangeValueForKey:)
+//			   withObject:@"videoTrackAttributes"
+//			   afterDelay:0.0];
 }
 
 - (void)windowDidLoad
