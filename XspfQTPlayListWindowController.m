@@ -66,7 +66,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	NSIndexPath *selectionIndexPath = [trackListTree selectionIndexPath];
 	
 	if([selectionIndexPath length] > 1) {
-		[[self document] setPlayTrackindex:[selectionIndexPath indexAtPosition:1]];
+		[[self document] setPlayingTrackIndex:[selectionIndexPath indexAtPosition:1]];
 	}
 }
 - (IBAction)delete:(id)sender
@@ -343,7 +343,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 	[self moveItem:newItem toIndex:index];
 	
 	if(mustSelectionChange) {
-		[doc setPlayTrackindex:index];
+		[doc setPlayingTrackIndex:index];
 	}
 	
 	return YES;
