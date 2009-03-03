@@ -157,9 +157,6 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 			deletedFirstIndex = [NSIndexPath indexPathWithIndexes:indexP + 1
 														   length:length - 1];
 		}
-		@catch (id ex) {
-			@throw;
-		}
 		@finally{
 			free(indexP);
 		}
