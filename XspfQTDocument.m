@@ -59,7 +59,8 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 {
 	*outError = nil;
 	
-	if(![typeName isEqualToString:@"QuickTime Movie"]) {
+	if(![typeName isEqualToString:@"QuickTime Movie"]
+	   || ![typeName isEqualToString:@"Matroska Video"]) {
 		NSData *data = [self dataFromURL:absoluteURL error:outError];
 		if(!data) return NO;
 		
