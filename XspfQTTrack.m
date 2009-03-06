@@ -135,12 +135,12 @@
 	if(![QTMovie canInitWithURL:[self location]]) return nil;
 	
 	NSError *error = nil;
-	NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
-						   [self location], QTMovieURLAttribute,
-						   [NSNumber numberWithBool:NO], QTMovieOpenAsyncOKAttribute,
-						   nil];
-	movie = [[QTMovie alloc] initWithAttributes:attrs error:&error];
-//	movie = [[QTMovie alloc] initWithURL:[self location] error:&error];
+//	NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
+//						   [self location], QTMovieURLAttribute,
+//						   [NSNumber numberWithBool:NO], QTMovieOpenAsyncOKAttribute,
+//						   nil];
+//	movie = [[QTMovie alloc] initWithAttributes:attrs error:&error];
+	movie = [[QTMovie alloc] initWithURL:[self location] error:&error];
 	if(error) {
 		NSLog(@"%@", error);
 		return nil;
@@ -154,10 +154,10 @@
 			   selector:@selector(notifee:)
 				   name:QTMovieRateDidChangeNotification
 				 object:movie];
-//		[nc addObserver:self
-//			   selector:@selector(notifee:)
-//				   name:@"QTMovieDidEndNotification"
-//				 object:movie];
+		[nc addObserver:self
+			   selector:@selector(movieLoadStateDidChangeNotification:)
+				   name:QTMovieLoadStateDidChangeNotification
+				 object:movie];
 	}
 	
 	[self willChangeValueForKey:@"duration"];
@@ -217,7 +217,10 @@
 		}
 	}
 }
-
+- (void)movieLoadStateDidChangeNotification:(NSNotification *)notification
+{
+	NSLog(@"name -> %@ info -> %@", [notification name], [notification userInfo]);
+}
 
 - (BOOL)isEqual:(id)other
 {
