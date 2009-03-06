@@ -59,7 +59,27 @@
 			<key>NSDocumentClass</key>
 			<string>XspfQTDocument</string>
 			<key>NSPersistentStoreTypeKey</key>
-			<string>XML</string>
+			<string>Binary</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>mkv</string>
+			</array>
+			<key>CFBundleTypeMIMETypes</key>
+			<array>
+				<string>video/x-matroska</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Matroska Video</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSDocumentClass</key>
+			<string>XspfQTDocument</string>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>Binary</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
