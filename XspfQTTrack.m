@@ -117,6 +117,11 @@
 {
 	return savedDate;
 }
+
++ (NSSet *)keyPathsForValuesAffectingDuration
+{
+	return [NSSet setWithObject:@"qtMovie"];
+}
 - (NSDate *)duration
 {
 	if(savedDate) return savedDate;
@@ -126,7 +131,6 @@
 	[self setSavedDateWithQTTime:[movie duration]];
 	return [self savedDate];
 }
-
 - (QTMovie *)qtMovie
 {
 	if(movie) {
@@ -135,11 +139,7 @@
 	}
 	if(![QTMovie canInitWithURL:[self location]]) return nil;
 	
-	[NSTimer scheduledTimerWithTimeInterval:0.05
-									 target:self
-								   selector:@selector(listeningLoadState:)
-								   userInfo:NULL
-									repeats:YES];
+	[self willChangeValueForKey:@"qtMovie"];
 	
 	NSError *error = nil;
 //	NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -161,14 +161,9 @@
 			   selector:@selector(notifee:)
 				   name:QTMovieRateDidChangeNotification
 				 object:movie];
-		[nc addObserver:self
-			   selector:@selector(movieLoadStateDidChangeNotification:)
-				   name:QTMovieLoadStateDidChangeNotification
-				 object:movie];
 	}
 	
-	[self willChangeValueForKey:@"duration"];
-	[self didChangeValueForKey:@"duration"];
+	[self didChangeValueForKey:@"qtMovie"];
 	
 	return movie;
 }
@@ -223,54 +218,6 @@
 			[self setIsPlayed:YES];
 		}
 	}
-}
-- (void)movieLoadStateDidChangeNotification:(NSNotification *)notification
-{
-	NSLog(@"name -> %@ info -> %@", [notification name], [notification userInfo]);
-}
-- (void)listeningLoadState:(NSTimer *)timer
-{
-	static long prevState = 0;
-	
-	if(!movie) return;
-	
-	long state = [[movie attributeForKey:QTMovieLoadStateAttribute] longValue];
-	
-	if(prevState == state) return;
-	
-	switch(state) {
-		case QTMovieLoadStateError:
-			NSLog(@"Load Error!!!");
-			goto end;
-			break;
-		case QTMovieLoadStateLoading:
-			NSLog(@"Loading started.");
-			break;
-		case QTMovieLoadStateLoaded:
-			NSLog(@"it's safe to query movie properties");
-			break;
-		case QTMovieLoadStatePlayable:
-			NSLog(@" the movie has loaded enough media data to begin playing");
-			break;
-		case QTMovieLoadStatePlaythroughOK:
-			NSLog(@"the movie has loaded enough media data to play through to the end");
-			break;
-		case QTMovieLoadStateComplete:
-			NSLog(@"the movie has loaded completely");
-			goto end;
-			break;
-		default:
-			NSLog(@"state is %ld", state);
-			break;
-	}
-	
-	prevState = state;
-	
-	return;
-	
-end: {
-	[timer invalidate];
-}
 }
 
 - (BOOL)isEqual:(id)other
