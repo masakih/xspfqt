@@ -28,7 +28,7 @@
 			return;
 	}
 	
-	NSLog(@"KeyCode -> %d", [event keyCode]);
+//	NSLog(@"KeyCode -> %d", [event keyCode]);
 	
 	[super keyDown:event];
 }
