@@ -126,6 +126,7 @@
 	[self setSavedDateWithQTTime:[movie duration]];
 	return [self savedDate];
 }
+
 - (QTMovie *)qtMovie
 {
 	if(movie) {
@@ -133,6 +134,12 @@
 		return movie;
 	}
 	if(![QTMovie canInitWithURL:[self location]]) return nil;
+	
+	[NSTimer scheduledTimerWithTimeInterval:0.05
+									 target:self
+								   selector:@selector(listeningLoadState:)
+								   userInfo:NULL
+									repeats:YES];
 	
 	NSError *error = nil;
 //	NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -220,6 +227,50 @@
 - (void)movieLoadStateDidChangeNotification:(NSNotification *)notification
 {
 	NSLog(@"name -> %@ info -> %@", [notification name], [notification userInfo]);
+}
+- (void)listeningLoadState:(NSTimer *)timer
+{
+	static long prevState = 0;
+	
+	if(!movie) return;
+	
+	long state = [[movie attributeForKey:QTMovieLoadStateAttribute] longValue];
+	
+	if(prevState == state) return;
+	
+	switch(state) {
+		case QTMovieLoadStateError:
+			NSLog(@"Load Error!!!");
+			goto end;
+			break;
+		case QTMovieLoadStateLoading:
+			NSLog(@"Loading started.");
+			break;
+		case QTMovieLoadStateLoaded:
+			NSLog(@"it's safe to query movie properties");
+			break;
+		case QTMovieLoadStatePlayable:
+			NSLog(@" the movie has loaded enough media data to begin playing");
+			break;
+		case QTMovieLoadStatePlaythroughOK:
+			NSLog(@"the movie has loaded enough media data to play through to the end");
+			break;
+		case QTMovieLoadStateComplete:
+			NSLog(@"the movie has loaded completely");
+			goto end;
+			break;
+		default:
+			NSLog(@"state is %ld", state);
+			break;
+	}
+	
+	prevState = state;
+	
+	return;
+	
+end: {
+	[timer invalidate];
+}
 }
 
 - (BOOL)isEqual:(id)other
