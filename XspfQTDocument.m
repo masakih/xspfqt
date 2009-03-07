@@ -127,7 +127,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	
 	id t = [self trackList];
 	if(![t title]) {
-		[t setTitle:[[[self fileURL] path] lastPathComponent]];
+		[t setTitle:[[[[self fileURL] path] lastPathComponent] stringByDeletingPathExtension]];
 	}
 	
 //	NSLog(@"open playlist is (%@)%@", NSStringFromClass([[self playlist] class]), [self playlist]);
