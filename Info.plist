@@ -13,6 +13,10 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string></string>
+			<key>CFBundleTypeMIMETypes</key>
+			<array>
+				<string>application/xspf+xml</string>
+			</array>
 			<key>CFBundleTypeName</key>
 			<string>XML Shareable Playlist Format</string>
 			<key>CFBundleTypeOSTypes</key>
@@ -72,6 +76,26 @@
 			</array>
 			<key>CFBundleTypeName</key>
 			<string>Matroska Video</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSDocumentClass</key>
+			<string>XspfQTDocument</string>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>Binary</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>divx</string>
+			</array>
+			<key>CFBundleTypeMIMETypes</key>
+			<array>
+				<string>video/divx</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>DivX Media Format</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSTypeIsPackage</key>
