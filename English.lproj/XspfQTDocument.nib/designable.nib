@@ -8,7 +8,6 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="6"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -34,7 +33,7 @@
 				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<string key="NSWindowContentMinSize">{512, 392}</string>
 				<object class="NSView" key="NSWindowView" id="568628114">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -160,7 +159,7 @@
 									<string>QTMoviePasteboardType</string>
 								</object>
 							</object>
-							<string key="NSFrame">{{0, 79}, {512, 313}}</string>
+							<string key="NSFrame">{{-0.25, 79}, {512, 313}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="kCoderFillColor" ref="336208240"/>
 							<integer value="0" key="kCoderControllerVisible" id="6"/>
@@ -364,7 +363,6 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{512, 392}</string>
-					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 832}}</string>
 				<string key="NSMinSize">{512, 414}</string>
@@ -417,22 +415,6 @@
 						<reference key="destination" ref="253631846"/>
 					</object>
 					<int key="connectionID">100070</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">movie: qtMovie</string>
-						<reference key="source" ref="253631846"/>
-						<reference key="destination" ref="512844837"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="253631846"/>
-							<reference key="NSDestination" ref="512844837"/>
-							<string key="NSLabel">movie: qtMovie</string>
-							<string key="NSBinding">movie</string>
-							<string key="NSKeyPath">qtMovie</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">100087</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -508,37 +490,6 @@
 					<int key="connectionID">100092</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: qtMovie.currentTime</string>
-						<reference key="source" ref="254498101"/>
-						<reference key="destination" ref="512844837"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="254498101"/>
-							<reference key="NSDestination" ref="512844837"/>
-							<string key="NSLabel">value: qtMovie.currentTime</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">qtMovie.currentTime</string>
-							<object class="NSDictionary" key="NSOptions">
-								<bool key="EncodedWithXMLCoder">YES</bool>
-								<object class="NSMutableArray" key="dict.sortedKeys">
-									<bool key="EncodedWithXMLCoder">YES</bool>
-									<string>NSNotApplicablePlaceholder</string>
-									<string>NSNullPlaceholder</string>
-									<string>NSValueTransformerName</string>
-								</object>
-								<object class="NSMutableArray" key="dict.values">
-									<bool key="EncodedWithXMLCoder">YES</bool>
-									<string>00:00:00</string>
-									<string>00:00:00</string>
-									<string>XspfQTTimeDateTransformer</string>
-								</object>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">100093</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">toggleFullScreenMode:</string>
 						<reference key="source" ref="512844837"/>
@@ -598,6 +549,53 @@
 					</object>
 					<int key="connectionID">100109</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">movie: qtMovie</string>
+						<reference key="source" ref="253631846"/>
+						<reference key="destination" ref="512844837"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="253631846"/>
+							<reference key="NSDestination" ref="512844837"/>
+							<string key="NSLabel">movie: qtMovie</string>
+							<string key="NSBinding">movie</string>
+							<string key="NSKeyPath">qtMovie</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">100129</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: qtMovie.currentTime</string>
+						<reference key="source" ref="254498101"/>
+						<reference key="destination" ref="512844837"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="254498101"/>
+							<reference key="NSDestination" ref="512844837"/>
+							<string key="NSLabel">value: qtMovie.currentTime</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">qtMovie.currentTime</string>
+							<object class="NSDictionary" key="NSOptions">
+								<bool key="EncodedWithXMLCoder">YES</bool>
+								<object class="NSMutableArray" key="dict.sortedKeys">
+									<bool key="EncodedWithXMLCoder">YES</bool>
+									<string>NSNotApplicablePlaceholder</string>
+									<string>NSNullPlaceholder</string>
+									<string>NSValueTransformerName</string>
+								</object>
+								<object class="NSMutableArray" key="dict.values">
+									<bool key="EncodedWithXMLCoder">YES</bool>
+									<string>--:--:--</string>
+									<string>00:00:00</string>
+									<string>XspfQTTimeDateTransformer</string>
+								</object>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">100130</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -640,10 +638,10 @@
 							<reference ref="1041865215"/>
 							<reference ref="254498101"/>
 							<reference ref="685440805"/>
-							<reference ref="566792223"/>
+							<reference ref="253631846"/>
 							<reference ref="83531156"/>
 							<reference ref="88830940"/>
-							<reference ref="253631846"/>
+							<reference ref="566792223"/>
 						</object>
 						<reference key="parent" ref="275939982"/>
 					</object>
@@ -889,10 +887,10 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{20, 397}, {512, 392}}</string>
+					<string>{{22, 374}, {512, 392}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="387547654"/>
-					<string>{{20, 397}, {512, 392}}</string>
+					<string>{{22, 374}, {512, 392}}</string>
 					<integer value="1" id="9"/>
 					<string>{{356, 215}, {512, 392}}</string>
 					<reference ref="9"/>
@@ -921,7 +919,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100109</int>
+			<int key="maxID">100130</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

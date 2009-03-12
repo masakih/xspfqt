@@ -26,7 +26,7 @@
 #pragma mark ### Static variables ###
 static const float sVolumeDelta = 0.1;
 static const NSTimeInterval sUpdateTimeInterval = 0.01;
-static NSString *const kQTMovieKeyPath = @"trackList.qtMovie";
+static NSString *const kQTMovieKeyPath = @"playingMovie";
 static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 
@@ -71,8 +71,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 			   name:XspfQTDocumentWillCloseNotification
 			 object:doc];
 	
-	[self setValue:[NSNumber numberWithInt:0]
-		forKeyPath:@"document.trackList.selectionIndex"];
+	[doc setPlayingTrackIndex:0];
 	[self sizeTofitWidnow];
 	[self play];
 }

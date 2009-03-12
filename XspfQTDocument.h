@@ -13,11 +13,15 @@
 @class XspfQTComponent;
 @class XspfQTMovieWindowController;
 
+@class QTMovie;
+
 @interface XspfQTDocument : NSDocument
 {
 	XspfQTComponent* playlist;
 	XspfQTMovieWindowController *movieWindowController;
 	NSWindowController *playListWindowController;
+	
+	QTMovie *playingMovie;
 }
 
 - (IBAction)togglePlayAndPause:(id)sender;

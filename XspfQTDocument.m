@@ -10,6 +10,7 @@
 #import "XspfQTComponent.h"
 #import "XspfQTMovieWindowController.h"
 #import "XspfQTPlayListWindowController.h"
+#import <QTKit/QTKit.h>
 
 @interface XspfQTDocument (Private)
 - (void)setPlaylist:(XspfQTComponent *)newList;
@@ -138,7 +139,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 
 - (void)dealloc
 {
-	[playlist release];
+	[self setPlaylist:nil];
 	[playListWindowController release];
 	[movieWindowController release];
 	
@@ -174,8 +175,13 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 {
 	if(playlist == newList) return;
 	
+	[[playlist childAtIndex:0] removeObserver:self forKeyPath:@"currentTrack"];
 	[playlist autorelease];
 	playlist = [newList retain];
+	[[playlist childAtIndex:0] addObserver:self
+								forKeyPath:@"currentTrack"
+								   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+								   context:NULL];
 }
 - (XspfQTComponent *)playlist
 {
@@ -187,9 +193,75 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	return [playlist childAtIndex:0];
 }
 
+- (void)setPlayingMovie:(QTMovie *)newMovie
+{
+//	NSLog(@"new movie is %@!!", newMovie);
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc removeObserver:self
+				  name:nil
+				object:playingMovie];
+	
+	[playingMovie autorelease];
+	playingMovie = newMovie;
+	
+	[nc addObserver:self
+		   selector:@selector(notifee:)
+			   name:QTMovieRateDidChangeNotification
+			 object:playingMovie];
+}
+- (QTMovie *)playingMovie
+{
+//	NSLog(@"%@ is called!!", NSStringFromSelector(_cmd));
+	return playingMovie;
+}
+
+- (void)loadMovie
+{
+	QTMovie *newMovie = nil;
+	
+	NSURL *location = [[self trackList] movieLocation];
+	
+	if(![QTMovie canInitWithURL:location]) goto finish;
+	
+	NSError *error = nil;
+	//	NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
+	//						   [self location], QTMovieURLAttribute,
+	//						   [NSNumber numberWithBool:NO], QTMovieOpenAsyncOKAttribute,
+	//						   nil];
+	//	movie = [[QTMovie alloc] initWithAttributes:attrs error:&error];
+	newMovie = [[QTMovie alloc] initWithURL:location error:&error];
+	if(error) {
+		NSLog(@"%@", error);
+	}
+	
+	QTTime qttime = [newMovie duration];
+	id t = [NSValueTransformer valueTransformerForName:@"XspfQTTimeDateTransformer"];
+	[[self trackList] setCurrentTrackDuration:[t transformedValue:[NSValue valueWithQTTime:qttime]]];
+	
+	
+finish:
+	[self setPlayingMovie:newMovie];
+}
 - (void)setPlayingTrackIndex:(unsigned)index
 {
+	unsigned currentIndex = [[self trackList] selectionIndex];
+	if(currentIndex == index) return;
+	
 	[[self trackList] setSelectionIndex:index];
+	
+	[self performSelector:@selector(loadMovie) withObject:nil afterDelay:0.0];
+//	[self loadMovie];
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath
+					  ofObject:(id)object
+						change:(NSDictionary *)change
+					   context:(void *)context
+{
+	if([keyPath isEqualToString:@"currentTrack"]) {
+		id trackList = [self trackList];
+		unsigned index = [trackList selectionIndex];
+		[self setPlayingTrackIndex:index];
+	}
 }
 
 - (NSData *)outputData
@@ -262,6 +334,22 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	}
 	
 	return data;
+}
+
+- (void)notifee:(id)notification
+{
+	//	NSLog(@"Notifed: name -> (%@)\ndict -> (%@)", [notification name], [notification userInfo]);
+	
+	id track = [[self trackList] currentTrack];
+	NSNumber *rateValue = [[notification userInfo] objectForKey:QTMovieRateDidChangeNotificationParameter];
+	if(rateValue) {
+		float rate = [rateValue floatValue];
+		if(rate == 0) {
+			[track setIsPlayed:NO];
+		} else {
+			[track setIsPlayed:YES];
+		}
+	}
 }
 
 - (IBAction)dump:(id)sender

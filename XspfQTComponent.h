@@ -27,10 +27,13 @@
 
 - (NSXMLElement *)XMLElement; // abstract.
 
-- (QTMovie *)qtMovie;
+- (NSURL *)movieLocation;
 
 - (void)setTitle:(NSString *)title;
 - (NSString *)title;
+
+- (void)setDuration:(NSDate *)duration;
+- (NSDate *)duration;
 @end
 
 @interface XspfQTComponent (XspfComponentSelection)
@@ -49,6 +52,10 @@
 - (XspfQTComponent *)currentTrack;	// default self;
 - (void)next;						// abstract.
 - (void)previous;					// abstract.
+
+- (void)setCurrentTrackDuration:(NSDate *)duration;
+- (NSDate *)currentTrackDuration;
+
 @end
 
 @interface XspfQTComponent(XspfConainerComponent)
