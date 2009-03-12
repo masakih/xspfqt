@@ -222,6 +222,19 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	
 	NSURL *location = [[self trackList] movieLocation];
 	
+	if(playingMovie) {
+		id movieURL = [playingMovie attributeForKey:QTMovieURLAttribute];
+		if([location isEqual:movieURL]) return;
+
+		NSString *newHost = [location host];
+		NSString *currHost = [movieURL host];
+		if(!newHost && [currHost isEqualToString:@"localhost"]) {
+			NSString *newPath = [location path];
+			NSString *currPath = [movieURL path];
+			if([newPath isEqualToString:currPath]) return;
+		}
+	}
+	
 	if(![QTMovie canInitWithURL:location]) goto finish;
 	
 	NSError *error = nil;
@@ -245,9 +258,6 @@ finish:
 }
 - (void)setPlayingTrackIndex:(unsigned)index
 {
-	unsigned currentIndex = [[self trackList] selectionIndex];
-	if(currentIndex == index) return;
-	
 	[[self trackList] setSelectionIndex:index];
 	
 	[self performSelector:@selector(loadMovie) withObject:nil afterDelay:0.0];
