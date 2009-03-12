@@ -134,7 +134,7 @@
 - (QTMovie *)qtMovie
 {
 	if(movie) {
-		[[self class] cancelPreviousPerformRequestsWithTarget:self];
+//		[[self class] cancelPreviousPerformRequestsWithTarget:self];
 		return movie;
 	}
 	if(![QTMovie canInitWithURL:[self location]]) return nil;
@@ -184,9 +184,20 @@
 	[[self parent] previous];
 }
 
+- (void)select
+{
+	if(deselectedMovie) {
+		[[self class] cancelPreviousPerformRequestsWithTarget:self];
+		movie = deselectedMovie;
+	}
+	
+	[super select];
+}
 - (void)deselect
 {
-	[movie stop];
+	deselectedMovie = movie;
+	movie = nil;
+	[deselectedMovie stop];
 	[self performSelector:@selector(purgeQTMovie)
 			   withObject:nil
 			   afterDelay:4.5];
@@ -197,12 +208,12 @@
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc removeObserver:self
 				  name:nil
-				object:movie];
+				object:deselectedMovie];
 	
-//	NSLog(@"Purge! retain count is %u", [movie retainCount]);
+	NSLog(@"Purge! retain count is %u", [deselectedMovie retainCount]);
 	
-	[movie release];
-	movie = nil;
+	[deselectedMovie release];
+	deselectedMovie = nil;
 }
 
 - (void)notifee:(id)notification
