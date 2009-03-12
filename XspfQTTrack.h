@@ -7,28 +7,18 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <QTKit/QTKit.h>
 #import "XspfQTComponent.h"
 
 
 @interface XspfQTTrack : XspfQTComponent
 {
 	NSURL *location;
-	
-	QTMovie *movie;
-	
-	NSDate *savedDate;
-	
+	NSDate *duration;
 	BOOL isPlayed;
-	
-	QTMovie *deselectedMovie;
 }
 
 - (void)setLocation:(NSURL *)location;
 - (void)setLocationString:(NSString *)location;
 - (NSURL *)location;
 - (NSString *)locationString;
-
-- (void)purgeQTMovie;
-
 @end

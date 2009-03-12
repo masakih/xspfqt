@@ -49,6 +49,7 @@
 
 - (void)setSelectionIndex:(unsigned)index
 {
+	if(index == selectionIndex) return;
 	if([_children count] <= index && index != NSNotFound) return;
 	
 	if(index == selectionIndex && index != NSNotFound) {
@@ -75,11 +76,9 @@
 	}
 	
 	[self willChangeValueForKey:@"isPlayed"];
-	[self willChangeValueForKey:@"qtMovie"];
 	[self willChangeValueForKey:@"currentTrack"];
 	selectionIndex = index;
 	[self didChangeValueForKey:@"currentTrack"];
-	[self didChangeValueForKey:@"qtMovie"];
 	[self didChangeValueForKey:@"isPlayed"];
 }
 - (unsigned)selectionIndex
@@ -177,11 +176,10 @@
 	return selectedComponent;
 }
 
-- (QTMovie *)qtMovie
+- (NSURL *)movieLocation
 {
-	return [[self currentTrack] qtMovie];
+	return [[self currentTrack] movieLocation];
 }
-
 - (void)setIsPlayed:(BOOL)state {}
 - (BOOL)isPlayed
 {

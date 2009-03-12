@@ -73,11 +73,12 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 {
 	return title;
 }
-- (QTMovie *)qtMovie
+- (void)setDuration:(NSDate *)duration {}
+- (NSDate *)duration { return nil; }
+- (NSURL *)movieLocation
 {
 	return nil;
 }
-
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
@@ -188,7 +189,14 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 {
 	return self;
 }
-
+- (void)setCurrentTrackDuration:(NSDate *)duration
+{
+	[[self currentTrack] setDuration:duration];
+}
+- (NSDate *)currentTrackDuration
+{
+	return [[self currentTrack] duration];
+}
 
 #pragma mark #### XspfConainerComponent ####
 - (void)setParent:(XspfQTComponent *)new

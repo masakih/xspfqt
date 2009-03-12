@@ -10,7 +10,7 @@
 #import "XspfQTDocument.h"
 
 
-static NSString *const XspfDocumentQtMovieKeyPath = @"trackList.qtMovie";
+static NSString *const XspfDocumentQtMovieKeyPath = @"playingMovie";
 
 @implementation XspfQTInformationWindowController
 static XspfQTInformationWindowController *sharedInstance = nil;
@@ -134,28 +134,30 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 		[observedDocs addObject:doc];
 	}
 }
-- (id)currentTrack
+- (id)currentDocument
 {
 	id doc = [[NSDocumentController sharedDocumentController] currentDocument];
 	if(!doc) return nil;
 	[self addObservingDocument:doc];
+	
+	return doc;
+}
+- (id)currentTrack
+{
+	id doc = [self currentDocument];
 	
 	return [doc valueForKeyPath:@"trackList.currentTrack"];
 }
 - (id)movieAttributes
 {
-	id doc = [[NSDocumentController sharedDocumentController] currentDocument];
-	if(!doc) return nil;
-	[self addObservingDocument:doc];
+	id doc = [self currentDocument];
 	
-	return [doc valueForKeyPath:@"trackList.qtMovie.movieAttributes"];
+	return [doc valueForKeyPath:@"playingMovie.movieAttributes"];
 }
 
 - (id)trackAttributesByType:(NSString *)type
 {
-	id doc = [[NSDocumentController sharedDocumentController] currentDocument];
-	if(!doc) return nil;
-	[self addObservingDocument:doc];
+	id doc = [self currentDocument];
 	
 	id movie = [doc valueForKeyPath:XspfDocumentQtMovieKeyPath];
 	NSArray *tracks = [movie tracksOfMediaType:type];

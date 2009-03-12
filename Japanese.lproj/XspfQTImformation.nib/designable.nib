@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="5"/>
+			<integer value="6"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -493,6 +493,14 @@
 				<bool key="NSEditable">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
 			</object>
+			<object class="NSObjectController" id="511021577">
+				<object class="NSMutableArray" key="NSDeclaredKeys">
+					<bool key="EncodedWithXMLCoder">YES</bool>
+					<string>playingMovie.currentTime</string>
+				</object>
+				<bool key="NSEditable">YES</bool>
+				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
+			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<object class="NSMutableArray" key="connectionRecords">
@@ -791,15 +799,31 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: selection.qtMovie.currentTime</string>
+						<string key="label">contentObject: currentDocument</string>
+						<reference key="source" ref="511021577"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="511021577"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">contentObject: currentDocument</string>
+							<string key="NSBinding">contentObject</string>
+							<string key="NSKeyPath">currentDocument</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">118</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: selection.playingMovie.currentTime</string>
 						<reference key="source" ref="840694626"/>
-						<reference key="destination" ref="186666954"/>
+						<reference key="destination" ref="511021577"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="840694626"/>
-							<reference key="NSDestination" ref="186666954"/>
-							<string key="NSLabel">value: selection.qtMovie.currentTime</string>
+							<reference key="NSDestination" ref="511021577"/>
+							<string key="NSLabel">value: selection.playingMovie.currentTime</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">selection.qtMovie.currentTime</string>
+							<string key="NSKeyPath">selection.playingMovie.currentTime</string>
 							<object class="NSDictionary" key="NSOptions">
 								<string key="NS.key.0">NSValueTransformerName</string>
 								<string key="NS.object.0">XspfQTTimeDateTransformer</string>
@@ -807,7 +831,7 @@
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">116</int>
+					<int key="connectionID">120</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1213,6 +1237,12 @@
 						<reference key="object" ref="739016836"/>
 						<reference key="parent" ref="95690786"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">117</int>
+						<reference key="object" ref="511021577"/>
+						<reference key="parent" ref="1002"/>
+						<string key="objectName">Current Document</string>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1231,6 +1261,7 @@
 					<string>108.IBPluginDependency</string>
 					<string>109.IBPluginDependency</string>
 					<string>110.IBPluginDependency</string>
+					<string>117.IBPluginDependency</string>
 					<string>12.IBPluginDependency</string>
 					<string>13.IBPluginDependency</string>
 					<string>15.IBPluginDependency</string>
@@ -1316,6 +1347,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{392, 230}, {373, 253}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="8"/>
@@ -1323,7 +1355,7 @@
 					<string>{{392, 230}, {373, 253}}</string>
 					<reference ref="9"/>
 					<reference ref="9"/>
-					<integer value="1"/>
+					<reference ref="9"/>
 					<string>{9999, 253}</string>
 					<string>{200, 253}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1377,7 +1409,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">116</int>
+			<int key="maxID">120</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

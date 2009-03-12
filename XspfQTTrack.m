@@ -10,7 +10,7 @@
 
 @interface XspfQTTrack (Private)
 - (void)setSavedDateWithQTTime:(QTTime)qttime;
-- (NSDate *)duration;
+//- (NSDate *)duration;
 @end
 
 @implementation XspfQTTrack
@@ -50,8 +50,7 @@
 - (void)dealloc
 {
 	[location release];
-	[movie release];
-	[savedDate release];
+	[self setDuration:nil];
 	
 	[super dealloc];
 }
@@ -111,61 +110,26 @@
 - (void)setSavedDateWithQTTime:(QTTime)qttime
 {
 	id t = [NSValueTransformer valueTransformerForName:@"XspfQTTimeDateTransformer"];
-	savedDate = [[t transformedValue:[NSValue valueWithQTTime:qttime]] retain];
+	duration = [[t transformedValue:[NSValue valueWithQTTime:qttime]] retain];
 }
 - (NSDate *)savedDate
 {
-	return savedDate;
+	return duration;
 }
-
-+ (NSSet *)keyPathsForValuesAffectingDuration
+- (void)setDuration:(NSDate *)newDuration
 {
-	return [NSSet setWithObject:@"qtMovie"];
+	[duration autorelease];
+	duration = [newDuration retain];
 }
 - (NSDate *)duration
 {
-	if(savedDate) return savedDate;
+	if(duration) return duration;
 	
-	if(!movie) return nil;
-	
-	[self setSavedDateWithQTTime:[movie duration]];
-	return [self savedDate];
+	return nil;
 }
-- (QTMovie *)qtMovie
+- (NSURL *)movieLocation
 {
-	if(movie) {
-//		[[self class] cancelPreviousPerformRequestsWithTarget:self];
-		return movie;
-	}
-	if(![QTMovie canInitWithURL:[self location]]) return nil;
-	
-	[self willChangeValueForKey:@"qtMovie"];
-	
-	NSError *error = nil;
-//	NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
-//						   [self location], QTMovieURLAttribute,
-//						   [NSNumber numberWithBool:NO], QTMovieOpenAsyncOKAttribute,
-//						   nil];
-//	movie = [[QTMovie alloc] initWithAttributes:attrs error:&error];
-	movie = [[QTMovie alloc] initWithURL:[self location] error:&error];
-	if(error) {
-		NSLog(@"%@", error);
-		return nil;
-	}
-	if(!movie) {
-		return nil;
-	}
-	{
-		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-		[nc addObserver:self
-			   selector:@selector(notifee:)
-				   name:QTMovieRateDidChangeNotification
-				 object:movie];
-	}
-	
-	[self didChangeValueForKey:@"qtMovie"];
-	
-	return movie;
+	return location;
 }
 - (void)setIsPlayed:(BOOL)state
 {
@@ -182,53 +146,6 @@
 - (void)previous
 {
 	[[self parent] previous];
-}
-
-- (void)select
-{
-	if(deselectedMovie) {
-		[[self class] cancelPreviousPerformRequestsWithTarget:self];
-		movie = deselectedMovie;
-	}
-	
-	[super select];
-}
-- (void)deselect
-{
-	deselectedMovie = movie;
-	movie = nil;
-	[deselectedMovie stop];
-	[self performSelector:@selector(purgeQTMovie)
-			   withObject:nil
-			   afterDelay:4.5];
-	[super deselect];
-}
-- (void)purgeQTMovie
-{
-	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	[nc removeObserver:self
-				  name:nil
-				object:deselectedMovie];
-	
-	NSLog(@"Purge! retain count is %u", [deselectedMovie retainCount]);
-	
-	[deselectedMovie release];
-	deselectedMovie = nil;
-}
-
-- (void)notifee:(id)notification
-{
-//	NSLog(@"Notifed: name -> (%@)\ndict -> (%@)", [notification name], [notification userInfo]);
-	
-	NSNumber *rateValue = [[notification userInfo] objectForKey:QTMovieRateDidChangeNotificationParameter];
-	if(rateValue) {
-		float rate = [rateValue floatValue];
-		if(rate == 0) {
-			[self setIsPlayed:NO];
-		} else {
-			[self setIsPlayed:YES];
-		}
-	}
 }
 
 - (BOOL)isEqual:(id)other
