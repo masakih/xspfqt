@@ -17,7 +17,7 @@
 - (XspfQTComponent *)playlist;
 - (NSXMLDocument *)XMLDocument;
 - (NSData *)outputData;
-
+- (void)setPlayingMovie:(QTMovie *)newMovie;
 - (NSData *)dataFromURL:(NSURL *)url error:(NSError **)outError;
 @end
 
@@ -139,6 +139,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 
 - (void)dealloc
 {
+	[self setPlayingMovie:nil];
 	[self setPlaylist:nil];
 	[playListWindowController release];
 	[movieWindowController release];
