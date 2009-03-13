@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <QTKit/QTKit.h>
 
 @interface XspfQTComponent : NSObject <NSCoding>
 {
