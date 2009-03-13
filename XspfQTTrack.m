@@ -8,6 +8,8 @@
 
 #import "XspfQTTrack.h"
 
+#import <QTKit/QTTime.h>
+
 @interface XspfQTTrack (Private)
 - (void)setSavedDateWithQTTime:(QTTime)qttime;
 //- (NSDate *)duration;
