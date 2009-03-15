@@ -12,6 +12,9 @@
 #import "XspfQTPlayListWindowController.h"
 #import <QTKit/QTKit.h>
 
+#import "NSURL-XspfQT-Extensions.h"
+#import "XspfQTMovieLoader.h"
+
 @interface XspfQTDocument (Private)
 - (void)setPlaylist:(XspfQTComponent *)newList;
 - (XspfQTComponent *)playlist;
@@ -203,7 +206,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 				object:playingMovie];
 	
 	[playingMovie autorelease];
-	playingMovie = newMovie;
+	playingMovie = [newMovie retain];
 	
 	[nc addObserver:self
 		   selector:@selector(notifee:)
@@ -218,50 +221,26 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 
 - (void)loadMovie
 {
-	QTMovie *newMovie = nil;
-	
 	NSURL *location = [[self trackList] movieLocation];
 	
 	if(playingMovie) {
 		id movieURL = [playingMovie attributeForKey:QTMovieURLAttribute];
-		if([location isEqual:movieURL]) return;
-
-		NSString *newHost = [location host];
-		NSString *currHost = [movieURL host];
-		if(!newHost && [currHost isEqualToString:@"localhost"]) {
-			NSString *newPath = [location path];
-			NSString *currPath = [movieURL path];
-			if([newPath isEqualToString:currPath]) return;
-		}
+		if([location isEqualUsingLocalhost:movieURL]) return;
 	}
 	
-	if(![QTMovie canInitWithURL:location]) goto finish;
-	
-	NSError *error = nil;
-	//	NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
-	//						   [self location], QTMovieURLAttribute,
-	//						   [NSNumber numberWithBool:NO], QTMovieOpenAsyncOKAttribute,
-	//						   nil];
-	//	movie = [[QTMovie alloc] initWithAttributes:attrs error:&error];
-	newMovie = [[QTMovie alloc] initWithURL:location error:&error];
-	if(error) {
-		NSLog(@"%@", error);
-	}
+	XspfQTMovieLoader *loader = [XspfQTMovieLoader loaderWithMovieURL:location delegate:nil];
+	[loader load];
+	QTMovie *newMovie = [loader qtMovie];
+	[self setPlayingMovie:newMovie];
 	
 	QTTime qttime = [newMovie duration];
 	id t = [NSValueTransformer valueTransformerForName:@"XspfQTTimeDateTransformer"];
 	[[self trackList] setCurrentTrackDuration:[t transformedValue:[NSValue valueWithQTTime:qttime]]];
-	
-	
-finish:
-	[self setPlayingMovie:newMovie];
 }
 - (void)setPlayingTrackIndex:(unsigned)index
 {
-	[[self trackList] setSelectionIndex:index];
-	
-	[self performSelector:@selector(loadMovie) withObject:nil afterDelay:0.0];
-//	[self loadMovie];
+//	[self performSelector:@selector(loadMovie) withObject:nil afterDelay:0.0];
+	[self loadMovie];
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath
 					  ofObject:(id)object

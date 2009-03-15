@@ -30,7 +30,7 @@
 
 - (XspfQTComponent *)trackList;
 
-- (void)setPlayingTrackIndex:(unsigned)index;
+//- (void)setPlayingTrackIndex:(unsigned)index;
 
 - (void)insertComponent:(XspfQTComponent *)item atIndex:(NSUInteger)index;
 - (void)removeComponent:(XspfQTComponent *)item;
