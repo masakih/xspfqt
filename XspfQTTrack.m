@@ -9,6 +9,7 @@
 #import "XspfQTTrack.h"
 
 #import <QTKit/QTTime.h>
+#import "NSURL-XspfQT-Extensions.h"
 
 @interface XspfQTTrack (Private)
 - (void)setSavedDateWithQTTime:(QTTime)qttime;
@@ -86,9 +87,7 @@
 }
 - (void)setLocation:(NSURL *)loc
 {
-	if(location && ![location isKindOfClass:[NSURL class]]) return;
-	if(location == loc) return;
-	if([location isEqualTo:loc]) return;
+	if([location isEqualUsingLocalhost:loc]) return;
 	
 	[location autorelease];
 	location = [loc retain];
