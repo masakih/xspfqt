@@ -71,7 +71,8 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 			   name:XspfQTDocumentWillCloseNotification
 			 object:doc];
 	
-	[doc setPlayingTrackIndex:0];
+//	[doc setPlayingTrackIndex:0];
+	[[doc trackList] setSelectionIndex:0];
 	[self sizeTofitWidnow];
 	[self play];
 }
