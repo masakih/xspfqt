@@ -34,6 +34,8 @@
 		F49C31EC0E682D66007F2DEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C31EB0E682D66007F2DEC /* Foundation.framework */; };
 		F49C31F10E682D79007F2DEC /* XspfQTTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */; };
 		F49C31F60E682E2B007F2DEC /* XspfQTTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */; };
+		F4B8096B0F6EB345004BF2DD /* XspfQTPreference.nib in Resources */ = {isa = PBXBuildFile; fileRef = F4B809690F6EB345004BF2DD /* XspfQTPreference.nib */; };
+		F4B8096E0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B8096D0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m */; };
 		F4D7CCCB0E868BFC0042F96C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4D7CCC90E868BFC0042F96C /* Localizable.strings */; };
 		F4D99B1F0E6B0F59006D72F4 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */; };
 /* End PBXBuildFile section */
@@ -88,6 +90,9 @@
 		F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTTrackList.m; sourceTree = "<group>"; };
 		F49C31F40E682E2B007F2DEC /* XspfQTTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTTrack.h; sourceTree = "<group>"; };
 		F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTTrack.m; sourceTree = "<group>"; };
+		F4B8096A0F6EB345004BF2DD /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/XspfQTPreference.nib; sourceTree = "<group>"; };
+		F4B8096C0F6EB373004BF2DD /* XspfQTPreferenceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPreferenceWindowController.h; sourceTree = "<group>"; };
+		F4B8096D0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPreferenceWindowController.m; sourceTree = "<group>"; };
 		F4D7CCBF0E868B4C0042F96C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		F4D7CCC00E868B4C0042F96C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/XspfQTDocument.nib; sourceTree = "<group>"; };
 		F4D7CCC10E868B4D0042F96C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/XspfQTImformation.nib; sourceTree = "<group>"; };
@@ -171,6 +176,8 @@
 				F441E0670E6A5131009320B6 /* XspfQTPlayListWindowController.m */,
 				F48FDF170E7D4EE7001C33F3 /* XspfQTInformationWindowController.h */,
 				F48FDF180E7D4EE7001C33F3 /* XspfQTInformationWindowController.m */,
+				F4B8096C0F6EB373004BF2DD /* XspfQTPreferenceWindowController.h */,
+				F4B8096D0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m */,
 				F441DE560E6A2B5F009320B6 /* XspfQTValueTransformers.h */,
 				F441DE570E6A2B5F009320B6 /* XspfQTValueTransformers.m */,
 				F441DEC90E6A399D009320B6 /* XspfQTFullScreenWindow.h */,
@@ -203,6 +210,7 @@
 				F47E2B1A0E7E87DD00DB1BE6 /* XspfQTDocument.nib */,
 				F47E2B1D0E7E87FD00DB1BE6 /* XspfQTPlayList.nib */,
 				F48FDF140E7D4EBE001C33F3 /* XspfQTImformation.nib */,
+				F4B809690F6EB345004BF2DD /* XspfQTPreference.nib */,
 				8D15AC360486D014006FF6A4 /* Info.plist */,
 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
 			);
@@ -295,6 +303,7 @@
 				F47E2B1C0E7E87DD00DB1BE6 /* XspfQTDocument.nib in Resources */,
 				F47E2B1F0E7E87FD00DB1BE6 /* XspfQTPlayList.nib in Resources */,
 				F4D7CCCB0E868BFC0042F96C /* Localizable.strings in Resources */,
+				F4B8096B0F6EB345004BF2DD /* XspfQTPreference.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +332,7 @@
 				F48DD1940F62A58E008A199C /* XspfQTMovieView.m in Sources */,
 				F484FC7B0F6BEB6F007C5596 /* XspfQTMovieLoader.m in Sources */,
 				F484FD550F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m in Sources */,
+				F4B8096E0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +381,14 @@
 				F4D7CCC10E868B4D0042F96C /* Japanese */,
 			);
 			name = XspfQTImformation.nib;
+			sourceTree = "<group>";
+		};
+		F4B809690F6EB345004BF2DD /* XspfQTPreference.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4B8096A0F6EB345004BF2DD /* Japanese */,
+			);
+			name = XspfQTPreference.nib;
 			sourceTree = "<group>";
 		};
 		F4D7CCC90E868BFC0042F96C /* Localizable.strings */ = {

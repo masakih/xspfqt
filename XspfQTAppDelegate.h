@@ -15,5 +15,6 @@
 }
 
 - (IBAction)openInformationPanel:(id)sender;
+- (IBAction)showPreferenceWindow:(id)sender;
 - (IBAction)playedTrack:(id)sender;
 @end
