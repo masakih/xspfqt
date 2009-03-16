@@ -159,40 +159,28 @@
 		2A37F4ABFDCFA73011CA2CEA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F484FD530F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.h */,
-				F484FD540F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m */,
-				F484FC790F6BEB6F007C5596 /* XspfQTMovieLoader.h */,
-				F484FC7A0F6BEB6F007C5596 /* XspfQTMovieLoader.m */,
-				F48B5B1E0F54388100E0D1D0 /* XspfQTMovieWindow.h */,
-				F48B5B1F0F54388100E0D1D0 /* XspfQTMovieWindow.m */,
+				F484FD8E0F6C8F1F007C5596 /* CocoaExtentions */,
+				F484FD8D0F6C8EDF007C5596 /* XspfQTComponent */,
 				F441DE5A0E6A2BDA009320B6 /* XspfQTAppDelegate.h */,
 				F441DE5B0E6A2BDA009320B6 /* XspfQTAppDelegate.m */,
 				2A37F4AEFDCFA73011CA2CEA /* XspfQTDocument.h */,
 				2A37F4ACFDCFA73011CA2CEA /* XspfQTDocument.m */,
 				F441DCA30E69B82B009320B6 /* XspfQTMovieWindowController.h */,
 				F441DCA40E69B82B009320B6 /* XspfQTMovieWindowController.m */,
-				F441DEC90E6A399D009320B6 /* XspfQTFullScreenWindow.h */,
-				F441DECA0E6A399D009320B6 /* XspfQTFullScreenWindow.m */,
 				F441E0660E6A5131009320B6 /* XspfQTPlayListWindowController.h */,
 				F441E0670E6A5131009320B6 /* XspfQTPlayListWindowController.m */,
 				F48FDF170E7D4EE7001C33F3 /* XspfQTInformationWindowController.h */,
 				F48FDF180E7D4EE7001C33F3 /* XspfQTInformationWindowController.m */,
-				F49C31CB0E682C3B007F2DEC /* XspfQTComponent.h */,
-				F49C31CC0E682C3B007F2DEC /* XspfQTComponent.m */,
-				F46870220E71963E00B4DAED /* XspfQTPlaceholderComponent.h */,
-				F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */,
-				F429BE500E8FAECB006EB717 /* XspfQTContainerComponent.h */,
-				F429BE510E8FAECB006EB717 /* XspfQTContainerComponent.m */,
-				F429BD6E0E8F969A006EB717 /* XspfQTPlaylist.h */,
-				F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */,
-				F49C31EF0E682D79007F2DEC /* XspfQTTrackList.h */,
-				F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */,
-				F49C31F40E682E2B007F2DEC /* XspfQTTrack.h */,
-				F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */,
 				F441DE560E6A2B5F009320B6 /* XspfQTValueTransformers.h */,
 				F441DE570E6A2B5F009320B6 /* XspfQTValueTransformers.m */,
+				F441DEC90E6A399D009320B6 /* XspfQTFullScreenWindow.h */,
+				F441DECA0E6A399D009320B6 /* XspfQTFullScreenWindow.m */,
+				F48B5B1E0F54388100E0D1D0 /* XspfQTMovieWindow.h */,
+				F48B5B1F0F54388100E0D1D0 /* XspfQTMovieWindow.m */,
 				F48DD1920F62A58E008A199C /* XspfQTMovieView.h */,
 				F48DD1930F62A58E008A199C /* XspfQTMovieView.m */,
+				F484FC790F6BEB6F007C5596 /* XspfQTMovieLoader.h */,
+				F484FC7A0F6BEB6F007C5596 /* XspfQTMovieLoader.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -228,6 +216,34 @@
 				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F484FD8D0F6C8EDF007C5596 /* XspfQTComponent */ = {
+			isa = PBXGroup;
+			children = (
+				F49C31CB0E682C3B007F2DEC /* XspfQTComponent.h */,
+				F49C31CC0E682C3B007F2DEC /* XspfQTComponent.m */,
+				F46870220E71963E00B4DAED /* XspfQTPlaceholderComponent.h */,
+				F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */,
+				F429BE500E8FAECB006EB717 /* XspfQTContainerComponent.h */,
+				F429BE510E8FAECB006EB717 /* XspfQTContainerComponent.m */,
+				F429BD6E0E8F969A006EB717 /* XspfQTPlaylist.h */,
+				F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */,
+				F49C31EF0E682D79007F2DEC /* XspfQTTrackList.h */,
+				F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */,
+				F49C31F40E682E2B007F2DEC /* XspfQTTrack.h */,
+				F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */,
+			);
+			name = XspfQTComponent;
+			sourceTree = "<group>";
+		};
+		F484FD8E0F6C8F1F007C5596 /* CocoaExtentions */ = {
+			isa = PBXGroup;
+			children = (
+				F484FD530F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.h */,
+				F484FD540F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m */,
+			);
+			name = CocoaExtentions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
