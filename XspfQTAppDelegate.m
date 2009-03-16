@@ -9,6 +9,7 @@
 #import "XspfQTAppDelegate.h"
 #import "XspfQTValueTransformers.h"
 #import "XspfQTInformationWindowController.h"
+#import "XspfQTPreferenceWindowController.h"
 
 @implementation XspfQTAppDelegate
 
@@ -55,6 +56,12 @@
 	wc = [XspfQTInformationWindowController sharedInstance];
 	[wc showWindow:sender];
 }
+- (IBAction)showPreferenceWindow:(id)sender
+{
+	XspfQTPreferenceWindowController *pw;
+	pw = [XspfQTPreferenceWindowController sharedInstance];
+	[pw showWindow:self];
+}
 - (IBAction)togglePlayAndPause:(id)sender
 {
 	[[mainWindowStore windowController] togglePlayAndPause:sender];
@@ -72,6 +79,9 @@
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
 	if([menuItem action] == @selector(openInformationPanel:)) {
+		return YES;
+	}
+	if([menuItem action] == @selector(showPreferenceWindow:)) {
 		return YES;
 	}
 	
