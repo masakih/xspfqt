@@ -13,6 +13,7 @@
 @class XspfQTComponent;
 @class XspfQTMovieWindowController;
 
+@class XspfQTMovieLoader;
 @class QTMovie;
 
 @interface XspfQTDocument : NSDocument
@@ -22,6 +23,11 @@
 	NSWindowController *playListWindowController;
 	
 	QTMovie *playingMovie;
+	XspfQTMovieLoader *loader;
+	NSTimeInterval playingMovieDuration;
+	
+	NSTimer *preloadingTimer;
+	BOOL didPreloading;
 }
 
 - (IBAction)togglePlayAndPause:(id)sender;

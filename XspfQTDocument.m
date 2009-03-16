@@ -28,6 +28,27 @@
 
 NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotification";
 
+- (id)init
+{
+	self = [super init];
+	if(self) {
+		loader = [[XspfQTMovieLoader loaderWithMovieURL:nil delegate:nil] retain];
+		
+		id userDefaults = [NSUserDefaults standardUserDefaults];
+		if([userDefaults boolForKey:@"EnablePreloading"]) {
+//			NSLog(@"Enable preloading.");
+			preloadingTimer = [NSTimer scheduledTimerWithTimeInterval:10
+															   target:self
+															 selector:@selector(checkPreload:)
+															 userInfo:nil
+															  repeats:YES];
+			[preloadingTimer retain];
+		}
+//		NSLog(@"init was called");
+	}
+	
+	return self;
+}
 - (id)initWithType:(NSString *)typeName error:(NSError **)outError
 {
 	[self init];
@@ -42,6 +63,18 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 //	NSLog(@"new playlist is (%@)%@", NSStringFromClass([[self playlist] class]), [self playlist]);
 	
 	return self;
+}
+- (void)dealloc
+{
+	[self setPlayingMovie:nil];
+	[self setPlaylist:nil];
+	[playListWindowController release];
+	[movieWindowController release];
+	[loader release];
+	[preloadingTimer invalidate];
+	[preloadingTimer release];
+	
+	[super dealloc];
 }
 
 - (void)makeWindowControllers
@@ -140,16 +173,6 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
     return YES;
 }
 
-- (void)dealloc
-{
-	[self setPlayingMovie:nil];
-	[self setPlaylist:nil];
-	[playListWindowController release];
-	[movieWindowController release];
-	
-	[super dealloc];
-}
-
 - (void)close
 {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -218,7 +241,15 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 //	NSLog(@"%@ is called!!", NSStringFromSelector(_cmd));
 	return playingMovie;
 }
-
+- (NSTimeInterval)playingMovieDuration
+{
+	if(playingMovieDuration == 0) {
+		QTTime qttime = [[self playingMovie] duration];
+		if(!QTGetTimeInterval(qttime, &playingMovieDuration)) playingMovieDuration = 0;
+	}
+	
+	return playingMovieDuration;
+}
 - (void)loadMovie
 {
 	NSURL *location = [[self trackList] movieLocation];
@@ -228,7 +259,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 		if([location isEqualUsingLocalhost:movieURL]) return;
 	}
 	
-	XspfQTMovieLoader *loader = [XspfQTMovieLoader loaderWithMovieURL:location delegate:nil];
+	[loader setMovieURL:location];
 	[loader load];
 	QTMovie *newMovie = [loader qtMovie];
 	[self setPlayingMovie:newMovie];
@@ -236,6 +267,8 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	QTTime qttime = [newMovie duration];
 	id t = [NSValueTransformer valueTransformerForName:@"XspfQTTimeDateTransformer"];
 	[[self trackList] setCurrentTrackDuration:[t transformedValue:[NSValue valueWithQTTime:qttime]]];
+	
+	didPreloading = NO;
 }
 - (void)setPlayingTrackIndex:(unsigned)index
 {
@@ -339,6 +372,33 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 		} else {
 			[track setIsPlayed:YES];
 		}
+	}
+}
+
+- (void)checkPreload:(NSTimer *)timer
+{
+	if(didPreloading) return;
+	
+	NSTimeInterval duration;
+	NSTimeInterval current;
+	QTTime qttime = [playingMovie currentTime];
+	if(!QTGetTimeInterval(qttime, &current)) return;
+	
+	duration = [self playingMovieDuration];
+	
+	if( current / duration > 0.85 ) {
+		didPreloading = YES;
+		XspfQTComponent *list = [self trackList];
+		unsigned nextIndex = [list selectionIndex] + 1;
+		unsigned max = [list childrenCount];
+		if(max <= nextIndex) return;
+		
+		XspfQTComponent *nextTrack = [list childAtIndex:nextIndex];
+		NSURL *nextMovieURL = [nextTrack movieLocation];
+		[loader setMovieURL:nextMovieURL];
+		[loader load];
+		
+//		NSLog(@"Start preloading.");
 	}
 }
 
