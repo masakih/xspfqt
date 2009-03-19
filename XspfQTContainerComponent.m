@@ -8,6 +8,9 @@
 
 #import "XspfQTContainerComponent.h"
 
+@interface XspfQTContainerComponent(XspfQTPrivate)
+- (void)setCurrentTrack:(XspfQTComponent *)track;
+@end
 
 @implementation XspfQTContainerComponent
 - (id)init
@@ -29,22 +32,9 @@
 	[super dealloc];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath
-					  ofObject:(id)object
-						change:(NSDictionary *)change
-					   context:(void *)context
++ (NSSet *)keyPathsForValuesAffectingIsPlayed
 {
-	if([keyPath isEqualToString:@"isPlayed"]) {
-		//		NSLog(@"Observe key path(%@).", keyPath);
-		[self willChangeValueForKey:@"isPlayed"];
-		[self didChangeValueForKey:@"isPlayed"];
-		return;
-	}
-	
-	[super observeValueForKeyPath:keyPath
-						 ofObject:object
-						   change:change
-						  context:context];
+	return [NSSet setWithObjects:@"currentTrack", @"currentTrack.isPlayed", nil];
 }
 
 - (void)setSelectionIndex:(unsigned)index
@@ -64,22 +54,12 @@
 		newSelection = [_children objectAtIndex:index];
 	}
 	if(selectedComponent != newSelection) {
-		[selectedComponent removeObserver:self  forKeyPath:@"isPlayed"];
 		[selectedComponent deselect];
-		
-		selectedComponent = newSelection;
-		[selectedComponent addObserver:self
-							forKeyPath:@"isPlayed"
-							   options:NSKeyValueObservingOptionNew
-							   context:NULL];
+		[self setCurrentTrack:newSelection];
 		[selectedComponent select];
 	}
 	
-	[self willChangeValueForKey:@"isPlayed"];
-	[self willChangeValueForKey:@"currentTrack"];
 	selectionIndex = index;
-	[self didChangeValueForKey:@"currentTrack"];
-	[self didChangeValueForKey:@"isPlayed"];
 }
 - (unsigned)selectionIndex
 {
@@ -171,6 +151,10 @@
 	return [_children description];
 }
 
+- (void)setCurrentTrack:(XspfQTComponent *)track
+{
+	selectedComponent = track;
+}
 - (XspfQTComponent *)currentTrack
 {
 	return selectedComponent;
