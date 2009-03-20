@@ -42,7 +42,6 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 															 selector:@selector(checkPreload:)
 															 userInfo:nil
 															  repeats:YES];
-			[preloadingTimer retain];
 		}
 //		NSLog(@"init was called");
 	}
@@ -71,8 +70,6 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	[playListWindowController release];
 	[movieWindowController release];
 	[loader release];
-	[preloadingTimer invalidate];
-	[preloadingTimer release];
 	
 	[super dealloc];
 }
@@ -185,6 +182,8 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	[self removeWindowController:movieWindowController];
 	[movieWindowController release];
 	movieWindowController = nil;
+	
+	[preloadingTimer invalidate];
 	
 	[super close];
 }
