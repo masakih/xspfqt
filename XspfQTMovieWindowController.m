@@ -335,7 +335,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	}
 	[qtView release];
 	
-	[player orderFront:self];
+	[player makeKeyAndOrderFront:self];
 	[player makeFirstResponder:qtView];
 	
 	[fullscreenWindow orderOut:self];
