@@ -223,7 +223,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 {
 //	NSLog(@"new movie is %@!!", newMovie);
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	if(!playingMovie) {
+	if(playingMovie) {
 		[nc removeObserver:self
 					  name:nil
 					object:playingMovie];
@@ -232,7 +232,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	[playingMovie autorelease];
 	playingMovie = [newMovie retain];
 	
-	if(!playingMovie) {
+	if(playingMovie) {
 		[nc addObserver:self
 			   selector:@selector(notifee:)
 				   name:QTMovieRateDidChangeNotification
