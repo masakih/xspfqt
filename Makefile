@@ -55,3 +55,7 @@ restorInfoPlist:
 update_svn:
 	svn up
 
+test: 
+	xcodebuild -configuration $(DEPLOYMENT)
+	open ${APP}
+
