@@ -219,6 +219,10 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	return [playlist childAtIndex:0];
 }
 
++ (NSSet *)keyPathsForValuesAffectingPlayingMovieDuration
+{
+	return [NSSet setWithObject:@"playingMovie"];
+}
 - (void)setPlayingMovie:(QTMovie *)newMovie
 {
 //	NSLog(@"new movie is %@!!", newMovie);
@@ -231,6 +235,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	
 	[playingMovie autorelease];
 	playingMovie = [newMovie retain];
+	playingMovieDuration = 0;
 	
 	if(playingMovie) {
 		[nc addObserver:self
