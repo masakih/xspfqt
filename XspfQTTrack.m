@@ -111,7 +111,7 @@
 - (void)setSavedDateWithQTTime:(QTTime)qttime
 {
 	id t = [NSValueTransformer valueTransformerForName:@"XspfQTTimeDateTransformer"];
-	duration = [[t transformedValue:[NSValue valueWithQTTime:qttime]] retain];
+	[self setDuration:[t transformedValue:[NSValue valueWithQTTime:qttime]]];
 }
 - (NSDate *)savedDate
 {
@@ -124,9 +124,7 @@
 }
 - (NSDate *)duration
 {
-	if(duration) return duration;
-	
-	return nil;
+	return duration;
 }
 - (NSURL *)movieLocation
 {
