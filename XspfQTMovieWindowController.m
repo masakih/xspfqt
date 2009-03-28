@@ -25,7 +25,7 @@
 
 #pragma mark ### Static variables ###
 static const float sVolumeDelta = 0.1;
-static const NSTimeInterval sUpdateTimeInterval = 0.01;
+static const NSTimeInterval sUpdateTimeInterval = 0.5;
 static NSString *const kQTMovieKeyPath = @"playingMovie";
 static NSString *const kIsPlayedKeyPath = @"trackList.isPlayed";
 static NSString *const kVolumeKeyPath = @"qtMovie.volume";
