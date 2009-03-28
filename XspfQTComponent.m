@@ -117,21 +117,21 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 
 @implementation XspfQTComponent(XspfComponentOtherMethods)
 #pragma mark #### XspfComponentSelection ####
+- (void)setIsSelected:(BOOL)flag
+{
+	isSelected = flag;
+}
 - (BOOL)isSelected
 {
 	return isSelected;
 }
 - (void)select
 {
-	[self willChangeValueForKey:@"isSelected"];
-	isSelected = YES;
-	[self didChangeValueForKey:@"isSelected"];
+	[self setIsSelected:YES];
 }
 - (void)deselect
 {
-	[self willChangeValueForKey:@"isSelected"];
-	isSelected = NO;
-	[self didChangeValueForKey:@"isSelected"];
+	[self setIsSelected:NO];
 }
 - (BOOL)setSelectionIndexPath:(NSIndexPath *)indexPath
 {
