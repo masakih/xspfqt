@@ -12,6 +12,9 @@ XspfQTPreference *XspfQTPref = nil;
 
 static const CGFloat beginingPreloadPercentPreset = 0.85;
 
+static NSString *BeginningPreloadPercentKey = @"beginingPreloadPercent";
+static NSString *EnablePreloadingKey = @"EnablePreloading";
+
 @implementation XspfQTPreference
 static XspfQTPreference *sharedInstance = nil;
 
@@ -68,12 +71,12 @@ static XspfQTPreference *sharedInstance = nil;
 	self = [super init];
 	
 	id ud = [NSUserDefaults standardUserDefaults];
-	if([ud doubleForKey:@"beginingPreloadPercent"] == 0.0) {
-		[ud setDouble:beginingPreloadPercentPreset forKey:@"beginingPreloadPercent"];
+	if([ud doubleForKey:BeginningPreloadPercentKey] == 0.0) {
+		[ud setDouble:beginingPreloadPercentPreset forKey:BeginningPreloadPercentKey];
 	}
 	
 	id dController = [NSUserDefaultsController sharedUserDefaultsController];
-	[self bind:@"beginingPreloadPercent"
+	[self bind:BeginningPreloadPercentKey
 	  toObject:dController
    withKeyPath:@"values.beginingPreloadPercent"
 	   options:nil];
@@ -82,14 +85,14 @@ static XspfQTPreference *sharedInstance = nil;
 }
 - (void)dealloc
 {
-	[self unbind:@"beginingPreloadPercent"];
+	[self unbind:BeginningPreloadPercentKey];
 		
 	[super dealloc];
 }
 
 - (BOOL)preloadingEnabled
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"EnablePreloading"];
+	return [[NSUserDefaults standardUserDefaults] boolForKey:EnablePreloadingKey];
 }
 - (CGFloat)beginingPreloadPercent
 {
