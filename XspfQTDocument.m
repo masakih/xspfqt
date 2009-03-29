@@ -17,7 +17,6 @@
 #import "XspfQTMovieLoader.h"
 
 @interface XspfQTDocument (Private)
-- (BOOL)preloadingEnabled;
 - (void)setPlaylist:(XspfQTComponent *)newList;
 - (XspfQTComponent *)playlist;
 - (NSXMLDocument *)XMLDocument;
@@ -187,10 +186,6 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	[super close];
 }
 
-- (BOOL)preloadingEnabled
-{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"EnablePreloading"];
-}
 - (IBAction)togglePlayAndPause:(id)sender
 {
 	[movieWindowController togglePlayAndPause:sender];
@@ -388,7 +383,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 
 - (void)checkPreload:(NSTimer *)timer
 {
-	if(![self preloadingEnabled]) return;
+	if(![XspfQTApp preloadingEnabled]) return;
 	if(didPreloading) return;
 	
 	NSTimeInterval duration;

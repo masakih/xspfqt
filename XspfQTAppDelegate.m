@@ -64,6 +64,11 @@ static const CGFloat beginingPreloadPercentPreset = 0.85;
 	
 	[super dealloc];
 }
+
+- (BOOL)preloadingEnabled
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"EnablePreloading"];
+}
 - (CGFloat)beginingPreloadPercent
 {
 	if(beginingPreloadPercent == 0.0) {
