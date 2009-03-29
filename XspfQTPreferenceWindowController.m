@@ -65,4 +65,11 @@ static XspfQTPreferenceWindowController *sharedInstance = nil;
 	[super initWithWindowNibName:@"XspfQTPreference"];
 	return self;
 }
+
+- (void)awakeFromNib
+{
+	[beginingPreloadPercentSlider setMinValue:0.01];
+	[beginingPreloadPercentSlider setMaxValue:0.99];
+	[beginingPreloadPercentSlider setAltIncrementValue:0.05];
+}
 @end

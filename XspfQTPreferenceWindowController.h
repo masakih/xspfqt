@@ -11,7 +11,7 @@
 
 @interface XspfQTPreferenceWindowController : NSWindowController
 {
-
+	IBOutlet NSSlider *beginingPreloadPercentSlider;
 }
 + (XspfQTPreferenceWindowController *)sharedInstance;
 @end
