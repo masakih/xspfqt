@@ -7,14 +7,12 @@
 //
 
 #import "XspfQTAppDelegate.h"
+
+#import "XspfQTPreference.h"
 #import "XspfQTValueTransformers.h"
 #import "XspfQTInformationWindowController.h"
 #import "XspfQTPreferenceWindowController.h"
 
-
-XspfQTAppDelegate *XspfQTApp = nil;
-
-static const CGFloat beginingPreloadPercentPreset = 0.85;
 
 @implementation XspfQTAppDelegate
 
@@ -28,12 +26,12 @@ static const CGFloat beginingPreloadPercentPreset = 0.85;
 									forName:@"XspfQTSizeToStringTransformer"];
 	[NSValueTransformer setValueTransformer:[[[XspfQTFileSizeStringTransformer alloc] init] autorelease]
 									forName:@"XspfQTFileSizeStringTransformer"];
+	
+	[XspfQTPreference sharedInstance];
 }
 
 - (void)awakeFromNib
 {
-	XspfQTApp = self;
-	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:self
 		   selector:@selector(windowDidBecomeMain:)
@@ -43,46 +41,15 @@ static const CGFloat beginingPreloadPercentPreset = 0.85;
 		   selector:@selector(windowWillClose:)
 			   name:NSWindowWillCloseNotification
 			 object:nil];
-	
-	id ud = [NSUserDefaults standardUserDefaults];
-	if([ud doubleForKey:@"beginingPreloadPercent"] == 0.0) {
-		[ud setDouble:beginingPreloadPercentPreset forKey:@"beginingPreloadPercent"];
-	}
-	
-	id dController = [NSUserDefaultsController sharedUserDefaultsController];
-	[self bind:@"beginingPreloadPercent"
-	  toObject:dController
-   withKeyPath:@"values.beginingPreloadPercent"
-	   options:nil];
 }
 - (void)dealloc
 {
-	[self unbind:@"beginingPreloadPercent"];
-	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc removeObserver:self];
 	
 	[super dealloc];
 }
 
-- (BOOL)preloadingEnabled
-{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"EnablePreloading"];
-}
-- (CGFloat)beginingPreloadPercent
-{
-	if(beginingPreloadPercent == 0.0) {
-		return beginingPreloadPercentPreset;
-	}
-	
-	return beginingPreloadPercent;
-}
-- (void)setBeginingPreloadPercent:(CGFloat)newPercent
-{
-	if(newPercent <= 0 || newPercent >= 1) return;
-	beginingPreloadPercent = newPercent;
-//	NSLog(@"set percent %f.", newPercent);
-}
 #pragma mark ### Actions ###
 - (IBAction)playedTrack:(id)sender
 {
