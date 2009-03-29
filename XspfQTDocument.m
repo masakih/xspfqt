@@ -17,6 +17,13 @@
 #import "NSURL-XspfQT-Extensions.h"
 #import "XspfQTMovieLoader.h"
 
+
+#pragma mark #### Global Variables ####
+/********* Global variables *******/
+NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotification";
+
+/**********************************/
+
 @interface XspfQTDocument (Private)
 - (void)setPlaylist:(XspfQTComponent *)newList;
 - (XspfQTComponent *)playlist;
@@ -26,9 +33,12 @@
 - (NSData *)dataFromURL:(NSURL *)url error:(NSError **)outError;
 @end
 
-@implementation XspfQTDocument
+static NSString *XspfDocumentType = @"XML Shareable Playlist Format";
+static NSString *QuickTimeMovieDocumentType = @"QuickTime Movie";
+static NSString *MatroskaVideoDocumentType =  @"Matroska Video";
+static NSString *DivXMediaFormatDocumentType =  @"DivX Media Format";
 
-NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotification";
+@implementation XspfQTDocument
 
 - (id)init
 {
@@ -92,9 +102,9 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 {
 	*outError = nil;
 	
-	if(![typeName isEqualToString:@"QuickTime Movie"]
-	   && ![typeName isEqualToString:@"Matroska Video"]
-	   && ![typeName isEqualToString:@"DivX Media Format"]) {
+	if(![typeName isEqualToString:QuickTimeMovieDocumentType]
+	   && ![typeName isEqualToString:MatroskaVideoDocumentType]
+	   && ![typeName isEqualToString:DivXMediaFormatDocumentType]) {
 		NSData *data = [self dataFromURL:absoluteURL error:outError];
 		if(!data) return NO;
 		
@@ -129,7 +139,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 		[t setTitle:[[[self fileURL] path] lastPathComponent]];
 	}
 	
-	[self setFileType:@"XML Shareable Playlist Format"];
+	[self setFileType:XspfDocumentType];
 	[self setFileURL:nil];
 	
 	return YES;
@@ -138,7 +148,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 {
 	*outError = nil;
 	
-	if(![typeName isEqualToString:@"XML Shareable Playlist Format"]) {
+	if(![typeName isEqualToString:XspfDocumentType]) {
 		return NO;
 	}
 	
