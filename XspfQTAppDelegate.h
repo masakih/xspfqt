@@ -15,6 +15,7 @@
 	CGFloat beginingPreloadPercent;
 }
 
+- (BOOL)preloadingEnabled;
 - (CGFloat)beginingPreloadPercent;
 - (void)setBeginingPreloadPercent:(CGFloat)newPercent;
 
