@@ -7,6 +7,7 @@
 //
 
 #import "XspfQTDocument.h"
+#import "XspfQTAppDelegate.h"
 #import "XspfQTComponent.h"
 #import "XspfQTMovieWindowController.h"
 #import "XspfQTPlayListWindowController.h"
@@ -397,7 +398,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 	
 	duration = [self playingMovieDuration];
 	
-	if( current / duration > 0.85 ) {
+	if( current / duration > [XspfQTApp beginingPreloadPercent] ) {
 		didPreloading = YES;
 		XspfQTComponent *list = [self trackList];
 		unsigned nextIndex = [list selectionIndex] + 1;
