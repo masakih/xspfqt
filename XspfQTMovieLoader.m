@@ -67,7 +67,6 @@
 {
 	if(inDelegate && ![inDelegate respondsToSelector:@selector(setQTMovie:)]) {
 		NSLog(@"Delegate should be respond to selector setQTMovie:");
-		[self autorelease];
 		@throw self;
 	}
 	
