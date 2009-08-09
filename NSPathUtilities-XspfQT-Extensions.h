@@ -1,5 +1,5 @@
 //
-//  NSPathyUtilities-XspfQT-Extensions.h
+//  NSPathUtilities-XspfQT-Extensions.h
 //  XspfQT
 //
 //  Created by Hori,Masaki on 09/07/26.
