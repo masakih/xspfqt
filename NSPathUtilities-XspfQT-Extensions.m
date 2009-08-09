@@ -1,12 +1,12 @@
 //
-//  NSPathyUtilities-XspfQT-Extensions.m
+//  NSPathUtilities-XspfQT-Extensions.m
 //  XspfQT
 //
 //  Created by Hori,Masaki on 09/07/26.
 //  Copyright 2009 masakih. All rights reserved.
 //
 
-#import "NSPathyUtilities-XspfQT-Extensions.h"
+#import "NSPathUtilities-XspfQT-Extensions.h"
 
 
 @implementation NSString (XspfQT_Extensions)
