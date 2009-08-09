@@ -35,6 +35,7 @@
 		F49C31EC0E682D66007F2DEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C31EB0E682D66007F2DEC /* Foundation.framework */; };
 		F49C31F10E682D79007F2DEC /* XspfQTTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */; };
 		F49C31F60E682E2B007F2DEC /* XspfQTTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */; };
+		F4B22C8F101BE195004D427C /* NSPathyUtilities-XspfQT-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B22C8E101BE195004D427C /* NSPathyUtilities-XspfQT-Extensions.m */; };
 		F4B8096E0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B8096D0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m */; };
 		F4B809F30F6EBB33004BF2DD /* XspfQTPreference.nib in Resources */ = {isa = PBXBuildFile; fileRef = F4B809F10F6EBB33004BF2DD /* XspfQTPreference.nib */; };
 		F4D7CCCB0E868BFC0042F96C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4D7CCC90E868BFC0042F96C /* Localizable.strings */; };
@@ -93,6 +94,8 @@
 		F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTTrackList.m; sourceTree = "<group>"; };
 		F49C31F40E682E2B007F2DEC /* XspfQTTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTTrack.h; sourceTree = "<group>"; };
 		F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTTrack.m; sourceTree = "<group>"; };
+		F4B22C8D101BE195004D427C /* NSPathyUtilities-XspfQT-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPathyUtilities-XspfQT-Extensions.h"; sourceTree = "<group>"; };
+		F4B22C8E101BE195004D427C /* NSPathyUtilities-XspfQT-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPathyUtilities-XspfQT-Extensions.m"; sourceTree = "<group>"; };
 		F4B8096C0F6EB373004BF2DD /* XspfQTPreferenceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPreferenceWindowController.h; sourceTree = "<group>"; };
 		F4B8096D0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPreferenceWindowController.m; sourceTree = "<group>"; };
 		F4B809F20F6EBB33004BF2DD /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/XspfQTPreference.nib; sourceTree = "<group>"; };
@@ -256,6 +259,8 @@
 			children = (
 				F484FD530F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.h */,
 				F484FD540F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m */,
+				F4B22C8D101BE195004D427C /* NSPathyUtilities-XspfQT-Extensions.h */,
+				F4B22C8E101BE195004D427C /* NSPathyUtilities-XspfQT-Extensions.m */,
 			);
 			name = CocoaExtentions;
 			sourceTree = "<group>";
@@ -340,6 +345,7 @@
 				F484FD550F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m in Sources */,
 				F4B8096E0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m in Sources */,
 				F41AC3520F7F0B88003B3DF0 /* XspfQTPreference.m in Sources */,
+				F4B22C8F101BE195004D427C /* NSPathyUtilities-XspfQT-Extensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
