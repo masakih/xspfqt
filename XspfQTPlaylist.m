@@ -45,6 +45,9 @@
 	[node addAttribute:[NSXMLNode attributeWithName:@"xmlns"
 										stringValue:@"http://xspf.org/ns/0/"]];
 	
+	[node addAttribute:[NSXMLNode attributeWithName:@"xmlns:hm"
+										stringValue:@"http://masakih.com"]];
+	
 	if([self title]) {
 		id t = [NSXMLElement elementWithName:@"title"
 								 stringValue:[self title]];

@@ -10,6 +10,7 @@
 
 #import <QTKit/QTTime.h>
 #import "NSURL-XspfQT-Extensions.h"
+#import "NSPathUtilities-XspfQT-Extensions.h"
 
 @interface XspfQTTrack (Private)
 - (void)setSavedDateWithQTTime:(QTTime)qttime;
@@ -48,6 +49,33 @@
 		[self setSavedDateWithQTTime:q];
 	}
 	
+	elems = [element elementsForName:@"extension"];
+	id myExtension = nil;
+	if(elems && [elems count] != 0) {
+		for(id extension in elems) {
+			id app = [[extension attributeForName:@"application"] stringValue];
+			if([app isEqualToString:@"http://masakih.com"]) {
+				myExtension = extension;
+				break;
+			}
+		}
+		
+		do {
+			if(!myExtension) break;
+			
+			id aliasString = [[[myExtension elementsForName:@"hm:alias"] objectAtIndex:0] stringValue];
+			if(!aliasString) break;
+			
+			NSData *aliasData = [aliasString propertyList];
+			if(![aliasData isKindOfClass:[NSData class]]) break;
+						
+			NSString *loc = [aliasData resolvedPath];
+			if(loc) {
+				[self setLocation:[NSURL fileURLWithPath:loc]];
+			}
+		} while(NO);
+	}
+	
 	return self;
 }
 - (void)dealloc
@@ -82,6 +110,28 @@
 			[node addChild:durationElem];
 		}
 	}
+	
+	do {
+		if([[self location] isFileURL]) {
+			NSString *path = [[self location] path];
+			NSData *aliasData = [path aliasData];
+			if(!aliasData) break;
+			
+			id aliasElem = [NSXMLElement elementWithName:@"hm:alias"
+									//		 stringValue:[NSString stringWithFormat:@"%@", [NSArray arrayWithObject:aliasData]]];
+			 stringValue:[NSString stringWithFormat:@"%@", aliasData]];
+			if(!aliasElem) break;
+			id applicationAttr = [NSXMLElement attributeWithName:@"application"
+													 stringValue:@"http://masakih.com"];
+			if(!applicationAttr) break;
+			id extensionElem = [NSXMLElement elementWithName:@"extension"
+													children:[NSArray arrayWithObject:aliasElem]
+												  attributes:[NSArray arrayWithObject:applicationAttr]];
+			if(extensionElem) {
+				[node addChild:extensionElem];
+			}
+		}
+	} while(NO);
 	
 	return node;
 }
