@@ -9,6 +9,10 @@
 #import "XspfQTComponent.h"
 #import "XspfQTPlaceholderComponent.h"
 
+NSString *XspfQTXMLNamespaceseURI = @"http://masakih.com";
+NSString *XspfQTXMLNamespacesePrefix = @"hm";
+NSString *XspfQTXMLAliasElement = @"hm:alias";
+
 @implementation XspfQTComponent
 
 static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLStringCodingKey";
