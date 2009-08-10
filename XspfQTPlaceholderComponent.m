@@ -115,6 +115,9 @@ static XspfQTPlaceholderComponent *sharedInstance = nil;
 
 - (id)initWithXMLElement:(NSXMLElement *)element
 {
+	[super init];
+	[self autorelease];
+	
 	NSString *name = [element name];
 	if(!name) return nil;
 	if([name isEqualToString:@""]) return nil;
