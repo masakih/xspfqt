@@ -54,7 +54,7 @@
 	if(elems && [elems count] != 0) {
 		for(id extension in elems) {
 			id app = [[extension attributeForName:@"application"] stringValue];
-			if([app isEqualToString:@"http://masakih.com"]) {
+			if([app isEqualToString:XspfQTXMLNamespaceseURI]) {
 				myExtension = extension;
 				break;
 			}
@@ -63,7 +63,7 @@
 		do {
 			if(!myExtension) break;
 			
-			id aliasString = [[[myExtension elementsForName:@"hm:alias"] objectAtIndex:0] stringValue];
+			id aliasString = [[[myExtension elementsForName:XspfQTXMLAliasElement] objectAtIndex:0] stringValue];
 			if(!aliasString) break;
 			
 			NSData *aliasData = [aliasString propertyList];
@@ -117,12 +117,11 @@
 			NSData *aliasData = [path aliasData];
 			if(!aliasData) break;
 			
-			id aliasElem = [NSXMLElement elementWithName:@"hm:alias"
-									//		 stringValue:[NSString stringWithFormat:@"%@", [NSArray arrayWithObject:aliasData]]];
-			 stringValue:[NSString stringWithFormat:@"%@", aliasData]];
+			id aliasElem = [NSXMLElement elementWithName:XspfQTXMLAliasElement
+											 stringValue:[NSString stringWithFormat:@"%@", aliasData]];
 			if(!aliasElem) break;
 			id applicationAttr = [NSXMLElement attributeWithName:@"application"
-													 stringValue:@"http://masakih.com"];
+													 stringValue:XspfQTXMLNamespaceseURI];
 			if(!applicationAttr) break;
 			id extensionElem = [NSXMLElement elementWithName:@"extension"
 													children:[NSArray arrayWithObject:aliasElem]

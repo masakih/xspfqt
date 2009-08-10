@@ -71,3 +71,9 @@
 - (void)removeChildAtIndex:(unsigned)index;	//not implemented.
 - (void)setParent:(XspfQTComponent *)parent;	// Do not call directly. call in only -addChild: method.
 @end
+
+
+extern NSString *XspfQTXMLNamespaceseURI;
+extern NSString *XspfQTXMLNamespacesePrefix;
+extern NSString *XspfQTXMLAliasElement;
+
