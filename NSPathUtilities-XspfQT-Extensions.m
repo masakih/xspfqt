@@ -42,7 +42,7 @@
 	HSetState((Handle)alias, handleState);
 	DisposeHandle((Handle)alias);
 	
-	return result;
+	return [result autorelease];
 }
 @end
 
