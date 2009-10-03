@@ -204,6 +204,34 @@
 	return YES;
 }
 
+#pragma mark#### NSCoding ####
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+	NSDictionary *dict =
+	[NSDictionary dictionaryWithObjectsAndKeys:[self title], @"XspfQTTrackTitle",
+	 [self duration], @"XspfQTTrackDuration",
+	 [self location], @"XspfQTTrackLocation", 
+	 nil];
+	
+	[aCoder encodeObject:dict forKey:@"XspfQTTrackCodingKey"];
+}
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	[super init];
+	[self autorelease];
+	
+	id dict = [aDecoder decodeObjectForKey:@"XspfQTTrackCodingKey"];
+	
+	[self setTitle:[dict objectForKey:@"XspfQTTrackTitle"]];
+	[self setDuration:[dict objectForKey:@"XspfQTTrackDuration"]];
+	[self setLocation:[dict objectForKey:@"XspfQTTrackLocation"]];
+	
+	NSXMLElement *element = [self XMLElement];
+	
+	return [[[self class] alloc] initWithXMLElement:element];
+}
+
+
 - (NSString *)description
 {
 	return [NSString stringWithFormat:@"Title:(%@)\nLocation:(%@)",
