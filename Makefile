@@ -8,7 +8,8 @@ APP=$(BUILD_PATH)/$(DEPLOYMENT)/$(APP_BUNDLE)
 APP_NAME=$(BUILD_PATH)/$(DEPLOYMENT)/$(PRODUCT_NAME)
 INFO_PLIST=Info.plist
 
-URL_XspfQT = svn+ssh://macmini/usr/local/svnrepos/XspfQT
+URL_CMD=LC_ALL=C svn info | awk '/Root/{print $$3}'
+URL_XspfQT = $(shell $(URL_CMD))
 HEAD = $(URL_XspfQT)/XspfQT
 TAGS_DIR = $(URL_XspfQT)/tags
 
