@@ -209,8 +209,8 @@
 {
 	NSDictionary *dict =
 	[NSDictionary dictionaryWithObjectsAndKeys:[self title], @"XspfQTTrackTitle",
+	 [self location], @"XspfQTTrackLocation",
 	 [self duration], @"XspfQTTrackDuration",
-	 [self location], @"XspfQTTrackLocation", 
 	 nil];
 	
 	[aCoder encodeObject:dict forKey:@"XspfQTTrackCodingKey"];
