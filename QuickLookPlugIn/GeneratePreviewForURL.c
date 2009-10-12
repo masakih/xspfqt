@@ -21,6 +21,10 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         goto fail;
     }
 	
+	if(QLPreviewRequestIsCancelled(preview)) {
+		goto fail;
+	}
+	
     CFDataRef theData = (CFDataRef)[theMovie movieFormatRepresentation];
     QLPreviewRequestSetDataRepresentation(preview, theData, kUTTypeMovie, NULL);
 	

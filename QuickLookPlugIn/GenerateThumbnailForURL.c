@@ -25,6 +25,10 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
         goto fail;
     }
 	
+	if(QLThumbnailRequestIsCancelled(thumbnail)) {
+		goto fail;
+	}
+	
 	XspfQTTimeTransformer *t = [[[XspfQTTimeTransformer alloc] init] autorelease];
 	
 	
