@@ -41,8 +41,6 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 	NSURL *movieURL = [trackList movieLocation];
 	if(!movieURL) {
 		NSLog(@"Can not get movei URL.");
-	} else {
-		NSLog(@"Movie URL is %@.", movieURL);
 	}
 	
     QTMovie *theMovie = [QTMovie movieWithURL:movieURL error:&theErr];

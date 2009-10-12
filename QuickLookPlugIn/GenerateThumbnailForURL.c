@@ -40,9 +40,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	[trackList setSelectionIndex:0];
 	NSURL *movieURL = [trackList movieLocation];
 	if(!movieURL) {
-		NSLog(@"Can not get movei URL.");
-	} else {
-		NSLog(@"Movie URL is %@.", movieURL);
+		NSLog(@"Can not get movie URL.");
 	}
 	
     QTMovie *theMovie = [QTMovie movieWithURL:movieURL error:&theErr];
