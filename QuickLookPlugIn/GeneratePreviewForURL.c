@@ -4,8 +4,7 @@
 
 #import <QTKit/QTKit.h>
 
-#import "XspfQTDocument.h"
-#import "XspfQTComponent.h"
+#include "XspfQLUtilities.h"
 
 /* -----------------------------------------------------------------------------
    Generate a preview for file
@@ -15,41 +14,13 @@
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
-    NSError *theErr = nil;
-	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-	NSXMLDocument *d = [[[NSXMLDocument alloc] initWithContentsOfURL:(NSURL *)url
-															 options:0
-															   error:&theErr] autorelease];
-	if(!d) {
-		if(theErr) {
-			NSLog(@"%@", theErr);
-		}
-		goto fail;
-	}
-	NSXMLElement *root = [d rootElement];
-	id pl = [XspfQTComponent xspfComponemtWithXMLElement:root];
-	if(!pl) {
-		NSLog(@"Can not create XspfQTComponent.");
-		goto fail;
-	} else {
-		//		NSLog(@"DUMP ->%@", pl);
-	}
-	id trackList = [pl childAtIndex:0];
-	[trackList setSelectionIndex:0];
-	NSURL *movieURL = [trackList movieLocation];
-	if(!movieURL) {
-		NSLog(@"Can not get movei URL.");
-	}
-	
-    QTMovie *theMovie = [QTMovie movieWithURL:movieURL error:&theErr];
+	QTMovie *theMovie = firstMovie(url);
     if (theMovie == nil) {
-        if (theErr != nil) {
-            NSLog(@"Couldn't load movie URL, error = %@", theErr);
-        }
         goto fail;
     }
+	
     CFDataRef theData = (CFDataRef)[theMovie movieFormatRepresentation];
     QLPreviewRequestSetDataRepresentation(preview, theData, kUTTypeMovie, NULL);
 	

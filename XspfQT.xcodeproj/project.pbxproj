@@ -32,6 +32,8 @@
 		F426BB8310832AF10084E8C5 /* XspfQuickLook.qlgenerator in CopyFiles */ = {isa = PBXBuildFile; fileRef = F426BB311083282A0084E8C5 /* XspfQuickLook.qlgenerator */; };
 		F426BBC41083313F0084E8C5 /* NSPathUtilities-XspfQT-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B22C8E101BE195004D427C /* NSPathUtilities-XspfQT-Extensions.m */; };
 		F426BBD71083328F0084E8C5 /* NSURL-XspfQT-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F484FD540F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m */; };
+		F426BBFC108344260084E8C5 /* XspfQLUtilities.c in Sources */ = {isa = PBXBuildFile; fileRef = F426BBFA108344260084E8C5 /* XspfQLUtilities.c */; };
+		F426BC96108357890084E8C5 /* XspfQTValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE570E6A2B5F009320B6 /* XspfQTValueTransformers.m */; };
 		F429BD700E8F969A006EB717 /* XspfQTPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */; };
 		F429BE520E8FAECB006EB717 /* XspfQTContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F429BE510E8FAECB006EB717 /* XspfQTContainerComponent.m */; };
 		F441DCA50E69B82B009320B6 /* XspfQTMovieWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DCA40E69B82B009320B6 /* XspfQTMovieWindowController.m */; };
@@ -66,7 +68,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F426BB301083282A0084E8C5 /* XspfQuickLookPlugIn */;
+			remoteGlobalIDString = F426BB301083282A0084E8C5;
 			remoteInfo = XspfQuickLookPlugIn;
 		};
 /* End PBXContainerItemProxy section */
@@ -100,6 +102,8 @@
 		F41AC3510F7F0B88003B3DF0 /* XspfQTPreference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPreference.m; sourceTree = "<group>"; };
 		F426BB311083282A0084E8C5 /* XspfQuickLook.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XspfQuickLook.qlgenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		F426BB66108329DC0084E8C5 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = /System/Library/Frameworks/QuickLook.framework; sourceTree = "<absolute>"; };
+		F426BBFA108344260084E8C5 /* XspfQLUtilities.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = XspfQLUtilities.c; sourceTree = "<group>"; };
+		F426BBFB108344260084E8C5 /* XspfQLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQLUtilities.h; sourceTree = "<group>"; };
 		F429BD6E0E8F969A006EB717 /* XspfQTPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlaylist.h; sourceTree = "<group>"; };
 		F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlaylist.m; sourceTree = "<group>"; };
 		F429BE500E8FAECB006EB717 /* XspfQTContainerComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTContainerComponent.h; sourceTree = "<group>"; };
@@ -302,6 +306,8 @@
 		F47DF8CD108325D800DF2C17 /* QuickLookPlugIn */ = {
 			isa = PBXGroup;
 			children = (
+				F426BBFA108344260084E8C5 /* XspfQLUtilities.c */,
+				F426BBFB108344260084E8C5 /* XspfQLUtilities.h */,
 				F47DF8DA1083262000DF2C17 /* InfoPlist.strings */,
 				F47DF8D11083260600DF2C17 /* GeneratePreviewForURL.c */,
 				F47DF8D21083260600DF2C17 /* GenerateThumbnailForURL.c */,
@@ -387,6 +393,9 @@
 /* Begin PBXProject section */
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = masakih;
+			};
 			buildConfigurationList = C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "XspfQT" */;
 			compatibilityVersion = "Xcode 3.0";
 			hasScannedForEncodings = 1;
@@ -469,6 +478,8 @@
 				F426BB7D10832AC20084E8C5 /* XspfQTTrackList.m in Sources */,
 				F426BBC41083313F0084E8C5 /* NSPathUtilities-XspfQT-Extensions.m in Sources */,
 				F426BBD71083328F0084E8C5 /* NSURL-XspfQT-Extensions.m in Sources */,
+				F426BBFC108344260084E8C5 /* XspfQLUtilities.c in Sources */,
+				F426BC96108357890084E8C5 /* XspfQTValueTransformers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

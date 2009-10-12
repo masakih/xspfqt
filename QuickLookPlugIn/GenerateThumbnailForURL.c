@@ -4,8 +4,9 @@
 
 #import <QTKit/QTKit.h>
 
-#import "XspfQTDocument.h"
-#import "XspfQTComponent.h"
+#include "XspfQLUtilities.h"
+#import "XspfQTValueTransformers.h"
+
 
 /* -----------------------------------------------------------------------------
     Generate a thumbnail for file
@@ -19,42 +20,38 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-	NSXMLDocument *d = [[[NSXMLDocument alloc] initWithContentsOfURL:(NSURL *)url
-													options:0
-													  error:&theErr] autorelease];
-	if(!d) {
-		if(theErr) {
-			NSLog(@"%@", theErr);
-		}
-		goto fail;
-	}
-	NSXMLElement *root = [d rootElement];
-	id pl = [XspfQTComponent xspfComponemtWithXMLElement:root];
-	if(!pl) {
-		NSLog(@"Can not create XspfQTComponent.");
-		goto fail;
-	} else {
-//		NSLog(@"DUMP ->%@", pl);
-	}
-	id trackList = [pl childAtIndex:0];
-	[trackList setSelectionIndex:0];
-	NSURL *movieURL = [trackList movieLocation];
-	if(!movieURL) {
-		NSLog(@"Can not get movie URL.");
-	}
-	
-    QTMovie *theMovie = [QTMovie movieWithURL:movieURL error:&theErr];
+    QTMovie *theMovie = firstMovie(url);
     if (theMovie == nil) {
-        if (theErr != nil) {
-            NSLog(@"Couldn't load movie URL, error = %@", theErr);
-        }
         goto fail;
     }
-    [theMovie gotoPosterTime];
-    QTTime mTime = [theMovie currentTime];
+	
+	XspfQTTimeTransformer *t = [[[XspfQTTimeTransformer alloc] init] autorelease];
+	
+	
+	/** はじめのフレームは真っ黒、あるいは真っ白である場合が多い。そのため以下の秒数のフレームを使用する。
+	 ** ０、ポスターフレームがあればそれを使用。
+	 ** １、１５分以上なら秒数で１％のフレームを使用。
+	 ** ２、１分以上なら１秒目のフレームを使用。
+	 ** ３、それらよりも短いときは０秒目のフレームを使用。
+	 **/
+	NSValue *pTime = [theMovie attributeForKey:QTMoviePosterTimeAttribute];
+	id pV = [t transformedValue:pTime];
+	if([pV longValue] == 0) {
+		NSValue *duration = [theMovie attributeForKey:QTMovieDurationAttribute];
+		id v = [t transformedValue:duration];
+		
+		double newPosterTime = 0;
+		double dDur = [v doubleValue];
+		if(dDur > 15 * 60) {
+			newPosterTime = dDur / 100;
+		} else if(dDur > 60) {
+			newPosterTime = 1;
+		}
+		pV = [NSNumber numberWithDouble:newPosterTime];
+	}
+	
     NSDictionary *imgProp = [NSDictionary dictionaryWithObject:QTMovieFrameImageTypeCGImageRef forKey:QTMovieFrameImageType];
-    CGImageRef theImage = (CGImageRef)[theMovie frameImageAtTime:mTime withAttributes:imgProp error:&theErr];
-//	CGImageRef theImage = (CGImageRef)[theMovie posterImage];
+    CGImageRef theImage = (CGImageRef)[theMovie frameImageAtTime:[pV QTTimeValue] withAttributes:imgProp error:&theErr];
 	
     if (theImage == nil) {
         if (theErr != nil) {
