@@ -38,6 +38,8 @@ static NSString *QuickTimeMovieDocumentType = @"QuickTime Movie";
 static NSString *MatroskaVideoDocumentType =  @"Matroska Video";
 static NSString *DivXMediaFormatDocumentType =  @"DivX Media Format";
 
+static NSString *XspfUTI = @"com.masakih.xspf";
+
 @implementation XspfQTDocument
 
 - (id)init
@@ -148,7 +150,8 @@ static NSString *DivXMediaFormatDocumentType =  @"DivX Media Format";
 {
 	*outError = nil;
 	
-	if(![typeName isEqualToString:XspfDocumentType]) {
+	if(![typeName isEqualToString:XspfDocumentType]
+	   && ![typeName isEqualToString:XspfUTI]) {
 		return NO;
 	}
 	
