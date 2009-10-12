@@ -6,6 +6,8 @@
 //  Copyright 2008 masakih. All rights reserved.
 //
 
+#import <Carbon/Carbon.h>
+
 #import "XspfQTMovieWindowController.h"
 #import "XspfQTDocument.h"
 #import "XspfQTComponent.h"
