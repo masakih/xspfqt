@@ -14,7 +14,7 @@
 #import "XspfQTDocument.h"
 #import "XspfQTComponent.h"
 
-#if 0
+#if 1
 static QTMovie *loadFromMovieURL(NSURL *url)
 {
 	QTMovie *result = nil;

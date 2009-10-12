@@ -34,8 +34,8 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	 ** ２、１分以上なら１秒目のフレームを使用。
 	 ** ３、それらよりも短いときは０秒目のフレームを使用。
 	 **/
-	NSValue *pTime = [theMovie attributeForKey:QTMoviePosterTimeAttribute];
-	id pV = [t transformedValue:pTime];
+	NSValue *pTimeValue = [theMovie attributeForKey:QTMoviePosterTimeAttribute];
+	id pV = [t transformedValue:pTimeValue];
 	if([pV longValue] == 0) {
 		NSValue *duration = [theMovie attributeForKey:QTMovieDurationAttribute];
 		id v = [t transformedValue:duration];
@@ -47,12 +47,12 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		} else if(dDur > 60) {
 			newPosterTime = 1;
 		}
-		pV = [NSNumber numberWithDouble:newPosterTime];
+		pTimeValue = [t reverseTransformedValue:[NSNumber numberWithDouble:newPosterTime]];
 	}
+//	NSLog(@"Poster time is -> (%@)", QTStringFromTime([pTimeValue QTTimeValue]));
 	
-    NSDictionary *imgProp = [NSDictionary dictionaryWithObject:QTMovieFrameImageTypeCGImageRef forKey:QTMovieFrameImageType];
-    CGImageRef theImage = (CGImageRef)[theMovie frameImageAtTime:[pV QTTimeValue] withAttributes:imgProp error:&theErr];
-	
+	NSDictionary *imgProp = [NSDictionary dictionaryWithObject:QTMovieFrameImageTypeCGImageRef forKey:QTMovieFrameImageType];
+	CGImageRef theImage = (CGImageRef)[theMovie frameImageAtTime:[pTimeValue QTTimeValue] withAttributes:imgProp error:&theErr];
     if (theImage == nil) {
         if (theErr != nil) {
             NSLog(@"Couldn't create CGImageRef, error = %@", theErr);
