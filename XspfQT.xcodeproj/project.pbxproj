@@ -31,6 +31,7 @@
 		F426BB7D10832AC20084E8C5 /* XspfQTTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */; };
 		F426BB8310832AF10084E8C5 /* XspfQuickLook.qlgenerator in CopyFiles */ = {isa = PBXBuildFile; fileRef = F426BB311083282A0084E8C5 /* XspfQuickLook.qlgenerator */; };
 		F426BBC41083313F0084E8C5 /* NSPathUtilities-XspfQT-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B22C8E101BE195004D427C /* NSPathUtilities-XspfQT-Extensions.m */; };
+		F426BBD71083328F0084E8C5 /* NSURL-XspfQT-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F484FD540F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m */; };
 		F429BD700E8F969A006EB717 /* XspfQTPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */; };
 		F429BE520E8FAECB006EB717 /* XspfQTContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F429BE510E8FAECB006EB717 /* XspfQTContainerComponent.m */; };
 		F441DCA50E69B82B009320B6 /* XspfQTMovieWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DCA40E69B82B009320B6 /* XspfQTMovieWindowController.m */; };
@@ -467,6 +468,7 @@
 				F426BB7C10832AC10084E8C5 /* XspfQTTrack.m in Sources */,
 				F426BB7D10832AC20084E8C5 /* XspfQTTrackList.m in Sources */,
 				F426BBC41083313F0084E8C5 /* NSPathUtilities-XspfQT-Extensions.m in Sources */,
+				F426BBD71083328F0084E8C5 /* NSURL-XspfQT-Extensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
