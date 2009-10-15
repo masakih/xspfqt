@@ -10,5 +10,7 @@
 #import <CoreFoundation/CoreFoundation.h>
 
 @class QTMovie;
+@class NSURL;
 
 QTMovie *firstMovie(CFURLRef url);
+NSURL *firstMovieURL(CFURLRef url);
