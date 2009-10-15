@@ -24,14 +24,14 @@ static QTMovie *loadFromMovieURL(NSURL *url)
 						   url, QTMovieURLAttribute,
 						   [NSNumber numberWithBool:NO], QTMovieOpenAsyncOKAttribute,
 						   nil];
-	result = [[QTMovie alloc] initWithAttributes:attrs error:&error];
+	result = [QTMovie movieWithAttributes:attrs error:&error];
 	if (result == nil) {
         if (error != nil) {
             NSLog(@"Couldn't load movie URL, error = %@", error);
         }
     }
 	
-	return [result autorelease];
+	return result;
 }
 #else
 static QTMovie *loadFromMovieURL(NSURL *url)
@@ -50,11 +50,10 @@ static QTMovie *loadFromMovieURL(NSURL *url)
 }
 #endif
 
-QTMovie *firstMovie(CFURLRef url)
+NSURL *firstMovieURL(CFURLRef url)
 {
-	QTMovie *result = nil;
 	NSError *theErr = nil;
-		
+	
 	NSXMLDocument *d = [[[NSXMLDocument alloc] initWithContentsOfURL:(NSURL *)url
 															 options:0
 															   error:&theErr] autorelease];
@@ -62,26 +61,31 @@ QTMovie *firstMovie(CFURLRef url)
 		if(theErr) {
 			NSLog(@"%@", theErr);
 		}
-		goto fail;
+		return nil;
 	}
 	NSXMLElement *root = [d rootElement];
 	id pl = [XspfQTComponent xspfComponemtWithXMLElement:root];
 	if(!pl) {
 		NSLog(@"Can not create XspfQTComponent.");
-		goto fail;
+		return nil;
 	} else {
 		//		NSLog(@"DUMP ->%@", pl);
 	}
 	id trackList = [pl childAtIndex:0];
-	[trackList setSelectionIndex:0];
-	NSURL *movieURL = [trackList movieLocation];
+	[(XspfQTComponent *)trackList setSelectionIndex:0];
+	return [trackList movieLocation];
+}
+QTMovie *firstMovie(CFURLRef url)
+{
+	QTMovie *result = nil;
+	
+	NSURL *movieURL = firstMovieURL(url);
 	if(!movieURL) {
 		NSLog(@"Can not get movie URL.");
-		goto fail;
+		return nil;
 	}
 	
     result = loadFromMovieURL(movieURL);
 	
-fail:
 	return result;
 }
