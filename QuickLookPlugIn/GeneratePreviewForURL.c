@@ -12,27 +12,20 @@
    This function's job is to create preview for designated file
    ----------------------------------------------------------------------------- */
 
-
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-	NSURL *theMovieURL = firstMovieURL(url);
-    if (theMovieURL == nil) {
+	QTMovie *theMovie = firstMovie(url);
+    if (theMovie == nil) {
         goto fail;
     }
 	
 	if(QLPreviewRequestIsCancelled(preview)) {
 		goto fail;
 	}
-	NSError *error = nil;
-    CFDataRef theData = (CFDataRef)[NSData dataWithContentsOfURL:theMovieURL options:0 error:&error];
-	if(!theData) {
-		if(error) {
-			NSLog(@"Can not read move, error = %@", error);
-		}
-		goto fail;
-	}
+	
+    CFDataRef theData = (CFDataRef)[theMovie movieFormatRepresentation];
     QLPreviewRequestSetDataRepresentation(preview, theData, kUTTypeMovie, NULL);
 	
 fail:
