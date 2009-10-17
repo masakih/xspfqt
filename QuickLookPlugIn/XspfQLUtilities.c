@@ -65,14 +65,14 @@ QTMovie *firstMovie(CFURLRef url)
 		goto fail;
 	}
 	NSXMLElement *root = [d rootElement];
-	id pl = [XspfQTComponent xspfComponemtWithXMLElement:root];
+	XspfQTComponent *pl = [XspfQTComponent xspfComponemtWithXMLElement:root];
 	if(!pl) {
 		NSLog(@"Can not create XspfQTComponent.");
 		goto fail;
 	} else {
 		//		NSLog(@"DUMP ->%@", pl);
 	}
-	id trackList = [pl childAtIndex:0];
+	XspfQTComponent *trackList = [pl childAtIndex:0];
 	[trackList setSelectionIndex:0];
 	NSURL *movieURL = [trackList movieLocation];
 	if(!movieURL) {
