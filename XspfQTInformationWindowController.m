@@ -88,18 +88,26 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 			   withObject:@"currentTrack"
 			   afterDelay:0.0];
 }
+- (void)currentDocumentDidChangeNotification:(id)notification
+{
+	[self willChangeValueForKey:@"currentDocument"];
+	[self performSelector:@selector(didChangeValueForKey:)
+			   withObject:@"currentDocument"
+			   afterDelay:0.0];
+}
 
 - (void)windowDidLoad
 {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:self
-		   selector:@selector(notifee:)
+		   selector:@selector(currentDocumentDidChangeNotification:)
 			   name:NSWindowDidBecomeMainNotification
 			 object:nil];
 	[nc addObserver:self
-		   selector:@selector(notifee:)
+		   selector:@selector(currentDocumentDidChangeNotification:)
 			   name:NSWindowDidResignMainNotification
 			 object:nil];
+	
 	[nc addObserver:self
 		   selector:@selector(notifee:)
 			   name:NSWindowDidResizeNotification
