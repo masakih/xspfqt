@@ -290,20 +290,14 @@ static NSString *XspfUTI = @"com.masakih.xspf";
 	
 	didPreloading = NO;
 }
-- (void)setPlayingTrackIndex:(unsigned)index
-{
-//	[self performSelector:@selector(loadMovie) withObject:nil afterDelay:0.0];
-	[self loadMovie];
-}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath
 					  ofObject:(id)object
 						change:(NSDictionary *)change
 					   context:(void *)context
 {
 	if([keyPath isEqualToString:@"currentTrack"]) {
-		id trackList = [self trackList];
-		unsigned index = [trackList selectionIndex];
-		[self setPlayingTrackIndex:index];
+		[self loadMovie];
 	}
 }
 
