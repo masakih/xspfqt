@@ -59,7 +59,5 @@
 	<real>800</real>
 	<key>QLSupportsConcurrentRequests</key>
 	<false/>
-	<key>QLThumbnailMinimumSize</key>
-	<real>17</real>
 </dict>
 </plist>
