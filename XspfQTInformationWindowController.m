@@ -10,7 +10,8 @@
 #import "XspfQTDocument.h"
 
 
-static NSString *const XspfDocumentQtMovieKeyPath = @"playingMovie";
+static NSString *const XspfQTDocumentQtMovieKeyPath = @"playingMovie";
+static NSString *const XspfQTCurrentTrackKey = @"currentTrack";
 
 @implementation XspfQTInformationWindowController
 static XspfQTInformationWindowController *sharedInstance = nil;
@@ -71,21 +72,21 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 
 + (NSSet *)keyPathsForValuesAffectingMovieAttributes
 {
-	return [NSSet setWithObject:@"currentTrack"];
+	return [NSSet setWithObject:XspfQTCurrentTrackKey];
 }
 + (NSSet *)keyPathsForValuesAffectingSoundTrackAttributes
 {
-	return [NSSet setWithObject:@"currentTrack"];
+	return [NSSet setWithObject:XspfQTCurrentTrackKey];
 }
 + (NSSet *)keyPathsForValuesAffectingVideoTrackAttributes
 {
-	return [NSSet setWithObject:@"currentTrack"];
+	return [NSSet setWithObject:XspfQTCurrentTrackKey];
 }
 - (void)notify
 {
-	[self willChangeValueForKey:@"currentTrack"];
+	[self willChangeValueForKey:XspfQTCurrentTrackKey];
 	[self performSelector:@selector(didChangeValueForKey:)
-			   withObject:@"currentTrack"
+			   withObject:XspfQTCurrentTrackKey
 			   afterDelay:0.0];
 }
 - (void)currentDocumentDidChangeNotification:(id)notification
@@ -136,7 +137,7 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 	
 	if(![observedDocs containsObject:doc]) {
 		[doc addObserver:self
-			  forKeyPath:XspfDocumentQtMovieKeyPath
+			  forKeyPath:XspfQTDocumentQtMovieKeyPath
 				 options:0
 				 context:NULL];
 		[observedDocs addObject:doc];
@@ -167,7 +168,7 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 {
 	id doc = [self currentDocument];
 	
-	id movie = [doc valueForKeyPath:XspfDocumentQtMovieKeyPath];
+	id movie = [doc valueForKeyPath:XspfQTDocumentQtMovieKeyPath];
 	NSArray *tracks = [movie tracksOfMediaType:type];
 	if(!tracks || [tracks count] == 0) return nil;
 	
@@ -187,7 +188,7 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 						change:(NSDictionary *)change
 					   context:(void *)context
 {
-	if([keyPath isEqualToString:XspfDocumentQtMovieKeyPath]) {
+	if([keyPath isEqualToString:XspfQTDocumentQtMovieKeyPath]) {
 		[self notify];
 	}
 }
@@ -198,7 +199,7 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 	
 	if(![observedDocs containsObject:doc]) return;
 	
-	[doc removeObserver:self forKeyPath:XspfDocumentQtMovieKeyPath];
+	[doc removeObserver:self forKeyPath:XspfQTDocumentQtMovieKeyPath];
 	[observedDocs removeObject:doc];
 	[docController setContent:nil];
 	[currentTrackController setContent:nil];
