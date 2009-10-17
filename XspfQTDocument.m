@@ -28,7 +28,6 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 - (void)setPlaylist:(XspfQTComponent *)newList;
 - (XspfQTComponent *)playlist;
 - (NSXMLDocument *)XMLDocument;
-// - (NSData *)outputData;
 - (void)setPlayingMovie:(QTMovie *)newMovie;
 - (NSData *)dataFromURL:(NSURL *)url error:(NSError **)outError;
 @end
@@ -39,6 +38,8 @@ static NSString *MatroskaVideoDocumentType =  @"Matroska Video";
 static NSString *DivXMediaFormatDocumentType =  @"DivX Media Format";
 
 static NSString *XspfUTI = @"com.masakih.xspf";
+
+static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 
 @implementation XspfQTDocument
 
@@ -213,11 +214,11 @@ static NSString *XspfUTI = @"com.masakih.xspf";
 {
 	if(playlist == newList) return;
 	
-	[[playlist childAtIndex:0] removeObserver:self forKeyPath:@"currentTrack"];
+	[[playlist childAtIndex:0] removeObserver:self forKeyPath:XspfQTCurrentTrackKey];
 	[playlist autorelease];
 	playlist = [newList retain];
 	[[playlist childAtIndex:0] addObserver:self
-								forKeyPath:@"currentTrack"
+								forKeyPath:XspfQTCurrentTrackKey
 								   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 								   context:NULL];
 }
@@ -296,7 +297,7 @@ static NSString *XspfUTI = @"com.masakih.xspf";
 						change:(NSDictionary *)change
 					   context:(void *)context
 {
-	if([keyPath isEqualToString:@"currentTrack"]) {
+	if([keyPath isEqualToString:XspfQTCurrentTrackKey]) {
 		[self loadMovie];
 	}
 }

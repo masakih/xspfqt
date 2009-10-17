@@ -25,6 +25,8 @@
 #pragma mark ### Static variables ###
 static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 
+static NSString *const XspfQTTitleKey = @"title";
+
 - (id)init
 {
 	return [super initWithWindowNibName:@"XspfQTPlayList"];
@@ -115,11 +117,11 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 {
 	if(observedObject == new) return;
 	
-	[observedObject removeObserver:self forKeyPath:@"title"];
+	[observedObject removeObserver:self forKeyPath:XspfQTTitleKey];
 	
 	observedObject = new;
 	[observedObject addObserver:self
-				   forKeyPath:@"title"
+				   forKeyPath:XspfQTTitleKey
 					  options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 					  context:NULL];
 }
@@ -130,7 +132,7 @@ static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
 		[self setObserveObject:new];
 	}
 	
-	if([keyPath isEqualToString:@"title"]) {
+	if([keyPath isEqualToString:XspfQTTitleKey]) {
 		id new = [change objectForKey:NSKeyValueChangeNewKey];
 		id old = [change objectForKey:NSKeyValueChangeOldKey];
 		
