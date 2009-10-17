@@ -32,7 +32,6 @@
 
 - (IBAction)togglePlayAndPause:(id)sender;
 - (IBAction)showPlayList:(id)sender;
-- (IBAction)dump:(id)sender;
 
 - (XspfQTComponent *)trackList;
 
