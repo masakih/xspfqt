@@ -28,7 +28,7 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 - (void)setPlaylist:(XspfQTComponent *)newList;
 - (XspfQTComponent *)playlist;
 - (NSXMLDocument *)XMLDocument;
-- (NSData *)outputData;
+// - (NSData *)outputData;
 - (void)setPlayingMovie:(QTMovie *)newMovie;
 - (NSData *)dataFromURL:(NSURL *)url error:(NSError **)outError;
 @end
@@ -97,7 +97,7 @@ static NSString *XspfUTI = @"com.masakih.xspf";
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
 {
-	return [self outputData];
+	return [[self XMLDocument] XMLDataWithOptions:NSXMLNodePrettyPrint];
 }
 
 - (BOOL)readFromURL:(NSURL *)absoluteURL ofType:(NSString *)typeName error:(NSError **)outError
@@ -301,10 +301,6 @@ static NSString *XspfUTI = @"com.masakih.xspf";
 	}
 }
 
-- (NSData *)outputData
-{
-	return [[self XMLDocument] XMLDataWithOptions:NSXMLNodePrettyPrint];
-}
 - (NSXMLDocument *)XMLDocument
 {
 	id root = [[self playlist] XMLElement];
@@ -417,12 +413,5 @@ static NSString *XspfUTI = @"com.masakih.xspf";
 	}
 }
 
-- (IBAction)dump:(id)sender
-{	
-	NSString *s = [[[NSString alloc] initWithData:[self outputData]
-										 encoding:NSUTF8StringEncoding] autorelease];
-	
-	NSLog(@"%@", s);
-}
 @end
 
