@@ -168,8 +168,9 @@ static NSString *const XspfQTTitleKey = @"title";
 - (void)moveItem:(id)item toIndex:(NSUInteger)index
 {
 	id doc = [self document];
-	[doc removeComponent:item];
-	[doc insertComponent:item atIndex:index];
+//	[doc removeComponent:item];
+//	[doc insertComponent:item atIndex:index];
+	[doc moveComponent:item toIndex:index];
 	[[doc undoManager] setActionName:NSLocalizedString(@"Move Movie", @"Undo Action Name Move Movie")];
 }
 
