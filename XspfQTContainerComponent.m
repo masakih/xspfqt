@@ -145,6 +145,17 @@
 	id child = [_children objectAtIndex:index];
 	[self removeChild:child];
 }
+- (void)moveChildFromIndex:(NSUInteger)idx1 toIndex:(NSUInteger)idx2
+{
+	NSUInteger count = [self childrenCount];
+	if(count < idx1 || count < idx2) return;
+	if(idx1 == idx2) return;
+	
+	XspfQTComponent *fromChild = [[[self childAtIndex:idx1] retain] autorelease];
+	
+	[self removeChild:fromChild];
+	[self insertChild:fromChild atIndex:idx2];
+}
 
 - (NSString *)description
 {
