@@ -69,6 +69,7 @@
 - (void)removeChild:(XspfQTComponent *)child;	// not implemented.
 - (void)insertChild:(XspfQTComponent *)child atIndex:(unsigned)index;	// not implemented.
 - (void)removeChildAtIndex:(unsigned)index;	//not implemented.
+- (void)moveChildFromIndex:(NSUInteger)from toIndex:(NSUInteger)to;	//not implemented.
 - (void)setParent:(XspfQTComponent *)parent;	// Do not call directly. call in only -addChild: method.
 @end
 
