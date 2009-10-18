@@ -37,6 +37,7 @@
 
 - (void)insertComponent:(XspfQTComponent *)item atIndex:(NSUInteger)index;
 - (void)removeComponent:(XspfQTComponent *)item;
+- (void)moveComponent:(XspfQTComponent *)item toIndex:(NSUInteger)index;
 
 // throw self, if can not insert.
 - (void)insertComponentFromURL:(NSURL *)url atIndex:(NSUInteger)index;

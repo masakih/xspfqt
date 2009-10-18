@@ -351,6 +351,18 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 	[[undo prepareWithInvocationTarget:self] insertComponent:item atIndex:index];
 	[[self trackList] removeChild:item];
 }
+- (void)moveComponentFromIndex:(NSUInteger)from toIndex:(NSUInteger)to
+{	
+	id undo = [self undoManager];
+	[[undo prepareWithInvocationTarget:self] moveComponentFromIndex:to toIndex:from];
+	[[self trackList] moveChildFromIndex:from toIndex:to];
+}
+- (void)moveComponent:(XspfQTComponent *)item toIndex:(NSUInteger)index
+{
+	NSUInteger from = [[self trackList] indexOfChild:item];
+	if(from == NSNotFound) return;
+	[self moveComponentFromIndex:from toIndex:index];
+}
 
 - (NSData *)dataFromURL:(NSURL *)url error:(NSError **)outError
 {
