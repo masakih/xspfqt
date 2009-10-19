@@ -42,6 +42,36 @@
 		
 		///
 		thumnailTrackNum = NSNotFound;
+		
+		////
+		elems = [element elementsForName:@"extension"];
+		id myExtension = nil;
+		if(elems && [elems count] != 0) {
+			for(id extension in elems) {
+				id app = [[extension attributeForName:@"application"] stringValue];
+				if([app isEqualToString:XspfQTXMLNamespaceseURI]) {
+					myExtension = extension;
+					break;
+				}
+			}
+			
+			do {
+				if(!myExtension) break;
+				
+				id thumnail = [[myExtension elementsForName:@"hm:thumnail"] objectAtIndex:0];
+				if(!thumnail) break;
+				id index = [thumnail attributeForName:@"trackNumber"];
+				if(!index) break;
+				id time = [thumnail attributeForName:@"time"];
+				if(!time) break;
+				
+				NSString *t = [time stringValue];
+				NSTimeInterval ti = [t doubleValue] / 1000;
+				NSDate *dateTime = [NSDate dateWithTimeIntervalSince1970:ti];
+				
+				[self setThumnailTrackNum:[[index stringValue] integerValue] time:dateTime];
+			} while(NO);
+		}
 	}
 	
 	return self;
