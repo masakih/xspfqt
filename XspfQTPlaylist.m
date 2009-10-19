@@ -9,6 +9,13 @@
 #import "XspfQTPlaylist.h"
 
 
+@interface XspfQTPlaylist (XspfThumnailSupport)
+- (void)setThumnailTrackNum:(NSUInteger)trackNum;
+- (void)setThumnailTime:(NSDate *)time;
+- (XspfQTComponent *)trackForTrackNum:(NSUInteger)trackNum;
+
+@end
+
 @implementation XspfQTPlaylist
 - (id)initWithXMLElement:(NSXMLElement *)element
 {
@@ -40,6 +47,12 @@
 	return self;
 }
 
+- (void)dealloc
+{
+	[self setThumnailTime:nil];
+	[super dealloc];
+}
+
 - (NSXMLElement *)XMLElement
 {
 	id node = [NSXMLElement elementWithName:@"playlist"];
@@ -57,13 +70,6 @@
 		[node addChild:t];
 	}
 	
-	id d = [self duration];
-	if(d) {
-		NSTimeInterval t = [d timeIntervalSince1970];
-		t += [[NSTimeZone systemTimeZone] secondsFromGMT];
-		unsigned long long scaledT = (unsigned long long)t;
-		scaledT *= 1000;
-	}
 	do {
 		if(thumnailTrackNum != NSNotFound) {			
 			id trackNumberAttr = [NSXMLElement attributeWithName:@"trackNumber"
@@ -74,9 +80,8 @@
 			if(thumnailTime) {
 				NSTimeInterval t = [thumnailTime timeIntervalSince1970];
 				t += [[NSTimeZone systemTimeZone] secondsFromGMT];
-				unsigned long long scaledT = (unsigned long long)t;
-				scaledT *= 1000;
-				id timeAttr = [NSXMLElement attributeWithName:@"time"
+				unsigned long long scaledT = (unsigned long long)(t * 1000);
+				timeAttr = [NSXMLElement attributeWithName:@"time"
 												  stringValue:[NSString stringWithFormat:@"%qu", scaledT]];
 				if(!timeAttr) break;
 			}
@@ -105,6 +110,10 @@
 	return node;
 }
 
+@end
+
+@implementation XspfQTPlaylist (XspfThumnailSupport)
+
 - (void)setThumnailTrackNum:(NSUInteger)trackNum
 {
 	thumnailTrackNum = trackNum;
@@ -129,13 +138,12 @@
 		}
 		tracks += aCount;
 	}
-	t = [iter nextObject];
 	if(!t) return nil;
 	
 	NSUInteger aNum = trackNum - tracks;
 	if([t childrenCount] < aNum) return nil;
 	
-	return [t childAtIndex:aNum - 1];
+	return [t childAtIndex:aNum];
 }
 
 - (void)setThumnailTrackNum:(NSUInteger)trackNum time:(NSDate *)time
