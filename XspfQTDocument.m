@@ -16,6 +16,7 @@
 
 #import "NSURL-XspfQT-Extensions.h"
 #import "XspfQTMovieLoader.h"
+#import "XspfQTValueTransformers.h"
 
 
 #pragma mark #### Global Variables ####
@@ -208,6 +209,19 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 - (IBAction)showPlayList:(id)sender
 {
 	[playListWindowController showWindow:self];
+}
+- (IBAction)setThumnailFrame:(id)sender
+{
+	XspfQTComponent *currentTrack = [[self trackList] currentTrack];
+	QTTime currentQTTime = [playingMovie currentTime];
+	
+	XspfQTTimeDateTransformer *t = [[[XspfQTTimeDateTransformer alloc] init] autorelease];
+	NSDate *currentTime = [t transformedValue:[NSValue valueWithQTTime:currentQTTime]];
+	
+	[playlist setThumnailComponent:currentTrack time:currentTime];
+	
+	NSLog(@"track = %@, time = %@", currentTrack, currentTime);
+	NSLog(@"Thumnail track = %@, time = %@", [playlist thumnailTrack], [playlist thumnailTime]);
 }
 
 - (void)setPlaylist:(XspfQTComponent *)newList
