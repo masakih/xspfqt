@@ -12,6 +12,8 @@
 
 @interface XspfQTPlaylist : XspfQTContainerComponent
 {
+	NSUInteger thumnailTrackNum;
+	NSDate *thumnailTime;
 }
 
 @end

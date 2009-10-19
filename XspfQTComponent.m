@@ -233,3 +233,32 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 }
 
 @end
+
+@implementation XspfQTComponent(XspfThumnailSupport)
+- (void)setThumnailTrackNum:(NSUInteger)trackNum time:(NSDate *)time
+{
+	if(parent) {
+		[parent setThumnailTrackNum:trackNum time:time];
+	}
+}
+- (void)setThumnailComponent:(XspfQTComponent *)item time:(NSDate *)time
+{
+	if(parent) {
+		[parent setThumnailComponent:item time:time];
+	}
+}
+- (XspfQTComponent *)thumnailTrack
+{
+	if(parent) {
+		return [parent thumnailTrack];
+	}
+	return nil;
+}
+- (NSDate *)thumnailTime
+{
+	if(parent) {
+		return [parent thumnailTime];
+	}
+	return nil;
+}
+@end
