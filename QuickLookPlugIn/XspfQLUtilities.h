@@ -7,8 +7,17 @@
  *
  */
 
+#import <Foundation/Foundation.h>
 #import <CoreFoundation/CoreFoundation.h>
+#import <ApplicationServices/ApplicationServices.h>
 
 @class QTMovie;
+@class XspfQTComponent;
+@class NSDate;
 
 QTMovie *firstMovie(CFURLRef url);
+
+XspfQTComponent *thumnailTrack(CFURLRef url, NSDate **thumnailTime);
+CGImageRef thumnailForTrackTime(XspfQTComponent *track, NSDate *time, CGSize size);
+
+NSSize maxSizeForFrame(NSSize size, CGSize frame);

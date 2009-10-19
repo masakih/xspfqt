@@ -50,11 +50,10 @@ static QTMovie *loadFromMovieURL(NSURL *url)
 }
 #endif
 
-QTMovie *firstMovie(CFURLRef url)
+XspfQTComponent *componentForURL(CFURLRef url)
 {
-	QTMovie *result = nil;
 	NSError *theErr = nil;
-		
+	
 	NSXMLDocument *d = [[[NSXMLDocument alloc] initWithContentsOfURL:(NSURL *)url
 															 options:0
 															   error:&theErr] autorelease];
@@ -62,16 +61,24 @@ QTMovie *firstMovie(CFURLRef url)
 		if(theErr) {
 			NSLog(@"%@", theErr);
 		}
-		goto fail;
+		return nil;
 	}
 	NSXMLElement *root = [d rootElement];
 	XspfQTComponent *pl = [XspfQTComponent xspfComponemtWithXMLElement:root];
 	if(!pl) {
 		NSLog(@"Can not create XspfQTComponent.");
-		goto fail;
-	} else {
-		//		NSLog(@"DUMP ->%@", pl);
+		return nil;
 	}
+	
+	return pl;
+}
+
+QTMovie *firstMovie(CFURLRef url)
+{
+	QTMovie *result = nil;
+	
+	XspfQTComponent *pl = componentForURL(url);
+
 	XspfQTComponent *trackList = [pl childAtIndex:0];
 	[trackList setSelectionIndex:0];
 	NSURL *movieURL = [trackList movieLocation];
@@ -84,4 +91,55 @@ QTMovie *firstMovie(CFURLRef url)
 	
 fail:
 	return result;
+}
+
+NSSize maxSizeForFrame(NSSize size, CGSize frame)
+{
+	NSSize result = size;
+	CGFloat aspectRetio = size.width / size.height;
+	CGFloat frameAspectRetio = frame.width / frame.height;
+	
+	if(aspectRetio > frameAspectRetio) {
+		result.width = frame.width;
+		result.height = result.width / aspectRetio;
+	} else {
+		result.height = frame.height;
+		result.width = result.height * aspectRetio;
+	}
+	
+	return result;
+}
+
+	
+XspfQTComponent *thumnailTrack(CFURLRef url, NSDate **thumnailTime)
+{
+	XspfQTComponent *component = componentForURL(url);
+	
+	XspfQTComponent *result = [component thumnailTrack];
+	*thumnailTime = [component thumnailTime];
+	return result;
+}
+CGImageRef thumnailForTrackTime(XspfQTComponent *track, NSDate *time, CGSize size)
+{
+	NSError *theErr = nil;
+	QTMovie *movie = loadFromMovieURL([track movieLocation]);
+	
+	NSValue *sizeValue = [movie attributeForKey:QTMovieNaturalSizeAttribute];
+	NSSize newMaxSize = maxSizeForFrame([sizeValue sizeValue], size);
+	
+	NSDictionary *imgProp = [NSDictionary dictionaryWithObjectsAndKeys:
+							 QTMovieFrameImageTypeCGImageRef,QTMovieFrameImageType,
+							 [NSValue valueWithSize:newMaxSize], QTMovieFrameImageSize,
+							 nil];
+	CGImageRef theImage = (CGImageRef)[movie frameImageAtTime:[[NSNumber numberWithDouble:[time timeIntervalSince1970]] QTTimeValue]
+											   withAttributes:imgProp
+														error:&theErr];
+    if (theImage == nil) {
+        if (theErr != nil) {
+            NSLog(@"Couldn't create CGImageRef, error = %@", theErr);
+        }
+        return NULL;
+    }
+	
+	return theImage;
 }
