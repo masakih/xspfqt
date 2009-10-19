@@ -14,29 +14,24 @@
    This function's job is to create thumbnail for designated file as fast as possible
    ----------------------------------------------------------------------------- */
 
-inline NSSize maxSizeForFrame(NSSize size, CGSize frame)
-{
-	NSSize result = size;
-	CGFloat aspectRetio = size.width / size.height;
-	CGFloat frameAspectRetio = frame.width / frame.height;
-	
-	if(aspectRetio > frameAspectRetio) {
-		result.width = frame.width;
-		result.height = result.width / aspectRetio;
-	} else {
-		result.height = frame.height;
-		result.width = result.height * aspectRetio;
-	}
-	
-	return result;
-}
-
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize)
 {
     NSError *theErr = nil;
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
+	NSLog(@"Try native thumnail.");
+	// generate from XML.
+	NSDate *time = nil;
+	XspfQTComponent *component = thumnailTrack(url, &time);
+	CGImageRef aThumnail = thumnailForTrackTime(component, time, maxSize);
+	if(aThumnail) {
+		QLThumbnailRequestSetImage(thumbnail, aThumnail, NULL);
+		goto fail;
+	}
+	
+	NSLog(@"Try general thumnail.");
+	// generate from first movie.
     QTMovie *theMovie = firstMovie(url);
     if (theMovie == nil) {
         goto fail;
@@ -71,7 +66,6 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		pTimeValue = [t reverseTransformedValue:[NSNumber numberWithDouble:newPosterTime]];
 	}
 //	NSLog(@"Poster time is -> (%@)", QTStringFromTime([pTimeValue QTTimeValue]));
-	
 	NSValue *size = [theMovie attributeForKey:QTMovieNaturalSizeAttribute];
 	NSSize newMaxSize = maxSizeForFrame([size sizeValue], maxSize);
 	
@@ -86,13 +80,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
         }
         goto fail;
     }
-	NSSize imageSize;
-	imageSize.width = CGImageGetWidth(theImage);
-	imageSize.height = CGImageGetHeight(theImage);
-	if(imageSize.width < 0 || imageSize.height < 0) {
-		NSLog(@"Image size is NSZeroSize.");
-		goto fail;
-	}
+	
     QLThumbnailRequestSetImage(thumbnail, theImage, NULL);
 	
 fail:
