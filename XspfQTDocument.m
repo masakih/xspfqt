@@ -218,7 +218,19 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 	XspfQTTimeDateTransformer *t = [[[XspfQTTimeDateTransformer alloc] init] autorelease];
 	NSDate *currentTime = [t transformedValue:[NSValue valueWithQTTime:currentQTTime]];
 	
+	XspfQTComponent *prevThumnailTrack = [playlist thumnailTrack];
+	NSDate *prevThumnailTime = [playlist thumnailTime];
+	
 	[playlist setThumnailComponent:currentTrack time:currentTime];
+	
+	id undo = [self undoManager];
+	if(prevThumnailTrack) {
+		[[undo prepareWithInvocationTarget:playlist] setThumnailComponent:prevThumnailTrack time:prevThumnailTime];
+		[undo setActionName:NSLocalizedString(@"Change Thumnail frame.", @"Undo Action Name Change Thumnail frame")];
+	} else {
+		[[undo prepareWithInvocationTarget:playlist] removeThumnailFrame];
+		[undo setActionName:NSLocalizedString(@"Remove Thumnail frame.", @"Undo Action Name Remove Thumnail frame")];
+	}
 	
 	NSLog(@"track = %@, time = %@", currentTrack, currentTime);
 	NSLog(@"Thumnail track = %@, time = %@", [playlist thumnailTrack], [playlist thumnailTime]);
