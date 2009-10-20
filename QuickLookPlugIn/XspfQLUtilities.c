@@ -13,6 +13,7 @@
 
 #import "XspfQTDocument.h"
 #import "XspfQTComponent.h"
+#import "XspfQTValueTransformers.h"
 
 #if 1
 static QTMovie *loadFromMovieURL(NSURL *url)
@@ -131,7 +132,10 @@ CGImageRef thumnailForTrackTime(XspfQTComponent *track, NSDate *time, CGSize siz
 							 QTMovieFrameImageTypeCGImageRef,QTMovieFrameImageType,
 							 [NSValue valueWithSize:newMaxSize], QTMovieFrameImageSize,
 							 nil];
-	CGImageRef theImage = (CGImageRef)[movie frameImageAtTime:[[NSNumber numberWithDouble:[time timeIntervalSince1970]] QTTimeValue]
+	NSTimeInterval interval = [time timeIntervalSince1970];
+	XspfQTTimeTransformer *t = [[[XspfQTTimeTransformer alloc] init] autorelease];
+	NSValue *qtTime = [t reverseTransformedValue:[NSNumber numberWithDouble:interval]];
+	CGImageRef theImage = (CGImageRef)[movie frameImageAtTime:[qtTime QTTimeValue]
 											   withAttributes:imgProp
 														error:&theErr];
     if (theImage == nil) {
