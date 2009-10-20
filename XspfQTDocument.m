@@ -338,6 +338,7 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 	id undo = [self undoManager];
 	[undo registerUndoWithTarget:self selector:@selector(removeComponent:) object:item];
 	[[self trackList] insertChild:item atIndex:index];
+	[undo setActionName:NSLocalizedString(@"Insert Movie", @"Undo Action Name Insert Movie")];
 }
 - (void)removeComponent:(XspfQTComponent *)item
 {
@@ -350,12 +351,14 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 	id undo = [self undoManager];
 	[[undo prepareWithInvocationTarget:self] insertComponent:item atIndex:index];
 	[[self trackList] removeChild:item];
+	[undo setActionName:NSLocalizedString(@"Remove Movie", @"Undo Action Name Remove Movie")];
 }
 - (void)moveComponentFromIndex:(NSUInteger)from toIndex:(NSUInteger)to
 {	
 	id undo = [self undoManager];
 	[[undo prepareWithInvocationTarget:self] moveComponentFromIndex:to toIndex:from];
 	[[self trackList] moveChildFromIndex:from toIndex:to];
+	[undo setActionName:NSLocalizedString(@"Move Movie", @"Undo Action Name Move Movie")];
 }
 - (void)moveComponent:(XspfQTComponent *)item toIndex:(NSUInteger)index
 {
