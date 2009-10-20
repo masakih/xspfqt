@@ -20,17 +20,23 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-	NSLog(@"Try native thumnail.");
 	// generate from XML.
-	NSDate *time = nil;
-	XspfQTComponent *component = thumnailTrack(url, &time);
-	CGImageRef aThumnail = thumnailForTrackTime(component, time, maxSize);
-	if(aThumnail) {
-		QLThumbnailRequestSetImage(thumbnail, aThumnail, NULL);
-		goto fail;
-	}
+	do {
+		NSDate *time = nil;
+		XspfQTComponent *component = thumnailTrack(url, &time);
+		if(!component) break;
+		if(!time) break;
+		if(QLThumbnailRequestIsCancelled(thumbnail)) {
+			goto fail;
+		}
+		
+		CGImageRef aThumnail = thumnailForTrackTime(thumbnail, component, time, maxSize);
+		if(aThumnail) {
+			QLThumbnailRequestSetImage(thumbnail, aThumnail, NULL);
+			goto fail;
+		}
+	} while(NO);
 	
-	NSLog(@"Try general thumnail.");
 	// generate from first movie.
     QTMovie *theMovie = firstMovie(url);
     if (theMovie == nil) {

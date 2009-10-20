@@ -120,10 +120,13 @@ XspfQTComponent *thumnailTrack(CFURLRef url, NSDate **thumnailTime)
 	*thumnailTime = [component thumnailTime];
 	return result;
 }
-CGImageRef thumnailForTrackTime(XspfQTComponent *track, NSDate *time, CGSize size)
+CGImageRef thumnailForTrackTime(QLThumbnailRequestRef thumbnail, XspfQTComponent *track, NSDate *time, CGSize size)
 {
 	NSError *theErr = nil;
 	QTMovie *movie = loadFromMovieURL([track movieLocation]);
+	if(QLThumbnailRequestIsCancelled(thumbnail)) {
+		return NULL;
+	}
 	
 	NSValue *sizeValue = [movie attributeForKey:QTMovieNaturalSizeAttribute];
 	NSSize newMaxSize = maxSizeForFrame([sizeValue sizeValue], size);
@@ -135,6 +138,11 @@ CGImageRef thumnailForTrackTime(XspfQTComponent *track, NSDate *time, CGSize siz
 	NSTimeInterval interval = [time timeIntervalSince1970];
 	XspfQTTimeTransformer *t = [[[XspfQTTimeTransformer alloc] init] autorelease];
 	NSValue *qtTime = [t reverseTransformedValue:[NSNumber numberWithDouble:interval]];
+	
+	if(QLThumbnailRequestIsCancelled(thumbnail)) {
+		return NULL;
+	}
+	
 	CGImageRef theImage = (CGImageRef)[movie frameImageAtTime:[qtTime QTTimeValue]
 											   withAttributes:imgProp
 														error:&theErr];

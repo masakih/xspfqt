@@ -7,6 +7,7 @@
  *
  */
 
+#include <QuickLook/QuickLook.h>
 #import <Foundation/Foundation.h>
 #import <CoreFoundation/CoreFoundation.h>
 #import <ApplicationServices/ApplicationServices.h>
@@ -18,6 +19,6 @@
 QTMovie *firstMovie(CFURLRef url);
 
 XspfQTComponent *thumnailTrack(CFURLRef url, NSDate **thumnailTime);
-CGImageRef thumnailForTrackTime(XspfQTComponent *track, NSDate *time, CGSize size);
+CGImageRef thumnailForTrackTime(QLThumbnailRequestRef thumbnail, XspfQTComponent *track, NSDate *time, CGSize size);
 
 NSSize maxSizeForFrame(NSSize size, CGSize frame);
