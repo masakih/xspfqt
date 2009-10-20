@@ -78,6 +78,7 @@
 - (void)setThumnailComponent:(XspfQTComponent *)item time:(NSDate *)time;
 - (XspfQTComponent *)thumnailTrack;
 - (NSDate *)thumnailTime;
+- (void)removeThumnailFrame;
 @end
 
 extern NSString *XspfQTXMLNamespaceseURI;

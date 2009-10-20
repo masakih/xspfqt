@@ -218,4 +218,9 @@
 	
 	return thumnailTime;
 }
+- (void)removeThumnailFrame
+{
+	[self setThumnailTrackNum:NSNotFound];
+	[self setThumnailTime:nil];
+}
 @end

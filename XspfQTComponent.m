@@ -261,4 +261,10 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 	}
 	return nil;
 }
+- (void)removeThumnailFrame
+{
+	if(parent) {
+		[parent removeThumnailFrame];
+	}
+}
 @end
