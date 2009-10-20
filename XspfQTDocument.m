@@ -229,7 +229,7 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 		[undo setActionName:NSLocalizedString(@"Change Thumnail frame.", @"Undo Action Name Change Thumnail frame")];
 	} else {
 		[[undo prepareWithInvocationTarget:playlist] removeThumnailFrame];
-		[undo setActionName:NSLocalizedString(@"Remove Thumnail frame.", @"Undo Action Name Remove Thumnail frame")];
+		[undo setActionName:NSLocalizedString(@"Add Thumnail frame.", @"Undo Action Name Add Thumnail frame")];
 	}
 	
 	NSLog(@"track = %@, time = %@", currentTrack, currentTime);
