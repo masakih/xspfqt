@@ -151,27 +151,21 @@ static NSString *const XspfQTTitleKey = @"title";
 {
 	id doc = [self document];
 	[doc insertComponentFromURL:item atIndex:index];
-	[[doc undoManager] setActionName:NSLocalizedString(@"Insert Movie", @"Undo Action Name Insert Movie")];
 }
 - (void)insertItem:(id)item atIndex:(NSUInteger)index
 {
 	id doc = [self document];
 	[doc insertComponent:item atIndex:index];
-	[[doc undoManager] setActionName:NSLocalizedString(@"Insert Movie", @"Undo Action Name Insert Movie")];
 }
 - (void)removeItem:(id)item
 {
 	id doc = [self document];
 	[doc removeComponent:item];
-	[[doc undoManager] setActionName:NSLocalizedString(@"Remove Movie", @"Undo Action Name Remove Movie")];
 }
 - (void)moveItem:(id)item toIndex:(NSUInteger)index
 {
 	id doc = [self document];
-//	[doc removeComponent:item];
-//	[doc insertComponent:item atIndex:index];
 	[doc moveComponent:item toIndex:index];
-	[[doc undoManager] setActionName:NSLocalizedString(@"Move Movie", @"Undo Action Name Move Movie")];
 }
 
 - (void)insertItemURL:(NSURL *)url atIndex:(NSUInteger)index
