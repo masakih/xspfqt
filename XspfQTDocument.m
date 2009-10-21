@@ -16,6 +16,7 @@
 
 #import "NSURL-XspfQT-Extensions.h"
 #import "XspfQTMovieLoader.h"
+#import "XspfQTValueTransformers.h"
 
 
 #pragma mark #### Global Variables ####
@@ -201,6 +202,7 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 	[super close];
 }
 
+#pragma mark### Actions ###
 - (IBAction)togglePlayAndPause:(id)sender
 {
 	[movieWindowController togglePlayAndPause:sender];
@@ -208,6 +210,52 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 - (IBAction)showPlayList:(id)sender
 {
 	[playListWindowController showWindow:self];
+}
+- (IBAction)setThumnailFrame:(id)sender
+{
+	XspfQTComponent *currentTrack = [[self trackList] currentTrack];
+	QTTime currentQTTime = [playingMovie currentTime];
+	
+	NSTimeInterval currentTI;
+	QTGetTimeInterval(currentQTTime, &currentTI);
+	
+	XspfQTComponent *prevThumnailTrack = [playlist thumnailTrack];
+	NSTimeInterval ti = [playlist thumnailTimeIntarval];
+	
+	[playlist setThumnailComponent:currentTrack timeIntarval:currentTI];
+	
+	id undo = [self undoManager];
+	if(prevThumnailTrack) {
+		[[undo prepareWithInvocationTarget:playlist] setThumnailComponent:prevThumnailTrack timeIntarval:ti];
+		[undo setActionName:NSLocalizedString(@"Change Thumnail frame.", @"Undo Action Name Change Thumnail frame")];
+	} else {
+		[[undo prepareWithInvocationTarget:playlist] removeThumnailFrame];
+		[undo setActionName:NSLocalizedString(@"Add Thumnail frame.", @"Undo Action Name Add Thumnail frame")];
+	}
+}
+- (IBAction)removeThumail:(id)sender
+{
+	XspfQTComponent *prevThumnailTrack = [playlist thumnailTrack];
+	NSTimeInterval ti = [playlist thumnailTimeIntarval];
+	
+	[playlist removeThumnailFrame];
+	
+	if(prevThumnailTrack) {
+		id undo = [self undoManager];
+		[[undo prepareWithInvocationTarget:playlist] setThumnailComponent:prevThumnailTrack timeIntarval:ti];
+		[undo setActionName:NSLocalizedString(@"Remove Thumnail frame.", @"Undo Action Name Remove Thumnail frame")];
+	}
+}
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
+{
+	SEL action = [menuItem action];
+	
+	if(action == @selector(removeThumail:)) {
+		XspfQTComponent *component = [playlist thumnailTrack];
+		if(!component) return NO;
+	}
+	
+	return YES;
 }
 
 - (void)setPlaylist:(XspfQTComponent *)newList
@@ -344,7 +392,7 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 {
 	NSUInteger index = [[self trackList] indexOfChild:item];
 	if(index == NSNotFound) {
-		NSLog(@"Con not found item (%@)", item); 
+		NSLog(@"Can not found item (%@)", item); 
 		return;
 	}
 	

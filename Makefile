@@ -16,6 +16,10 @@ TAGS_DIR = $(URL_XspfQT)/tags
 VER_CMD=grep -A1 'CFBundleShortVersionString' $(INFO_PLIST) | tail -1 | tr -d "'\t</string>" 
 VERSION=$(shell $(VER_CMD))
 
+LocalizeFiles=XspfQTMovieWindowController.m \
+			  XspfQTPlayListWindowController.m \
+			  XspfQTDocument.m
+
 all:
 	@echo do  nothig.
 	@echo use target tagging 
@@ -26,7 +30,7 @@ tagging: update_svn
 	@REV=`LC_ALL=C svn info | awk '/Last Changed Rev/ {print $$4}'` ;	\
 	echo svn copy $(HEAD) $(TAGS_DIR)/release-$(VERSION).$${REV}
 
-Localizable: XspfQTMovieWindowController.m XspfQTPlayListWindowController.m
+Localizable: ${LocalizeFiles}
 	genstrings -o English.lproj $^
 	(cd English.lproj; ${MAKE} $@;)
 	genstrings -o Japanese.lproj $^
