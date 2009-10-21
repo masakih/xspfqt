@@ -202,6 +202,7 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 	[super close];
 }
 
+#pragma mark### Actions ###
 - (IBAction)togglePlayAndPause:(id)sender
 {
 	[movieWindowController togglePlayAndPause:sender];
@@ -231,9 +232,30 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 		[[undo prepareWithInvocationTarget:playlist] removeThumnailFrame];
 		[undo setActionName:NSLocalizedString(@"Add Thumnail frame.", @"Undo Action Name Add Thumnail frame")];
 	}
+}
+- (IBAction)removeThumail:(id)sender
+{
+	XspfQTComponent *prevThumnailTrack = [playlist thumnailTrack];
+	NSTimeInterval ti = [playlist thumnailTimeIntarval];
 	
-//	NSLog(@"track = %@, time = %@", currentTrack, currentTime);
-//	NSLog(@"Thumnail track = %@, time = %@", [playlist thumnailTrack], [playlist thumnailTime]);
+	[playlist removeThumnailFrame];
+	
+	if(prevThumnailTrack) {
+		id undo = [self undoManager];
+		[[undo prepareWithInvocationTarget:playlist] setThumnailComponent:prevThumnailTrack timeIntarval:ti];
+		[undo setActionName:NSLocalizedString(@"Remove Thumnail frame.", @"Undo Action Name Remove Thumnail frame")];
+	}
+}
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
+{
+	SEL action = [menuItem action];
+	
+	if(action == @selector(removeThumail:)) {
+		XspfQTComponent *component = [playlist thumnailTrack];
+		if(!component) return NO;
+	}
+	
+	return YES;
 }
 
 - (void)setPlaylist:(XspfQTComponent *)newList

@@ -34,6 +34,7 @@
 - (IBAction)showPlayList:(id)sender;
 
 - (IBAction)setThumnailFrame:(id)sender;
+- (IBAction)removeThumail:(id)sender;
 
 - (XspfQTComponent *)trackList;
 
