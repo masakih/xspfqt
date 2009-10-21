@@ -235,16 +235,16 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 @end
 
 @implementation XspfQTComponent(XspfThumnailSupport)
-- (void)setThumnailTrackNum:(NSUInteger)trackNum time:(NSDate *)time
+- (void)setThumnailTrackNum:(NSUInteger)trackNum timeIntarval:(NSTimeInterval)timeIntarval;
 {
 	if(parent) {
-		[parent setThumnailTrackNum:trackNum time:time];
+		[parent setThumnailTrackNum:trackNum timeIntarval:timeIntarval];
 	}
 }
-- (void)setThumnailComponent:(XspfQTComponent *)item time:(NSDate *)time
+- (void)setThumnailComponent:(XspfQTComponent *)item timeIntarval:(NSTimeInterval)timeIntarval
 {
 	if(parent) {
-		[parent setThumnailComponent:item time:time];
+		[parent setThumnailComponent:item timeIntarval:timeIntarval];
 	}
 }
 - (XspfQTComponent *)thumnailTrack
@@ -254,12 +254,12 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 	}
 	return nil;
 }
-- (NSDate *)thumnailTime
+- (NSTimeInterval)thumnailTimeIntarval
 {
 	if(parent) {
-		return [parent thumnailTime];
+		return [parent thumnailTimeIntarval];
 	}
-	return nil;
+	return DBL_MIN;
 }
 - (void)removeThumnailFrame
 {

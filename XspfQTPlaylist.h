@@ -13,7 +13,7 @@
 @interface XspfQTPlaylist : XspfQTContainerComponent
 {
 	NSUInteger thumnailTrackNum;
-	NSDate *thumnailTime;
+	NSTimeInterval thumnailTimeIntarval;
 }
 
 @end

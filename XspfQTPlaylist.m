@@ -11,7 +11,6 @@
 
 @interface XspfQTPlaylist (XspfThumnailSupport)
 - (void)setThumnailTrackNum:(NSUInteger)trackNum;
-- (void)setThumnailTime:(NSDate *)time;
 - (XspfQTComponent *)trackForTrackNum:(NSUInteger)trackNum;
 
 @end
@@ -42,6 +41,7 @@
 		
 		///
 		thumnailTrackNum = NSNotFound;
+		thumnailTimeIntarval = DBL_MIN;
 		
 		////
 		elems = [element elementsForName:@"extension"];
@@ -67,20 +67,12 @@
 				
 				NSString *t = [time stringValue];
 				NSTimeInterval ti = [t doubleValue] / 1000;
-				NSDate *dateTime = [NSDate dateWithTimeIntervalSince1970:ti];
-				
-				[self setThumnailTrackNum:[[index stringValue] integerValue] time:dateTime];
+				[self setThumnailTrackNum:[[index stringValue] integerValue] timeIntarval:ti];
 			} while(NO);
 		}
 	}
 	
 	return self;
-}
-
-- (void)dealloc
-{
-	[self setThumnailTime:nil];
-	[super dealloc];
 }
 
 - (NSXMLElement *)XMLElement
@@ -107,10 +99,8 @@
 			if(!trackNumberAttr) break;
 			
 			id timeAttr = nil;
-			if(thumnailTime) {
-				NSTimeInterval t = [thumnailTime timeIntervalSince1970];
-				t += [[NSTimeZone systemTimeZone] secondsFromGMT];
-				unsigned long long scaledT = (unsigned long long)(t * 1000);
+			if(thumnailTimeIntarval != DBL_MIN) {
+				unsigned long long scaledT = (unsigned long long)(thumnailTimeIntarval * 1000);
 				timeAttr = [NSXMLElement attributeWithName:@"time"
 												  stringValue:[NSString stringWithFormat:@"%qu", scaledT]];
 				if(!timeAttr) break;
@@ -148,10 +138,9 @@
 {
 	thumnailTrackNum = trackNum;
 }
-- (void)setThumnailTime:(NSDate *)time
+- (void)setThumnailTimeInterval:(NSTimeInterval)interval
 {
-	[thumnailTime autorelease];
-	thumnailTime = [time retain];
+	thumnailTimeIntarval = interval;
 }
 
 - (XspfQTComponent *)trackForTrackNum:(NSUInteger)trackNum
@@ -176,16 +165,16 @@
 	return [t childAtIndex:aNum];
 }
 
-- (void)setThumnailTrackNum:(NSUInteger)trackNum time:(NSDate *)time
+- (void)setThumnailTrackNum:(NSUInteger)trackNum timeIntarval:(NSTimeInterval)timeIntarval
 {
 	XspfQTComponent *t = [self trackForTrackNum:trackNum];
 	
 	if(!t) return;
 	
 	[self setThumnailTrackNum:trackNum];
-	[self setThumnailTime:time];	
+	[self setThumnailTimeInterval:timeIntarval];	
 }
-- (void)setThumnailComponent:(XspfQTComponent *)item time:(NSDate *)time
+- (void)setThumnailComponent:(XspfQTComponent *)item timeIntarval:(NSTimeInterval)timeIntarval
 {
 	XspfQTComponent *trackList = [item parent];
 	XspfQTComponent *playList = [trackList parent];
@@ -203,8 +192,9 @@
 	sum += [trackList indexOfChild:item];
 	
 	[self setThumnailTrackNum:sum];
-	[self setThumnailTime:time];
+	[self setThumnailTimeInterval:timeIntarval];
 }
+
 	
 - (XspfQTComponent *)thumnailTrack
 {
@@ -212,15 +202,14 @@
 	
 	return [self trackForTrackNum:thumnailTrackNum];
 }
-- (NSDate *)thumnailTime
+- (NSTimeInterval)thumnailTimeIntarval
 {
-	if(thumnailTrackNum == NSNotFound) return nil;
-	
-	return thumnailTime;
+	return thumnailTimeIntarval;
 }
 - (void)removeThumnailFrame
 {
 	[self setThumnailTrackNum:NSNotFound];
-	[self setThumnailTime:nil];
+//	[self setThumnailTime:nil];
+	[self setThumnailTimeInterval:DBL_MIN];
 }
 @end

@@ -74,10 +74,10 @@
 @end
 
 @interface XspfQTComponent(XspfThumnailSupport)
-- (void)setThumnailTrackNum:(NSUInteger)trackNum time:(NSDate *)time;
-- (void)setThumnailComponent:(XspfQTComponent *)item time:(NSDate *)time;
+- (void)setThumnailTrackNum:(NSUInteger)trackNum timeIntarval:(NSTimeInterval)timeIntarval;
+- (void)setThumnailComponent:(XspfQTComponent *)item timeIntarval:(NSTimeInterval)timeIntarval;
 - (XspfQTComponent *)thumnailTrack;
-- (NSDate *)thumnailTime;
+- (NSTimeInterval)thumnailTimeIntarval;
 - (void)removeThumnailFrame;
 @end
 

@@ -215,25 +215,25 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 	XspfQTComponent *currentTrack = [[self trackList] currentTrack];
 	QTTime currentQTTime = [playingMovie currentTime];
 	
-	XspfQTTimeDateTransformer *t = [[[XspfQTTimeDateTransformer alloc] init] autorelease];
-	NSDate *currentTime = [t transformedValue:[NSValue valueWithQTTime:currentQTTime]];
+	NSTimeInterval currentTI;
+	QTGetTimeInterval(currentQTTime, &currentTI);
 	
 	XspfQTComponent *prevThumnailTrack = [playlist thumnailTrack];
-	NSDate *prevThumnailTime = [playlist thumnailTime];
+	NSTimeInterval ti = [playlist thumnailTimeIntarval];
 	
-	[playlist setThumnailComponent:currentTrack time:currentTime];
+	[playlist setThumnailComponent:currentTrack timeIntarval:currentTI];
 	
 	id undo = [self undoManager];
 	if(prevThumnailTrack) {
-		[[undo prepareWithInvocationTarget:playlist] setThumnailComponent:prevThumnailTrack time:prevThumnailTime];
+		[[undo prepareWithInvocationTarget:playlist] setThumnailComponent:prevThumnailTrack timeIntarval:ti];
 		[undo setActionName:NSLocalizedString(@"Change Thumnail frame.", @"Undo Action Name Change Thumnail frame")];
 	} else {
 		[[undo prepareWithInvocationTarget:playlist] removeThumnailFrame];
 		[undo setActionName:NSLocalizedString(@"Add Thumnail frame.", @"Undo Action Name Add Thumnail frame")];
 	}
 	
-	NSLog(@"track = %@, time = %@", currentTrack, currentTime);
-	NSLog(@"Thumnail track = %@, time = %@", [playlist thumnailTrack], [playlist thumnailTime]);
+//	NSLog(@"track = %@, time = %@", currentTrack, currentTime);
+//	NSLog(@"Thumnail track = %@, time = %@", [playlist thumnailTrack], [playlist thumnailTime]);
 }
 
 - (void)setPlaylist:(XspfQTComponent *)newList
@@ -369,7 +369,7 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 {
 	NSUInteger index = [[self trackList] indexOfChild:item];
 	if(index == NSNotFound) {
-		NSLog(@"Con not found item (%@)", item); 
+		NSLog(@"Can not found item (%@)", item); 
 		return;
 	}
 	

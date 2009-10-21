@@ -14,11 +14,10 @@
 
 @class QTMovie;
 @class XspfQTComponent;
-@class NSDate;
 
 QTMovie *firstMovie(CFURLRef url);
 
-XspfQTComponent *thumnailTrack(CFURLRef url, NSDate **thumnailTime);
-CGImageRef thumnailForTrackTime(QLThumbnailRequestRef thumbnail, XspfQTComponent *track, NSDate *time, CGSize size);
+XspfQTComponent *thumnailTrack(CFURLRef url, NSTimeInterval *thumnailTime);
+CGImageRef thumnailForTrackTime(QLThumbnailRequestRef thumbnail, XspfQTComponent *track, NSTimeInterval time, CGSize size);
 
 NSSize maxSizeForFrame(NSSize size, CGSize frame);
