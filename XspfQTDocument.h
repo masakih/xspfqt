@@ -33,6 +33,9 @@
 - (IBAction)togglePlayAndPause:(id)sender;
 - (IBAction)showPlayList:(id)sender;
 
+- (IBAction)setThumnailFrame:(id)sender;
+- (IBAction)removeThumail:(id)sender;
+
 - (XspfQTComponent *)trackList;
 
 - (void)insertComponent:(XspfQTComponent *)item atIndex:(NSUInteger)index;

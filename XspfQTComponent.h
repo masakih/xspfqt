@@ -73,6 +73,13 @@
 - (void)setParent:(XspfQTComponent *)parent;	// Do not call directly. call in only -addChild: method.
 @end
 
+@interface XspfQTComponent(XspfThumnailSupport)
+- (void)setThumnailTrackNum:(NSUInteger)trackNum timeIntarval:(NSTimeInterval)timeIntarval;
+- (void)setThumnailComponent:(XspfQTComponent *)item timeIntarval:(NSTimeInterval)timeIntarval;
+- (XspfQTComponent *)thumnailTrack;
+- (NSTimeInterval)thumnailTimeIntarval;
+- (void)removeThumnailFrame;
+@end
 
 extern NSString *XspfQTXMLNamespaceseURI;
 extern NSString *XspfQTXMLNamespacesePrefix;
