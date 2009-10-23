@@ -31,6 +31,9 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 - (NSXMLDocument *)XMLDocument;
 - (void)setPlayingMovie:(QTMovie *)newMovie;
 - (NSData *)dataFromURL:(NSURL *)url error:(NSError **)outError;
+
+inline static BOOL isXspfFileType(NSString *typeName);
+inline static BOOL isReadableMovieType(NSString *typeName);
 @end
 
 static NSString *XspfDocumentType = @"XML Shareable Playlist Format";
@@ -101,9 +104,7 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 
 - (BOOL)readFromURL:(NSURL *)absoluteURL ofType:(NSString *)typeName error:(NSError **)outError
 {
-	if(![typeName isEqualToString:QuickTimeMovieDocumentType]
-	   && ![typeName isEqualToString:MatroskaVideoDocumentType]
-	   && ![typeName isEqualToString:DivXMediaFormatDocumentType]) {
+	if(!isReadableMovieType(typeName)) {
 		NSData *data = [self dataFromURL:absoluteURL error:outError];
 		if(!data) return NO;
 		
@@ -145,8 +146,7 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 }
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
 {
-	if(![typeName isEqualToString:XspfDocumentType]
-	   && ![typeName isEqualToString:XspfUTI]) {
+	if(!isXspfFileType(typeName)) {
 		return NO;
 	}
 	
@@ -464,6 +464,17 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 		[loader setMovieURL:nextMovieURL];
 		[loader load];
 	}
+}
+
+inline static BOOL isXspfFileType(NSString *typeName)
+{
+	return [typeName isEqualToString:XspfDocumentType] || [typeName isEqualToString:XspfUTI];
+}
+inline static BOOL isReadableMovieType(NSString *typeName)
+{
+	return [typeName isEqualToString:QuickTimeMovieDocumentType]
+	|| [typeName isEqualToString:MatroskaVideoDocumentType]
+	|| [typeName isEqualToString:DivXMediaFormatDocumentType];
 }
 
 @end
