@@ -174,7 +174,6 @@ static NSString *const XspfQTTitleKey = @"title";
 		@throw self;
 	}
 	
-//	NSLog(@"URL is %@", url);
 	@try {
 		[self insertItemFromURL:url atIndex:index];
 	}

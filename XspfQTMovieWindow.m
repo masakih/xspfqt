@@ -21,7 +21,6 @@ static CGFloat titlebarHeight = 0;
 		NSRect rect = {{0,0},{100,100}};
 		NSRect frame = [self frameRectForContentRect:rect styleMask:NSTitledWindowMask];
 		titlebarHeight = frame.size.height - rect.size.height;
-//		NSLog(@"title bar height is %f", titlebarHeight);
 	}
 }
 - (NSRect)constrainFrameRect:(NSRect)frameRect toScreen:(NSScreen *)screen
@@ -31,9 +30,7 @@ static CGFloat titlebarHeight = 0;
 	}
 	
 	frameRect.origin.y += titlebarHeight;
-	
-//	NSLog(@"constrainFrameRect ->\t%@",NSStringFromRect(frameRect));
-	
+		
 	return frameRect;
 }
 

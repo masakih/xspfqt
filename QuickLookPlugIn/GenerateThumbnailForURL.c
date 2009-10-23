@@ -71,7 +71,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		}
 		pTimeValue = [t reverseTransformedValue:[NSNumber numberWithDouble:newPosterTime]];
 	}
-//	NSLog(@"Poster time is -> (%@)", QTStringFromTime([pTimeValue QTTimeValue]));
+	
 	NSValue *size = [theMovie attributeForKey:QTMovieNaturalSizeAttribute];
 	NSSize newMaxSize = maxSizeForFrame([size sizeValue], maxSize);
 	

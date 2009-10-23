@@ -50,13 +50,11 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 	if(self) {
 		loader = [[XspfQTMovieLoader loaderWithMovieURL:nil delegate:nil] retain];
 		
-//		NSLog(@"Enable preloading.");
 		preloadingTimer = [NSTimer scheduledTimerWithTimeInterval:10
 														   target:self
 														 selector:@selector(checkPreload:)
 														 userInfo:nil
 														  repeats:YES];
-//		NSLog(@"init was called");
 	}
 	
 	return self;
@@ -72,7 +70,6 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 	}
 	
 	[self setPlaylist:newPlaylist];
-//	NSLog(@"new playlist is (%@)%@", NSStringFromClass([[self playlist] class]), [self playlist]);
 	
 	return self;
 }
@@ -104,8 +101,6 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 
 - (BOOL)readFromURL:(NSURL *)absoluteURL ofType:(NSString *)typeName error:(NSError **)outError
 {
-	*outError = nil;
-	
 	if(![typeName isEqualToString:QuickTimeMovieDocumentType]
 	   && ![typeName isEqualToString:MatroskaVideoDocumentType]
 	   && ![typeName isEqualToString:DivXMediaFormatDocumentType]) {
@@ -150,8 +145,6 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 }
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
 {
-	*outError = nil;
-	
 	if(![typeName isEqualToString:XspfDocumentType]
 	   && ![typeName isEqualToString:XspfUTI]) {
 		return NO;
@@ -163,7 +156,9 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 													  error:&error] autorelease];
 	if(error) {
 		NSLog(@"%@", error);
-		*outError = error;
+		if(outError) {
+			*outError = error;
+		}
 		return NO;
 	}
 	NSXMLElement *root = [d rootElement];
@@ -178,9 +173,7 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 	if(![t title]) {
 		[t setTitle:[[[[self fileURL] path] lastPathComponent] stringByDeletingPathExtension]];
 	}
-	
-//	NSLog(@"open playlist is (%@)%@", NSStringFromClass([[self playlist] class]), [self playlist]);
-	
+		
     return YES;
 }
 
@@ -286,7 +279,6 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 }
 - (void)setPlayingMovie:(QTMovie *)newMovie
 {
-//	NSLog(@"new movie is %@!!", newMovie);
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	if(playingMovie) {
 		[nc removeObserver:self
@@ -307,7 +299,6 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 }
 - (QTMovie *)playingMovie
 {
-//	NSLog(@"%@ is called!!", NSStringFromSelector(_cmd));
 	return playingMovie;
 }
 - (NSTimeInterval)playingMovieDuration
@@ -472,8 +463,6 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 		NSURL *nextMovieURL = [nextTrack movieLocation];
 		[loader setMovieURL:nextMovieURL];
 		[loader load];
-		
-//		NSLog(@"Start preloading.");
 	}
 }
 
