@@ -106,6 +106,5 @@ static XspfQTPreference *sharedInstance = nil;
 {
 	if(newPercent <= 0 || newPercent >= 1) return;
 	beginingPreloadPercent = newPercent;
-	//	NSLog(@"set percent %f.", newPercent);
 }
 @end

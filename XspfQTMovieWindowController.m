@@ -270,12 +270,10 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar);
 	
 	NSRect newWFrame = [[NSScreen mainScreen] frame];
-//	NSLog(@"screen ->\t%@",NSStringFromRect(newWFrame));
 	
 	newWFrame.size.width += windowSizeWithoutQTView.width;
 	newWFrame.size.height += windowSizeWithoutQTView.height;
 	newWFrame.origin.y -= windowSizeWithoutQTView.height;
-//	NSLog(@"window ->\t%@",NSStringFromRect(newWFrame));
 	
 	isChangingFullScreen = YES;
 	[player setIsChangingFullScreen:YES];
@@ -284,9 +282,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	
 	[player setIsChangingFullScreen:NO];
 	isChangingFullScreen = NO;
-//	NSLog(@"new window ->\t%@",NSStringFromRect([player frame]));
 	
-//	[w disableScreenUpdatesUntilFlush];
 	[w setContentView:qtView];
 	[w makeKeyAndOrderFront:self];
 	
@@ -553,7 +549,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 - (void)documentWillClose:(NSNotification *)notification
 {
 	id doc = [notification object];
-//	NSLog(@"Remove Observed! %@", doc);
+	
 	if(fullScreenMode) {
 		[self toggleFullScreenMode:self];
 	}
