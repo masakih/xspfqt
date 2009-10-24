@@ -197,7 +197,7 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 {
 	[playListWindowController showWindow:self];
 }
-- (IBAction)setThumnailFrame:(id)sender
+- (IBAction)setThumbnailFrame:(id)sender
 {
 	XspfQTComponent *currentTrack = [[self trackList] currentTrack];
 	QTTime currentQTTime = [playingMovie currentTime];
@@ -205,39 +205,39 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 	NSTimeInterval currentTI;
 	QTGetTimeInterval(currentQTTime, &currentTI);
 	
-	XspfQTComponent *prevThumnailTrack = [playlist thumnailTrack];
-	NSTimeInterval ti = [playlist thumnailTimeIntarval];
+	XspfQTComponent *prevThumbnailTrack = [playlist thumbnailTrack];
+	NSTimeInterval ti = [playlist thumbnailTimeInterval];
 	
-	[playlist setThumnailComponent:currentTrack timeIntarval:currentTI];
+	[playlist setThumbnailComponent:currentTrack timeIntarval:currentTI];
 	
 	id undo = [self undoManager];
-	if(prevThumnailTrack) {
-		[[undo prepareWithInvocationTarget:playlist] setThumnailComponent:prevThumnailTrack timeIntarval:ti];
-		[undo setActionName:NSLocalizedString(@"Change Thumnail frame.", @"Undo Action Name Change Thumnail frame")];
+	if(prevThumbnailTrack) {
+		[[undo prepareWithInvocationTarget:playlist] setThumbnailComponent:prevThumbnailTrack timeIntarval:ti];
+		[undo setActionName:NSLocalizedString(@"Change Thumbnail frame.", @"Undo Action Name Change Thumbnail frame")];
 	} else {
-		[[undo prepareWithInvocationTarget:playlist] removeThumnailFrame];
-		[undo setActionName:NSLocalizedString(@"Add Thumnail frame.", @"Undo Action Name Add Thumnail frame")];
+		[[undo prepareWithInvocationTarget:playlist] removeThumbnailFrame];
+		[undo setActionName:NSLocalizedString(@"Add Thumbnail frame.", @"Undo Action Name Add Thumbnail frame")];
 	}
 }
-- (IBAction)removeThumail:(id)sender
+- (IBAction)removeThumbnail:(id)sender
 {
-	XspfQTComponent *prevThumnailTrack = [playlist thumnailTrack];
-	NSTimeInterval ti = [playlist thumnailTimeIntarval];
+	XspfQTComponent *prevThumbnailTrack = [playlist thumbnailTrack];
+	NSTimeInterval ti = [playlist thumbnailTimeInterval];
 	
-	[playlist removeThumnailFrame];
+	[playlist removeThumbnailFrame];
 	
-	if(prevThumnailTrack) {
+	if(prevThumbnailTrack) {
 		id undo = [self undoManager];
-		[[undo prepareWithInvocationTarget:playlist] setThumnailComponent:prevThumnailTrack timeIntarval:ti];
-		[undo setActionName:NSLocalizedString(@"Remove Thumnail frame.", @"Undo Action Name Remove Thumnail frame")];
+		[[undo prepareWithInvocationTarget:playlist] setThumbnailComponent:prevThumbnailTrack timeIntarval:ti];
+		[undo setActionName:NSLocalizedString(@"Remove Thumbnail frame.", @"Undo Action Name Remove Thumbnail frame")];
 	}
 }
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
 	SEL action = [menuItem action];
 	
-	if(action == @selector(removeThumail:)) {
-		XspfQTComponent *component = [playlist thumnailTrack];
+	if(action == @selector(removeThumbnail:)) {
+		XspfQTComponent *component = [playlist thumbnailTrack];
 		if(!component) return NO;
 	}
 	

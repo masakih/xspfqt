@@ -23,16 +23,16 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	// generate from XML.
 	do {
 		NSTimeInterval time = DBL_MIN;
-		XspfQTComponent *component = thumnailTrack(url, &time);
+		XspfQTComponent *component = thumbnailTrack(url, &time);
 		if(!component) break;
 		if(time ==  DBL_MIN) break;
 		if(QLThumbnailRequestIsCancelled(thumbnail)) {
 			goto fail;
 		}
 		
-		CGImageRef aThumnail = thumnailForTrackTime(thumbnail, component, time, maxSize);
-		if(aThumnail) {
-			QLThumbnailRequestSetImage(thumbnail, aThumnail, NULL);
+		CGImageRef aThumbnail = thumbnailForTrackTime(thumbnail, component, time, maxSize);
+		if(aThumbnail) {
+			QLThumbnailRequestSetImage(thumbnail, aThumbnail, NULL);
 			goto fail;
 		}
 	} while(NO);

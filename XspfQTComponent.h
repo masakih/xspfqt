@@ -74,12 +74,12 @@
 - (void)setParent:(XspfQTComponent *)parent;	// Do not call directly. call in only -addChild: method.
 @end
 
-@interface XspfQTComponent(XspfThumnailSupport)
-- (void)setThumnailTrackNum:(NSUInteger)trackNum timeIntarval:(NSTimeInterval)timeIntarval;
-- (void)setThumnailComponent:(XspfQTComponent *)item timeIntarval:(NSTimeInterval)timeIntarval;
-- (XspfQTComponent *)thumnailTrack;
-- (NSTimeInterval)thumnailTimeIntarval;
-- (void)removeThumnailFrame;
+@interface XspfQTComponent(XspfThumbnailSupport)
+- (void)setThumbnailTrackNum:(NSUInteger)trackNum timeIntarval:(NSTimeInterval)timeIntarval;
+- (void)setThumbnailComponent:(XspfQTComponent *)item timeIntarval:(NSTimeInterval)timeIntarval;
+- (XspfQTComponent *)thumbnailTrack;
+- (NSTimeInterval)thumbnailTimeInterval;
+- (void)removeThumbnailFrame;
 @end
 
 extern NSString *XspfQTXMLTrackElementName;
@@ -96,7 +96,7 @@ extern NSString *XspfQTXMLApplicationAttributeName;
 extern NSString *XspfQTXMLNamespaceseURI;
 extern NSString *XspfQTXMLNamespacesePrefix;
 extern NSString *XspfQTXMLAliasElement;
-extern NSString *XspfQTXMLThumnailElementName;
-extern NSString	*XspfQTXMLThumnailTrackNumAttributeName;
-extern NSString	*XspfQTXMLThumnailTimeAttributeName;
+extern NSString *XspfQTXMLThumbnailElementName;
+extern NSString	*XspfQTXMLThumbnailTrackNumAttributeName;
+extern NSString	*XspfQTXMLThumbnailTimeAttributeName;
 

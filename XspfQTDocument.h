@@ -33,8 +33,8 @@
 - (IBAction)togglePlayAndPause:(id)sender;
 - (IBAction)showPlayList:(id)sender;
 
-- (IBAction)setThumnailFrame:(id)sender;
-- (IBAction)removeThumail:(id)sender;
+- (IBAction)setThumbnailFrame:(id)sender;
+- (IBAction)removeThumbnail:(id)sender;
 
 - (XspfQTComponent *)trackList;
 

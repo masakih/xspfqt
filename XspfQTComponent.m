@@ -22,9 +22,9 @@ NSString *XspfQTXMLApplicationAttributeName = @"application";
 NSString *XspfQTXMLNamespaceseURI = @"http://masakih.com";
 NSString *XspfQTXMLNamespacesePrefix = @"hm";
 NSString *XspfQTXMLAliasElement = @"hm:alias";
-NSString *XspfQTXMLThumnailElementName = @"hm:thumnail";
-NSString *XspfQTXMLThumnailTrackNumAttributeName = @"trackNumber";
-NSString *XspfQTXMLThumnailTimeAttributeName = @"time";
+NSString *XspfQTXMLThumbnailElementName = @"hm:thumbnail";
+NSString *XspfQTXMLThumbnailTrackNumAttributeName = @"trackNumber";
+NSString *XspfQTXMLThumbnailTimeAttributeName = @"time";
 
 @implementation XspfQTComponent
 
@@ -250,37 +250,37 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 
 @end
 
-@implementation XspfQTComponent(XspfThumnailSupport)
-- (void)setThumnailTrackNum:(NSUInteger)trackNum timeIntarval:(NSTimeInterval)timeIntarval;
+@implementation XspfQTComponent(XspfThumbnailSupport)
+- (void)setThumbnailTrackNum:(NSUInteger)trackNum timeIntarval:(NSTimeInterval)timeIntarval;
 {
 	if(parent) {
-		[parent setThumnailTrackNum:trackNum timeIntarval:timeIntarval];
+		[parent setThumbnailTrackNum:trackNum timeIntarval:timeIntarval];
 	}
 }
-- (void)setThumnailComponent:(XspfQTComponent *)item timeIntarval:(NSTimeInterval)timeIntarval
+- (void)setThumbnailComponent:(XspfQTComponent *)item timeIntarval:(NSTimeInterval)timeIntarval
 {
 	if(parent) {
-		[parent setThumnailComponent:item timeIntarval:timeIntarval];
+		[parent setThumbnailComponent:item timeIntarval:timeIntarval];
 	}
 }
-- (XspfQTComponent *)thumnailTrack
+- (XspfQTComponent *)thumbnailTrack
 {
 	if(parent) {
-		return [parent thumnailTrack];
+		return [parent thumbnailTrack];
 	}
 	return nil;
 }
-- (NSTimeInterval)thumnailTimeIntarval
+- (NSTimeInterval)thumbnailTimeInterval
 {
 	if(parent) {
-		return [parent thumnailTimeIntarval];
+		return [parent thumbnailTimeInterval];
 	}
 	return DBL_MIN;
 }
-- (void)removeThumnailFrame
+- (void)removeThumbnailFrame
 {
 	if(parent) {
-		[parent removeThumnailFrame];
+		[parent removeThumbnailFrame];
 	}
 }
 @end
