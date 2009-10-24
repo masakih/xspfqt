@@ -111,17 +111,10 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 		return [self readFromData:data ofType:typeName error:outError];
 	}
 	
-	NSString *xmlElem;
-	xmlElem = [NSString stringWithFormat:@"<track><location>%@</location></track>",
-			   [absoluteURL absoluteString]];
-	
-	NSError *error = nil;
-	id new = [XspfQTComponent xspfComponentWithXMLElementString:xmlElem
-														  error:&error];
-	if(error) {
-		NSLog(@"%@", error);
+	id new = [XspfQTComponent xspfTrackWithLocation:absoluteURL];
+	if(!new) {
 		if(outError) {
-			*outError = error;
+			*outError = [NSError errorWithDomain:@"XspfQTErrorDomain" code:1 userInfo:nil];
 		}
 		return NO;
 	}
@@ -354,18 +347,7 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 
 - (void)insertComponentFromURL:(NSURL *)url atIndex:(NSUInteger)index
 {
-	NSString *xmlElem;
-	xmlElem = [NSString stringWithFormat:@"<track><location>%@</location></track>",
-			   [url absoluteString]];
-	
-	NSError *error = nil;
-	id new = [XspfQTComponent xspfComponentWithXMLElementString:xmlElem
-														  error:&error];
-	if(error) {
-		NSLog(@"%@", error);
-		@throw self;
-	}
-	
+	id new = [XspfQTComponent xspfTrackWithLocation:url];
 	if(!new) {
 		@throw self;
 	}
