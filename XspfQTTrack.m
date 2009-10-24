@@ -16,6 +16,11 @@
 - (void)setSavedDateWithQTTime:(QTTime)qttime;
 @end
 
+static NSString *XspfQTTrackCodingKey = @"XspfQTTrackCodingKey";
+static NSString *XspfQTTrackTitle = @"XspfQTTrackTitle";
+static NSString *XspfQTTrackLocation = @"XspfQTTrackLocation";
+static NSString *XspfQTTrackDuration = @"XspfQTTrackDuration";
+
 @implementation XspfQTTrack
 - (id)initWithXMLElement:(NSXMLElement *)element
 {
@@ -207,23 +212,23 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 	NSDictionary *dict =
-	[NSDictionary dictionaryWithObjectsAndKeys:[self title], @"XspfQTTrackTitle",
-	 [self location], @"XspfQTTrackLocation",
-	 [self duration], @"XspfQTTrackDuration",
+	[NSDictionary dictionaryWithObjectsAndKeys:[self title], XspfQTTrackTitle,
+	 [self location], XspfQTTrackLocation,
+	 [self duration], XspfQTTrackDuration,
 	 nil];
 	
-	[aCoder encodeObject:dict forKey:@"XspfQTTrackCodingKey"];
+	[aCoder encodeObject:dict forKey:XspfQTTrackCodingKey];
 }
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
 	[super init];
 	[self autorelease];
 	
-	id dict = [aDecoder decodeObjectForKey:@"XspfQTTrackCodingKey"];
+	id dict = [aDecoder decodeObjectForKey:XspfQTTrackCodingKey];
 	
-	[self setTitle:[dict objectForKey:@"XspfQTTrackTitle"]];
-	[self setDuration:[dict objectForKey:@"XspfQTTrackDuration"]];
-	[self setLocation:[dict objectForKey:@"XspfQTTrackLocation"]];
+	[self setTitle:[dict objectForKey:XspfQTTrackTitle]];
+	[self setDuration:[dict objectForKey:XspfQTTrackDuration]];
+	[self setLocation:[dict objectForKey:XspfQTTrackLocation]];
 	
 	NSXMLElement *element = [self XMLElement];
 	
