@@ -9,9 +9,22 @@
 #import "XspfQTComponent.h"
 #import "XspfQTPlaceholderComponent.h"
 
+NSString *XspfQTXMLTrackElementName = @"track";
+NSString *XspfQTXMLTrackListElementName = @"trackList";
+NSString *XspfQTXMLPlaylistElementName = @"playlist";
+NSString *XspfQTXMLTitleElementName = @"title";
+NSString *XspfQTXMLLocationElementName = @"location";
+NSString *XspfQTXMLDurationElementName = @"duration";
+
+NSString *XspfQTXMLExtensionElementName = @"extension";
+NSString *XspfQTXMLApplicationAttributeName = @"application";
+
 NSString *XspfQTXMLNamespaceseURI = @"http://masakih.com";
 NSString *XspfQTXMLNamespacesePrefix = @"hm";
 NSString *XspfQTXMLAliasElement = @"hm:alias";
+NSString *XspfQTXMLThumnailElementName = @"hm:thumnail";
+NSString *XspfQTXMLThumnailTrackNumAttributeName = @"trackNumber";
+NSString *XspfQTXMLThumnailTimeAttributeName = @"time";
 
 @implementation XspfQTComponent
 

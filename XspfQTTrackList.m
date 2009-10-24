@@ -13,7 +13,7 @@
 - (id)initWithXMLElement:(NSXMLElement *)element
 {
 	if(self = [super init]) {		
-		NSArray *elems = [element elementsForName:@"track"];
+		NSArray *elems = [element elementsForName:XspfQTXMLTrackElementName];
 		if(!elems) {
 			[self release];
 			return nil;
@@ -31,7 +31,7 @@
 }
 - (NSXMLElement *)XMLElement
 {
-	id node = [NSXMLElement elementWithName:@"trackList"];
+	id node = [NSXMLElement elementWithName:XspfQTXMLTrackListElementName];
 	
 	for(id n in [self children]) {
 		[node addChild:[n XMLElement]];
