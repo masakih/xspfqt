@@ -63,11 +63,8 @@ static XspfQTPlaceholderComponent *sharedInstance = nil;
 #pragma mark ### initializers ###
 + (id)xspfComponentWithXMLElementString:(NSString *)string error:(NSError **)outError
 {
-	NSString *xmlElem;
-	xmlElem = [NSString stringWithString:string];
-	
 	NSError *error = nil;
-	NSXMLElement *element = [[[NSXMLElement alloc] initWithXMLString:xmlElem error:&error] autorelease];
+	NSXMLElement *element = [[[NSXMLElement alloc] initWithXMLString:string error:&error] autorelease];
 	if(error) {
 		if(outError) {
 			*outError = error;
