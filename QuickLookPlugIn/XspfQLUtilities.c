@@ -111,16 +111,16 @@ NSSize maxSizeForFrame(NSSize size, CGSize frame)
 	return result;
 }
 
-XspfQTComponent *thumnailTrack(CFURLRef url, NSTimeInterval *thumnailTime)
+XspfQTComponent *thumbnailTrack(CFURLRef url, NSTimeInterval *thumbnailTime)
 {
 	XspfQTComponent *component = componentForURL(url);
 	
-	XspfQTComponent *result = [component thumnailTrack];
-	NSTimeInterval ti = [component thumnailTimeIntarval];
-	*thumnailTime = ti;
+	XspfQTComponent *result = [component thumbnailTrack];
+	NSTimeInterval ti = [component thumbnailTimeInterval];
+	*thumbnailTime = ti;
 	return result;
 }
-CGImageRef thumnailForTrackTime(QLThumbnailRequestRef thumbnail, XspfQTComponent *track, NSTimeInterval time, CGSize size)
+CGImageRef thumbnailForTrackTime(QLThumbnailRequestRef thumbnail, XspfQTComponent *track, NSTimeInterval time, CGSize size)
 {
 	NSError *theErr = nil;
 	QTMovie *movie = loadFromMovieURL([track movieLocation]);

@@ -12,7 +12,6 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="300"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -2364,8 +2363,8 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>removeThumail:</string>
-							<string>setThumnailFrame:</string>
+							<string>removeThumbnail:</string>
+							<string>setThumbnailFrame:</string>
 							<string>showPlayList:</string>
 							<string>togglePlayAndPause:</string>
 						</object>
