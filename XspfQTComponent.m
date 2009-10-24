@@ -67,8 +67,7 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 }
 - (void)setTitle:(NSString *)new
 {
-	if(title == new) return;
-	if([title isEqualTo:new]) return;
+	if([title isEqualToString:new]) return;
 	
 	[title autorelease];
 	title = [new copy];
