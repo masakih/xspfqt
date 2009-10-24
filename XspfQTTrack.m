@@ -14,7 +14,6 @@
 
 @interface XspfQTTrack (Private)
 - (void)setSavedDateWithQTTime:(QTTime)qttime;
-//- (NSDate *)duration;
 @end
 
 @implementation XspfQTTrack
