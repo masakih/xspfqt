@@ -109,6 +109,21 @@ static XspfQTPlaceholderComponent *sharedInstance = nil;
 	
 	return newTrackList;
 }
++ (id)xspfTrackWithLocation:(NSURL *)location
+{
+	NSString *xmlElem;
+	xmlElem = [NSString stringWithFormat:@"<track><location>%@</location></track>",
+			   [location absoluteString]];
+	NSError *error = nil;
+	id new = [XspfQTComponent xspfComponentWithXMLElementString:xmlElem
+														  error:&error];
+	if(error) {
+		NSLog(@"Could not create track. %@", error);
+		return nil;
+	}
+	
+	return new;
+}
 
 - (id)initWithXMLElement:(NSXMLElement *)element
 {

@@ -47,6 +47,10 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 {
 	return [XspfQTPlaceholderComponent xspfTrackList];
 }
++ (id)xspfTrackWithLocation:(NSURL *)location
+{
+	return [XspfQTPlaceholderComponent xspfTrackWithLocation:location];
+}
 + (id)xspfComponentWithXMLElementString:(NSString *)string error:(NSError **)outError
 {
 	return [XspfQTPlaceholderComponent xspfComponentWithXMLElementString:string error:outError];

@@ -19,6 +19,7 @@
 
 + (id)xspfPlaylist;
 + (id)xspfTrackList;
++ (id)xspfTrackWithLocation:(NSURL *)location;
 + (id)xspfComponentWithXMLElementString:(NSString *)string error:(NSError **)outError;
 
 + (id)xspfComponemtWithXMLElement:(NSXMLElement *)element;
