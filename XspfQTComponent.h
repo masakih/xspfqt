@@ -81,7 +81,21 @@
 - (void)removeThumnailFrame;
 @end
 
+extern NSString *XspfQTXMLTrackElementName;
+extern NSString *XspfQTXMLTrackListElementName;
+extern NSString *XspfQTXMLPlaylistElementName;
+extern NSString *XspfQTXMLTitleElementName;
+extern NSString *XspfQTXMLLocationElementName;
+extern NSString *XspfQTXMLDurationElementName;
+
+extern NSString *XspfQTXMLExtensionElementName;
+extern NSString *XspfQTXMLApplicationAttributeName;
+
+
 extern NSString *XspfQTXMLNamespaceseURI;
 extern NSString *XspfQTXMLNamespacesePrefix;
 extern NSString *XspfQTXMLAliasElement;
+extern NSString *XspfQTXMLThumnailElementName;
+extern NSString	*XspfQTXMLThumnailTrackNumAttributeName;
+extern NSString	*XspfQTXMLThumnailTimeAttributeName;
 

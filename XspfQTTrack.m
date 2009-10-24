@@ -21,7 +21,7 @@
 {
 	self = [super init];
 	
-	NSArray *elems = [element elementsForName:@"location"];
+	NSArray *elems = [element elementsForName:XspfQTXMLLocationElementName];
 	if(!elems || [elems count] == 0) {
 		[self release];
 		return nil;
@@ -31,7 +31,7 @@
 	[self setLocationString:loc];
 	
 	NSString *t;
-	elems = [element elementsForName:@"title"];
+	elems = [element elementsForName:XspfQTXMLTitleElementName];
 	if(!elems || [elems count] == 0) {
 		t = [[self locationString] lastPathComponent];
 		t = [t stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -40,7 +40,7 @@
 	}
 	[self setTitle:t];
 	
-	elems = [element elementsForName:@"duration"];
+	elems = [element elementsForName:XspfQTXMLDurationElementName];
 	if(elems && [elems count] != 0) {
 		t = [[elems objectAtIndex:0] stringValue];
 		NSTimeInterval ti = [t doubleValue] / 1000;
@@ -48,11 +48,11 @@
 		[self setSavedDateWithQTTime:q];
 	}
 	
-	elems = [element elementsForName:@"extension"];
+	elems = [element elementsForName:XspfQTXMLExtensionElementName];
 	id myExtension = nil;
 	if(elems && [elems count] != 0) {
 		for(id extension in elems) {
-			id app = [[extension attributeForName:@"application"] stringValue];
+			id app = [[extension attributeForName:XspfQTXMLApplicationAttributeName] stringValue];
 			if([app isEqualToString:XspfQTXMLNamespaceseURI]) {
 				myExtension = extension;
 				break;
@@ -86,13 +86,13 @@
 }
 - (NSXMLElement *)XMLElement
 {
-	id node = [NSXMLElement elementWithName:@"track"];
+	id node = [NSXMLElement elementWithName:XspfQTXMLTrackElementName];
 	
-	id locElem = [NSXMLElement elementWithName:@"location" stringValue:[self locationString]];
+	id locElem = [NSXMLElement elementWithName:XspfQTXMLLocationElementName stringValue:[self locationString]];
 	if(locElem) {
 		[node addChild:locElem];
 	}
-	id titleElem = [NSXMLElement elementWithName:@"title" stringValue:[self title]];
+	id titleElem = [NSXMLElement elementWithName:XspfQTXMLTitleElementName stringValue:[self title]];
 	if(titleElem) {
 		[node addChild:titleElem];
 	}
@@ -103,7 +103,7 @@
 		t += [[NSTimeZone systemTimeZone] secondsFromGMT];
 		unsigned long long scaledT = (unsigned long long)t;
 		scaledT *= 1000;
-		id durationElem = [NSXMLElement elementWithName:@"duration"
+		id durationElem = [NSXMLElement elementWithName:XspfQTXMLDurationElementName
 											stringValue:[NSString stringWithFormat:@"%qu", scaledT]];
 		if(durationElem) {
 			[node addChild:durationElem];
@@ -119,10 +119,10 @@
 			id aliasElem = [NSXMLElement elementWithName:XspfQTXMLAliasElement
 											 stringValue:[NSString stringWithFormat:@"%@", aliasData]];
 			if(!aliasElem) break;
-			id applicationAttr = [NSXMLElement attributeWithName:@"application"
+			id applicationAttr = [NSXMLElement attributeWithName:XspfQTXMLApplicationAttributeName
 													 stringValue:XspfQTXMLNamespaceseURI];
 			if(!applicationAttr) break;
-			id extensionElem = [NSXMLElement elementWithName:@"extension"
+			id extensionElem = [NSXMLElement elementWithName:XspfQTXMLExtensionElementName
 													children:[NSArray arrayWithObject:aliasElem]
 												  attributes:[NSArray arrayWithObject:applicationAttr]];
 			if(extensionElem) {

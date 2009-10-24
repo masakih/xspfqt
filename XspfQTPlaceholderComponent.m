@@ -119,13 +119,13 @@ static XspfQTPlaceholderComponent *sharedInstance = nil;
 	if(!name) return nil;
 	if([name isEqualToString:@""]) return nil;
 	
-	if([name isEqualToString:@"track"]) {
+	if([name isEqualToString:XspfQTXMLTrackElementName]) {
 		return [[XspfQTTrack alloc] initWithXMLElement:element];
 	}
-	if([name isEqualToString:@"trackList"]) {
+	if([name isEqualToString:XspfQTXMLTrackListElementName]) {
 		return [[XspfQTTrackList alloc] initWithXMLElement:element];
 	}
-	if([name isEqualToString:@"playlist"]) {
+	if([name isEqualToString:XspfQTXMLPlaylistElementName]) {
 		return [[XspfQTPlaylist alloc] initWithXMLElement:element];
 	}
 	

@@ -19,7 +19,7 @@
 - (id)initWithXMLElement:(NSXMLElement *)element
 {
 	if(self = [super init]) {		
-		NSArray *elems = [element elementsForName:@"trackList"];
+		NSArray *elems = [element elementsForName:XspfQTXMLTrackListElementName];
 		if(!elems) {
 			[self release];
 			return nil;
@@ -33,7 +33,7 @@
 		}
 		
 		NSString *t;
-		elems = [element elementsForName:@"title"];
+		elems = [element elementsForName:XspfQTXMLTitleElementName];
 		if(elems && [elems count] != 0) {
 			t = [[elems objectAtIndex:0] stringValue];
 			[self setTitle:t];
@@ -44,11 +44,11 @@
 		thumnailTimeIntarval = DBL_MIN;
 		
 		////
-		elems = [element elementsForName:@"extension"];
+		elems = [element elementsForName:XspfQTXMLExtensionElementName];
 		id myExtension = nil;
 		if(elems && [elems count] != 0) {
 			for(id extension in elems) {
-				id app = [[extension attributeForName:@"application"] stringValue];
+				id app = [[extension attributeForName:XspfQTXMLApplicationAttributeName] stringValue];
 				if([app isEqualToString:XspfQTXMLNamespaceseURI]) {
 					myExtension = extension;
 					break;
@@ -58,11 +58,11 @@
 			do {
 				if(!myExtension) break;
 				
-				id thumnail = [[myExtension elementsForName:@"hm:thumnail"] objectAtIndex:0];
+				id thumnail = [[myExtension elementsForName:XspfQTXMLThumnailElementName] objectAtIndex:0];
 				if(!thumnail) break;
-				id index = [thumnail attributeForName:@"trackNumber"];
+				id index = [thumnail attributeForName:XspfQTXMLThumnailTrackNumAttributeName];
 				if(!index) break;
-				id time = [thumnail attributeForName:@"time"];
+				id time = [thumnail attributeForName:XspfQTXMLThumnailTimeAttributeName];
 				if(!time) break;
 				
 				NSString *t = [time stringValue];
@@ -77,7 +77,7 @@
 
 - (NSXMLElement *)XMLElement
 {
-	id node = [NSXMLElement elementWithName:@"playlist"];
+	id node = [NSXMLElement elementWithName:XspfQTXMLPlaylistElementName];
 	[node addAttribute:[NSXMLNode attributeWithName:@"version"
 										stringValue:@"1"]];
 	[node addAttribute:[NSXMLNode attributeWithName:@"xmlns"
@@ -87,34 +87,34 @@
 										stringValue:XspfQTXMLNamespaceseURI]];
 	
 	if([self title]) {
-		id t = [NSXMLElement elementWithName:@"title"
+		id t = [NSXMLElement elementWithName:XspfQTXMLTitleElementName
 								 stringValue:[self title]];
 		[node addChild:t];
 	}
 	
 	do {
 		if(thumnailTrackNum != NSNotFound) {			
-			id trackNumberAttr = [NSXMLElement attributeWithName:@"trackNumber"
+			id trackNumberAttr = [NSXMLElement attributeWithName:XspfQTXMLThumnailTrackNumAttributeName
 											 stringValue:[NSString stringWithFormat:@"%u", thumnailTrackNum]];
 			if(!trackNumberAttr) break;
 			
 			id timeAttr = nil;
 			if(thumnailTimeIntarval != DBL_MIN) {
 				unsigned long long scaledT = (unsigned long long)(thumnailTimeIntarval * 1000);
-				timeAttr = [NSXMLElement attributeWithName:@"time"
+				timeAttr = [NSXMLElement attributeWithName:XspfQTXMLThumnailTimeAttributeName
 												  stringValue:[NSString stringWithFormat:@"%qu", scaledT]];
 				if(!timeAttr) break;
 			}
 			
-			id thumnailElem = [NSXMLElement elementWithName:@"hm:thumnail"
+			id thumnailElem = [NSXMLElement elementWithName:XspfQTXMLThumnailElementName
 												   children:[NSArray array]
 												 attributes:[NSArray arrayWithObjects:trackNumberAttr, timeAttr, nil]];
 			if(!thumnailElem) break;
 			
-			id applicationAttr = [NSXMLElement attributeWithName:@"application"
+			id applicationAttr = [NSXMLElement attributeWithName:XspfQTXMLApplicationAttributeName
 													 stringValue:XspfQTXMLNamespaceseURI];
 			if(!applicationAttr) break;
-			id extensionElem = [NSXMLElement elementWithName:@"extension"
+			id extensionElem = [NSXMLElement elementWithName:XspfQTXMLExtensionElementName
 													children:[NSArray arrayWithObject:thumnailElem]
 												  attributes:[NSArray arrayWithObject:applicationAttr]];
 			if(extensionElem) {
