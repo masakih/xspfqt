@@ -58,7 +58,7 @@
 			do {
 				if(!myExtension) break;
 				id elementsArray = [myExtension elementsForName:XspfQTXMLThumbnailElementName];
-				if([elementsArray count] <= 0) break;
+				if([elementsArray count] == 0) break;
 				id thumbnail = [elementsArray objectAtIndex:0];
 				if(!thumbnail) break;
 				id index = [thumbnail attributeForName:XspfQTXMLThumbnailTrackNumAttributeName];
