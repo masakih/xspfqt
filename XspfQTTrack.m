@@ -66,8 +66,9 @@ static NSString *XspfQTTrackDuration = @"XspfQTTrackDuration";
 		
 		do {
 			if(!myExtension) break;
-			
-			id aliasString = [[[myExtension elementsForName:XspfQTXMLAliasElement] objectAtIndex:0] stringValue];
+			id elementArrar = [myExtension elementsForName:XspfQTXMLAliasElement];
+			if([elementArrar count] == 0) break;
+			id aliasString = [[elementArrar objectAtIndex:0] stringValue];
 			if(!aliasString) break;
 			
 			NSData *aliasData = [aliasString propertyList];
