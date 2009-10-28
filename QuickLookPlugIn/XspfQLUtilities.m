@@ -7,7 +7,7 @@
  *
  */
 
-#include "XspfQLUtilities.h"
+#import "XspfQLUtilities.h"
 
 #import <QTKit/QTKit.h>
 

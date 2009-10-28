@@ -1,10 +1,10 @@
-#include <CoreFoundation/CoreFoundation.h>
-#include <CoreServices/CoreServices.h>
-#include <QuickLook/QuickLook.h>
+#import <CoreFoundation/CoreFoundation.h>
+#import <CoreServices/CoreServices.h>
+#import <QuickLook/QuickLook.h>
 
 #import <QTKit/QTKit.h>
 
-#include "XspfQLUtilities.h"
+#import "XspfQLUtilities.h"
 
 /* -----------------------------------------------------------------------------
    Generate a preview for file

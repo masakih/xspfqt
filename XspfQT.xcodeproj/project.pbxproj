@@ -14,8 +14,8 @@
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		F41AC3520F7F0B88003B3DF0 /* XspfQTPreference.m in Sources */ = {isa = PBXBuildFile; fileRef = F41AC3510F7F0B88003B3DF0 /* XspfQTPreference.m */; };
 		F426BB4D1083291B0084E8C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F47DF8DA1083262000DF2C17 /* InfoPlist.strings */; };
-		F426BB4E108329400084E8C5 /* GenerateThumbnailForURL.c in Sources */ = {isa = PBXBuildFile; fileRef = F47DF8D21083260600DF2C17 /* GenerateThumbnailForURL.c */; };
-		F426BB4F108329420084E8C5 /* GeneratePreviewForURL.c in Sources */ = {isa = PBXBuildFile; fileRef = F47DF8D11083260600DF2C17 /* GeneratePreviewForURL.c */; };
+		F426BB4E108329400084E8C5 /* GenerateThumbnailForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = F47DF8D21083260600DF2C17 /* GenerateThumbnailForURL.m */; };
+		F426BB4F108329420084E8C5 /* GeneratePreviewForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = F47DF8D11083260600DF2C17 /* GeneratePreviewForURL.m */; };
 		F426BB50108329450084E8C5 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = F47DF8D41083260600DF2C17 /* main.c */; };
 		F426BB61108329A20084E8C5 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */; };
 		F426BB62108329A40084E8C5 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F492C1D70F55627B00D0C72A /* ApplicationServices.framework */; };
@@ -32,7 +32,7 @@
 		F426BB8310832AF10084E8C5 /* XspfQuickLook.qlgenerator in CopyFiles */ = {isa = PBXBuildFile; fileRef = F426BB311083282A0084E8C5 /* XspfQuickLook.qlgenerator */; };
 		F426BBC41083313F0084E8C5 /* NSPathUtilities-XspfQT-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B22C8E101BE195004D427C /* NSPathUtilities-XspfQT-Extensions.m */; };
 		F426BBD71083328F0084E8C5 /* NSURL-XspfQT-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F484FD540F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m */; };
-		F426BBFC108344260084E8C5 /* XspfQLUtilities.c in Sources */ = {isa = PBXBuildFile; fileRef = F426BBFA108344260084E8C5 /* XspfQLUtilities.c */; };
+		F426BBFC108344260084E8C5 /* XspfQLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F426BBFA108344260084E8C5 /* XspfQLUtilities.m */; };
 		F426BC96108357890084E8C5 /* XspfQTValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE570E6A2B5F009320B6 /* XspfQTValueTransformers.m */; };
 		F429BD700E8F969A006EB717 /* XspfQTPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */; };
 		F429BE520E8FAECB006EB717 /* XspfQTContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F429BE510E8FAECB006EB717 /* XspfQTContainerComponent.m */; };
@@ -102,7 +102,7 @@
 		F41AC3510F7F0B88003B3DF0 /* XspfQTPreference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPreference.m; sourceTree = "<group>"; };
 		F426BB311083282A0084E8C5 /* XspfQuickLook.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XspfQuickLook.qlgenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		F426BB66108329DC0084E8C5 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = /System/Library/Frameworks/QuickLook.framework; sourceTree = "<absolute>"; };
-		F426BBFA108344260084E8C5 /* XspfQLUtilities.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = XspfQLUtilities.c; sourceTree = "<group>"; };
+		F426BBFA108344260084E8C5 /* XspfQLUtilities.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = XspfQLUtilities.m; sourceTree = "<group>"; };
 		F426BBFB108344260084E8C5 /* XspfQLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQLUtilities.h; sourceTree = "<group>"; };
 		F429BD6E0E8F969A006EB717 /* XspfQTPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlaylist.h; sourceTree = "<group>"; };
 		F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlaylist.m; sourceTree = "<group>"; };
@@ -120,8 +120,8 @@
 		F441E0670E6A5131009320B6 /* XspfQTPlayListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlayListWindowController.m; sourceTree = "<group>"; };
 		F46870220E71963E00B4DAED /* XspfQTPlaceholderComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlaceholderComponent.h; sourceTree = "<group>"; };
 		F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlaceholderComponent.m; sourceTree = "<group>"; };
-		F47DF8D11083260600DF2C17 /* GeneratePreviewForURL.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = GeneratePreviewForURL.c; sourceTree = "<group>"; };
-		F47DF8D21083260600DF2C17 /* GenerateThumbnailForURL.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = GenerateThumbnailForURL.c; sourceTree = "<group>"; };
+		F47DF8D11083260600DF2C17 /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
+		F47DF8D21083260600DF2C17 /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
 		F47DF8D31083260600DF2C17 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F47DF8D41083260600DF2C17 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		F47DF8DB1083262000DF2C17 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -306,11 +306,11 @@
 		F47DF8CD108325D800DF2C17 /* QuickLookPlugIn */ = {
 			isa = PBXGroup;
 			children = (
-				F426BBFA108344260084E8C5 /* XspfQLUtilities.c */,
+				F426BBFA108344260084E8C5 /* XspfQLUtilities.m */,
 				F426BBFB108344260084E8C5 /* XspfQLUtilities.h */,
 				F47DF8DA1083262000DF2C17 /* InfoPlist.strings */,
-				F47DF8D11083260600DF2C17 /* GeneratePreviewForURL.c */,
-				F47DF8D21083260600DF2C17 /* GenerateThumbnailForURL.c */,
+				F47DF8D11083260600DF2C17 /* GeneratePreviewForURL.m */,
+				F47DF8D21083260600DF2C17 /* GenerateThumbnailForURL.m */,
 				F47DF8D31083260600DF2C17 /* Info.plist */,
 				F47DF8D41083260600DF2C17 /* main.c */,
 				F426BB66108329DC0084E8C5 /* QuickLook.framework */,
@@ -467,8 +467,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F426BB4E108329400084E8C5 /* GenerateThumbnailForURL.c in Sources */,
-				F426BB4F108329420084E8C5 /* GeneratePreviewForURL.c in Sources */,
+				F426BB4E108329400084E8C5 /* GenerateThumbnailForURL.m in Sources */,
+				F426BB4F108329420084E8C5 /* GeneratePreviewForURL.m in Sources */,
 				F426BB50108329450084E8C5 /* main.c in Sources */,
 				F426BB7810832ABB0084E8C5 /* XspfQTComponent.m in Sources */,
 				F426BB7910832ABC0084E8C5 /* XspfQTContainerComponent.m in Sources */,
@@ -478,7 +478,7 @@
 				F426BB7D10832AC20084E8C5 /* XspfQTTrackList.m in Sources */,
 				F426BBC41083313F0084E8C5 /* NSPathUtilities-XspfQT-Extensions.m in Sources */,
 				F426BBD71083328F0084E8C5 /* NSURL-XspfQT-Extensions.m in Sources */,
-				F426BBFC108344260084E8C5 /* XspfQLUtilities.c in Sources */,
+				F426BBFC108344260084E8C5 /* XspfQLUtilities.m in Sources */,
 				F426BC96108357890084E8C5 /* XspfQTValueTransformers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
