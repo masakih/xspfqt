@@ -10,9 +10,13 @@
 #import "XspfQTDocument.h"
 #import "XspfQTComponent.h"
 
+#import "BSSUtil.h"
+
 
 @interface XspfQTPlayListWindowController(Private)
 - (void)setObserveObject:(id)new;
+
+- (NSString *)clickedMoviePath;
 
 - (void)insertItem:(id)item atIndex:(NSUInteger)index;
 - (void)removeItem:(id)item;
@@ -75,7 +79,22 @@ static NSString *const XspfQTTitleKey = @"title";
 {
 	id selection = [trackListTree valueForKeyPath:@"selection.self"];
 	[self removeItem:selection];
+}	
+- (IBAction)openInFinder:(id)sender
+{
+	NSString *path = [self clickedMoviePath];
+	if(path) {
+		openInFinderWithPath(path);
+	}
 }
+- (IBAction)openInformationInFinder:(id)sender
+{
+	NSString *path = [self clickedMoviePath];
+	if(path) {
+		openInfomationInFinderWithPath(path);
+	}
+}
+
 - (void)keyDown:(NSEvent *)theEvent
 {
 	if([theEvent isARepeat]) return;
@@ -88,17 +107,33 @@ static NSString *const XspfQTTitleKey = @"title";
 		[self delete:self];
 	}
 }
+- (NSString *)clickedMoviePath
+{
+	int row = [listView clickedRow];
+	id item = [listView itemAtRow:row];
+	if(!item) return nil;
+	
+	NSURL *location = [[item representedObject] movieLocation];
+	NSString *result =  [location path];
+	
+	return result;
+}
 
 #pragma mark ### NSMenu valivation ###
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
-	if([menuItem action] == @selector(delete:)) {
+	SEL action = [menuItem action];
+	if(action == @selector(delete:)) {
 		if([[trackListTree selectedObjects] count] == 0) {
 			return NO;
 		}
 		if(![[trackListTree valueForKeyPath:@"selection.isLeaf"] boolValue]) {
 			return NO;
 		}
+	}
+	if(action == @selector(openInFinder:) || action == @selector(openInformationInFinder:)) {
+		NSString *path = [self clickedMoviePath];
+		if(!path) return NO;
 	}
 	
 	return YES;
