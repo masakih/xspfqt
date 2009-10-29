@@ -41,6 +41,8 @@
 		F441DE5C0E6A2BDA009320B6 /* XspfQTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE5B0E6A2BDA009320B6 /* XspfQTAppDelegate.m */; };
 		F441DECB0E6A399D009320B6 /* XspfQTFullScreenWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DECA0E6A399D009320B6 /* XspfQTFullScreenWindow.m */; };
 		F441E0680E6A5131009320B6 /* XspfQTPlayListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F441E0670E6A5131009320B6 /* XspfQTPlayListWindowController.m */; };
+		F44805081098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F44805071098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.m */; };
+		F448050B1098AD5F0014C2BB /* BSSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F448050A1098AD5F0014C2BB /* BSSUtil.m */; };
 		F46870240E71963E00B4DAED /* XspfQTPlaceholderComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */; };
 		F47E2B1C0E7E87DD00DB1BE6 /* XspfQTDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = F47E2B1A0E7E87DD00DB1BE6 /* XspfQTDocument.nib */; };
 		F47E2B1F0E7E87FD00DB1BE6 /* XspfQTPlayList.nib in Resources */ = {isa = PBXBuildFile; fileRef = F47E2B1D0E7E87FD00DB1BE6 /* XspfQTPlayList.nib */; };
@@ -118,6 +120,10 @@
 		F441DECA0E6A399D009320B6 /* XspfQTFullScreenWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTFullScreenWindow.m; sourceTree = "<group>"; };
 		F441E0660E6A5131009320B6 /* XspfQTPlayListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlayListWindowController.h; sourceTree = "<group>"; };
 		F441E0670E6A5131009320B6 /* XspfQTPlayListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlayListWindowController.m; sourceTree = "<group>"; };
+		F44805061098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAppleEventDescriptor-Extensions.h"; sourceTree = "<group>"; };
+		F44805071098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAppleEventDescriptor-Extensions.m"; sourceTree = "<group>"; };
+		F44805091098AD5F0014C2BB /* BSSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSSUtil.h; sourceTree = "<group>"; };
+		F448050A1098AD5F0014C2BB /* BSSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSSUtil.m; sourceTree = "<group>"; };
 		F46870220E71963E00B4DAED /* XspfQTPlaceholderComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlaceholderComponent.h; sourceTree = "<group>"; };
 		F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlaceholderComponent.m; sourceTree = "<group>"; };
 		F47DF8D11083260600DF2C17 /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
@@ -239,6 +245,8 @@
 		2A37F4ABFDCFA73011CA2CEA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F44805091098AD5F0014C2BB /* BSSUtil.h */,
+				F448050A1098AD5F0014C2BB /* BSSUtil.m */,
 				F484FD8E0F6C8F1F007C5596 /* CocoaExtentions */,
 				F484FD8D0F6C8EDF007C5596 /* XspfQTComponent */,
 				F441DE5A0E6A2BDA009320B6 /* XspfQTAppDelegate.h */,
@@ -340,6 +348,8 @@
 		F484FD8E0F6C8F1F007C5596 /* CocoaExtentions */ = {
 			isa = PBXGroup;
 			children = (
+				F44805061098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.h */,
+				F44805071098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.m */,
 				F484FD530F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.h */,
 				F484FD540F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m */,
 				F4B22C8D101BE195004D427C /* NSPathUtilities-XspfQT-Extensions.h */,
@@ -460,6 +470,8 @@
 				F4B8096E0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m in Sources */,
 				F41AC3520F7F0B88003B3DF0 /* XspfQTPreference.m in Sources */,
 				F4B22C8F101BE195004D427C /* NSPathUtilities-XspfQT-Extensions.m in Sources */,
+				F44805081098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.m in Sources */,
+				F448050B1098AD5F0014C2BB /* BSSUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
