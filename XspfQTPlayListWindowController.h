@@ -16,8 +16,8 @@
 	id observedObject;
 }
 
-- (IBAction)openInFinder:(id)sender;
-- (IBAction)openInformationInFinder:(id)sender;
+- (IBAction)showInFinder:(id)sender;
+- (IBAction)showInformationInFinder:(id)sender;
 
 @end
 

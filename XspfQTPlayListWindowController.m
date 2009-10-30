@@ -80,14 +80,14 @@ static NSString *const XspfQTTitleKey = @"title";
 	id selection = [trackListTree valueForKeyPath:@"selection.self"];
 	[self removeItem:selection];
 }	
-- (IBAction)openInFinder:(id)sender
+- (IBAction)showInFinder:(id)sender
 {
 	NSString *path = [self clickedMoviePath];
 	if(path) {
 		openInFinderWithPath(path);
 	}
 }
-- (IBAction)openInformationInFinder:(id)sender
+- (IBAction)showInformationInFinder:(id)sender
 {
 	NSString *path = [self clickedMoviePath];
 	if(path) {
@@ -131,7 +131,7 @@ static NSString *const XspfQTTitleKey = @"title";
 			return NO;
 		}
 	}
-	if(action == @selector(openInFinder:) || action == @selector(openInformationInFinder:)) {
+	if(action == @selector(showInFinder:) || action == @selector(showInformationInFinder:)) {
 		NSString *path = [self clickedMoviePath];
 		if(!path) return NO;
 	}
