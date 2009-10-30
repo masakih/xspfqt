@@ -69,30 +69,18 @@ inline static NSAppleEventDescriptor *fileDescriptor(NSString *filePath)
 OSStatus openInFinderWithPath(NSString *filePath)
 {
 	NSAppleEventDescriptor *ae;
-	NSAppleEventDescriptor *targetDesc;
-	OSStatus err;
-	
-	targetDesc = [NSAppleEventDescriptor targetDescriptorWithAppName:@"Finder"];
-	if(!targetDesc) {
-		BSSLog(@"Can NOT create targetDesc.");
-		return kBSSUtilCanNotCreateTragetDescErr;
-	}
+	OSStatus err = noErr;
 	
 	ae = [NSAppleEventDescriptor appleEventWithEventClass:kAEMiscStandards
 												  eventID:kAEMakeObjectsVisible
-										 targetDescriptor:targetDesc
-												 returnID:kAutoGenerateReturnID
-											transactionID:kAnyTransactionID];
-	{
-		NSAppleEventDescriptor *fileDesc = fileDescriptor(filePath);
-		
-		[ae setParamDescriptor:fileDesc
-					forKeyword:keyDirectObject];
-	}
+										 targetAppName:@"Finder"];
 	if(!ae) {
 		BSSLog(@"Can NOT create AppleEvent.");
 		return kBSSUtilCanNotCreateAppleEventErr;
 	}
+	
+	[ae setParamDescriptor:fileDescriptor(filePath)
+				forKeyword:keyDirectObject];
 	
 	@try {
 		err = [ae sendAppleEventWithMode:kAENoReply | kAENeverInteract
@@ -117,35 +105,24 @@ OSStatus openInFinderWithPath(NSString *filePath)
 OSStatus openInfomationInFinderWithPath(NSString *filePath)
 {
 	NSAppleEventDescriptor *ae;
-	NSAppleEventDescriptor *targetDesc;
-	OSStatus err;
-	
-	targetDesc = [NSAppleEventDescriptor targetDescriptorWithAppName:@"Finder"];
-	if(!targetDesc) {
-		BSSLog(@"Can NOT create targetDesc.");
-		return kBSSUtilCanNotCreateTragetDescErr;
-	}
+	OSStatus err = noErr;
 	
 	ae = [NSAppleEventDescriptor appleEventWithEventClass:kCoreEventClass
 												  eventID:kAEOpenDocuments
-										 targetDescriptor:targetDesc
-												 returnID:kAutoGenerateReturnID
-											transactionID:kAnyTransactionID];
-	{
-		NSAppleEventDescriptor *fileDesc = fileDescriptor(filePath);
-		NSAppleEventDescriptor *fileInfoDesc = [NSAppleEventDescriptor
-							objectSpecifierWithDesiredClass:cProperty
-												  container:fileDesc
-													keyForm:cProperty
-													keyData:[NSAppleEventDescriptor descriptorWithTypeCode:cInfoWindow]];
-		
-		[ae setParamDescriptor:fileInfoDesc
-					forKeyword:keyDirectObject];
-	}
+											targetAppName:@"Finder"];
 	if(!ae) {
 		BSSLog(@"Can NOT create AppleEvent.");
 		return kBSSUtilCanNotCreateAppleEventErr;
 	}
+	
+	NSAppleEventDescriptor *fileInfoDesc = [NSAppleEventDescriptor
+											objectSpecifierWithDesiredClass:cProperty
+											container:fileDescriptor(filePath)
+											keyForm:cProperty
+											keyData:[NSAppleEventDescriptor descriptorWithTypeCode:cInfoWindow]];
+	
+	[ae setParamDescriptor:fileInfoDesc
+				forKeyword:keyDirectObject];
 	
 	@try {
 		err = [ae sendAppleEventWithMode:kAENoReply | kAENeverInteract
