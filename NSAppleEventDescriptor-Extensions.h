@@ -21,6 +21,18 @@
 							 keyForm:(DescType)keyForm
 							 keyData:(NSAppleEventDescriptor *)keyData;
 
+// set returnID to kAutoGenerateReturnID and transactionID to kAnyTransactionID.
++ (NSAppleEventDescriptor *)appleEventWithEventClass:(AEEventClass)eventClass
+											 eventID:(AEEventID)eventID
+									targetDescriptor:(NSAppleEventDescriptor *)targetDescriptor;
++ (NSAppleEventDescriptor *)appleEventWithEventClass:(AEEventClass)eventClass
+											 eventID:(AEEventID)eventID
+							   applicationIdentifier:(NSString *)identifier;
++ (NSAppleEventDescriptor *)appleEventWithEventClass:(AEEventClass)eventClass
+											 eventID:(AEEventID)eventID
+									   targetAppName:(NSString *)targetAppName;
+
+
 // throw HMAEDescriptorSendingNotAppleEventException, if reciever is not AppleEventType.
 // reply can be NULL.
 - (OSStatus)sendAppleEventWithMode:(AESendMode)mode

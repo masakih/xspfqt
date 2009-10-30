@@ -72,6 +72,38 @@ static NSString *HMAEDesNotAEExceptionResonFormat = @"send method shuld be call 
 	return [[[[self class] alloc] initWithAEDescNoCopy:&objectSpecifier] autorelease];
 }
 
++ (NSAppleEventDescriptor *)appleEventWithEventClass:(AEEventClass)eventClass
+											 eventID:(AEEventID)eventID
+									targetDescriptor:(NSAppleEventDescriptor *)targetDescriptor
+{
+	return [self appleEventWithEventClass:eventClass
+								  eventID:eventID
+						 targetDescriptor:targetDescriptor
+								 returnID:kAutoGenerateReturnID
+							transactionID:kAnyTransactionID];
+}
++ (NSAppleEventDescriptor *)appleEventWithEventClass:(AEEventClass)eventClass
+											 eventID:(AEEventID)eventID
+							   applicationIdentifier:(NSString *)identifier
+{
+	NSAppleEventDescriptor *target;
+	target = [self targetDescriptorWithApplicationIdentifier:identifier];
+	if(!target) return nil;
+	return [self appleEventWithEventClass:eventClass
+								  eventID:eventID
+						 targetDescriptor:target];
+}
++ (NSAppleEventDescriptor *)appleEventWithEventClass:(AEEventClass)eventClass
+											 eventID:(AEEventID)eventID
+									   targetAppName:(NSString *)targetAppName
+{
+	NSAppleEventDescriptor *target;
+	target = [self targetDescriptorWithAppName:targetAppName];
+	if(!target) return nil;
+	return [self appleEventWithEventClass:eventClass
+								  eventID:eventID
+						 targetDescriptor:target];
+}
 
 #pragma mark## Instance Method ##
 - (OSStatus)sendAppleEventWithMode:(AESendMode)mode
