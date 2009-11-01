@@ -8,12 +8,11 @@
 
 #import "XspfQTTrack.h"
 
-#import <QTKit/QTTime.h>
 #import "NSURL-XspfQT-Extensions.h"
 #import "NSPathUtilities-XspfQT-Extensions.h"
 
 @interface XspfQTTrack (Private)
-- (void)setSavedDateWithQTTime:(QTTime)qttime;
+- (void)setSavedDateWithTimeInterval:(NSTimeInterval)interval;
 @end
 
 static NSString *XspfQTTrackCodingKey = @"XspfQTTrackCodingKey";
@@ -49,8 +48,7 @@ static NSString *XspfQTTrackDuration = @"XspfQTTrackDuration";
 	if(elems && [elems count] != 0) {
 		t = [[elems objectAtIndex:0] stringValue];
 		NSTimeInterval ti = [t doubleValue] / 1000;
-		QTTime q = QTMakeTimeWithTimeInterval(ti);
-		[self setSavedDateWithQTTime:q];
+		[self setSavedDateWithTimeInterval:ti];
 	}
 	
 	elems = [element elementsForName:XspfQTXMLExtensionElementName];
@@ -162,10 +160,10 @@ static NSString *XspfQTTrackDuration = @"XspfQTTrackDuration";
 										  withString:@"///"];
 }
 
-- (void)setSavedDateWithQTTime:(QTTime)qttime
+- (void)setSavedDateWithTimeInterval:(NSTimeInterval)interval
 {
-	id t = [NSValueTransformer valueTransformerForName:@"XspfQTTimeDateTransformer"];
-	[self setDuration:[t transformedValue:[NSValue valueWithQTTime:qttime]]];
+	interval -= [[NSTimeZone systemTimeZone] secondsFromGMT];
+	[self setDuration:[NSDate dateWithTimeIntervalSince1970:interval]];
 }
 - (NSDate *)savedDate
 {
