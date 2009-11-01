@@ -20,7 +20,6 @@
 	BOOL fullScreenMode;
 	
 	QTMovie *qtMovie;
-	NSTimer *updateTime;
 	
 	NSPoint prevMouse;
 	NSDate *prevMouseMovedDate;

@@ -221,30 +221,11 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 - (void)movieDidStart
 {
 	[playButton setTitle:@"||"];
-	
-	@synchronized(self) {
-		if(updateTime) return;
-		
-		updateTime = [[NSTimer timerWithTimeInterval:sUpdateTimeInterval
-											  target:self
-											selector:@selector(updateTimeIfNeeded:)
-											userInfo:NULL
-											 repeats:YES] retain];
-		
-		NSRunLoop *currentLoop = [NSRunLoop currentRunLoop];
-		[currentLoop addTimer:updateTime forMode:NSDefaultRunLoopMode];
-	}
 }
 		
 - (void)movieDidPause
 {
 	[playButton setTitle:@">"];
-	
-	@synchronized(self) {
-		[updateTime invalidate];
-		[updateTime release];
-		updateTime = nil;
-	}
 }
 - (void)play
 {
@@ -486,6 +467,8 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 {
 	[[[self document] trackList] next];
 }
+
+// call from XspfQTMovieTimer.
 - (void)updateTimeIfNeeded:(id)timer
 {
 	QTMovie *qt = [self qtMovie];
@@ -566,10 +549,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 {
 	[qtView pause:self];
 	[self setQtMovie:nil];
-	
-	[updateTime invalidate];
-	updateTime = nil;
-	
+		
 	return YES;
 }
 - (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize

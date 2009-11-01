@@ -26,7 +26,6 @@
 	XspfQTMovieLoader *loader;
 	NSTimeInterval playingMovieDuration;
 	
-	NSTimer *preloadingTimer;
 	BOOL didPreloading;
 }
 
