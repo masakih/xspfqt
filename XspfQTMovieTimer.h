@@ -17,6 +17,8 @@
 	NSTimer *timer;
 	NSMutableArray *documents;
 	NSMutableDictionary *movieWindowControllers;
+	
+	NSMutableArray *pausedDocuments;
 }
 
 + (id)movieTimer;
