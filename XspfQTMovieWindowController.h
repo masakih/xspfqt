@@ -48,3 +48,6 @@
 - (void)setQtMovie:(QTMovie *)qt;
 - (QTMovie *)qtMovie;
 @end
+
+extern NSString *XspfQTMovieDidStartNotification;
+extern NSString *XspfQTMovieDidPauseNotification;
