@@ -14,6 +14,13 @@
 #import "XspfQTFullScreenWindow.h"
 #import "XspfQTMovieWindow.h"
 
+
+#pragma mark #### Global Variables ####
+/********* Global variables *******/
+NSString *XspfQTMovieDidStartNotification = @"XspfQTMovieDidStartNotification";
+NSString *XspfQTMovieDidPauseNotification = @"XspfQTMovieDidPauseNotification";
+
+
 @interface XspfQTMovieWindowController (Private)
 - (NSSize)windowSizeWithoutQTView;
 - (void)sizeTofitWidnow;
@@ -221,11 +228,17 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 - (void)movieDidStart
 {
 	[playButton setTitle:@"||"];
+	
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc postNotificationName:XspfQTMovieDidStartNotification object:self];
 }
 		
 - (void)movieDidPause
 {
 	[playButton setTitle:@">"];
+	
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc postNotificationName:XspfQTMovieDidPauseNotification object:self];
 }
 - (void)play
 {
