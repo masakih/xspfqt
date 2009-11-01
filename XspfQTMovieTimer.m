@@ -24,6 +24,15 @@
 			   name:XspfQTDocumentWillCloseNotification
 			 object:nil];
 	
+	[nc addObserver:self
+		   selector:@selector(movieDidStart:)
+			   name:XspfQTMovieDidStartNotification
+			 object:nil];
+	[nc addObserver:self
+		   selector:@selector(movieDidPause:)
+			   name:XspfQTMovieDidPauseNotification
+			 object:nil];
+	
 	return self;
 }
 
@@ -64,37 +73,92 @@
 	}
 }
 
-- (void)put:(XspfQTDocument *)doc
+- (void)enableFireing:(XspfQTDocument *)doc
 {
-	if(![documents containsObject:doc]) {
-		@synchronized(documents) {
-			[documents addObject:doc];
-			
-			NSArray *wControlers = [doc windowControllers];
-			for(id w in wControlers) {
-				if([w isKindOfClass:[XspfQTMovieWindowController class]]) {
-					[movieWindowControllers setObject:w forKey:[NSValue valueWithPointer:doc]];
-				}
-			}
+	@synchronized(documents) {
+		if([documents containsObject:doc]) return;
+		
+		[documents addObject:doc];
+		if([pausedDocuments containsObject:doc]) {
+			[pausedDocuments removeObject:doc];
+		}
+	}
+	
+	[self makeTimer];
+}
+- (void)disableFireing:(XspfQTDocument *)doc
+{
+	@synchronized(documents) {
+		if([pausedDocuments containsObject:doc]) return;
+		
+		[pausedDocuments addObject:doc];
+		if([documents containsObject:doc]) {
+			[documents removeObject:doc];
 		}
 		
-		[self makeTimer];
+		if([documents count] == 0) {
+			[self dropTimer];
+		}
 	}
+}
+- (void)addDocument:(XspfQTDocument *)doc
+{
+	@synchronized(documents) {
+		if([documents containsObject:doc]) return;
+		if([pausedDocuments containsObject:doc]) return;
+		
+		[documents addObject:doc];
+		
+		NSArray *wControlers = [doc windowControllers];
+		for(id w in wControlers) {
+			if([w isKindOfClass:[XspfQTMovieWindowController class]]) {
+				[movieWindowControllers setObject:w forKey:[NSValue valueWithPointer:doc]];
+			}
+		}
+	}
+	
+	[self makeTimer];
+}
+- (void)removeDocument:(XspfQTDocument *)doc
+{
+	@synchronized(documents) {
+		[movieWindowControllers removeObjectForKey:[NSValue valueWithPointer:doc]];
+		
+		if([documents containsObject:doc]) {
+			[documents removeObject:doc];
+		}
+		if([pausedDocuments containsObject:doc]) {
+			[documents removeObject:doc];
+		}
+		
+		if([documents count] == 0) {
+			[self dropTimer];
+		}
+	}
+}
+
+- (void)put:(XspfQTDocument *)doc
+{
+	[self addDocument:doc];
 }
 
 - (void)documentWillClose:(id)notification
 {
 	id doc = [notification object];
-	if([documents containsObject:doc]) {
-		@synchronized(documents) {
-			[movieWindowControllers removeObjectForKey:[NSValue valueWithPointer:doc]];
-			[documents removeObject:doc];
-			
-			if([documents count] == 0) {
-				[self dropTimer];
-			}
-		}
-	}
+	[self removeDocument:doc];
+}
+
+- (void)movieDidStart:(id)notification
+{
+	id wc = [notification object];
+	XspfQTDocument *doc = [wc document];
+	[self enableFireing:doc];
+}
+- (void)movieDidPause:(id)notification
+{
+	id wc = [notification object];
+	XspfQTDocument *doc = [wc document];
+	[self disableFireing:doc];
 }
 
 - (void)fire:(id)t
