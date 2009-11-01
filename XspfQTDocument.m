@@ -18,6 +18,8 @@
 #import "XspfQTMovieLoader.h"
 #import "XspfQTValueTransformers.h"
 
+#import "XspfQTMovieTimer.h"
+
 
 #pragma mark #### Global Variables ####
 /********* Global variables *******/
@@ -47,17 +49,17 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 
 @implementation XspfQTDocument
 
+static XspfQTMovieTimer* timer = nil;
++ (void)initialize
+{
+	timer = [[XspfQTMovieTimer movieTimer] retain];
+}
+
 - (id)init
 {
 	self = [super init];
 	if(self) {
 		loader = [[XspfQTMovieLoader loaderWithMovieURL:nil delegate:nil] retain];
-		
-		preloadingTimer = [NSTimer scheduledTimerWithTimeInterval:10
-														   target:self
-														 selector:@selector(checkPreload:)
-														 userInfo:nil
-														  repeats:YES];
 	}
 	
 	return self;
@@ -95,6 +97,8 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 	movieWindowController = [[XspfQTMovieWindowController alloc] init];
 	[movieWindowController setShouldCloseDocument:YES];
 	[self addWindowController:movieWindowController];
+	
+	[timer put:self];
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
@@ -182,9 +186,7 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 	[self removeWindowController:movieWindowController];
 	[movieWindowController release];
 	movieWindowController = nil;
-	
-	[preloadingTimer invalidate];
-	
+		
 	[super close];
 }
 
@@ -422,6 +424,7 @@ static NSString *XspfQTCurrentTrackKey = @"currentTrack";
 	}
 }
 
+// call from XspfQTMovieTimer.
 - (void)checkPreload:(NSTimer *)timer
 {
 	if(![XspfQTPref preloadingEnabled]) return;
