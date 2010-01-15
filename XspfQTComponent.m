@@ -155,11 +155,11 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 }
 - (BOOL)setSelectionIndexPath:(NSIndexPath *)indexPath
 {
-	unsigned length = [indexPath length];
+	NSUInteger length = [indexPath length];
 	if(length == 0) {
 		return NO;
 	}
-	unsigned firstIndex = [indexPath indexAtPosition:0];
+	NSUInteger firstIndex = [indexPath indexAtPosition:0];
 	if(firstIndex > [self childrenCount]) {
 		return NO;
 	}
@@ -167,9 +167,9 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 	XspfQTComponent *firstIndexedChild = [[self children] objectAtIndex:firstIndex];
 	if(length != 1) {
 		NSIndexPath *deletedFirstIndex = nil;
-		unsigned *indexP = NULL;
+		NSUInteger *indexP = NULL;
 		@try {
-			indexP = calloc(sizeof(unsigned), length);
+			indexP = calloc(sizeof(NSUInteger), length);
 			if(!indexP) {
 				[NSException raise:NSMallocException
 							format:@"Not enough memory"];
@@ -231,7 +231,7 @@ static NSString *const XspfQTComponentXMLStringCodingKey = @"XspfQTComponentXMLS
 {
 	return nil;
 }
-- (unsigned)childrenCount
+- (NSUInteger)childrenCount
 {
 	return [[self children] count];
 }

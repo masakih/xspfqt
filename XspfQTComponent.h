@@ -41,8 +41,8 @@
 - (BOOL)isSelected;
 - (void)select;
 - (void)deselect;
-- (void)setSelectionIndex:(unsigned)index;
-- (unsigned)selectionIndex;
+- (void)setSelectionIndex:(NSUInteger)index;
+- (NSUInteger)selectionIndex;
 - (BOOL)setSelectionIndexPath:(NSIndexPath *)indexPath;
 - (NSIndexPath *)selectionIndexPath;
 
@@ -61,15 +61,15 @@
 @interface XspfQTComponent(XspfConainerComponent)
 - (XspfQTComponent *)parent;
 - (NSArray *)children;		// default nil.
-- (unsigned)childrenCount;	// default [[self children] count].
+- (NSUInteger)childrenCount;	// default [[self children] count].
 - (NSUInteger)indexOfChild:(XspfQTComponent *)child;	// default [[self children] indexOfObject:].
 - (XspfQTComponent *)childAtIndex:(NSUInteger)index;	// default [[self children] objectAtIndex:].
 - (BOOL)isLeaf;				// default YES.
 
 - (void)addChild:(XspfQTComponent *)child;	// not implemented.
 - (void)removeChild:(XspfQTComponent *)child;	// not implemented.
-- (void)insertChild:(XspfQTComponent *)child atIndex:(unsigned)index;	// not implemented.
-- (void)removeChildAtIndex:(unsigned)index;	//not implemented.
+- (void)insertChild:(XspfQTComponent *)child atIndex:(NSUInteger)index;	// not implemented.
+- (void)removeChildAtIndex:(NSUInteger)index;	//not implemented.
 - (void)moveChildFromIndex:(NSUInteger)from toIndex:(NSUInteger)to;	//not implemented.
 - (void)setParent:(XspfQTComponent *)parent;	// Do not call directly. call in only -addChild: method.
 @end

@@ -14,7 +14,7 @@
 {
 	NSMutableArray *_children;
 	
-	unsigned selectionIndex;
+	NSUInteger selectionIndex;
 	
 	XspfQTComponent *selectedComponent;
 }

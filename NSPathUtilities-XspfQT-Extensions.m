@@ -61,7 +61,11 @@
 	alias = (AliasHandle)NewHandle([self length]);
 	handleState = HGetState((Handle)alias);
 	HLock((Handle)alias);
+#if !__LP64__
 	BlockMoveData([self bytes], *alias, [self length]);
+#else
+	memmove(*alias, [self bytes], [self length]);
+#endif
 	HSetState((Handle)alias, handleState);
 	
 	error = FSResolveAlias(NULL, alias, &ref, &wasChanged);

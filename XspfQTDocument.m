@@ -440,8 +440,8 @@ static XspfQTMovieTimer* timer = nil;
 	if( current / duration > [XspfQTPref beginingPreloadPercent] ) {
 		didPreloading = YES;
 		XspfQTComponent *list = [self trackList];
-		unsigned nextIndex = [list selectionIndex] + 1;
-		unsigned max = [list childrenCount];
+		NSUInteger nextIndex = [list selectionIndex] + 1;
+		NSUInteger max = [list childrenCount];
 		if(max <= nextIndex) return;
 		
 		XspfQTComponent *nextTrack = [list childAtIndex:nextIndex];
