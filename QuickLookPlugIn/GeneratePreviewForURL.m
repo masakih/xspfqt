@@ -16,8 +16,11 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
+	OSStatus err = noErr;
+	
 	QTMovie *theMovie = firstMovie(url);
     if (theMovie == nil) {
+		err = -10000;
         goto fail;
     }
 	
@@ -30,7 +33,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 	
 fail:
 	[pool release];
-    return noErr;
+    return err;
 }
 
 void CancelPreviewGeneration(void* thisInterface, QLPreviewRequestRef preview)

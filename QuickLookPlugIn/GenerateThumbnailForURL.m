@@ -17,6 +17,7 @@
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize)
 {
     NSError *theErr = nil;
+	OSStatus err = noErr;
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
@@ -40,6 +41,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	// generate from first movie.
     QTMovie *theMovie = firstMovie(url);
     if (theMovie == nil) {
+		err = -10000;
         goto fail;
     }
 	
@@ -84,6 +86,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
         if (theErr != nil) {
             NSLog(@"Couldn't create CGImageRef, error = %@", theErr);
         }
+		err = -1001;
         goto fail;
     }
 	
@@ -91,7 +94,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	
 fail:
 	[pool release];
-    return noErr;
+    return err;
 }
 
 void CancelThumbnailGeneration(void* thisInterface, QLThumbnailRequestRef thumbnail)

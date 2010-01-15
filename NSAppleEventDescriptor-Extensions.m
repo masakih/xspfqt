@@ -15,12 +15,14 @@ static NSString *HMAEDesNotAEExceptionResonFormat = @"send method shuld be call 
 
 @implementation NSAppleEventDescriptor(HMCocoaExtention)
 
+#if !__LP64__
 + (id)descriptorWithFloat:(float)aFloat
 {
 	return [NSAppleEventDescriptor descriptorWithDescriptorType:typeShortFloat
 														  bytes:&aFloat
 														 length:sizeof(aFloat)];
 }
+#endif
 
 + (id)targetDescriptorWithApplicationIdentifier:(NSString *)identifier
 {
