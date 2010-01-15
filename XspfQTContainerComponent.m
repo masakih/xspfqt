@@ -37,7 +37,7 @@
 	return [NSSet setWithObjects:@"currentTrack", @"currentTrack.isPlayed", nil];
 }
 
-- (void)setSelectionIndex:(unsigned)index
+- (void)setSelectionIndex:(NSUInteger)index
 {
 	if(index == selectionIndex) return;
 	if([_children count] <= index && index != NSNotFound) return;
@@ -61,7 +61,7 @@
 	
 	selectionIndex = index;
 }
-- (unsigned)selectionIndex
+- (NSUInteger)selectionIndex
 {
 	return selectionIndex;
 }
@@ -84,7 +84,7 @@
 }
 
 // primitive.
-- (void)insertChild:(XspfQTComponent *)child atIndex:(unsigned)index
+- (void)insertChild:(XspfQTComponent *)child atIndex:(NSUInteger)index
 {
 	if(!child) return;
 	if(![child isKindOfClass:[XspfQTComponent class]]) {
@@ -137,10 +137,10 @@
 
 - (void)addChild:(XspfQTComponent *)child
 {
-	unsigned num = [_children count];
+	NSUInteger num = [_children count];
 	[self insertChild:child atIndex:num];
 }
-- (void)removeChildAtIndex:(unsigned)index
+- (void)removeChildAtIndex:(NSUInteger)index
 {
 	id child = [_children objectAtIndex:index];
 	[self removeChild:child];
