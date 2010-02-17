@@ -24,7 +24,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	// generate from XML.
 	do {
 		NSTimeInterval time = DBL_MIN;
-		XspfQTComponent *component = thumbnailTrack(url, &time);
+		HMXSPFComponent *component = thumbnailTrack(url, &time);
 		if(!component) break;
 		if(time ==  DBL_MIN) break;
 		if(QLThumbnailRequestIsCancelled(thumbnail)) {

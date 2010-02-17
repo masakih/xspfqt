@@ -9,12 +9,12 @@
 #import "XspfQTDocument.h"
 #import "XspfQTAppDelegate.h"
 #import "XspfQTPreference.h"
-#import "XspfQTComponent.h"
+#import "HMXSPFComponent.h"
 #import "XspfQTMovieWindowController.h"
 #import "XspfQTPlayListWindowController.h"
 #import <QTKit/QTKit.h>
 
-#import "NSURL-XspfQT-Extensions.h"
+#import "NSURL-HMExtensions.h"
 #import "XspfQTMovieLoader.h"
 #import "XspfQTValueTransformers.h"
 
@@ -28,8 +28,8 @@ NSString *XspfQTDocumentWillCloseNotification = @"XspfQTDocumentWillCloseNotific
 /**********************************/
 
 @interface XspfQTDocument (Private)
-- (void)setPlaylist:(XspfQTComponent *)newList;
-- (XspfQTComponent *)playlist;
+- (void)setPlaylist:(HMXSPFComponent *)newList;
+- (HMXSPFComponent *)playlist;
 - (NSXMLDocument *)XMLDocument;
 - (void)setPlayingMovie:(QTMovie *)newMovie;
 - (NSData *)dataFromURL:(NSURL *)url error:(NSError **)outError;
@@ -68,7 +68,7 @@ static XspfQTMovieTimer* timer = nil;
 {
 	[self init];
 	
-	id newPlaylist = [XspfQTComponent xspfPlaylist];
+	id newPlaylist = [HMXSPFComponent xspfPlaylist];
 	if(!newPlaylist) {
 		[self autorelease];
 		return nil;
@@ -115,7 +115,7 @@ static XspfQTMovieTimer* timer = nil;
 		return [self readFromData:data ofType:typeName error:outError];
 	}
 	
-	id new = [XspfQTComponent xspfTrackWithLocation:absoluteURL];
+	id new = [HMXSPFComponent xspfTrackWithLocation:absoluteURL];
 	if(!new) {
 		if(outError) {
 			*outError = [NSError errorWithDomain:@"XspfQTErrorDomain" code:1 userInfo:nil];
@@ -123,7 +123,7 @@ static XspfQTMovieTimer* timer = nil;
 		return NO;
 	}
 	
-	id pl = [XspfQTComponent xspfPlaylist];
+	id pl = [HMXSPFComponent xspfPlaylist];
 	if(!pl) {
 		return NO;
 	}
@@ -159,9 +159,9 @@ static XspfQTMovieTimer* timer = nil;
 		return NO;
 	}
 	NSXMLElement *root = [d rootElement];
-	id pl = [XspfQTComponent xspfComponemtWithXMLElement:root];
+	id pl = [HMXSPFComponent xspfComponemtWithXMLElement:root];
 	if(!pl) {
-		NSLog(@"Can not create XspfQTComponent.");
+		NSLog(@"Can not create HMXSPFComponent.");
 		return NO;
 	}
 	[self setPlaylist:pl];
@@ -201,13 +201,13 @@ static XspfQTMovieTimer* timer = nil;
 }
 - (IBAction)setThumbnailFrame:(id)sender
 {
-	XspfQTComponent *currentTrack = [[self trackList] currentTrack];
+	HMXSPFComponent *currentTrack = [[self trackList] currentTrack];
 	QTTime currentQTTime = [playingMovie currentTime];
 	
 	NSTimeInterval currentTI;
 	QTGetTimeInterval(currentQTTime, &currentTI);
 	
-	XspfQTComponent *prevThumbnailTrack = [playlist thumbnailTrack];
+	HMXSPFComponent *prevThumbnailTrack = [playlist thumbnailTrack];
 	NSTimeInterval ti = [playlist thumbnailTimeInterval];
 	
 	[playlist setThumbnailComponent:currentTrack timeIntarval:currentTI];
@@ -223,7 +223,7 @@ static XspfQTMovieTimer* timer = nil;
 }
 - (IBAction)removeThumbnail:(id)sender
 {
-	XspfQTComponent *prevThumbnailTrack = [playlist thumbnailTrack];
+	HMXSPFComponent *prevThumbnailTrack = [playlist thumbnailTrack];
 	NSTimeInterval ti = [playlist thumbnailTimeInterval];
 	
 	[playlist removeThumbnailFrame];
@@ -239,14 +239,14 @@ static XspfQTMovieTimer* timer = nil;
 	SEL action = [menuItem action];
 	
 	if(action == @selector(removeThumbnail:)) {
-		XspfQTComponent *component = [playlist thumbnailTrack];
+		HMXSPFComponent *component = [playlist thumbnailTrack];
 		if(!component) return NO;
 	}
 	
 	return YES;
 }
 
-- (void)setPlaylist:(XspfQTComponent *)newList
+- (void)setPlaylist:(HMXSPFComponent *)newList
 {
 	if(playlist == newList) return;
 	
@@ -258,12 +258,12 @@ static XspfQTMovieTimer* timer = nil;
 								   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 								   context:NULL];
 }
-- (XspfQTComponent *)playlist
+- (HMXSPFComponent *)playlist
 {
 	return playlist;
 }
 
-- (XspfQTComponent *)trackList
+- (HMXSPFComponent *)trackList
 {
 	return [playlist childAtIndex:0];
 }
@@ -349,21 +349,21 @@ static XspfQTMovieTimer* timer = nil;
 
 - (void)insertComponentFromURL:(NSURL *)url atIndex:(NSUInteger)index
 {
-	id new = [XspfQTComponent xspfTrackWithLocation:url];
+	id new = [HMXSPFComponent xspfTrackWithLocation:url];
 	if(!new) {
 		@throw self;
 	}
 	
 	[self insertComponent:new atIndex:index];
 }
-- (void)insertComponent:(XspfQTComponent *)item atIndex:(NSUInteger)index
+- (void)insertComponent:(HMXSPFComponent *)item atIndex:(NSUInteger)index
 {
 	id undo = [self undoManager];
 	[undo registerUndoWithTarget:self selector:@selector(removeComponent:) object:item];
 	[[self trackList] insertChild:item atIndex:index];
 	[undo setActionName:NSLocalizedString(@"Insert Movie", @"Undo Action Name Insert Movie")];
 }
-- (void)removeComponent:(XspfQTComponent *)item
+- (void)removeComponent:(HMXSPFComponent *)item
 {
 	NSUInteger index = [[self trackList] indexOfChild:item];
 	if(index == NSNotFound) {
@@ -383,7 +383,7 @@ static XspfQTMovieTimer* timer = nil;
 	[[self trackList] moveChildFromIndex:from toIndex:to];
 	[undo setActionName:NSLocalizedString(@"Move Movie", @"Undo Action Name Move Movie")];
 }
-- (void)moveComponent:(XspfQTComponent *)item toIndex:(NSUInteger)index
+- (void)moveComponent:(HMXSPFComponent *)item toIndex:(NSUInteger)index
 {
 	NSUInteger from = [[self trackList] indexOfChild:item];
 	if(from == NSNotFound) return;
@@ -439,12 +439,12 @@ static XspfQTMovieTimer* timer = nil;
 	
 	if( current / duration > [XspfQTPref beginingPreloadPercent] ) {
 		didPreloading = YES;
-		XspfQTComponent *list = [self trackList];
+		HMXSPFComponent *list = [self trackList];
 		NSUInteger nextIndex = [list selectionIndex] + 1;
 		NSUInteger max = [list childrenCount];
 		if(max <= nextIndex) return;
 		
-		XspfQTComponent *nextTrack = [list childAtIndex:nextIndex];
+		HMXSPFComponent *nextTrack = [list childAtIndex:nextIndex];
 		NSURL *nextMovieURL = [nextTrack movieLocation];
 		[loader setMovieURL:nextMovieURL];
 		[loader load];

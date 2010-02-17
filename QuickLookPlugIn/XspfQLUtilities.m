@@ -12,7 +12,7 @@
 #import <QTKit/QTKit.h>
 
 #import "XspfQTDocument.h"
-#import "XspfQTComponent.h"
+#import "HMXSPFComponent.h"
 #import "XspfQTValueTransformers.h"
 
 #if 1
@@ -51,7 +51,7 @@ static QTMovie *loadFromMovieURL(NSURL *url)
 }
 #endif
 
-XspfQTComponent *componentForURL(CFURLRef url)
+HMXSPFComponent *componentForURL(CFURLRef url)
 {
 	NSError *theErr = nil;
 	
@@ -65,9 +65,9 @@ XspfQTComponent *componentForURL(CFURLRef url)
 		return nil;
 	}
 	NSXMLElement *root = [d rootElement];
-	XspfQTComponent *pl = [XspfQTComponent xspfComponemtWithXMLElement:root];
+	HMXSPFComponent *pl = [HMXSPFComponent xspfComponemtWithXMLElement:root];
 	if(!pl) {
-		NSLog(@"Can not create XspfQTComponent.");
+		NSLog(@"Can not create HMXSPFComponent.");
 		return nil;
 	}
 	
@@ -78,9 +78,9 @@ QTMovie *firstMovie(CFURLRef url)
 {
 	QTMovie *result = nil;
 	
-	XspfQTComponent *pl = componentForURL(url);
+	HMXSPFComponent *pl = componentForURL(url);
 
-	XspfQTComponent *trackList = [pl childAtIndex:0];
+	HMXSPFComponent *trackList = [pl childAtIndex:0];
 	[trackList setSelectionIndex:0];
 	NSURL *movieURL = [trackList movieLocation];
 	if(!movieURL) {
@@ -111,16 +111,16 @@ NSSize maxSizeForFrame(NSSize size, CGSize frame)
 	return result;
 }
 
-XspfQTComponent *thumbnailTrack(CFURLRef url, NSTimeInterval *thumbnailTime)
+HMXSPFComponent *thumbnailTrack(CFURLRef url, NSTimeInterval *thumbnailTime)
 {
-	XspfQTComponent *component = componentForURL(url);
+	HMXSPFComponent *component = componentForURL(url);
 	
-	XspfQTComponent *result = [component thumbnailTrack];
+	HMXSPFComponent *result = [component thumbnailTrack];
 	NSTimeInterval ti = [component thumbnailTimeInterval];
 	*thumbnailTime = ti;
 	return result;
 }
-CGImageRef thumbnailForTrackTime(QLThumbnailRequestRef thumbnail, XspfQTComponent *track, NSTimeInterval time, CGSize size)
+CGImageRef thumbnailForTrackTime(QLThumbnailRequestRef thumbnail, HMXSPFComponent *track, NSTimeInterval time, CGSize size)
 {
 	NSError *theErr = nil;
 	QTMovie *movie = loadFromMovieURL([track movieLocation]);

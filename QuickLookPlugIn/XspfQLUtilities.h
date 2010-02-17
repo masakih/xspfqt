@@ -13,11 +13,11 @@
 #import <ApplicationServices/ApplicationServices.h>
 
 @class QTMovie;
-@class XspfQTComponent;
+@class HMXSPFComponent;
 
 QTMovie *firstMovie(CFURLRef url);
 
-XspfQTComponent *thumbnailTrack(CFURLRef url, NSTimeInterval *thumbnailTime);
-CGImageRef thumbnailForTrackTime(QLThumbnailRequestRef thumbnail, XspfQTComponent *track, NSTimeInterval time, CGSize size);
+HMXSPFComponent *thumbnailTrack(CFURLRef url, NSTimeInterval *thumbnailTime);
+CGImageRef thumbnailForTrackTime(QLThumbnailRequestRef thumbnail, HMXSPFComponent *track, NSTimeInterval time, CGSize size);
 
 NSSize maxSizeForFrame(NSSize size, CGSize frame);

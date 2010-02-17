@@ -10,7 +10,7 @@
 #import <Cocoa/Cocoa.h>
 #import <QTKit/QTKit.h>
 
-@class XspfQTComponent;
+@class HMXSPFComponent;
 @class XspfQTMovieWindowController;
 
 @class XspfQTMovieLoader;
@@ -18,7 +18,7 @@
 
 @interface XspfQTDocument : NSDocument
 {
-	XspfQTComponent* playlist;
+	HMXSPFComponent* playlist;
 	XspfQTMovieWindowController *movieWindowController;
 	NSWindowController *playListWindowController;
 	
@@ -35,11 +35,11 @@
 - (IBAction)setThumbnailFrame:(id)sender;
 - (IBAction)removeThumbnail:(id)sender;
 
-- (XspfQTComponent *)trackList;
+- (HMXSPFComponent *)trackList;
 
-- (void)insertComponent:(XspfQTComponent *)item atIndex:(NSUInteger)index;
-- (void)removeComponent:(XspfQTComponent *)item;
-- (void)moveComponent:(XspfQTComponent *)item toIndex:(NSUInteger)index;
+- (void)insertComponent:(HMXSPFComponent *)item atIndex:(NSUInteger)index;
+- (void)removeComponent:(HMXSPFComponent *)item;
+- (void)moveComponent:(HMXSPFComponent *)item toIndex:(NSUInteger)index;
 
 // throw self, if can not insert.
 - (void)insertComponentFromURL:(NSURL *)url atIndex:(NSUInteger)index;

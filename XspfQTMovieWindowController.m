@@ -10,7 +10,7 @@
 
 #import "XspfQTMovieWindowController.h"
 #import "XspfQTDocument.h"
-#import "XspfQTComponent.h"
+#import "HMXSPFComponent.h"
 #import "XspfQTFullScreenWindow.h"
 #import "XspfQTMovieWindow.h"
 

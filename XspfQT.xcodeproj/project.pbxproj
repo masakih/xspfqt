@@ -23,43 +23,46 @@
 		F426BB64108329A80084E8C5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13E42FBA07B3F13500E4EEF1 /* CoreData.framework */; };
 		F426BB65108329AA0084E8C5 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C304C0E68284C007F2DEC /* QTKit.framework */; };
 		F426BB67108329DC0084E8C5 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F426BB66108329DC0084E8C5 /* QuickLook.framework */; };
-		F426BB7810832ABB0084E8C5 /* XspfQTComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31CC0E682C3B007F2DEC /* XspfQTComponent.m */; };
-		F426BB7910832ABC0084E8C5 /* XspfQTContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F429BE510E8FAECB006EB717 /* XspfQTContainerComponent.m */; };
-		F426BB7A10832ABE0084E8C5 /* XspfQTPlaceholderComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */; };
-		F426BB7B10832ABF0084E8C5 /* XspfQTPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */; };
-		F426BB7C10832AC10084E8C5 /* XspfQTTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */; };
-		F426BB7D10832AC20084E8C5 /* XspfQTTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */; };
 		F426BB8310832AF10084E8C5 /* XspfQuickLook.qlgenerator in CopyFiles */ = {isa = PBXBuildFile; fileRef = F426BB311083282A0084E8C5 /* XspfQuickLook.qlgenerator */; };
-		F426BBC41083313F0084E8C5 /* NSPathUtilities-XspfQT-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B22C8E101BE195004D427C /* NSPathUtilities-XspfQT-Extensions.m */; };
-		F426BBD71083328F0084E8C5 /* NSURL-XspfQT-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F484FD540F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m */; };
 		F426BBFC108344260084E8C5 /* XspfQLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F426BBFA108344260084E8C5 /* XspfQLUtilities.m */; };
 		F426BC96108357890084E8C5 /* XspfQTValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE570E6A2B5F009320B6 /* XspfQTValueTransformers.m */; };
-		F429BD700E8F969A006EB717 /* XspfQTPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */; };
-		F429BE520E8FAECB006EB717 /* XspfQTContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F429BE510E8FAECB006EB717 /* XspfQTContainerComponent.m */; };
 		F441DCA50E69B82B009320B6 /* XspfQTMovieWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DCA40E69B82B009320B6 /* XspfQTMovieWindowController.m */; };
 		F441DE580E6A2B5F009320B6 /* XspfQTValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE570E6A2B5F009320B6 /* XspfQTValueTransformers.m */; };
 		F441DE5C0E6A2BDA009320B6 /* XspfQTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE5B0E6A2BDA009320B6 /* XspfQTAppDelegate.m */; };
 		F441DECB0E6A399D009320B6 /* XspfQTFullScreenWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DECA0E6A399D009320B6 /* XspfQTFullScreenWindow.m */; };
 		F441E0680E6A5131009320B6 /* XspfQTPlayListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F441E0670E6A5131009320B6 /* XspfQTPlayListWindowController.m */; };
-		F44805081098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F44805071098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.m */; };
 		F448050B1098AD5F0014C2BB /* BSSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F448050A1098AD5F0014C2BB /* BSSUtil.m */; };
 		F44806EC109C6E440014C2BB /* XspfQTMovieTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = F44806EB109C6E440014C2BB /* XspfQTMovieTimer.m */; };
-		F46870240E71963E00B4DAED /* XspfQTPlaceholderComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */; };
 		F47E2B1C0E7E87DD00DB1BE6 /* XspfQTDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = F47E2B1A0E7E87DD00DB1BE6 /* XspfQTDocument.nib */; };
 		F47E2B1F0E7E87FD00DB1BE6 /* XspfQTPlayList.nib in Resources */ = {isa = PBXBuildFile; fileRef = F47E2B1D0E7E87FD00DB1BE6 /* XspfQTPlayList.nib */; };
 		F484FC7B0F6BEB6F007C5596 /* XspfQTMovieLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F484FC7A0F6BEB6F007C5596 /* XspfQTMovieLoader.m */; };
-		F484FD550F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F484FD540F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m */; };
+		F48B33EA112C253C00D1DE39 /* HMXSPFComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33DF112C253C00D1DE39 /* HMXSPFComponent.m */; };
+		F48B33EB112C253C00D1DE39 /* HMXSPFContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E1112C253C00D1DE39 /* HMXSPFContainerComponent.m */; };
+		F48B33EC112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E3112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m */; };
+		F48B33ED112C253C00D1DE39 /* HMXSPFPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E5112C253C00D1DE39 /* HMXSPFPlaylist.m */; };
+		F48B33EE112C253C00D1DE39 /* HMXSPFTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E7112C253C00D1DE39 /* HMXSPFTrack.m */; };
+		F48B33EF112C253C00D1DE39 /* HMXSPFTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E9112C253C00D1DE39 /* HMXSPFTrackList.m */; };
+		F48B33F0112C253C00D1DE39 /* HMXSPFComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33DF112C253C00D1DE39 /* HMXSPFComponent.m */; };
+		F48B33F1112C253C00D1DE39 /* HMXSPFContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E1112C253C00D1DE39 /* HMXSPFContainerComponent.m */; };
+		F48B33F2112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E3112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m */; };
+		F48B33F3112C253C00D1DE39 /* HMXSPFPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E5112C253C00D1DE39 /* HMXSPFPlaylist.m */; };
+		F48B33F4112C253C00D1DE39 /* HMXSPFTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E7112C253C00D1DE39 /* HMXSPFTrack.m */; };
+		F48B33F5112C253C00D1DE39 /* HMXSPFTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E9112C253C00D1DE39 /* HMXSPFTrackList.m */; };
+		F48B33FE112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33F7112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m */; };
+		F48B33FF112C255800D1DE39 /* NSPathUtilities-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33F9112C255800D1DE39 /* NSPathUtilities-HMExtensions.m */; };
+		F48B3400112C255800D1DE39 /* NSURL-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33FB112C255800D1DE39 /* NSURL-HMExtensions.m */; };
+		F48B3401112C255800D1DE39 /* NSWorkspace-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33FD112C255800D1DE39 /* NSWorkspace-HMExtensions.m */; };
+		F48B3402112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33F7112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m */; };
+		F48B3403112C255800D1DE39 /* NSPathUtilities-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33F9112C255800D1DE39 /* NSPathUtilities-HMExtensions.m */; };
+		F48B3404112C255800D1DE39 /* NSURL-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33FB112C255800D1DE39 /* NSURL-HMExtensions.m */; };
+		F48B3405112C255800D1DE39 /* NSWorkspace-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33FD112C255800D1DE39 /* NSWorkspace-HMExtensions.m */; };
 		F48B5B200F54388100E0D1D0 /* XspfQTMovieWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B5B1F0F54388100E0D1D0 /* XspfQTMovieWindow.m */; };
 		F48DD1940F62A58E008A199C /* XspfQTMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = F48DD1930F62A58E008A199C /* XspfQTMovieView.m */; };
 		F48FDF160E7D4EBE001C33F3 /* XspfQTImformation.nib in Resources */ = {isa = PBXBuildFile; fileRef = F48FDF140E7D4EBE001C33F3 /* XspfQTImformation.nib */; };
 		F48FDF190E7D4EE7001C33F3 /* XspfQTInformationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48FDF180E7D4EE7001C33F3 /* XspfQTInformationWindowController.m */; };
 		F492C1D80F55627B00D0C72A /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F492C1D70F55627B00D0C72A /* ApplicationServices.framework */; };
 		F49C304D0E68284C007F2DEC /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C304C0E68284C007F2DEC /* QTKit.framework */; };
-		F49C31CD0E682C3B007F2DEC /* XspfQTComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31CC0E682C3B007F2DEC /* XspfQTComponent.m */; };
 		F49C31EC0E682D66007F2DEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C31EB0E682D66007F2DEC /* Foundation.framework */; };
-		F49C31F10E682D79007F2DEC /* XspfQTTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */; };
-		F49C31F60E682E2B007F2DEC /* XspfQTTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */; };
-		F4B22C8F101BE195004D427C /* NSPathUtilities-XspfQT-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B22C8E101BE195004D427C /* NSPathUtilities-XspfQT-Extensions.m */; };
 		F4B8096E0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B8096D0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m */; };
 		F4B809F30F6EBB33004BF2DD /* XspfQTPreference.nib in Resources */ = {isa = PBXBuildFile; fileRef = F4B809F10F6EBB33004BF2DD /* XspfQTPreference.nib */; };
 		F4D7CCCB0E868BFC0042F96C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4D7CCC90E868BFC0042F96C /* Localizable.strings */; };
@@ -107,10 +110,6 @@
 		F426BB66108329DC0084E8C5 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = /System/Library/Frameworks/QuickLook.framework; sourceTree = "<absolute>"; };
 		F426BBFA108344260084E8C5 /* XspfQLUtilities.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = XspfQLUtilities.m; sourceTree = "<group>"; };
 		F426BBFB108344260084E8C5 /* XspfQLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQLUtilities.h; sourceTree = "<group>"; };
-		F429BD6E0E8F969A006EB717 /* XspfQTPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlaylist.h; sourceTree = "<group>"; };
-		F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlaylist.m; sourceTree = "<group>"; };
-		F429BE500E8FAECB006EB717 /* XspfQTContainerComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTContainerComponent.h; sourceTree = "<group>"; };
-		F429BE510E8FAECB006EB717 /* XspfQTContainerComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTContainerComponent.m; sourceTree = "<group>"; };
 		F441DCA30E69B82B009320B6 /* XspfQTMovieWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTMovieWindowController.h; sourceTree = "<group>"; };
 		F441DCA40E69B82B009320B6 /* XspfQTMovieWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTMovieWindowController.m; sourceTree = "<group>"; };
 		F441DE560E6A2B5F009320B6 /* XspfQTValueTransformers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTValueTransformers.h; sourceTree = "<group>"; };
@@ -121,14 +120,10 @@
 		F441DECA0E6A399D009320B6 /* XspfQTFullScreenWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTFullScreenWindow.m; sourceTree = "<group>"; };
 		F441E0660E6A5131009320B6 /* XspfQTPlayListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlayListWindowController.h; sourceTree = "<group>"; };
 		F441E0670E6A5131009320B6 /* XspfQTPlayListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlayListWindowController.m; sourceTree = "<group>"; };
-		F44805061098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAppleEventDescriptor-Extensions.h"; sourceTree = "<group>"; };
-		F44805071098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAppleEventDescriptor-Extensions.m"; sourceTree = "<group>"; };
 		F44805091098AD5F0014C2BB /* BSSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSSUtil.h; sourceTree = "<group>"; };
 		F448050A1098AD5F0014C2BB /* BSSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSSUtil.m; sourceTree = "<group>"; };
 		F44806EA109C6E440014C2BB /* XspfQTMovieTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTMovieTimer.h; sourceTree = "<group>"; };
 		F44806EB109C6E440014C2BB /* XspfQTMovieTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTMovieTimer.m; sourceTree = "<group>"; };
-		F46870220E71963E00B4DAED /* XspfQTPlaceholderComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlaceholderComponent.h; sourceTree = "<group>"; };
-		F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlaceholderComponent.m; sourceTree = "<group>"; };
 		F47DF8D11083260600DF2C17 /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
 		F47DF8D21083260600DF2C17 /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
 		F47DF8D31083260600DF2C17 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -138,8 +133,26 @@
 		F47E2B1E0E7E87FD00DB1BE6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/XspfQTPlayList.nib; sourceTree = "<group>"; };
 		F484FC790F6BEB6F007C5596 /* XspfQTMovieLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTMovieLoader.h; sourceTree = "<group>"; };
 		F484FC7A0F6BEB6F007C5596 /* XspfQTMovieLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTMovieLoader.m; sourceTree = "<group>"; };
-		F484FD530F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL-XspfQT-Extensions.h"; sourceTree = "<group>"; };
-		F484FD540F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL-XspfQT-Extensions.m"; sourceTree = "<group>"; };
+		F48B33DE112C253C00D1DE39 /* HMXSPFComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMXSPFComponent.h; path = extFiles/HMXSPFComponent/HMXSPFComponent.h; sourceTree = "<group>"; };
+		F48B33DF112C253C00D1DE39 /* HMXSPFComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMXSPFComponent.m; path = extFiles/HMXSPFComponent/HMXSPFComponent.m; sourceTree = "<group>"; };
+		F48B33E0112C253C00D1DE39 /* HMXSPFContainerComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMXSPFContainerComponent.h; path = extFiles/HMXSPFComponent/HMXSPFContainerComponent.h; sourceTree = "<group>"; };
+		F48B33E1112C253C00D1DE39 /* HMXSPFContainerComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMXSPFContainerComponent.m; path = extFiles/HMXSPFComponent/HMXSPFContainerComponent.m; sourceTree = "<group>"; };
+		F48B33E2112C253C00D1DE39 /* HMXSPFPlaceholderComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMXSPFPlaceholderComponent.h; path = extFiles/HMXSPFComponent/HMXSPFPlaceholderComponent.h; sourceTree = "<group>"; };
+		F48B33E3112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMXSPFPlaceholderComponent.m; path = extFiles/HMXSPFComponent/HMXSPFPlaceholderComponent.m; sourceTree = "<group>"; };
+		F48B33E4112C253C00D1DE39 /* HMXSPFPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMXSPFPlaylist.h; path = extFiles/HMXSPFComponent/HMXSPFPlaylist.h; sourceTree = "<group>"; };
+		F48B33E5112C253C00D1DE39 /* HMXSPFPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMXSPFPlaylist.m; path = extFiles/HMXSPFComponent/HMXSPFPlaylist.m; sourceTree = "<group>"; };
+		F48B33E6112C253C00D1DE39 /* HMXSPFTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMXSPFTrack.h; path = extFiles/HMXSPFComponent/HMXSPFTrack.h; sourceTree = "<group>"; };
+		F48B33E7112C253C00D1DE39 /* HMXSPFTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMXSPFTrack.m; path = extFiles/HMXSPFComponent/HMXSPFTrack.m; sourceTree = "<group>"; };
+		F48B33E8112C253C00D1DE39 /* HMXSPFTrackList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMXSPFTrackList.h; path = extFiles/HMXSPFComponent/HMXSPFTrackList.h; sourceTree = "<group>"; };
+		F48B33E9112C253C00D1DE39 /* HMXSPFTrackList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMXSPFTrackList.m; path = extFiles/HMXSPFComponent/HMXSPFTrackList.m; sourceTree = "<group>"; };
+		F48B33F6112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAppleEventDescriptor-HMExtensions.h"; path = "extFiles/HMXSPFComponent/NSAppleEventDescriptor-HMExtensions.h"; sourceTree = "<group>"; };
+		F48B33F7112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAppleEventDescriptor-HMExtensions.m"; path = "extFiles/HMXSPFComponent/NSAppleEventDescriptor-HMExtensions.m"; sourceTree = "<group>"; };
+		F48B33F8112C255800D1DE39 /* NSPathUtilities-HMExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSPathUtilities-HMExtensions.h"; path = "extFiles/HMXSPFComponent/NSPathUtilities-HMExtensions.h"; sourceTree = "<group>"; };
+		F48B33F9112C255800D1DE39 /* NSPathUtilities-HMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSPathUtilities-HMExtensions.m"; path = "extFiles/HMXSPFComponent/NSPathUtilities-HMExtensions.m"; sourceTree = "<group>"; };
+		F48B33FA112C255800D1DE39 /* NSURL-HMExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL-HMExtensions.h"; path = "extFiles/HMXSPFComponent/NSURL-HMExtensions.h"; sourceTree = "<group>"; };
+		F48B33FB112C255800D1DE39 /* NSURL-HMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL-HMExtensions.m"; path = "extFiles/HMXSPFComponent/NSURL-HMExtensions.m"; sourceTree = "<group>"; };
+		F48B33FC112C255800D1DE39 /* NSWorkspace-HMExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWorkspace-HMExtensions.h"; path = "extFiles/HMXSPFComponent/NSWorkspace-HMExtensions.h"; sourceTree = "<group>"; };
+		F48B33FD112C255800D1DE39 /* NSWorkspace-HMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWorkspace-HMExtensions.m"; path = "extFiles/HMXSPFComponent/NSWorkspace-HMExtensions.m"; sourceTree = "<group>"; };
 		F48B5B1E0F54388100E0D1D0 /* XspfQTMovieWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTMovieWindow.h; sourceTree = "<group>"; };
 		F48B5B1F0F54388100E0D1D0 /* XspfQTMovieWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTMovieWindow.m; sourceTree = "<group>"; };
 		F48DD1920F62A58E008A199C /* XspfQTMovieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTMovieView.h; sourceTree = "<group>"; };
@@ -149,15 +162,7 @@
 		F48FDF180E7D4EE7001C33F3 /* XspfQTInformationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTInformationWindowController.m; sourceTree = "<group>"; };
 		F492C1D70F55627B00D0C72A /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
 		F49C304C0E68284C007F2DEC /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
-		F49C31CB0E682C3B007F2DEC /* XspfQTComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTComponent.h; sourceTree = "<group>"; };
-		F49C31CC0E682C3B007F2DEC /* XspfQTComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTComponent.m; sourceTree = "<group>"; };
 		F49C31EB0E682D66007F2DEC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		F49C31EF0E682D79007F2DEC /* XspfQTTrackList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTTrackList.h; sourceTree = "<group>"; };
-		F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTTrackList.m; sourceTree = "<group>"; };
-		F49C31F40E682E2B007F2DEC /* XspfQTTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTTrack.h; sourceTree = "<group>"; };
-		F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTTrack.m; sourceTree = "<group>"; };
-		F4B22C8D101BE195004D427C /* NSPathUtilities-XspfQT-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPathUtilities-XspfQT-Extensions.h"; sourceTree = "<group>"; };
-		F4B22C8E101BE195004D427C /* NSPathUtilities-XspfQT-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPathUtilities-XspfQT-Extensions.m"; sourceTree = "<group>"; };
 		F4B8096C0F6EB373004BF2DD /* XspfQTPreferenceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPreferenceWindowController.h; sourceTree = "<group>"; };
 		F4B8096D0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPreferenceWindowController.m; sourceTree = "<group>"; };
 		F4B809F20F6EBB33004BF2DD /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/XspfQTPreference.nib; sourceTree = "<group>"; };
@@ -334,18 +339,18 @@
 		F484FD8D0F6C8EDF007C5596 /* XspfQTComponent */ = {
 			isa = PBXGroup;
 			children = (
-				F49C31CB0E682C3B007F2DEC /* XspfQTComponent.h */,
-				F49C31CC0E682C3B007F2DEC /* XspfQTComponent.m */,
-				F46870220E71963E00B4DAED /* XspfQTPlaceholderComponent.h */,
-				F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */,
-				F429BE500E8FAECB006EB717 /* XspfQTContainerComponent.h */,
-				F429BE510E8FAECB006EB717 /* XspfQTContainerComponent.m */,
-				F429BD6E0E8F969A006EB717 /* XspfQTPlaylist.h */,
-				F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */,
-				F49C31EF0E682D79007F2DEC /* XspfQTTrackList.h */,
-				F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */,
-				F49C31F40E682E2B007F2DEC /* XspfQTTrack.h */,
-				F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */,
+				F48B33DE112C253C00D1DE39 /* HMXSPFComponent.h */,
+				F48B33DF112C253C00D1DE39 /* HMXSPFComponent.m */,
+				F48B33E0112C253C00D1DE39 /* HMXSPFContainerComponent.h */,
+				F48B33E1112C253C00D1DE39 /* HMXSPFContainerComponent.m */,
+				F48B33E2112C253C00D1DE39 /* HMXSPFPlaceholderComponent.h */,
+				F48B33E3112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m */,
+				F48B33E4112C253C00D1DE39 /* HMXSPFPlaylist.h */,
+				F48B33E5112C253C00D1DE39 /* HMXSPFPlaylist.m */,
+				F48B33E6112C253C00D1DE39 /* HMXSPFTrack.h */,
+				F48B33E7112C253C00D1DE39 /* HMXSPFTrack.m */,
+				F48B33E8112C253C00D1DE39 /* HMXSPFTrackList.h */,
+				F48B33E9112C253C00D1DE39 /* HMXSPFTrackList.m */,
 			);
 			name = XspfQTComponent;
 			sourceTree = "<group>";
@@ -353,12 +358,14 @@
 		F484FD8E0F6C8F1F007C5596 /* CocoaExtentions */ = {
 			isa = PBXGroup;
 			children = (
-				F44805061098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.h */,
-				F44805071098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.m */,
-				F484FD530F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.h */,
-				F484FD540F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m */,
-				F4B22C8D101BE195004D427C /* NSPathUtilities-XspfQT-Extensions.h */,
-				F4B22C8E101BE195004D427C /* NSPathUtilities-XspfQT-Extensions.m */,
+				F48B33F6112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.h */,
+				F48B33F7112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m */,
+				F48B33F8112C255800D1DE39 /* NSPathUtilities-HMExtensions.h */,
+				F48B33F9112C255800D1DE39 /* NSPathUtilities-HMExtensions.m */,
+				F48B33FA112C255800D1DE39 /* NSURL-HMExtensions.h */,
+				F48B33FB112C255800D1DE39 /* NSURL-HMExtensions.m */,
+				F48B33FC112C255800D1DE39 /* NSWorkspace-HMExtensions.h */,
+				F48B33FD112C255800D1DE39 /* NSWorkspace-HMExtensions.m */,
 			);
 			name = CocoaExtentions;
 			sourceTree = "<group>";
@@ -456,28 +463,29 @@
 			files = (
 				8D15AC310486D014006FF6A4 /* XspfQTDocument.m in Sources */,
 				8D15AC320486D014006FF6A4 /* main.m in Sources */,
-				F49C31CD0E682C3B007F2DEC /* XspfQTComponent.m in Sources */,
-				F49C31F10E682D79007F2DEC /* XspfQTTrackList.m in Sources */,
-				F49C31F60E682E2B007F2DEC /* XspfQTTrack.m in Sources */,
 				F441DCA50E69B82B009320B6 /* XspfQTMovieWindowController.m in Sources */,
 				F441DE580E6A2B5F009320B6 /* XspfQTValueTransformers.m in Sources */,
 				F441DE5C0E6A2BDA009320B6 /* XspfQTAppDelegate.m in Sources */,
 				F441DECB0E6A399D009320B6 /* XspfQTFullScreenWindow.m in Sources */,
 				F441E0680E6A5131009320B6 /* XspfQTPlayListWindowController.m in Sources */,
-				F46870240E71963E00B4DAED /* XspfQTPlaceholderComponent.m in Sources */,
 				F48FDF190E7D4EE7001C33F3 /* XspfQTInformationWindowController.m in Sources */,
-				F429BD700E8F969A006EB717 /* XspfQTPlaylist.m in Sources */,
-				F429BE520E8FAECB006EB717 /* XspfQTContainerComponent.m in Sources */,
 				F48B5B200F54388100E0D1D0 /* XspfQTMovieWindow.m in Sources */,
 				F48DD1940F62A58E008A199C /* XspfQTMovieView.m in Sources */,
 				F484FC7B0F6BEB6F007C5596 /* XspfQTMovieLoader.m in Sources */,
-				F484FD550F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m in Sources */,
 				F4B8096E0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m in Sources */,
 				F41AC3520F7F0B88003B3DF0 /* XspfQTPreference.m in Sources */,
-				F4B22C8F101BE195004D427C /* NSPathUtilities-XspfQT-Extensions.m in Sources */,
-				F44805081098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.m in Sources */,
 				F448050B1098AD5F0014C2BB /* BSSUtil.m in Sources */,
 				F44806EC109C6E440014C2BB /* XspfQTMovieTimer.m in Sources */,
+				F48B33EA112C253C00D1DE39 /* HMXSPFComponent.m in Sources */,
+				F48B33EB112C253C00D1DE39 /* HMXSPFContainerComponent.m in Sources */,
+				F48B33EC112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m in Sources */,
+				F48B33ED112C253C00D1DE39 /* HMXSPFPlaylist.m in Sources */,
+				F48B33EE112C253C00D1DE39 /* HMXSPFTrack.m in Sources */,
+				F48B33EF112C253C00D1DE39 /* HMXSPFTrackList.m in Sources */,
+				F48B33FE112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m in Sources */,
+				F48B33FF112C255800D1DE39 /* NSPathUtilities-HMExtensions.m in Sources */,
+				F48B3400112C255800D1DE39 /* NSURL-HMExtensions.m in Sources */,
+				F48B3401112C255800D1DE39 /* NSWorkspace-HMExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,16 +496,18 @@
 				F426BB4E108329400084E8C5 /* GenerateThumbnailForURL.m in Sources */,
 				F426BB4F108329420084E8C5 /* GeneratePreviewForURL.m in Sources */,
 				F426BB50108329450084E8C5 /* main.c in Sources */,
-				F426BB7810832ABB0084E8C5 /* XspfQTComponent.m in Sources */,
-				F426BB7910832ABC0084E8C5 /* XspfQTContainerComponent.m in Sources */,
-				F426BB7A10832ABE0084E8C5 /* XspfQTPlaceholderComponent.m in Sources */,
-				F426BB7B10832ABF0084E8C5 /* XspfQTPlaylist.m in Sources */,
-				F426BB7C10832AC10084E8C5 /* XspfQTTrack.m in Sources */,
-				F426BB7D10832AC20084E8C5 /* XspfQTTrackList.m in Sources */,
-				F426BBC41083313F0084E8C5 /* NSPathUtilities-XspfQT-Extensions.m in Sources */,
-				F426BBD71083328F0084E8C5 /* NSURL-XspfQT-Extensions.m in Sources */,
 				F426BBFC108344260084E8C5 /* XspfQLUtilities.m in Sources */,
 				F426BC96108357890084E8C5 /* XspfQTValueTransformers.m in Sources */,
+				F48B33F0112C253C00D1DE39 /* HMXSPFComponent.m in Sources */,
+				F48B33F1112C253C00D1DE39 /* HMXSPFContainerComponent.m in Sources */,
+				F48B33F2112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m in Sources */,
+				F48B33F3112C253C00D1DE39 /* HMXSPFPlaylist.m in Sources */,
+				F48B33F4112C253C00D1DE39 /* HMXSPFTrack.m in Sources */,
+				F48B33F5112C253C00D1DE39 /* HMXSPFTrackList.m in Sources */,
+				F48B3402112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m in Sources */,
+				F48B3403112C255800D1DE39 /* NSPathUtilities-HMExtensions.m in Sources */,
+				F48B3404112C255800D1DE39 /* NSURL-HMExtensions.m in Sources */,
+				F48B3405112C255800D1DE39 /* NSWorkspace-HMExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

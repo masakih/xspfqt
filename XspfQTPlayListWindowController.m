@@ -8,7 +8,7 @@
 
 #import "XspfQTPlayListWindowController.h"
 #import "XspfQTDocument.h"
-#import "XspfQTComponent.h"
+#import "HMXSPFComponent.h"
 
 #import "BSSUtil.h"
 
@@ -278,7 +278,7 @@ static NSString *const XspfQTTitleKey = @"title";
 	
 	id item = [[items objectAtIndex:0] representedObject];
 	
-	if(![item isKindOfClass:[XspfQTComponent class]]) {
+	if(![item isKindOfClass:[HMXSPFComponent class]]) {
 		NSLog(@"Ouch! %@", NSStringFromClass([item class]));
 		return NO;
 	}
