@@ -8,7 +8,7 @@
 
 #import "XspfQTMovieLoader.h"
 
-#import "NSURL-XspfQT-Extensions.h"
+#import "NSURL-HMExtensions.h"
 
 @implementation XspfQTMovieLoader
 + (id)loaderWithMovieURL:(NSURL *)inMovieURL delegate:(id)inDelegate

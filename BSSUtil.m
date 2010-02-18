@@ -11,7 +11,7 @@
 #import "stdarg.h"
 
 #import <Foundation/Foundation.h>
-#import "NSAppleEventDescriptor-Extensions.h"
+#import "NSAppleEventDescriptor-HMExtensions.h"
 
 
 #import <AppKit/NSWorkspace.h>
