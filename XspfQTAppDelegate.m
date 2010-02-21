@@ -18,15 +18,6 @@
 
 + (void)initialize
 {
-	[NSValueTransformer setValueTransformer:[[[XspfQTTimeTransformer alloc] init] autorelease]
-									forName:@"XspfQTTimeTransformer"];
-	[NSValueTransformer setValueTransformer:[[[XspfQTTimeDateTransformer alloc] init] autorelease]
-									forName:@"XspfQTTimeDateTransformer"];
-	[NSValueTransformer setValueTransformer:[[[XspfQTSizeToStringTransformer alloc] init] autorelease]
-									forName:@"XspfQTSizeToStringTransformer"];
-	[NSValueTransformer setValueTransformer:[[[XspfQTFileSizeStringTransformer alloc] init] autorelease]
-									forName:@"XspfQTFileSizeStringTransformer"];
-	
 	[XspfQTPreference sharedInstance];
 }
 
