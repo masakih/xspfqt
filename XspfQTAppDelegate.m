@@ -69,25 +69,35 @@
 }
 - (IBAction)togglePlayAndPause:(id)sender
 {
-	[[mainWindowStore windowController] togglePlayAndPause:sender];
+	id windowController = [mainWindowStore windowController];
+	if(![windowController respondsToSelector:@selector(togglePlayAndPause:)]) return;
+	[windowController togglePlayAndPause:sender];
 }
 - (IBAction)nextTrack:(id)sender
 {
+	id windowController = [mainWindowStore windowController];
+	if(![windowController respondsToSelector:@selector(nextTrack:)]) return;
 	[[mainWindowStore windowController] nextTrack:sender];
 }
 - (IBAction)previousTrack:(id)sender
 {
+	id windowController = [mainWindowStore windowController];
+	if(![windowController respondsToSelector:@selector(previousTrack:)]) return;
 	[[mainWindowStore windowController] previousTrack:sender];
 }
 
 #pragma mark ### NSMenu valivation ###
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
-	if([menuItem action] == @selector(openInformationPanel:)) {
-		return YES;
+	id windowController = [mainWindowStore windowController];
+	if([menuItem action] == @selector(togglePlayAndPause:)) {
+		if(![windowController respondsToSelector:@selector(togglePlayAndPause:)]) return NO;
 	}
-	if([menuItem action] == @selector(showPreferenceWindow:)) {
-		return YES;
+	if([menuItem action] == @selector(nextTrack:)) {
+		if(![windowController respondsToSelector:@selector(nextTrack:)]) return NO;
+	}
+	if([menuItem action] == @selector(previousTrack:)) {
+		if(![windowController respondsToSelector:@selector(previousTrack:)]) return NO;
 	}
 	
 	if([menuItem tag] == 10000) {
