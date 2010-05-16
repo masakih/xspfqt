@@ -34,23 +34,15 @@ static XspfQTPreferenceWindowController *sharedInstance = nil;
 
 + (XspfQTPreferenceWindowController *)sharedInstance
 {
-    @synchronized(self) {
-        if (sharedInstance == nil) {
-            [[self alloc] init]; // assignment not done here
-        }
-    }
+	if (sharedInstance == nil) {
+		sharedInstance = [[super allocWithZone:NULL] init];
+	}
     return sharedInstance;
 }
 
 + (id)allocWithZone:(NSZone *)zone
 {
-    @synchronized(self) {
-        if (sharedInstance == nil) {
-            sharedInstance = [super allocWithZone:zone];
-            return sharedInstance;  // assignment and return on first allocation
-        }
-    }
-    return nil; //on subsequent allocation attempts return nil
+    return [[self sharedInstance] retain];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -65,7 +57,7 @@ static XspfQTPreferenceWindowController *sharedInstance = nil;
 
 - (NSUInteger)retainCount
 {
-    return UINT_MAX;  //denotes an object that cannot be released
+    return NSUIntegerMax;  //denotes an object that cannot be released
 }
 
 - (void)release
