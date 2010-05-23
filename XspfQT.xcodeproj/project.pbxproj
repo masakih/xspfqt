@@ -34,6 +34,22 @@
 		F44806EC109C6E440014C2BB /* XspfQTMovieTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = F44806EB109C6E440014C2BB /* XspfQTMovieTimer.m */; };
 		F45B04E3119F8CC7007BB540 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F45B04E2119F8CC7007BB540 /* Credits.rtf */; };
 		F484FC7B0F6BEB6F007C5596 /* XspfQTMovieLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F484FC7A0F6BEB6F007C5596 /* XspfQTMovieLoader.m */; };
+		F4854B3111A8C01F00E83859 /* GetMetadataForFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F48E519211A8BBDC00112632 /* GetMetadataForFile.m */; };
+		F4854B3211A8C02100E83859 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = F48E519311A8BBE800112632 /* main.c */; };
+		F4854B4A11A8C12400E83859 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F48E519711A8BC8200112632 /* InfoPlist.strings */; };
+		F4854C3E11A8C18B00E83859 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4854B5211A8C17700E83859 /* CoreServices.framework */; };
+		F4854C3F11A8C18D00E83859 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4854B4C11A8C14900E83859 /* CoreFoundation.framework */; };
+		F4854E0211A8D05F00E83859 /* XspfSpotlight.mdimporter in CopyFiles */ = {isa = PBXBuildFile; fileRef = F48E51A511A8BCF300112632 /* XspfSpotlight.mdimporter */; };
+		F4854E2111A8D0BB00E83859 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C31EB0E682D66007F2DEC /* Foundation.framework */; };
+		F4854E2511A8D0C900E83859 /* HMXSPFComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33DF112C253C00D1DE39 /* HMXSPFComponent.m */; };
+		F4854E2611A8D0CB00E83859 /* HMXSPFContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E1112C253C00D1DE39 /* HMXSPFContainerComponent.m */; };
+		F4854E2711A8D0CC00E83859 /* HMXSPFPlaceholderComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E3112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m */; };
+		F4854E2811A8D0CD00E83859 /* HMXSPFPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E5112C253C00D1DE39 /* HMXSPFPlaylist.m */; };
+		F4854E2911A8D0CE00E83859 /* HMXSPFTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E7112C253C00D1DE39 /* HMXSPFTrack.m */; };
+		F4854E2A11A8D0D000E83859 /* HMXSPFTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E9112C253C00D1DE39 /* HMXSPFTrackList.m */; };
+		F4854E8D11A8D9E600E83859 /* NSPathUtilities-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33F9112C255800D1DE39 /* NSPathUtilities-HMExtensions.m */; };
+		F4854E9811A8DA0300E83859 /* NSURL-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33FB112C255800D1DE39 /* NSURL-HMExtensions.m */; };
+		F4854ECD11A8DED500E83859 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C304C0E68284C007F2DEC /* QTKit.framework */; };
 		F48B33EA112C253C00D1DE39 /* HMXSPFComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33DF112C253C00D1DE39 /* HMXSPFComponent.m */; };
 		F48B33EB112C253C00D1DE39 /* HMXSPFContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E1112C253C00D1DE39 /* HMXSPFContainerComponent.m */; };
 		F48B33EC112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E3112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m */; };
@@ -78,9 +94,26 @@
 			remoteGlobalIDString = F426BB301083282A0084E8C5;
 			remoteInfo = XspfQuickLookPlugIn;
 		};
+		F4854E1C11A8D09D00E83859 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F48E51A411A8BCF300112632;
+			remoteInfo = XspfSpotlight;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		F4854E3411A8D0FB00E83859 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/Spotlight;
+			dstSubfolderSpec = 1;
+			files = (
+				F4854E0211A8D05F00E83859 /* XspfSpotlight.mdimporter in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4EA118910830E2E003C8C87 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,6 +165,8 @@
 		F47DF8DB1083262000DF2C17 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F484FC790F6BEB6F007C5596 /* XspfQTMovieLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTMovieLoader.h; sourceTree = "<group>"; };
 		F484FC7A0F6BEB6F007C5596 /* XspfQTMovieLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTMovieLoader.m; sourceTree = "<group>"; };
+		F4854B4C11A8C14900E83859 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		F4854B5211A8C17700E83859 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		F48B33DE112C253C00D1DE39 /* HMXSPFComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMXSPFComponent.h; path = extFiles/HMXSPFComponent/HMXSPFComponent.h; sourceTree = "<group>"; };
 		F48B33DF112C253C00D1DE39 /* HMXSPFComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMXSPFComponent.m; path = extFiles/HMXSPFComponent/HMXSPFComponent.m; sourceTree = "<group>"; };
 		F48B33E0112C253C00D1DE39 /* HMXSPFContainerComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMXSPFContainerComponent.h; path = extFiles/HMXSPFComponent/HMXSPFContainerComponent.h; sourceTree = "<group>"; };
@@ -166,6 +201,13 @@
 		F48B5B1F0F54388100E0D1D0 /* XspfQTMovieWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTMovieWindow.m; sourceTree = "<group>"; };
 		F48DD1920F62A58E008A199C /* XspfQTMovieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTMovieView.h; sourceTree = "<group>"; };
 		F48DD1930F62A58E008A199C /* XspfQTMovieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTMovieView.m; sourceTree = "<group>"; };
+		F48E519211A8BBDC00112632 /* GetMetadataForFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMetadataForFile.m; sourceTree = "<group>"; };
+		F48E519311A8BBE800112632 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		F48E519411A8BC4600112632 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F48E519611A8BC6E00112632 /* schema.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = schema.xml; sourceTree = "<group>"; };
+		F48E519811A8BC8200112632 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F48E519A11A8BC9600112632 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/schema.strings; sourceTree = "<group>"; };
+		F48E51A511A8BCF300112632 /* XspfSpotlight.mdimporter */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XspfSpotlight.mdimporter; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48FDF170E7D4EE7001C33F3 /* XspfQTInformationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTInformationWindowController.h; sourceTree = "<group>"; };
 		F48FDF180E7D4EE7001C33F3 /* XspfQTInformationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTInformationWindowController.m; sourceTree = "<group>"; };
 		F492C1D70F55627B00D0C72A /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -206,6 +248,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F48E51A311A8BCF300112632 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4854C3E11A8C18B00E83859 /* CoreServices.framework in Frameworks */,
+				F4854C3F11A8C18D00E83859 /* CoreFoundation.framework in Frameworks */,
+				F4854E2111A8D0BB00E83859 /* Foundation.framework in Frameworks */,
+				F4854ECD11A8DED500E83859 /* QTKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -220,6 +273,8 @@
 		1058C7A8FEA54F5311CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4854B5211A8C17700E83859 /* CoreServices.framework */,
+				F4854B4C11A8C14900E83859 /* CoreFoundation.framework */,
 				F492C1D70F55627B00D0C72A /* ApplicationServices.framework */,
 				F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */,
 				F49C304C0E68284C007F2DEC /* QTKit.framework */,
@@ -235,6 +290,7 @@
 			children = (
 				8D15AC370486D014006FF6A4 /* XspfQT.app */,
 				F426BB311083282A0084E8C5 /* XspfQuickLook.qlgenerator */,
+				F48E51A511A8BCF300112632 /* XspfSpotlight.mdimporter */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -242,6 +298,7 @@
 		2A37F4AAFDCFA73011CA2CEA /* XspfQT */ = {
 			isa = PBXGroup;
 			children = (
+				F48E518111A8BB8900112632 /* SpotlightPlugIn */,
 				F47DF8CD108325D800DF2C17 /* QuickLookPlugIn */,
 				2A37F4ABFDCFA73011CA2CEA /* Classes */,
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
@@ -373,6 +430,19 @@
 			name = CocoaExtentions;
 			sourceTree = "<group>";
 		};
+		F48E518111A8BB8900112632 /* SpotlightPlugIn */ = {
+			isa = PBXGroup;
+			children = (
+				F48E519911A8BC9600112632 /* schema.strings */,
+				F48E519711A8BC8200112632 /* InfoPlist.strings */,
+				F48E519611A8BC6E00112632 /* schema.xml */,
+				F48E519411A8BC4600112632 /* Info.plist */,
+				F48E519311A8BBE800112632 /* main.c */,
+				F48E519211A8BBDC00112632 /* GetMetadataForFile.m */,
+			);
+			path = SpotlightPlugIn;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -384,11 +454,13 @@
 				8D15AC300486D014006FF6A4 /* Sources */,
 				8D15AC330486D014006FF6A4 /* Frameworks */,
 				F4EA118910830E2E003C8C87 /* CopyFiles */,
+				F4854E3411A8D0FB00E83859 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				F426BB9110832B0C0084E8C5 /* PBXTargetDependency */,
+				F4854E1D11A8D09D00E83859 /* PBXTargetDependency */,
 			);
 			name = XspfQT;
 			productInstallPath = "$(HOME)/Applications";
@@ -413,6 +485,23 @@
 			productReference = F426BB311083282A0084E8C5 /* XspfQuickLook.qlgenerator */;
 			productType = "com.apple.product-type.bundle";
 		};
+		F48E51A411A8BCF300112632 /* XspfSpotlight */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F48E51A911A8BCF300112632 /* Build configuration list for PBXNativeTarget "XspfSpotlight" */;
+			buildPhases = (
+				F48E51A111A8BCF300112632 /* Resources */,
+				F48E51A211A8BCF300112632 /* Sources */,
+				F48E51A311A8BCF300112632 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XspfSpotlight;
+			productName = XspfSpotlight;
+			productReference = F48E51A511A8BCF300112632 /* XspfSpotlight.mdimporter */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -430,6 +519,7 @@
 			targets = (
 				8D15AC270486D014006FF6A4 /* XspfQT */,
 				F426BB301083282A0084E8C5 /* XspfQuickLook */,
+				F48E51A411A8BCF300112632 /* XspfSpotlight */,
 			);
 		};
 /* End PBXProject section */
@@ -455,6 +545,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F426BB4D1083291B0084E8C5 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F48E51A111A8BCF300112632 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4854B4A11A8C12400E83859 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +613,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F48E51A211A8BCF300112632 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4854B3111A8C01F00E83859 /* GetMetadataForFile.m in Sources */,
+				F4854B3211A8C02100E83859 /* main.c in Sources */,
+				F4854E2511A8D0C900E83859 /* HMXSPFComponent.m in Sources */,
+				F4854E2611A8D0CB00E83859 /* HMXSPFContainerComponent.m in Sources */,
+				F4854E2711A8D0CC00E83859 /* HMXSPFPlaceholderComponent.m in Sources */,
+				F4854E2811A8D0CD00E83859 /* HMXSPFPlaylist.m in Sources */,
+				F4854E2911A8D0CE00E83859 /* HMXSPFTrack.m in Sources */,
+				F4854E2A11A8D0D000E83859 /* HMXSPFTrackList.m in Sources */,
+				F4854E8D11A8D9E600E83859 /* NSPathUtilities-HMExtensions.m in Sources */,
+				F4854E9811A8DA0300E83859 /* NSURL-HMExtensions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -522,6 +637,11 @@
 			isa = PBXTargetDependency;
 			target = F426BB301083282A0084E8C5 /* XspfQuickLook */;
 			targetProxy = F426BB9010832B0C0084E8C5 /* PBXContainerItemProxy */;
+		};
+		F4854E1D11A8D09D00E83859 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F48E51A411A8BCF300112632 /* XspfSpotlight */;
+			targetProxy = F4854E1C11A8D09D00E83859 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -585,6 +705,22 @@
 				F48B36B71130A9FC00D1DE39 /* Japanese */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		F48E519711A8BC8200112632 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F48E519811A8BC8200112632 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F48E519911A8BC9600112632 /* schema.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F48E519A11A8BC9600112632 /* English */,
+			);
+			name = schema.strings;
 			sourceTree = "<group>";
 		};
 		F4D7CCC90E868BFC0042F96C /* Localizable.strings */ = {
@@ -702,6 +838,41 @@
 			};
 			name = Release;
 		};
+		F48E51A711A8BCF300112632 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				COPY_PHASE_STRIP = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = SpotlightPlugIn/Info.plist;
+				INSTALL_PATH = /Library/Spotlight;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = XspfSpotlight;
+				WRAPPER_EXTENSION = mdimporter;
+			};
+			name = Debug;
+		};
+		F48E51A811A8BCF300112632 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INFOPLIST_FILE = SpotlightPlugIn/Info.plist;
+				INSTALL_PATH = /Library/Spotlight;
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = XspfSpotlight;
+				WRAPPER_EXTENSION = mdimporter;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -728,6 +899,15 @@
 			buildConfigurations = (
 				F426BB331083282B0084E8C5 /* Debug */,
 				F426BB341083282B0084E8C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F48E51A911A8BCF300112632 /* Build configuration list for PBXNativeTarget "XspfSpotlight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F48E51A711A8BCF300112632 /* Debug */,
+				F48E51A811A8BCF300112632 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
