@@ -64,10 +64,12 @@ Boolean GetMetadataForFile(void* thisInterface,
     
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-	if(![NSThread isMainThread]) {
-		NSLog(@"there is not main thread");
-		return FALSE;
-	}
+//	if(![NSThread isMainThread]) {
+//		NSLog(@"there is not main thread");
+//		return FALSE;
+//	}
+	
+//	NSLog(@"QTMovie class -> %@", NSStringFromClass([QTMovie class]));
 	
 	NSMutableDictionary *attr = (NSMutableDictionary *)attributes;
 	
@@ -86,39 +88,21 @@ Boolean GetMetadataForFile(void* thisInterface,
 		NSLog(@"Can not create HMXSPFComponent.");
 		goto fail;
 	}
-	
+		
 	NSArray *tracks = [[playlist childAtIndex:0] children];
 	CGFloat totalDuration = 0.0;
 	for(HMXSPFComponent *track in tracks) {
-		NSURL *location = [track movieLocation];
-		NSLog(@"location -> (%@)%@", NSStringFromClass([location class]), location);
+		totalDuration += [[track duration] timeIntervalSince1970] + [[NSTimeZone systemTimeZone] secondsFromGMT];
 		
-//		NSData *d = [NSData dataWithContentsOfURL:location
-//										  options:0
-//											error:&error];
-//		if(error) {
-//			NSLog(@"%@", error);
-//		}
-		
-		if(![QTMovie canInitWithURL:location]) {
-			NSLog(@"location URL is not Movie.");
-			continue;
-		}
-		
-		QTMovie *movie = [QTMovie movieWithURL:location error:&error];
+		NSURL *url = [track movieLocation];
+		NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
+							   (id)url, QTMovieURLAttribute,
+							   [NSNumber numberWithBool:NO], QTMovieOpenAsyncOKAttribute,
+							   nil];
+		QTMovie *movie = [QTMovie movieWithAttributes:attrs error:nil];
 		if(!movie) {
-			if(error) {
-				NSLog(@"%@", error);
-			}
-			continue;
+			NSLog(@"We can not create QTMovie.");
 		}
-		QTTime qttime = [movie duration];
-		id t = [NSValueTransformer valueTransformerForName:@"XspfQTTimeDateTransformer"];
-		NSDate *time = [t transformedValue:[NSValue valueWithQTTime:qttime]];
-		totalDuration += [time timeIntervalSince1970];
-		
-		NSLog(@"move -> %@, sub total => %.2f", movie, totalDuration);
-		
 	}
 	[attr setObject:[NSNumber numberWithDouble:totalDuration]
 			 forKey:(NSString *)kMDItemDurationSeconds];

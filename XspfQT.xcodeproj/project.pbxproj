@@ -39,7 +39,6 @@
 		F4854B4A11A8C12400E83859 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F48E519711A8BC8200112632 /* InfoPlist.strings */; };
 		F4854C3E11A8C18B00E83859 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4854B5211A8C17700E83859 /* CoreServices.framework */; };
 		F4854C3F11A8C18D00E83859 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4854B4C11A8C14900E83859 /* CoreFoundation.framework */; };
-		F4854E0211A8D05F00E83859 /* XspfSpotlight.mdimporter in CopyFiles */ = {isa = PBXBuildFile; fileRef = F48E51A511A8BCF300112632 /* XspfSpotlight.mdimporter */; };
 		F4854E2111A8D0BB00E83859 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C31EB0E682D66007F2DEC /* Foundation.framework */; };
 		F4854E2511A8D0C900E83859 /* HMXSPFComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33DF112C253C00D1DE39 /* HMXSPFComponent.m */; };
 		F4854E2611A8D0CB00E83859 /* HMXSPFContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E1112C253C00D1DE39 /* HMXSPFContainerComponent.m */; };
@@ -94,26 +93,9 @@
 			remoteGlobalIDString = F426BB301083282A0084E8C5;
 			remoteInfo = XspfQuickLookPlugIn;
 		};
-		F4854E1C11A8D09D00E83859 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F48E51A411A8BCF300112632;
-			remoteInfo = XspfSpotlight;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F4854E3411A8D0FB00E83859 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Contents/Library/Spotlight;
-			dstSubfolderSpec = 1;
-			files = (
-				F4854E0211A8D05F00E83859 /* XspfSpotlight.mdimporter in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F4EA118910830E2E003C8C87 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -454,13 +436,11 @@
 				8D15AC300486D014006FF6A4 /* Sources */,
 				8D15AC330486D014006FF6A4 /* Frameworks */,
 				F4EA118910830E2E003C8C87 /* CopyFiles */,
-				F4854E3411A8D0FB00E83859 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				F426BB9110832B0C0084E8C5 /* PBXTargetDependency */,
-				F4854E1D11A8D09D00E83859 /* PBXTargetDependency */,
 			);
 			name = XspfQT;
 			productInstallPath = "$(HOME)/Applications";
@@ -637,11 +617,6 @@
 			isa = PBXTargetDependency;
 			target = F426BB301083282A0084E8C5 /* XspfQuickLook */;
 			targetProxy = F426BB9010832B0C0084E8C5 /* PBXContainerItemProxy */;
-		};
-		F4854E1D11A8D09D00E83859 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F48E51A411A8BCF300112632 /* XspfSpotlight */;
-			targetProxy = F4854E1C11A8D09D00E83859 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
