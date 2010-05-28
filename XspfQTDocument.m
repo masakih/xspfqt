@@ -212,7 +212,7 @@ static XspfQTMovieTimer* timer = nil;
 		return NO;
 	}
 	NSXMLElement *root = [d rootElement];
-	id pl = [HMXSPFComponent xspfComponemtWithXMLElement:root];
+	id pl = [HMXSPFComponent xspfComponentWithXMLElement:root];
 	if(!pl) {
 		NSLog(@"Can not create HMXSPFComponent.");
 		return NO;

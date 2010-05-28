@@ -83,7 +83,7 @@ Boolean GetMetadataForFile(void* thisInterface,
 		goto fail;
 	}
 	NSXMLElement *root = [d rootElement];
-	id playlist = [HMXSPFComponent xspfComponemtWithXMLElement:root];
+	id playlist = [HMXSPFComponent xspfComponentWithXMLElement:root];
 	if(!playlist) {
 		NSLog(@"Can not create HMXSPFComponent.");
 		goto fail;

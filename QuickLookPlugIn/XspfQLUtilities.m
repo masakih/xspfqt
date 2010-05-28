@@ -118,7 +118,7 @@ HMXSPFComponent *componentForURL(CFURLRef url)
 		return nil;
 	}
 	NSXMLElement *root = [d rootElement];
-	HMXSPFComponent *pl = [HMXSPFComponent xspfComponemtWithXMLElement:root];
+	HMXSPFComponent *pl = [HMXSPFComponent xspfComponentWithXMLElement:root];
 	if(!pl) {
 		NSLog(@"Can not create HMXSPFComponent.");
 		return nil;
