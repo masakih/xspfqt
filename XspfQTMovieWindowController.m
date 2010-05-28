@@ -524,8 +524,29 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 - (IBAction)screenSize:(id)sender
 {
-	//
-	//
+	if(fullScreenMode) return;
+	
+	NSSize screenSize = [[NSScreen mainScreen] visibleFrame].size;
+	NSSize windowDecorationSize = [self windowSizeWithoutQTView];
+	NSRect windowFrame = [[self window] frame];
+	NSSize movieSize = windowFrame.size;
+	NSSize newSize;
+	
+	movieSize.width -= windowDecorationSize.width;
+	movieSize.height -= windowDecorationSize.height;
+	screenSize.height -= windowDecorationSize.height;
+	
+	if(movieSize.height == 0) return;
+	
+	newSize.height = screenSize.height;
+	newSize.width = newSize.height * (movieSize.width / movieSize.height);
+	
+	newSize.height += windowDecorationSize.height;
+	newSize.width += windowDecorationSize.width;
+	
+	windowFrame.size = newSize;
+	windowFrame.origin.y = [[NSScreen mainScreen] visibleFrame].origin.y;
+	[[self window] setFrame:windowFrame display:YES animate:YES];
 }
 
 #pragma mark ### Notification & Timer ###
@@ -577,13 +598,10 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 		return YES;
 	}
 	
-	if([menuItem action] == @selector(screenSize:)) {
-		return NO;
-	}
-	
 	if([menuItem action] == @selector(normalSize:)
 	   || [menuItem action] == @selector(halfSize:)
-	   || [menuItem action] == @selector(doubleSize:)) {
+	   || [menuItem action] == @selector(doubleSize:)
+	   || [menuItem action] == @selector(screenSize:)) {
 		if(fullScreenMode) {
 			return NO;
 		} else {
