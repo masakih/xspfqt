@@ -147,6 +147,15 @@ static NSString *const XspfQTTitleKey = @"title";
 		openInfomationInFinderWithPath(path);
 	}
 }
+- (IBAction)showHideWindow:(id)sender
+{
+	NSWindow *window = [self window];
+	if([window isVisible]) {
+		[window performClose:sender];
+	} else {
+		[self showWindow:self];
+	}
+}
 
 - (void)keyDown:(NSEvent *)theEvent
 {

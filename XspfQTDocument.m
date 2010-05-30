@@ -252,6 +252,10 @@ static XspfQTMovieTimer* timer = nil;
 {
 	[playListWindowController showWindow:self];
 }
+- (IBAction)showHidePlayList:(id)sender
+{
+	[playListWindowController showHideWindow:self];
+}
 - (IBAction)setThumbnailFrame:(id)sender
 {
 	HMXSPFComponent *currentTrack = [[self trackList] currentTrack];

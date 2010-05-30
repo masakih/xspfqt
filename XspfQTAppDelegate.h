@@ -61,11 +61,17 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class RemoteControl;
+@class MultiClickRemoteBehavior;
 
 @interface XspfQTAppDelegate : NSObject
 {
 	NSWindow *mainWindowStore;
+	
+	RemoteControl *remoteControl;
+	MultiClickRemoteBehavior *remoteBehavior;
 }
+@property (retain) RemoteControl *remoteControl;
 
 - (IBAction)openInformationPanel:(id)sender;
 - (IBAction)showPreferenceWindow:(id)sender;

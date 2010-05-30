@@ -72,6 +72,8 @@
 - (IBAction)showInFinder:(id)sender;
 - (IBAction)showInformationInFinder:(id)sender;
 
+- (IBAction)showHideWindow:(id)sender;
+
 @end
 
 

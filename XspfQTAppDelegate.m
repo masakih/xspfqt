@@ -67,7 +67,13 @@
 #import "XspfQTPreferenceWindowController.h"
 
 
+#import "AppleRemote.h"
+#import "MultiClickRemoteBehavior.h"
+
+
 @implementation XspfQTAppDelegate
+@synthesize remoteControl;
+
 
 + (void)initialize
 {
@@ -76,6 +82,12 @@
 
 - (void)awakeFromNib
 {
+	self.remoteControl = [[[AppleRemote alloc] initWithDelegate: self] autorelease];
+	
+	remoteBehavior = [MultiClickRemoteBehavior new];		
+	[remoteBehavior setDelegate:self];
+	[remoteControl setDelegate:remoteBehavior];
+	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:self
 		   selector:@selector(windowDidBecomeMain:)
@@ -90,6 +102,9 @@
 {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc removeObserver:self];
+	
+	self.remoteControl = nil;
+	[remoteBehavior autorelease];
 	
 	[super dealloc];
 }
@@ -184,6 +199,11 @@
 - (void)applicationWillResignActive:(NSNotification *)notification
 {
 	[self storeMainWindow];
+	[remoteControl stopListening:self];
+}
+- (void)applicationWillBecomeActive:(NSNotification *)aNotification
+{
+	[remoteControl startListening:self];
 }
 - (void)applicationDidUnhide:(NSNotification *)notification
 {
@@ -203,4 +223,67 @@
 	[self unsaveMainWindow];
 } 
 
+
+#pragma mark-
+#pragma mark#### Apple Remote Control Wrapper ####
+- (void)remoteButton:(RemoteControlEventIdentifier)identifier pressedDown:(BOOL)pressedDown clickCount:(unsigned int)clickCount
+{
+	
+	SEL action = NULL;
+	
+	switch(identifier) {
+		case kRemoteButtonPlus:
+			if(pressedDown)
+				action = @selector(turnUpVolume:);
+			break;
+		case kRemoteButtonMinus:
+			if(pressedDown)
+				action = @selector(turnDownVolume:);
+			break;			
+		case kRemoteButtonMenu:
+			if(pressedDown)
+				action = @selector(toggleFullScreenMode:);
+			break;			
+		case kRemoteButtonPlay:
+			if(pressedDown)
+				action = @selector(togglePlayAndPause:);
+			break;			
+		case kRemoteButtonRight:	
+			if(pressedDown)
+				action = @selector(nextTrack:);
+			break;			
+		case kRemoteButtonLeft:
+			if(pressedDown)
+				action = @selector(previousTrack:);
+			break;			
+		case kRemoteButtonRight_Hold:
+			action = NULL;
+			break;	
+		case kRemoteButtonLeft_Hold:
+			action = NULL;		
+			break;			
+		case kRemoteButtonPlus_Hold:
+			action = NULL;
+			break;				
+		case kRemoteButtonMinus_Hold:			
+			action = NULL;
+			break;				
+		case kRemoteButtonPlay_Hold:
+			action = NULL;
+			break;			
+		case kRemoteButtonMenu_Hold:
+			action = @selector(showHidePlayList:);
+			break;
+		case kRemoteControl_Switched:
+			action = NULL;
+			break;
+		default:
+			NSLog(@"Unmapped event for button %d", identifier);
+			break;
+	}
+	
+	if(!action) return;
+	
+	[NSApp sendAction:action to:nil from:self];
+}
 @end

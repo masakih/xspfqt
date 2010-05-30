@@ -83,6 +83,12 @@
 		F4B8096E0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B8096D0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m */; };
 		F4D7CCCB0E868BFC0042F96C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4D7CCC90E868BFC0042F96C /* Localizable.strings */; };
 		F4D99B1F0E6B0F59006D72F4 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */; };
+		F4DAE4D711B23EDD0047BEDA /* RemoteControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DAE4D011B23EDD0047BEDA /* RemoteControl.m */; };
+		F4DAE4D811B23EDD0047BEDA /* HIDRemoteControlDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DAE4D211B23EDD0047BEDA /* HIDRemoteControlDevice.m */; };
+		F4DAE4D911B23EDD0047BEDA /* AppleRemote.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DAE4D411B23EDD0047BEDA /* AppleRemote.m */; };
+		F4DAE4DA11B23EDD0047BEDA /* MultiClickRemoteBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DAE4D611B23EDD0047BEDA /* MultiClickRemoteBehavior.m */; };
+		F4DAE4E611B2442C0047BEDA /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DAE4E511B2442C0047BEDA /* IOKit.framework */; };
+		F4DAE5E711B24AB80047BEDA /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4DAE5E611B24AB80047BEDA /* license.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +208,16 @@
 		F4D7CCEA0E8690E90042F96C /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = English; path = English.lproj/Localizable.strings.sed; sourceTree = "<group>"; };
 		F4D7CCEB0E8690F90042F96C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text; name = Japanese; path = Japanese.lproj/Localizable.strings.sed; sourceTree = "<group>"; };
 		F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		F4DAE4CF11B23EDD0047BEDA /* RemoteControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteControl.h; sourceTree = "<group>"; };
+		F4DAE4D011B23EDD0047BEDA /* RemoteControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteControl.m; sourceTree = "<group>"; };
+		F4DAE4D111B23EDD0047BEDA /* HIDRemoteControlDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIDRemoteControlDevice.h; sourceTree = "<group>"; };
+		F4DAE4D211B23EDD0047BEDA /* HIDRemoteControlDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HIDRemoteControlDevice.m; sourceTree = "<group>"; };
+		F4DAE4D311B23EDD0047BEDA /* AppleRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleRemote.h; sourceTree = "<group>"; };
+		F4DAE4D411B23EDD0047BEDA /* AppleRemote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleRemote.m; sourceTree = "<group>"; };
+		F4DAE4D511B23EDD0047BEDA /* MultiClickRemoteBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiClickRemoteBehavior.h; sourceTree = "<group>"; };
+		F4DAE4D611B23EDD0047BEDA /* MultiClickRemoteBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiClickRemoteBehavior.m; sourceTree = "<group>"; };
+		F4DAE4E511B2442C0047BEDA /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		F4DAE5E611B24AB80047BEDA /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +230,7 @@
 				F49C31EC0E682D66007F2DEC /* Foundation.framework in Frameworks */,
 				F4D99B1F0E6B0F59006D72F4 /* Carbon.framework in Frameworks */,
 				F492C1D80F55627B00D0C72A /* ApplicationServices.framework in Frameworks */,
+				F4DAE4E611B2442C0047BEDA /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +272,7 @@
 		1058C7A8FEA54F5311CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4DAE4E511B2442C0047BEDA /* IOKit.framework */,
 				F4854B5211A8C17700E83859 /* CoreServices.framework */,
 				F4854B4C11A8C14900E83859 /* CoreFoundation.framework */,
 				F492C1D70F55627B00D0C72A /* ApplicationServices.framework */,
@@ -280,6 +298,7 @@
 		2A37F4AAFDCFA73011CA2CEA /* XspfQT */ = {
 			isa = PBXGroup;
 			children = (
+				F4DAE4CE11B23EC80047BEDA /* AppleRemoteControlWrapper */,
 				F48E518111A8BB8900112632 /* SpotlightPlugIn */,
 				F47DF8CD108325D800DF2C17 /* QuickLookPlugIn */,
 				2A37F4ABFDCFA73011CA2CEA /* Classes */,
@@ -425,6 +444,22 @@
 			path = SpotlightPlugIn;
 			sourceTree = "<group>";
 		};
+		F4DAE4CE11B23EC80047BEDA /* AppleRemoteControlWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				F4DAE5E611B24AB80047BEDA /* license.txt */,
+				F4DAE4CF11B23EDD0047BEDA /* RemoteControl.h */,
+				F4DAE4D011B23EDD0047BEDA /* RemoteControl.m */,
+				F4DAE4D111B23EDD0047BEDA /* HIDRemoteControlDevice.h */,
+				F4DAE4D211B23EDD0047BEDA /* HIDRemoteControlDevice.m */,
+				F4DAE4D311B23EDD0047BEDA /* AppleRemote.h */,
+				F4DAE4D411B23EDD0047BEDA /* AppleRemote.m */,
+				F4DAE4D511B23EDD0047BEDA /* MultiClickRemoteBehavior.h */,
+				F4DAE4D611B23EDD0047BEDA /* MultiClickRemoteBehavior.m */,
+			);
+			path = AppleRemoteControlWrapper;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -517,6 +552,7 @@
 				F48B36AF1130A9AA00D1DE39 /* XspfQTDocument.xib in Resources */,
 				F48B36B51130A9E700D1DE39 /* MainMenu.xib in Resources */,
 				F45B04E3119F8CC7007BB540 /* Credits.rtf in Resources */,
+				F4DAE5E711B24AB80047BEDA /* license.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +604,10 @@
 				F48B33FF112C255800D1DE39 /* NSPathUtilities-HMExtensions.m in Sources */,
 				F48B3400112C255800D1DE39 /* NSURL-HMExtensions.m in Sources */,
 				F48B3401112C255800D1DE39 /* NSWorkspace-HMExtensions.m in Sources */,
+				F4DAE4D711B23EDD0047BEDA /* RemoteControl.m in Sources */,
+				F4DAE4D811B23EDD0047BEDA /* HIDRemoteControlDevice.m in Sources */,
+				F4DAE4D911B23EDD0047BEDA /* AppleRemote.m in Sources */,
+				F4DAE4DA11B23EDD0047BEDA /* MultiClickRemoteBehavior.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
