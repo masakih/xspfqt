@@ -82,11 +82,14 @@
 
 - (void)awakeFromNib
 {
-	self.remoteControl = [[[AppleRemote alloc] initWithDelegate: self] autorelease];
+	self.remoteControl = [[[AppleRemote alloc] initWithDelegate:self] autorelease];
 	
 	remoteBehavior = [MultiClickRemoteBehavior new];		
 	[remoteBehavior setDelegate:self];
 	[remoteControl setDelegate:remoteBehavior];
+//	[remoteBehavior setClickCountingEnabled:YES];
+	[remoteBehavior setClickCountEnabledButtons:kRemoteButtonLeft | kRemoteButtonRight];
+
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:self
@@ -226,41 +229,38 @@
 
 #pragma mark-
 #pragma mark#### Apple Remote Control Wrapper ####
-- (void)remoteButton:(RemoteControlEventIdentifier)identifier pressedDown:(BOOL)pressedDown clickCount:(unsigned int)clickCount
+
+static NSInteger XSPFQTmoveValue= 10;
+- (void)remoteButtonDown:(RemoteControlEventIdentifier)identifier clickCount:(unsigned int)clickCount
 {
-	
 	SEL action = NULL;
 	
 	switch(identifier) {
 		case kRemoteButtonPlus:
-			if(pressedDown)
-				action = @selector(turnUpVolume:);
+			action = @selector(turnUpVolume:);
 			break;
 		case kRemoteButtonMinus:
-			if(pressedDown)
-				action = @selector(turnDownVolume:);
+			action = @selector(turnDownVolume:);
 			break;			
 		case kRemoteButtonMenu:
-			if(pressedDown)
-				action = @selector(toggleFullScreenMode:);
+			action = @selector(toggleFullScreenMode:);
 			break;			
 		case kRemoteButtonPlay:
-			if(pressedDown)
-				action = @selector(togglePlayAndPause:);
+			action = @selector(togglePlayAndPause:);
 			break;			
-		case kRemoteButtonRight:	
-			if(pressedDown)
-				action = @selector(nextTrack:);
+		case kRemoteButtonRight:
+			XSPFQTmoveValue = 10 * clickCount;
+			action = @selector(forwardTagValueSecends:);
 			break;			
 		case kRemoteButtonLeft:
-			if(pressedDown)
-				action = @selector(previousTrack:);
+			XSPFQTmoveValue = 10 * clickCount;
+			action = @selector(backwardTagValueSecends:);
 			break;			
 		case kRemoteButtonRight_Hold:
-			action = NULL;
+			action = @selector(nextTrack:);
 			break;	
 		case kRemoteButtonLeft_Hold:
-			action = NULL;		
+			action = @selector(previousTrack:);		
 			break;			
 		case kRemoteButtonPlus_Hold:
 			action = NULL;
@@ -285,5 +285,15 @@
 	if(!action) return;
 	
 	[NSApp sendAction:action to:nil from:self];
+}
+- (NSInteger)tag
+{
+	return XSPFQTmoveValue;
+}
+- (void)remoteButton:(RemoteControlEventIdentifier)identifier pressedDown:(BOOL)pressedDown clickCount:(unsigned int)clickCount
+{
+	if(pressedDown) {
+		[self remoteButtonDown:identifier clickCount:clickCount];
+	}
 }
 @end
