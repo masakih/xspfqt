@@ -480,6 +480,21 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	[[[self document] trackList] previous];
 }
 
+- (IBAction)gotoThumbnailFrame:(id)sender
+{
+	HMXSPFComponent *trackList = [[self document] trackList];
+	HMXSPFComponent *thumbnailTrack = [trackList thumbnailTrack];
+	NSTimeInterval time = [trackList thumbnailTimeInterval];
+	
+	NSUInteger num = [trackList indexOfChild:thumbnailTrack];
+	if(num == NSNotFound) return;
+	
+	[trackList setSelectionIndex:num];
+	
+	QTTime new = QTMakeTimeWithTimeInterval(time);
+	[[self qtMovie] setCurrentTime:new];
+}
+
 - (IBAction)normalSize:(id)sender
 {
 	if(fullScreenMode) return;
@@ -589,7 +604,8 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 #pragma mark ### NSMenu valivation ###
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
-	if([menuItem action] == @selector(toggleFullScreenMode:)) {
+	SEL action = [menuItem action];
+	if(action == @selector(toggleFullScreenMode:)) {
 		if(fullScreenMode) {
 			[menuItem setTitle:NSLocalizedString(@"Exit Full Screen", @"Exit Full Screen")];
 		} else {
@@ -598,10 +614,14 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 		return YES;
 	}
 	
-	if([menuItem action] == @selector(normalSize:)
-	   || [menuItem action] == @selector(halfSize:)
-	   || [menuItem action] == @selector(doubleSize:)
-	   || [menuItem action] == @selector(screenSize:)) {
+	if(action == @selector(gotoThumbnailFrame:)) {
+		if(![[[self document] trackList] thumbnailTrack]) return NO;
+	}
+	
+	if(action == @selector(normalSize:)
+	   || action == @selector(halfSize:)
+	   || action == @selector(doubleSize:)
+	   || action == @selector(screenSize:)) {
 		if(fullScreenMode) {
 			return NO;
 		} else {

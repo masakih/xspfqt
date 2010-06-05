@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1040</int>
-		<string key="IBDocument.SystemVersion">10C540</string>
-		<string key="IBDocument.InterfaceBuilderVersion">740</string>
-		<string key="IBDocument.AppKitVersion">1038.25</string>
-		<string key="IBDocument.HIToolboxVersion">458.00</string>
+		<string key="IBDocument.SystemVersion">10D573</string>
+		<string key="IBDocument.InterfaceBuilderVersion">762</string>
+		<string key="IBDocument.AppKitVersion">1038.29</string>
+		<string key="IBDocument.HIToolboxVersion">460.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">740</string>
+			<string key="NS.object.0">762</string>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -774,6 +774,14 @@
 									<reference key="NSOnImage" ref="145968497"/>
 									<reference key="NSMixedImage" ref="945765730"/>
 								</object>
+								<object class="NSMenuItem" id="404948451">
+									<reference key="NSMenu" ref="502084290"/>
+									<string key="NSTitle">サムネイルのフレームに移動</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="145968497"/>
+									<reference key="NSMixedImage" ref="945765730"/>
+								</object>
 							</object>
 						</object>
 					</object>
@@ -1334,6 +1342,14 @@
 					</object>
 					<int key="connectionID">491</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">gotoThumbnailFrame:</string>
+						<reference key="source" ref="1014"/>
+						<reference key="destination" ref="404948451"/>
+					</object>
+					<int key="connectionID">493</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1750,6 +1766,7 @@
 							<reference ref="464439490"/>
 							<reference ref="230031187"/>
 							<reference ref="582090094"/>
+							<reference ref="404948451"/>
 						</object>
 						<reference key="parent" ref="626404410"/>
 					</object>
@@ -1967,6 +1984,11 @@
 						<reference key="object" ref="582090094"/>
 						<reference key="parent" ref="502084290"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">492</int>
+						<reference key="object" ref="404948451"/>
+						<reference key="parent" ref="502084290"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -2099,6 +2121,7 @@
 					<string>485.IBPluginDependency</string>
 					<string>486.IBPluginDependency</string>
 					<string>488.IBPluginDependency</string>
+					<string>492.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>5.ImportedFromIB2</string>
 					<string>56.IBPluginDependency</string>
@@ -2213,7 +2236,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{182, 736}, {172, 53}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{609, 282}, {304, 373}}</string>
+					<string>{{609, 262}, {304, 393}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{232, 486}, {238, 303}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2241,6 +2264,7 @@
 					<string>{{517, 638}, {189, 93}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{1, 705}, {189, 93}}</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2306,7 +2330,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">491</int>
+			<int key="maxID">493</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2317,6 +2341,20 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">AppleRemoteControlWrapper/MultiClickRemoteBehavior.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">AppleRemoteControlWrapper/RemoteControl.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -2400,6 +2438,7 @@
 							<string>backwardTagValueSecends:</string>
 							<string>doubleSize:</string>
 							<string>forwardTagValueSecends:</string>
+							<string>gotoThumbnailFrame:</string>
 							<string>halfSize:</string>
 							<string>nextTrack:</string>
 							<string>normalSize:</string>
@@ -2412,6 +2451,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -3063,6 +3103,7 @@
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
+		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
 			<integer value="1040" key="NS.object.0"/>
@@ -3078,5 +3119,18 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<string key="IBDocument.LastKnownRelativeProjectPath">../XspfQT.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<bool key="EncodedWithXMLCoder">YES</bool>
+			<object class="NSArray" key="dict.sortedKeys">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>NSMenuCheckmark</string>
+				<string>NSMenuMixedState</string>
+			</object>
+			<object class="NSMutableArray" key="dict.values">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{9, 8}</string>
+				<string>{7, 2}</string>
+			</object>
+		</object>
 	</data>
 </archive>

@@ -65,6 +65,7 @@
 
 @class HMXSPFComponent;
 @class XspfQTMovieWindowController;
+@class XspfQTPlayListWindowController;
 
 @class XspfQTMovieLoader;
 @class QTMovie;
@@ -73,7 +74,7 @@
 {
 	HMXSPFComponent* playlist;
 	XspfQTMovieWindowController *movieWindowController;
-	NSWindowController *playListWindowController;
+	XspfQTPlayListWindowController *playListWindowController;
 	
 	QTMovie *playingMovie;
 	XspfQTMovieLoader *loader;

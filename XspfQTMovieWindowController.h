@@ -95,6 +95,8 @@
 - (IBAction)doubleSize:(id)sender;
 - (IBAction)screenSize:(id)sender;
 
+- (IBAction)gotoThumbnailFrame:(id)sender;
+
 - (void)play;
 - (void)stop;
 

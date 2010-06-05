@@ -85,4 +85,40 @@
 	
 	[super keyDown:event];
 }
+
+- (void)scrollWheel:(NSEvent *)theEvent
+{
+	BOOL cancelVolumeControl = NO;	
+	CGFloat deltaX = [theEvent deltaX];
+	CGFloat deltaY = [theEvent deltaY];
+	
+	if(fabs(deltaY / deltaX) < 0.5) {
+		cancelVolumeControl = YES;
+	}
+	
+//	NSLog(@"X -> %.2f, Y -> %.2f", deltaX, deltaY);
+	
+	if(deltaX != 0) {
+		int sign = deltaX < 0 ? -1 : 1;
+		if(sign == -1) deltaX = -deltaX;
+		
+		QTMovie *movie = [self movie];
+		QTTime current = [movie currentTime];
+		NSTimeInterval cur;
+		if(!QTGetTimeInterval(current, &cur)) return;
+		
+		CGFloat newTime = cur - sign * 0.08 * (0.1 * deltaX * deltaX + deltaX);
+		if(newTime < 0) newTime = 0;
+		QTTime new = QTMakeTimeWithTimeInterval(newTime);
+		
+		[movie setCurrentTime:new];
+	}
+	if(deltaY != 0 && !cancelVolumeControl) {
+		QTMovie *movie = [self movie];
+		CGFloat vol = [movie volume];
+		[movie setVolume:vol + deltaY / 20];
+	}
+	
+//	[super scrollWheel:theEvent];
+}
 @end

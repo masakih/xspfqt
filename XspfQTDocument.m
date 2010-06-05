@@ -239,7 +239,7 @@ static XspfQTMovieTimer* timer = nil;
 	[self removeWindowController:movieWindowController];
 	[movieWindowController release];
 	movieWindowController = nil;
-		
+	
 	[super close];
 }
 
