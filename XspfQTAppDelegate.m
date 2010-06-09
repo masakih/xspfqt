@@ -260,12 +260,12 @@ static NSInteger XSPFQTmoveValue= 10;
 			action = @selector(nextTrack:);
 			break;	
 		case kRemoteButtonLeft_Hold:
-			action = @selector(previousTrack:);		
+			action = @selector(previousTrack:);
 			break;			
 		case kRemoteButtonPlus_Hold:
 			action = NULL;
 			break;				
-		case kRemoteButtonMinus_Hold:			
+		case kRemoteButtonMinus_Hold:
 			action = NULL;
 			break;				
 		case kRemoteButtonPlay_Hold:
