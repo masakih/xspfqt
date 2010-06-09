@@ -74,7 +74,7 @@ static XspfQTPreference *sharedInstance = nil;
 + (XspfQTPreference *)sharedInstance
 {
 	if (sharedInstance == nil) {
-		sharedInstance = [[self allocWithZone:NULL] init]; // assignment not done here
+		sharedInstance = [[super allocWithZone:NULL] init]; // assignment not done here
 	}
     return sharedInstance;
 }
