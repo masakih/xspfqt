@@ -81,6 +81,7 @@
 		F49C304D0E68284C007F2DEC /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C304C0E68284C007F2DEC /* QTKit.framework */; };
 		F49C31EC0E682D66007F2DEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C31EB0E682D66007F2DEC /* Foundation.framework */; };
 		F4B8096E0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B8096D0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m */; };
+		F4D24F8A11C4969200232358 /* XspfQT.icns in Resources */ = {isa = PBXBuildFile; fileRef = F4D24F8911C4969200232358 /* XspfQT.icns */; };
 		F4D7CCCB0E868BFC0042F96C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4D7CCC90E868BFC0042F96C /* Localizable.strings */; };
 		F4D99B1F0E6B0F59006D72F4 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */; };
 		F4DAE4D711B23EDD0047BEDA /* RemoteControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DAE4D011B23EDD0047BEDA /* RemoteControl.m */; };
@@ -203,6 +204,7 @@
 		F49C31EB0E682D66007F2DEC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		F4B8096C0F6EB373004BF2DD /* XspfQTPreferenceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPreferenceWindowController.h; sourceTree = "<group>"; };
 		F4B8096D0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPreferenceWindowController.m; sourceTree = "<group>"; };
+		F4D24F8911C4969200232358 /* XspfQT.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = XspfQT.icns; sourceTree = "<group>"; };
 		F4D7CCCA0E868BFC0042F96C /* Japanese */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F4D7CCCC0E868C090042F96C /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F4D7CCEA0E8690E90042F96C /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = English; path = English.lproj/Localizable.strings.sed; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F4D24F8911C4969200232358 /* XspfQT.icns */,
 				F45B04E2119F8CC7007BB540 /* Credits.rtf */,
 				F48B369B1130A87100D1DE39 /* XspfQTPreference.xib */,
 				F48B36A11130A90A00D1DE39 /* XspfQTImformation.xib */,
@@ -553,6 +556,7 @@
 				F48B36B51130A9E700D1DE39 /* MainMenu.xib in Resources */,
 				F45B04E3119F8CC7007BB540 /* Credits.rtf in Resources */,
 				F4DAE5E711B24AB80047BEDA /* license.txt in Resources */,
+				F4D24F8A11C4969200232358 /* XspfQT.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
