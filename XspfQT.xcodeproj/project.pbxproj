@@ -202,6 +202,7 @@
 		F492C1D70F55627B00D0C72A /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
 		F49C304C0E68284C007F2DEC /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		F49C31EB0E682D66007F2DEC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		F4ADCEB511CD1FB1003631B7 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F4B8096C0F6EB373004BF2DD /* XspfQTPreferenceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPreferenceWindowController.h; sourceTree = "<group>"; };
 		F4B8096D0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPreferenceWindowController.m; sourceTree = "<group>"; };
 		F4D24F8911C4969200232358 /* XspfQT.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = XspfQT.icns; sourceTree = "<group>"; };
@@ -669,6 +670,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				089C1660FE840EACC02AAC07 /* English */,
+				F4ADCEB511CD1FB1003631B7 /* Japanese */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
