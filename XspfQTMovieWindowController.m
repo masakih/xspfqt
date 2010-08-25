@@ -454,7 +454,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	
 	NSApplicationPresentationOptions currentPresentation = [NSApp presentationOptions];
 	[NSApp setPresentationOptions:
-	 currentPresentation ^ (NSApplicationPresentationAutoHideDock | NSApplicationPresentationAutoHideMenuBar)];
+	 currentPresentation & ~(NSApplicationPresentationAutoHideDock | NSApplicationPresentationAutoHideMenuBar)];
 }
 #pragma mark ### Actions ###
 - (IBAction)togglePlayAndPause:(id)sender
