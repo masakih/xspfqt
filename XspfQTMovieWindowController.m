@@ -307,7 +307,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 - (void)enterFullScreen
 {
-	NSWindow *w = [self fullscreenWindow];
+	NSWindow *fullscreen = [self fullscreenWindow];
 	
 	normalModeSavedFrame = [qtView frame];
 	
@@ -330,13 +330,15 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	[player setIsChangingFullScreen:NO];
 	isChangingFullScreen = NO;
 	
-	[w setContentView:qtView];
-	[w makeKeyAndOrderFront:self];
+	[fullscreen setContentView:qtView];
+	[fullscreen makeKeyAndOrderFront:self];
 	
-	[w makeFirstResponder:qtView];
+	[fullscreen makeFirstResponder:qtView];
 	
 	[player orderOut:self];
 	[player setFrame:originalWFrame display:NO];
+	
+	[fullscreen makeKeyAndOrderFront:self];
 }
 - (void)exitFullScreen
 {
