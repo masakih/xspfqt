@@ -81,7 +81,32 @@ NSString *XspfQTMovieDidPauseNotification = @"XspfQTMovieDidPauseNotification";
 - (NSWindow *)fullscreenWindow;
 - (void)movieDidStart;
 - (void)movieDidPause;
+
+- (void)hideMenuBar;
+- (void)showMenuBar;
 @end
+#ifndef NSApplicationPresentationOptions
+@interface NSApplication (XspfQT)
+typedef NSUInteger NSApplicationPresentationOptions;
+- (NSApplicationPresentationOptions)presentationOptions;
+- (void)setPresentationOptions:(NSApplicationPresentationOptions)newOptions;
+enum {
+    NSApplicationPresentationDefault                    = 0,
+    NSApplicationPresentationAutoHideDock               = (1 <<  0),    // Dock appears when moused to
+    NSApplicationPresentationHideDock                   = (1 <<  1),    // Dock is entirely unavailable
+	
+    NSApplicationPresentationAutoHideMenuBar            = (1 <<  2),    // Menu Bar appears when moused to
+    NSApplicationPresentationHideMenuBar                = (1 <<  3),    // Menu Bar is entirely unavailable
+	
+    NSApplicationPresentationDisableAppleMenu           = (1 <<  4),    // all Apple menu items are disabled
+    NSApplicationPresentationDisableProcessSwitching    = (1 <<  5),    // Cmd+Tab UI is disabled
+    NSApplicationPresentationDisableForceQuit           = (1 <<  6),    // Cmd+Opt+Esc panel is disabled
+    NSApplicationPresentationDisableSessionTermination  = (1 <<  7),    // PowerKey panel and Restart/Shut Down/Log Out disabled
+    NSApplicationPresentationDisableHideApplication     = (1 <<  8),    // Application "Hide" menu item is disabled
+    NSApplicationPresentationDisableMenuBarTransparency = (1 <<  9)     // Menu Bar's transparent appearance is disabled
+};
+@end
+#endif
 
 @implementation XspfQTMovieWindowController
 
@@ -314,7 +339,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	XspfQTMovieWindow *player = (XspfQTMovieWindow *)[self window];
 	NSRect originalWFrame = [player frame];
 	
-	SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar);
+	[self hideMenuBar];
 	
 	NSRect newWFrame = [[NSScreen mainScreen] frame];
 	
@@ -389,7 +414,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	
 	[player setFrame:windowRect display:YES animate:YES];
 	
-	[NSMenu setMenuBarVisible:YES];
+	[self showMenuBar];
 	[player setIsChangingFullScreen:NO];
 }
 
@@ -409,7 +434,28 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	
 	return fullscreenWindow;
 }
-
+- (void)hideMenuBar
+{
+	if(![NSApp respondsToSelector:@selector(setPresentationOptions:)]) {
+		SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar);
+		return;
+	}
+	
+	NSApplicationPresentationOptions currentPresentation = [NSApp presentationOptions];
+	[NSApp setPresentationOptions:
+	 currentPresentation | (NSApplicationPresentationAutoHideDock | NSApplicationPresentationAutoHideMenuBar)];
+}
+- (void)showMenuBar
+{
+	if(![NSApp respondsToSelector:@selector(setPresentationOptions:)]) {
+		[NSMenu setMenuBarVisible:YES];
+		return;
+	}
+	
+	NSApplicationPresentationOptions currentPresentation = [NSApp presentationOptions];
+	[NSApp setPresentationOptions:
+	 currentPresentation ^ (NSApplicationPresentationAutoHideDock | NSApplicationPresentationAutoHideMenuBar)];
+}
 #pragma mark ### Actions ###
 - (IBAction)togglePlayAndPause:(id)sender
 {
