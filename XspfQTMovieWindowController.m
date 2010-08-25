@@ -85,7 +85,7 @@ NSString *XspfQTMovieDidPauseNotification = @"XspfQTMovieDidPauseNotification";
 - (void)hideMenuBar;
 - (void)showMenuBar;
 @end
-#ifndef NSApplicationPresentationOptions
+#ifndef MAC_OS_X_VERSION_10_6
 @interface NSApplication (XspfQT)
 typedef NSUInteger NSApplicationPresentationOptions;
 - (NSApplicationPresentationOptions)presentationOptions;
