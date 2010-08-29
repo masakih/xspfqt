@@ -110,6 +110,16 @@ static XspfQTPreference *sharedInstance = nil;
 }
 
 #pragma mark-
++ (void)initialize
+{
+	static BOOL isFirst = YES;
+	
+	if(isFirst) {
+		isFirst = NO;
+		
+		XspfQTPref = [self sharedInstance];
+	}
+}
 - (id)init
 {
 	self = [super init];
