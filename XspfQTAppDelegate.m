@@ -151,16 +151,19 @@
 #pragma mark ### NSMenu valivation ###
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
+	SEL action = [menuItem action];
+	
 	id windowController = [mainWindowStore windowController];
-	if([menuItem action] == @selector(togglePlayAndPause:)) {
+	if(action == @selector(togglePlayAndPause:)) {
 		if(![windowController respondsToSelector:@selector(togglePlayAndPause:)]) return NO;
 	}
-	if([menuItem action] == @selector(nextTrack:)) {
+	if(action == @selector(nextTrack:)) {
 		if(![windowController respondsToSelector:@selector(nextTrack:)]) return NO;
 	}
-	if([menuItem action] == @selector(previousTrack:)) {
+	if(action == @selector(previousTrack:)) {
 		if(![windowController respondsToSelector:@selector(previousTrack:)]) return NO;
 	}
+	if(action == @selector(showPreferenceWindow:)) return YES;
 	
 	if([menuItem tag] == 10000) {
 		NSWindow *m = mainWindowStore;
