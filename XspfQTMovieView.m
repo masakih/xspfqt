@@ -107,7 +107,7 @@
 		NSTimeInterval cur;
 		if(!QTGetTimeInterval(current, &cur)) return;
 		
-		CGFloat newTime = cur - sign * 0.08 * (0.1 * deltaX * deltaX + deltaX);
+		CGFloat newTime = cur - sign * 0.008 * deltaX * deltaX;
 		if(newTime < 0) newTime = 0;
 		QTTime new = QTMakeTimeWithTimeInterval(newTime);
 		
