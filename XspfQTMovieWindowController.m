@@ -177,6 +177,13 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	}
 	return displayName;
 }
+- (IBAction)showWindow:(id)sender
+{
+	if(!fullScreenMode) {
+		[super showWindow:sender];
+		return;
+	}
+}
 
 #pragma mark ### KVO & KVC ###
 - (void)observeValueForKeyPath:(NSString *)keyPath
