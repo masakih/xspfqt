@@ -89,16 +89,19 @@
 - (void)scrollWheel:(NSEvent *)theEvent
 {
 	BOOL cancelVolumeControl = NO;	
+	BOOL cancelTimeControl = NO;	
 	CGFloat deltaX = [theEvent deltaX];
 	CGFloat deltaY = [theEvent deltaY];
 	
-	if(fabs(deltaY / deltaX) < 0.5) {
+	if(fabs(deltaY / deltaX) < 1.5) {
 		cancelVolumeControl = YES;
+	} else {
+		cancelTimeControl = YES;
 	}
 	
 //	NSLog(@"X -> %.2f, Y -> %.2f", deltaX, deltaY);
 	
-	if(deltaX != 0) {
+	if(deltaX != 0 && !cancelTimeControl) {
 		int sign = deltaX < 0 ? -1 : 1;
 		if(sign == -1) deltaX = -deltaX;
 		
@@ -116,7 +119,7 @@
 	if(deltaY != 0 && !cancelVolumeControl) {
 		QTMovie *movie = [self movie];
 		CGFloat vol = [movie volume];
-		[movie setVolume:vol + deltaY / 20];
+		[movie setVolume:vol + deltaY / 40];
 	}
 	
 //	[super scrollWheel:theEvent];
