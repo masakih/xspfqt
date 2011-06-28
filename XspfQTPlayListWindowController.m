@@ -161,12 +161,17 @@ static NSString *const XspfQTTitleKey = @"title";
 {
 	if([theEvent isARepeat]) return;
 	
-	unsigned short code = [theEvent keyCode];
-	if(code == 49 /* space bar */) {
-		[[self document] togglePlayAndPause:self];
-	}
-	if(code == 51 /* delete key */) {
-		[self delete:self];
+	NSString *charactor = [theEvent charactersIgnoringModifiers];
+	if([charactor length] == 0) return;
+	
+	unichar uc = [charactor characterAtIndex:0];
+	switch(uc) {
+		case ' ':
+			[NSApp sendAction:@selector(togglePlayAndPause:) to:nil from:nil];
+			break;
+		case NSDeleteCharacter:
+			[self delete:self];
+			break;
 	}
 }
 - (NSString *)clickedMoviePath

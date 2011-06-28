@@ -66,22 +66,18 @@
 
 - (void)keyDown:(NSEvent *)event
 {
-#define kPeriodKeyCode	47
-#define kRightKeyCode	123
-#define kLeftKeyCode	124
-#define kDownKeyCode	125
-#define kUpKeyCode		126
-	//
-	switch([event keyCode]) {
-		case kPeriodKeyCode:
-		case kRightKeyCode:
-		case kLeftKeyCode:
-		case kDownKeyCode:
-		case kUpKeyCode:
+	NSString *charactor = [event charactersIgnoringModifiers];
+	if([charactor length] == 0) return [super keyDown:event];
+	
+	unichar uc = [charactor characterAtIndex:0];
+	switch(uc) {
+		case '.':
+		case NSUpArrowFunctionKey:
+		case NSDownArrowFunctionKey:
+		case NSLeftArrowFunctionKey:
+		case NSRightArrowFunctionKey:
 			return;
 	}
-	
-//	NSLog(@"KeyCode -> %d", [event keyCode]);
 	
 	[super keyDown:event];
 }
