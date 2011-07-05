@@ -2,7 +2,6 @@
 #include <CoreServices/CoreServices.h>
 
 #import <Foundation/Foundation.h>
-#import <QTKit/QTKit.h>
 
 #import "HMXSPFComponent.h"
 
@@ -44,7 +43,52 @@
   
    ----------------------------------------------------------------------------- */
 
+@protocol XspfQTSpotlightIndexerProtocol
+- (NSDictionary *)dataFromURL:(NSURL *)url;
+@end
 
+
+
+Boolean setAttributeWithRegisteredName( CFMutableDictionaryRef attributes,
+									   CFStringRef pathToFile,
+									   NSString *registeredName)
+{
+	id pool = [[NSAutoreleasePool alloc] init];
+	
+//	NSLog(@"Current -> %@\n", attributes);
+	
+	NSConnection *con = [NSConnection connectionWithRegisteredName:registeredName
+															  host:nil];
+	if(!con) {
+		NSLog(@"Can not get connection named %@", registeredName);
+		return YES;
+	}
+	
+	id proxy = [con rootProxy];
+	if(!proxy) {
+		NSLog(@"Can not get root proxy.");
+		return FALSE;
+	}
+	
+	[proxy setProtocolForProxy:@protocol(XspfQTSpotlightIndexerProtocol)];
+	
+	NSURL *urlForFile = [NSURL fileURLWithPath:(NSString *)pathToFile];
+	NSDictionary *dict = [proxy dataFromURL:urlForFile];
+	if(!dict) {
+		NSLog(@"Can not get data");
+		return FALSE;
+	}
+	
+//	NSLog(@"Getting data -> %@", dict);
+	[(NSMutableDictionary *)attributes addEntriesFromDictionary:dict];
+	
+	[pool release];
+	return TRUE;
+fail:
+	
+	[pool release];
+	return FALSE;
+}
 
 /* -----------------------------------------------------------------------------
     Get metadata attributes from file
@@ -61,57 +105,14 @@ Boolean GetMetadataForFile(void* thisInterface,
     /* Pull any available metadata from the file at the specified path */
     /* Return the attribute keys and attribute values in the dict */
     /* Return TRUE if successful, FALSE if there was no data provided */
-    
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-//	if(![NSThread isMainThread]) {
-//		NSLog(@"there is not main thread");
-//		return FALSE;
-//	}
-	
-//	NSLog(@"QTMovie class -> %@", NSStringFromClass([QTMovie class]));
-	
-	NSMutableDictionary *attr = (NSMutableDictionary *)attributes;
-	
-	NSError *error = nil;
-	NSURL *urlForFile = [NSURL fileURLWithPath:(NSString *)pathToFile];
-	NSXMLDocument *d = [[[NSXMLDocument alloc] initWithContentsOfURL:(NSURL *)urlForFile
-															 options:0
-															   error:&error] autorelease];
-	if(error) {
-		NSLog(@"%@", error);
-		goto fail;
-	}
-	NSXMLElement *root = [d rootElement];
-	id playlist = [HMXSPFComponent xspfComponentWithXMLElement:root];
-	if(!playlist) {
-		NSLog(@"Can not create HMXSPFComponent.");
-		goto fail;
-	}
-		
-	NSArray *tracks = [[playlist childAtIndex:0] children];
-	CGFloat totalDuration = 0.0;
-	for(HMXSPFComponent *track in tracks) {
-		totalDuration += [[track duration] timeIntervalSince1970] + [[NSTimeZone systemTimeZone] secondsFromGMT];
-		
-		NSURL *url = [track movieLocation];
-		NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
-							   (id)url, QTMovieURLAttribute,
-							   [NSNumber numberWithBool:NO], QTMovieOpenAsyncOKAttribute,
-							   nil];
-		QTMovie *movie = [QTMovie movieWithAttributes:attrs error:nil];
-		if(!movie) {
-			NSLog(@"We can not create QTMovie.");
-		}
-	}
-	[attr setObject:[NSNumber numberWithDouble:totalDuration]
-			 forKey:(NSString *)kMDItemDurationSeconds];
+	Boolean res01 = setAttributeWithRegisteredName(attributes, pathToFile, @"XspfQTSpotlightIndexer");
+	Boolean res02 = setAttributeWithRegisteredName(attributes, pathToFile, @"XspfManagerSpotlightIndexer");
+	CFDictionarySetValue(attributes, @"com_masaki_xspf_duration", kCFNull);
+	CFDictionarySetValue(attributes, @"com_masaki_xspf_movieNumber", kCFNull);
+	CFDictionarySetValue(attributes, @"com_masaki_xspf_subtitle", kCFNull);
 	
 	
-	[pool release];
-	return TRUE;
-fail:
 	
-    [pool release];
-	return FALSE;
+	return res01 || res02;
 }
