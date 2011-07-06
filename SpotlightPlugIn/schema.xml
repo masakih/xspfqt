@@ -8,6 +8,7 @@
 		<attribute name="com_masakih_xspf_subtitle" multivalued="true" type="CFString" />
 		<attribute name="com_masakih_xspf_voiceActor" multivalued="true" type="CFString" />
 		<attribute name="com_masakih_xspf_products" multivalued="true" type="CFString" />
+		<attribute name="com_masakih_xspf_label" multivalued="failse" type="CFNumber" />
 		<attribute name="kMDItemStarRating" multivalued="failse" type="CFNumber" />
     </attributes>
 	
@@ -19,6 +20,7 @@
 				com_masakih_xspf_subtitle
 				com_masakih_xspf_voiceActor
 				com_masakih_xspf_products
+				com_masakih_xspf_label
 				kMDItemStarRating
             </allattrs>
 			
@@ -29,6 +31,7 @@
 				com_masakih_xspf_subtitle
 				com_masakih_xspf_voiceActor
 				com_masakih_xspf_products
+				com_masakih_xspf_label
 				kMDItemStarRating
             </displayattrs>
             
