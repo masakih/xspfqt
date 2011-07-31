@@ -77,6 +77,17 @@
 		case NSLeftArrowFunctionKey:
 		case NSRightArrowFunctionKey:
 			return;
+		case 27:
+		{
+			NSResponder *next = [self nextResponder];
+			while(next) {
+				if([next respondsToSelector:@selector(cancelOperation:)]) {
+					[next cancelOperation:nil];
+					return;
+				}
+				next = [next nextResponder];
+			}
+		}
 	}
 	
 	[super keyDown:event];

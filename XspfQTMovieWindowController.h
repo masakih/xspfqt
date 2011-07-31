@@ -68,6 +68,8 @@
 	IBOutlet QTMovieView *qtView;
 	IBOutlet NSButton *playButton;
 	
+	IBOutlet NSView *controllerView;
+	
 	NSWindow *fullscreenWindow;
 	NSRect normalModeSavedFrame;
 	BOOL fullScreenMode;

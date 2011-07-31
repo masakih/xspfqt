@@ -140,6 +140,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 - (void)awakeFromNib
 {
 	prevMouseMovedDate = [[NSDate dateWithTimeIntervalSinceNow:0.0] retain];
+	[[self window] setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
 	
 	id doc = [self document];
 	
@@ -487,6 +488,11 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 - (IBAction)toggleFullScreenMode:(id)sender
 {
+	if([[self window] respondsToSelector:@selector(toggleFullScreen:)]) {
+		[[self window] toggleFullScreen:self];
+		return;
+	}
+	
 	if(fullScreenMode) {
 		[self exitFullScreen];
 		fullScreenMode = NO;
@@ -713,6 +719,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 - (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
 {
+	if(fullScreenMode) return frameSize;
 	if(isChangingFullScreen) return frameSize;
 	
 	return [self fitSizeToSize:frameSize];
@@ -726,4 +733,42 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 		}
 	}
 }
+- (void)hideController:(id)sender
+{
+	for(NSView *view in [controllerView subviews]) {
+		[view setHidden:YES];
+	}
+}
+- (void)showController:(id)sender
+{
+	for(NSView *view in [controllerView subviews]) {
+		[view setHidden:NO];
+	}
+}
+- (void)windowWillEnterFullScreen:(NSNotification *)notification
+{
+	fullScreenMode = YES;
+	
+	NSSize windowContentSize = [[[self window] contentView] frame].size;
+	NSRect qtViewFrame = [qtView frame];
+	qtViewFrame.size = windowContentSize;
+	qtViewFrame.origin = NSZeroPoint;
+	[qtView setFrame:qtViewFrame];
+	
+	[self hideController:nil];
+}
+
+- (void)windowWillExitFullScreen:(NSNotification *)notification
+{
+	NSRect windowContentRect = [[[self window] contentView] frame];
+	NSSize controllerSize= [controllerView frame].size;
+	windowContentRect.size.height -= controllerSize.height;
+	windowContentRect.origin.y = controllerSize.height;
+	[qtView setFrame:windowContentRect];
+	[self showController:nil];
+	
+	fullScreenMode = NO;
+}
+
+
 @end
