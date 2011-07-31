@@ -72,7 +72,7 @@
 		if(!movie) {
 			NSLog(@"We can not create QTMovie.");
 		}
-		NSLog(@"QTMovie load successful.");
+//		NSLog(@"QTMovie load successful.");
 		
 		QTTime qtTime = [movie duration];
 		id tr = [[[XspfQTTimeDateTransformer alloc] init] autorelease];

@@ -4,12 +4,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.apple.com/metadata file:///System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Resources/MetadataSchema.xsd">
 	<attributes>
-		<attribute name="com_masakih_xspf_movieNumber" multivalued="failse" type="CFNumber" />
+		<attribute name="com_masakih_xspf_movieNumber" multivalued="false" type="CFNumber" />
 		<attribute name="com_masakih_xspf_subtitle" multivalued="true" type="CFString" />
 		<attribute name="com_masakih_xspf_voiceActor" multivalued="true" type="CFString" />
 		<attribute name="com_masakih_xspf_products" multivalued="true" type="CFString" />
-		<attribute name="com_masakih_xspf_label" multivalued="failse" type="CFNumber" />
-		<attribute name="kMDItemStarRating" multivalued="failse" type="CFNumber" />
+		<attribute name="com_masakih_xspf_label" multivalued="false" type="CFNumber" />
+		<attribute name="kMDItemStarRating" multivalued="false" type="CFNumber" />
     </attributes>
 	
 	
