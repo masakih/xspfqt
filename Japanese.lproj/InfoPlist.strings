@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleGetInfoString</key>
-	<string>XspfQT 1.11</string>
+	<string>XspfQT 1.12</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>© masakih, 2008-2010</string>
+	<string>© masakih, 2008-2011</string>
 </dict>
 </plist>
