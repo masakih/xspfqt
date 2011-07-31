@@ -67,13 +67,11 @@
 #import "XspfQTPreferenceWindowController.h"
 
 
-#import "AppleRemote.h"
-#import "MultiClickRemoteBehavior.h"
+#import "XspfMAppleRemoteSupport.h"
+
 
 
 @implementation XspfQTAppDelegate
-@synthesize remoteControl;
-
 
 + (void)initialize
 {
@@ -82,13 +80,7 @@
 
 - (void)awakeFromNib
 {
-	self.remoteControl = [[[AppleRemote alloc] initWithDelegate:self] autorelease];
-	
-	remoteBehavior = [MultiClickRemoteBehavior new];		
-	[remoteBehavior setDelegate:self];
-	[remoteControl setDelegate:remoteBehavior];
-//	[remoteBehavior setClickCountingEnabled:YES];
-	[remoteBehavior setClickCountEnabledButtons:kRemoteButtonLeft | kRemoteButtonRight];
+	appleRemoteSupprt = [[XspfMAppleRemoteSupport alloc] init];
 
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -106,8 +98,7 @@
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc removeObserver:self];
 	
-	self.remoteControl = nil;
-	[remoteBehavior autorelease];
+	[appleRemoteSupprt release];
 	
 	[super dealloc];
 }
@@ -205,11 +196,6 @@
 - (void)applicationWillResignActive:(NSNotification *)notification
 {
 	[self storeMainWindow];
-	[remoteControl stopListening:self];
-}
-- (void)applicationWillBecomeActive:(NSNotification *)aNotification
-{
-	[remoteControl startListening:self];
 }
 - (void)applicationDidUnhide:(NSNotification *)notification
 {
@@ -229,74 +215,4 @@
 	[self unsaveMainWindow];
 } 
 
-
-#pragma mark-
-#pragma mark#### Apple Remote Control Wrapper ####
-
-static NSInteger XSPFQTmoveValue= 10;
-- (void)remoteButtonDown:(RemoteControlEventIdentifier)identifier clickCount:(unsigned int)clickCount
-{
-	SEL action = NULL;
-	
-	switch(identifier) {
-		case kRemoteButtonPlus:
-			action = @selector(turnUpVolume:);
-			break;
-		case kRemoteButtonMinus:
-			action = @selector(turnDownVolume:);
-			break;			
-		case kRemoteButtonMenu:
-			action = @selector(toggleFullScreenMode:);
-			break;			
-		case kRemoteButtonPlay:
-			action = @selector(togglePlayAndPause:);
-			break;			
-		case kRemoteButtonRight:
-			XSPFQTmoveValue = 10 * clickCount;
-			action = @selector(forwardTagValueSecends:);
-			break;			
-		case kRemoteButtonLeft:
-			XSPFQTmoveValue = 10 * clickCount;
-			action = @selector(backwardTagValueSecends:);
-			break;			
-		case kRemoteButtonRight_Hold:
-			action = @selector(nextTrack:);
-			break;	
-		case kRemoteButtonLeft_Hold:
-			action = @selector(gotoBeginningOrPreviousTrack:);
-			break;			
-		case kRemoteButtonPlus_Hold:
-			action = NULL;
-			break;				
-		case kRemoteButtonMinus_Hold:
-			action = NULL;
-			break;				
-		case kRemoteButtonPlay_Hold:
-			action = NULL;
-			break;			
-		case kRemoteButtonMenu_Hold:
-			action = @selector(showHidePlayList:);
-			break;
-		case kRemoteControl_Switched:
-			action = NULL;
-			break;
-		default:
-			NSLog(@"Unmapped event for button %d", identifier);
-			break;
-	}
-	
-	if(!action) return;
-	
-	[NSApp sendAction:action to:nil from:self];
-}
-- (NSInteger)tag
-{
-	return XSPFQTmoveValue;
-}
-- (void)remoteButton:(RemoteControlEventIdentifier)identifier pressedDown:(BOOL)pressedDown clickCount:(unsigned int)clickCount
-{
-	if(pressedDown) {
-		[self remoteButtonDown:identifier clickCount:clickCount];
-	}
-}
 @end

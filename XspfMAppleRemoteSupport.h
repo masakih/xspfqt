@@ -1,13 +1,13 @@
 //
-//  XspfQTAppDelegate.h
-//  XspfQT
+//  XspfMAppleRemoteSupport.h
+//  XspfManager
 //
-//  Created by Hori,Masaki on 08/08/31.
+//  Created by Hori,Masaki on 10/12/29.
 //
 
 /*
  This source code is release under the New BSD License.
- Copyright (c) 2008-2009, masakih
+ Copyright (c) 2010, masakih
  All rights reserved.
  
  ソースコード形式かバイナリ形式か、変更するかしないかを問わず、以下の条件を満たす場合に
@@ -29,7 +29,7 @@
  されない）直接損害、間接損害、偶発的な損害、特別損害、懲罰的損害、または結果損害につい
  て、一切責任を負わないものとします。
  -------------------------------------------------------------------
- Copyright (c) 2008-2009, masakih
+ Copyright (c) 2010, masakih
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -37,14 +37,14 @@
  are met:
  
  1, Redistributions of source code must retain the above copyright
-    notice, this list of conditions and the following disclaimer.
+ notice, this list of conditions and the following disclaimer.
  2, Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions and the following disclaimer in
-    the documentation and/or other materials provided with the
-    distribution.
+ notice, this list of conditions and the following disclaimer in
+ the documentation and/or other materials provided with the
+ distribution.
  3, The names of its contributors may be used to endorse or promote
-    products derived from this software without specific prior
-    written permission.
+ products derived from this software without specific prior
+ written permission.
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
@@ -57,20 +57,21 @@
  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  POSSIBILITY OF SUCH DAMAGE.
-*/
+ */
 
 #import <Cocoa/Cocoa.h>
 
-@class XspfMAppleRemoteSupport;
+@class AppleRemote, MultiClickRemoteBehavior;
 
-@interface XspfQTAppDelegate : NSObject
+@interface XspfMAppleRemoteSupport : NSObject
 {
-	NSWindow *mainWindowStore;
+	AppleRemote *remoteControl;
+	MultiClickRemoteBehavior *remoteBehavior;
 	
-	XspfMAppleRemoteSupport *appleRemoteSupprt;
+	NSUInteger prevHoldEvent;
 }
 
-- (IBAction)openInformationPanel:(id)sender;
-- (IBAction)showPreferenceWindow:(id)sender;
-- (IBAction)playedTrack:(id)sender;
+@property (nonatomic, retain, readonly) AppleRemote *remoteControl;
+@property (nonatomic, retain, readonly) MultiClickRemoteBehavior *remoteBehavior;
+
 @end
