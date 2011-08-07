@@ -401,7 +401,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	[qtView release];
 		
 	NSTimeInterval delay = [[NSAnimationContext currentContext] duration] + 0.07;
-	NSLog(@"delay %f", delay);
 	[self performSelector:@selector(resizeFullscreenWindow:) withObject:nil afterDelay:delay];
 }
 - (void)resizeFullscreenWindow:(id)obj
