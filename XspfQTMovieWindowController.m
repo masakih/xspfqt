@@ -261,6 +261,8 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 - (void)sizeTofitWidnow
 {
+	if(fullScreenMode) return;
+	
 	id window = [self window];
 	NSRect frame = [window frame];
 	NSSize newSize = [self fitSizeToSize:frame.size];
@@ -345,33 +347,28 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	normalModeSavedFrame = [qtView frame];
 	
 	XspfQTMovieWindow *player = (XspfQTMovieWindow *)[self window];
-	NSRect originalWFrame = [player frame];
 	
 	[self hideMenuBar];
 	
-	NSRect newWFrame = [[NSScreen mainScreen] frame];
+	NSRect newFrame = [qtView frame];
+	newFrame.origin = [player convertBaseToScreen:newFrame.origin];
+	newFrame.origin = [fullscreen convertScreenToBase:newFrame.origin];
+	[qtView setFrame:newFrame];
 	
-	newWFrame.size.width += windowSizeWithoutQTView.width;
-	newWFrame.size.height += windowSizeWithoutQTView.height;
-	newWFrame.origin.y -= windowSizeWithoutQTView.height;
-	
-	isChangingFullScreen = YES;
-	[player setIsChangingFullScreen:YES];
-	
-	[player setFrame:newWFrame display:YES animate:YES];
-	
-	[player setIsChangingFullScreen:NO];
-	isChangingFullScreen = NO;
-	
-	[fullscreen setContentView:qtView];
+	[[fullscreen contentView] addSubview:qtView];
 	[fullscreen makeKeyAndOrderFront:self];
-	
 	[fullscreen makeFirstResponder:qtView];
 	
-	[player orderOut:self];
-	[player setFrame:originalWFrame display:NO];
+	[[qtView animator] setFrame:[[NSScreen mainScreen] frame]];
+		
+	[self performSelector:@selector(resizeToFull:) withObject:nil afterDelay:0.1];
+}
+- (void)resizeToFull:(id)obj
+{
+		
+	[[self window] orderOut:self];
 	
-	[fullscreen makeKeyAndOrderFront:self];
+	[fullscreenWindow makeKeyAndOrderFront:self];
 }
 - (void)exitFullScreen
 {
@@ -385,45 +382,43 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 		CGFloat newViewHeight =  normalModeSavedFrame.size.width * (movieSize.height / movieSize.width);
 		
 		windowRect.size.height = newViewHeight + windowSizeWithoutQTView.height;
-		windowRect.origin.y -= windowRect.size.height - originalWFrame.size.height + [player titlebarHeight];
+		windowRect.origin.y -= windowRect.size.height - originalWFrame.size.height;
 	}
-	
-	isChangingFullScreen = YES;
-	[player setIsChangingFullScreen:YES];
-	
-	// caluculate screen size window frame.
-	NSRect screenWFrame = [[NSScreen mainScreen] frame];	
-	screenWFrame.size.width += windowSizeWithoutQTView.width;
-	screenWFrame.size.height += windowSizeWithoutQTView.height;
-	screenWFrame.origin.y -= windowSizeWithoutQTView.height;
-	[player setFrame:screenWFrame display:NO];
-	
-	isChangingFullScreen = NO;
+
+	[player setFrame:windowRect display:NO];
+	[player orderWindow:NSWindowBelow relativeTo:[fullscreenWindow windowNumber]];
 	
 	// move QTView.
 	[qtView retain];
 	{
-//		[qtView removeFromSuperview];
-		NSRect fViewRec = [qtView frame];
-		
-		// for do not flushing qtview.
-		[fullscreenWindow setContentView:[[[NSView alloc] initWithFrame:fViewRec] autorelease]];
-		
-		fViewRec.origin.y += windowSizeWithoutQTView.height - [player titlebarHeight];
-		[qtView setFrame:fViewRec];
-		[[player contentView] addSubview:qtView];
+		NSRect movieViewFrame = [[player contentView] frame];
+		movieViewFrame.size.height -= [controllerView frame].size.height;
+		movieViewFrame.origin.y = [controllerView frame].size.height;
+		movieViewFrame.origin = [player convertBaseToScreen:movieViewFrame.origin];
+		movieViewFrame.origin = [fullscreenWindow convertScreenToBase:movieViewFrame.origin];
+		[[qtView animator] setFrame:movieViewFrame];
 	}
 	[qtView release];
+		
+	NSTimeInterval delay = [[NSAnimationContext currentContext] duration] + 0.07;
+	NSLog(@"delay %f", delay);
+	[self performSelector:@selector(resizeFullscreenWindow:) withObject:nil afterDelay:delay];
+}
+- (void)resizeFullscreenWindow:(id)obj
+{	
+	XspfQTMovieWindow *player = (XspfQTMovieWindow *)[self window];
+	
+	NSRect r = [qtView frame];
+	r.origin.x = 0;
+	r.origin.y = [controllerView frame].size.height;
+	[qtView setFrame:r];
+	[[player contentView] addSubview:qtView];
+	[fullscreenWindow orderOut:self];
+	
+	[self showMenuBar];
 	
 	[player makeKeyAndOrderFront:self];
 	[player makeFirstResponder:qtView];
-	
-	[fullscreenWindow orderOut:self];
-	
-	[player setFrame:windowRect display:YES animate:YES];
-	
-	[self showMenuBar];
-	[player setIsChangingFullScreen:NO];
 }
 
 - (NSWindow *)fullscreenWindow
@@ -436,9 +431,14 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 																   backing:NSBackingStoreBuffered
 																	 defer:YES];
 	[fullscreenWindow setReleasedWhenClosed:NO];
-	[fullscreenWindow setBackgroundColor:[NSColor blackColor]];
+	[fullscreenWindow setBackgroundColor:[[NSColor blackColor] colorWithAlphaComponent:0.5]];
 	[fullscreenWindow setDelegate:self];
 	[fullscreenWindow setWindowController:self];
+	[fullscreenWindow setOpaque:NO];
+	
+	if([fullscreenWindow respondsToSelector:@selector(setAnimationBehavior:)]) {
+		[fullscreenWindow setAnimationBehavior:NSWindowAnimationBehaviorNone];
+	}
 	
 	return fullscreenWindow;
 }
@@ -788,6 +788,10 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	[self showController:nil];
 	
 	fullScreenMode = NO;
+}
+- (void)windowDidExitFullScreen:(NSNotification *)notification
+{
+	[self sizeTofitWidnow];
 }
 
 

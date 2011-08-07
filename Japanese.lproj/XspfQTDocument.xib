@@ -58,7 +58,7 @@
 			<object class="NSWindowTemplate" id="275939982">
 				<int key="NSWindowStyleMask">271</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{110, 233}, {512, 392}}</string>
+				<string key="NSWindowRect">{{110, 233}, {512, 394}}</string>
 				<int key="NSWTFlags">1886912512</int>
 				<string key="NSWindowTitle">ウインドウ</string>
 				<string key="NSWindowClass">XspfQTMovieWindow</string>
@@ -83,7 +83,7 @@
 									<string>QTMoviePasteboardType</string>
 								</object>
 							</object>
-							<string key="NSFrame">{{0, 79}, {512, 313}}</string>
+							<string key="NSFrame">{{0, 81}, {512, 313}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="1041865215"/>
@@ -432,7 +432,7 @@
 							<string key="NSClassName">NSView</string>
 						</object>
 					</object>
-					<string key="NSFrameSize">{512, 392}</string>
+					<string key="NSFrameSize">{512, 394}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="253631846"/>
@@ -715,8 +715,8 @@
 						<reference key="object" ref="568628114"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="68206290"/>
 							<reference ref="253631846"/>
+							<reference ref="68206290"/>
 						</object>
 						<reference key="parent" ref="275939982"/>
 					</object>
@@ -1023,6 +1023,7 @@
 							<string>backwardTagValueSecends:</string>
 							<string>doubleSize:</string>
 							<string>forwardTagValueSecends:</string>
+							<string>gotoBeginningOrPreviousTrack:</string>
 							<string>gotoThumbnailFrame:</string>
 							<string>halfSize:</string>
 							<string>nextTrack:</string>
@@ -1049,6 +1050,7 @@
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
+							<string>id</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
@@ -1058,6 +1060,7 @@
 							<string>backwardTagValueSecends:</string>
 							<string>doubleSize:</string>
 							<string>forwardTagValueSecends:</string>
+							<string>gotoBeginningOrPreviousTrack:</string>
 							<string>gotoThumbnailFrame:</string>
 							<string>halfSize:</string>
 							<string>nextTrack:</string>
@@ -1081,6 +1084,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">forwardTagValueSecends:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">gotoBeginningOrPreviousTrack:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
