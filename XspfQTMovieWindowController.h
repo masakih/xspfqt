@@ -63,7 +63,7 @@
 #import <QTKit/QTKit.h>
 
 
-@interface XspfQTMovieWindowController : NSWindowController
+@interface XspfQTMovieWindowController : NSWindowController <NSWindowDelegate>
 {
 	IBOutlet QTMovieView *qtView;
 	IBOutlet NSButton *playButton;
