@@ -151,7 +151,7 @@ static XspfQTMovieTimer* timer = nil;
 	[movieWindowController setShouldCloseDocument:YES];
 	[self addWindowController:movieWindowController];
 	
-	[[playListWindowController window] setParentWindow:[movieWindowController window]];
+	[movieWindowController showWindow:nil];
 	
 	[timer put:self];
 }
