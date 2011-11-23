@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
-		<int key="IBDocument.SystemTarget">1040</int>
-		<string key="IBDocument.SystemVersion">11A511</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1617</string>
-		<string key="IBDocument.AppKitVersion">1138</string>
-		<string key="IBDocument.HIToolboxVersion">566.00</string>
+		<int key="IBDocument.SystemTarget">1060</int>
+		<string key="IBDocument.SystemVersion">11C74</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
+		<string key="IBDocument.AppKitVersion">1138.23</string>
+		<string key="IBDocument.HIToolboxVersion">567.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
@@ -15,8 +15,8 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>1617</string>
-				<string>518</string>
+				<string>1938</string>
+				<string>822</string>
 			</object>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
@@ -41,11 +41,8 @@
 			<string>com.apple.QTKitIBPlugin</string>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.Metadata">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<object class="NSArray" key="dict.sortedKeys" id="0">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-			</object>
-			<reference key="dict.values" ref="0"/>
+			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
+			<integer value="1" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="580458321">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -85,7 +82,6 @@
 							</object>
 							<string key="NSFrame">{{0, 81}, {512, 313}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="1041865215"/>
 							<object class="NSColor" key="kCoderFillColor" id="336208240">
 								<int key="NSColorSpace">3</int>
@@ -116,7 +112,6 @@
 													<int key="NSvFlags">288</int>
 													<string key="NSFrame">{{49, 0}, {40, 25}}</string>
 													<reference key="NSSuperview" ref="1065258194"/>
-													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="212491948"/>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSButtonCell" key="NSCell" id="231199320">
@@ -142,7 +137,6 @@
 													<int key="NSvFlags">288</int>
 													<string key="NSFrame">{{161, 0}, {40, 25}}</string>
 													<reference key="NSSuperview" ref="1065258194"/>
-													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="384134888"/>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSButtonCell" key="NSCell" id="676707053">
@@ -164,7 +158,6 @@
 													<int key="NSvFlags">288</int>
 													<string key="NSFrame">{{97, 0}, {56, 25}}</string>
 													<reference key="NSSuperview" ref="1065258194"/>
-													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="751216697"/>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSButtonCell" key="NSCell" id="263903718">
@@ -190,7 +183,6 @@
 													<int key="NSvFlags">288</int>
 													<string key="NSFrame">{{1, 0}, {40, 25}}</string>
 													<reference key="NSSuperview" ref="1065258194"/>
-													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="987498721"/>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSButtonCell" key="NSCell" id="730760476">
@@ -212,7 +204,6 @@
 													<int key="NSvFlags">256</int>
 													<string key="NSFrame">{{209, 0}, {40, 25}}</string>
 													<reference key="NSSuperview" ref="1065258194"/>
-													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="83531156"/>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSButtonCell" key="NSCell" id="597413880">
@@ -232,13 +223,11 @@
 											</object>
 											<string key="NSFrameSize">{254, 27}</string>
 											<reference key="NSSuperview" ref="88830940"/>
-											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="930851408"/>
 										</object>
 									</object>
 									<string key="NSFrame">{{97, 17}, {254, 27}}</string>
 									<reference key="NSSuperview" ref="68206290"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="1065258194"/>
 									<string key="NSOffsets">{0, 0}</string>
 									<object class="NSTextFieldCell" key="NSTitleCell">
@@ -275,7 +264,6 @@
 									<int key="NSvFlags">289</int>
 									<string key="NSFrame">{{362, 16}, {16, 25}}</string>
 									<reference key="NSSuperview" ref="68206290"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="685440805"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="198946376">
@@ -301,7 +289,6 @@
 									<int key="NSvFlags">289</int>
 									<string key="NSFrame">{{414, 22}, {78, 15}}</string>
 									<reference key="NSSuperview" ref="68206290"/>
-									<reference key="NSWindow"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSliderCell" key="NSCell" id="991841096">
 										<int key="NSCellFlags">-2079981824</int>
@@ -324,7 +311,6 @@
 									<int key="NSvFlags">289</int>
 									<string key="NSFrame">{{390, 21}, {18, 18}}</string>
 									<reference key="NSSuperview" ref="68206290"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="566792223"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="329838686">
@@ -353,7 +339,6 @@
 									<int key="NSvFlags">292</int>
 									<string key="NSFrame">{{20, 21}, {57, 19}}</string>
 									<reference key="NSSuperview" ref="68206290"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="88830940"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSTextFieldCell" key="NSCell" id="779350148">
@@ -401,7 +386,6 @@
 									<int key="NSvFlags">290</int>
 									<string key="NSFrame">{{18, 48}, {476, 26}}</string>
 									<reference key="NSSuperview" ref="68206290"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="254498101"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSliderCell" key="NSCell" id="807602940">
@@ -427,14 +411,12 @@
 							</object>
 							<string key="NSFrameSize">{512, 81}</string>
 							<reference key="NSSuperview" ref="568628114"/>
-							<reference key="NSWindow"/>
 							<string key="NSReuseIdentifierKey">_NS:499</string>
 							<string key="NSClassName">NSView</string>
 						</object>
 					</object>
 					<string key="NSFrameSize">{512, 394}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="253631846"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
@@ -452,35 +434,11 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">delegate</string>
-						<reference key="source" ref="275939982"/>
-						<reference key="destination" ref="512844837"/>
-					</object>
-					<int key="connectionID">17</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">window</string>
 						<reference key="source" ref="512844837"/>
 						<reference key="destination" ref="275939982"/>
 					</object>
 					<int key="connectionID">18</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">gotoBeginning:</string>
-						<reference key="source" ref="253631846"/>
-						<reference key="destination" ref="987498721"/>
-					</object>
-					<int key="connectionID">100067</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">gotoEnd:</string>
-						<reference key="source" ref="253631846"/>
-						<reference key="destination" ref="751216697"/>
-					</object>
-					<int key="connectionID">100068</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -491,36 +449,60 @@
 					<int key="connectionID">100070</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: qtMovie.volume</string>
-						<reference key="source" ref="566792223"/>
-						<reference key="destination" ref="512844837"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="566792223"/>
-							<reference key="NSDestination" ref="512844837"/>
-							<string key="NSLabel">value: qtMovie.volume</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">qtMovie.volume</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
+					<object class="IBActionConnection" key="connection">
+						<string key="label">toggleFullScreenMode:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="83531156"/>
 					</object>
-					<int key="connectionID">100089</int>
+					<int key="connectionID">100096</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: qtMovie.muted</string>
-						<reference key="source" ref="685440805"/>
-						<reference key="destination" ref="512844837"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="685440805"/>
-							<reference key="NSDestination" ref="512844837"/>
-							<string key="NSLabel">value: qtMovie.muted</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">qtMovie.muted</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
+					<object class="IBActionConnection" key="connection">
+						<string key="label">togglePlayAndPause:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="212491948"/>
 					</object>
-					<int key="connectionID">100090</int>
+					<int key="connectionID">100102</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">playButton</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="212491948"/>
+					</object>
+					<int key="connectionID">100103</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">previousTrack:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="930851408"/>
+					</object>
+					<int key="connectionID">100108</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">nextTrack:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="384134888"/>
+					</object>
+					<int key="connectionID">100109</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">controllerView</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="68206290"/>
+					</object>
+					<int key="connectionID">100132</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="275939982"/>
+						<reference key="destination" ref="512844837"/>
+					</object>
+					<int key="connectionID">17</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -564,14 +546,6 @@
 					<int key="connectionID">100092</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">toggleFullScreenMode:</string>
-						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="83531156"/>
-					</object>
-					<int key="connectionID">100096</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">enabled: qtMovie</string>
 						<reference key="source" ref="1041865215"/>
@@ -590,54 +564,6 @@
 						</object>
 					</object>
 					<int key="connectionID">100101</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">togglePlayAndPause:</string>
-						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="212491948"/>
-					</object>
-					<int key="connectionID">100102</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">playButton</string>
-						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="212491948"/>
-					</object>
-					<int key="connectionID">100103</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">previousTrack:</string>
-						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="930851408"/>
-					</object>
-					<int key="connectionID">100108</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">nextTrack:</string>
-						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="384134888"/>
-					</object>
-					<int key="connectionID">100109</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">movie: qtMovie</string>
-						<reference key="source" ref="253631846"/>
-						<reference key="destination" ref="512844837"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="253631846"/>
-							<reference key="NSDestination" ref="512844837"/>
-							<string key="NSLabel">movie: qtMovie</string>
-							<string key="NSBinding">movie</string>
-							<string key="NSKeyPath">qtMovie</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">100129</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -671,12 +597,68 @@
 					<int key="connectionID">100130</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">controllerView</string>
-						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="68206290"/>
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: qtMovie.muted</string>
+						<reference key="source" ref="685440805"/>
+						<reference key="destination" ref="512844837"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="685440805"/>
+							<reference key="NSDestination" ref="512844837"/>
+							<string key="NSLabel">value: qtMovie.muted</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">qtMovie.muted</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
 					</object>
-					<int key="connectionID">100132</int>
+					<int key="connectionID">100090</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">gotoBeginning:</string>
+						<reference key="source" ref="253631846"/>
+						<reference key="destination" ref="987498721"/>
+					</object>
+					<int key="connectionID">100067</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">gotoEnd:</string>
+						<reference key="source" ref="253631846"/>
+						<reference key="destination" ref="751216697"/>
+					</object>
+					<int key="connectionID">100068</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">movie: qtMovie</string>
+						<reference key="source" ref="253631846"/>
+						<reference key="destination" ref="512844837"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="253631846"/>
+							<reference key="NSDestination" ref="512844837"/>
+							<string key="NSLabel">movie: qtMovie</string>
+							<string key="NSBinding">movie</string>
+							<string key="NSKeyPath">qtMovie</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">100129</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: qtMovie.volume</string>
+						<reference key="source" ref="566792223"/>
+						<reference key="destination" ref="512844837"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="566792223"/>
+							<reference key="NSDestination" ref="512844837"/>
+							<string key="NSLabel">value: qtMovie.volume</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">qtMovie.volume</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">100089</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -684,7 +666,9 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBObjectRecord">
 						<int key="objectID">0</int>
-						<reference key="object" ref="0"/>
+						<object class="NSArray" key="object" id="0">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+						</object>
 						<reference key="children" ref="580458321"/>
 						<nil key="parent"/>
 					</object>
@@ -994,199 +978,16 @@
 			<nil key="sourceID"/>
 			<int key="maxID">100132</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<object class="IBPartialClassDescription">
-					<string key="className">XspfQTMovieView</string>
-					<string key="superclassName">QTMovieView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/XspfQTMovieView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">XspfQTMovieWindow</string>
-					<string key="superclassName">NSWindow</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/XspfQTMovieWindow.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">XspfQTMovieWindowController</string>
-					<string key="superclassName">NSWindowController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>backwardTagValueSecends:</string>
-							<string>doubleSize:</string>
-							<string>forwardTagValueSecends:</string>
-							<string>gotoBeginningOrPreviousTrack:</string>
-							<string>gotoThumbnailFrame:</string>
-							<string>halfSize:</string>
-							<string>nextTrack:</string>
-							<string>normalSize:</string>
-							<string>previousTrack:</string>
-							<string>screenSize:</string>
-							<string>toggleFullScreenMode:</string>
-							<string>togglePlayAndPause:</string>
-							<string>turnDownVolume:</string>
-							<string>turnUpVolume:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>backwardTagValueSecends:</string>
-							<string>doubleSize:</string>
-							<string>forwardTagValueSecends:</string>
-							<string>gotoBeginningOrPreviousTrack:</string>
-							<string>gotoThumbnailFrame:</string>
-							<string>halfSize:</string>
-							<string>nextTrack:</string>
-							<string>normalSize:</string>
-							<string>previousTrack:</string>
-							<string>screenSize:</string>
-							<string>toggleFullScreenMode:</string>
-							<string>togglePlayAndPause:</string>
-							<string>turnDownVolume:</string>
-							<string>turnUpVolume:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">backwardTagValueSecends:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">doubleSize:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">forwardTagValueSecends:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">gotoBeginningOrPreviousTrack:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">gotoThumbnailFrame:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">halfSize:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">nextTrack:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">normalSize:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">previousTrack:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">screenSize:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">toggleFullScreenMode:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">togglePlayAndPause:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">turnDownVolume:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">turnUpVolume:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>controllerView</string>
-							<string>playButton</string>
-							<string>qtView</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>NSView</string>
-							<string>NSButton</string>
-							<string>QTMovieView</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>controllerView</string>
-							<string>playButton</string>
-							<string>qtView</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">controllerView</string>
-								<string key="candidateClassName">NSView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">playButton</string>
-								<string key="candidateClassName">NSButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">qtView</string>
-								<string key="candidateClassName">QTMovieView</string>
-							</object>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/XspfQTMovieWindowController.h</string>
-					</object>
-				</object>
-			</object>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<integer value="1040" key="NS.object.0"/>
+			<real value="1060" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<integer value="1050" key="NS.object.0"/>
+			<real value="1070" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>

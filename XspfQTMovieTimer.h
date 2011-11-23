@@ -79,3 +79,9 @@
 - (void)put:(XspfQTDocument *)doc;
 
 @end
+
+@interface NSObject(XspfQTMovieTimer)
+- (void)checkPreload:(NSTimer *)timer;
+- (void)updateTimeIfNeeded:(NSTimer *)timer;
+@end
+
