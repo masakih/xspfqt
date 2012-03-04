@@ -61,6 +61,10 @@
 
 #import <QTKit/QTKit.h>
 
+@protocol XspfQTMovieLoaderDelegate <NSObject>
+@required
+- (void)setQTMovie:(QTMovie *)movie;
+@end
 
 @interface XspfQTMovieLoader : NSObject
 {
@@ -73,19 +77,13 @@
 @property (retain) NSURL *movieURL;
 @property (readonly, retain) QTMovie *qtMovie;
 
-// throw self if delegate dose not respond setQTMovie:.
-@property (assign) id delegate;
+@property (assign) id<XspfQTMovieLoaderDelegate> delegate;
 
-
-+ (id)loaderWithMovieURL:(NSURL *)movieURL delegate:(id)delegate;
-- (id)initWithMovieURL:(NSURL *)movieURL delegate:(id)delegate;
-
++ (id)loaderWithMovieURL:(NSURL *)movieURL delegate:(id<XspfQTMovieLoaderDelegate>)delegate;
+- (id)initWithMovieURL:(NSURL *)movieURL delegate:(id<XspfQTMovieLoaderDelegate>)delegate;
 
 - (void)load;
 - (void)loadInBG;	// did finish load, it sends setQTMovie: to delegate.
 
 @end
 
-@interface NSObject (XspfQTMovieLoaderDelegate)
-- (void)setQTMovie:(QTMovie *)movie;
-@end

@@ -72,23 +72,23 @@
 @synthesize qtMovie = _qtMovie;
 @synthesize delegate = _delegate;
 
-+ (id)loaderWithMovieURL:(NSURL *)inMovieURL delegate:(id)inDelegate
++ (id)loaderWithMovieURL:(NSURL *)inMovieURL delegate:(id<XspfQTMovieLoaderDelegate>)inDelegate
 {
 	return [[[[self class] alloc] initWithMovieURL:inMovieURL delegate:inDelegate] autorelease];
 }
-- (id)initWithMovieURL:(NSURL *)inMovieURL delegate:(id)inDelegate
+- (id)initWithMovieURL:(NSURL *)inMovieURL delegate:(id<XspfQTMovieLoaderDelegate>)inDelegate
 {
 	self = [super init];
 	if(self) {
 		
 		@try {
-			[self setDelegate:inDelegate];
+			self.delegate = inDelegate;
 		}
 		@catch (XspfQTMovieLoader *me) {
 			[self autorelease];
 			return nil;
 		}
-		[self setMovieURL:inMovieURL];
+		self.movieURL = inMovieURL;
 	}
 	
 	return self;
@@ -115,20 +115,6 @@
 	return _movieURL;
 }
 
-- (void)setDelegate:(id)inDelegate
-{
-	if(inDelegate && ![inDelegate respondsToSelector:@selector(setQTMovie:)]) {
-		NSLog(@"Delegate should be respond to selector setQTMovie:");
-		@throw self;
-	}
-	
-	_delegate = inDelegate;
-}
-- (id)delegate
-{
-	return _delegate;
-}
-
 - (void)load
 {
 	QTMovie *newMovie = nil;
@@ -138,11 +124,6 @@
 	if(![QTMovie canInitWithURL:self.movieURL]) goto finish;
 	
 	NSError *error = nil;
-	//	NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
-	//						   [self location], QTMovieURLAttribute,
-	//						   [NSNumber numberWithBool:NO], QTMovieOpenAsyncOKAttribute,
-	//						   nil];
-	//	movie = [[QTMovie alloc] initWithAttributes:attrs error:&error];
 	newMovie = [[QTMovie alloc] initWithURL:self.movieURL error:&error];
 	if(error) {
 		NSLog(@"%@", error);
