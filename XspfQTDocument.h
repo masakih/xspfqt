@@ -84,6 +84,8 @@
 #endif
 }
 @property (readonly) HMXSPFComponent *trackList;
+@property (readonly, retain) QTMovie *playingMovie;
+
 
 - (IBAction)togglePlayAndPause:(id)sender;
 - (IBAction)showPlayList:(id)sender;
