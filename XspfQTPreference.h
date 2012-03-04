@@ -63,15 +63,16 @@
 
 
 @interface XspfQTPreference : NSObject
+#ifndef __LP64__
 {
-	CGFloat beginingPreloadPercent;
+	CGFloat _beginingPreloadPercent;
 }
+#endif
+
+@property (readonly) BOOL preloadingEnabled;
+@property CGFloat beginingPreloadPercent;
 
 + (XspfQTPreference *)sharedInstance;
-
-- (BOOL)preloadingEnabled;
-- (CGFloat)beginingPreloadPercent;
-- (void)setBeginingPreloadPercent:(CGFloat)newPercent;
 
 @end
 

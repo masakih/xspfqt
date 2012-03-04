@@ -69,6 +69,8 @@ static NSString *BeginningPreloadPercentKey = @"beginingPreloadPercent";
 static NSString *EnablePreloadingKey = @"EnablePreloading";
 
 @implementation XspfQTPreference
+@synthesize beginingPreloadPercent = _beginingPreloadPercent;
+
 static XspfQTPreference *sharedInstance = nil;
 
 + (XspfQTPreference *)sharedInstance
@@ -150,15 +152,15 @@ static XspfQTPreference *sharedInstance = nil;
 }
 - (CGFloat)beginingPreloadPercent
 {
-	if(beginingPreloadPercent == 0.0) {
+	if(_beginingPreloadPercent == 0.0) {
 		return beginingPreloadPercentPreset;
 	}
 	
-	return beginingPreloadPercent;
+	return _beginingPreloadPercent;
 }
 - (void)setBeginingPreloadPercent:(CGFloat)newPercent
 {
 	if(newPercent <= 0 || newPercent >= 1) return;
-	beginingPreloadPercent = newPercent;
+	_beginingPreloadPercent = newPercent;
 }
 @end
