@@ -125,7 +125,7 @@ static XspfQTMovieTimer* timer = nil;
 {
 	self = [super init];
 	if(self) {
-		self.loader = [[XspfQTMovieLoader loaderWithMovieURL:nil delegate:nil] retain];
+		self.loader = [[XspfQTMovieLoader loaderWithMovieURL:nil] retain];
 	}
 	
 	return self;

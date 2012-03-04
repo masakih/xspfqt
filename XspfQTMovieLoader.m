@@ -72,6 +72,16 @@
 @synthesize qtMovie = _qtMovie;
 @synthesize delegate = _delegate;
 
+
++ (id)loaderWithMovieURL:(NSURL *)moviewURL
+{
+	return [[[self alloc] initWithMovieURL:moviewURL delegate:nil] autorelease];
+}
+- (id)initWithMovieURL:(NSURL *)moviewURL
+{
+	return [self initWithMovieURL:moviewURL delegate:nil];
+}
+
 + (id)loaderWithMovieURL:(NSURL *)inMovieURL delegate:(id<XspfQTMovieLoaderDelegate>)inDelegate
 {
 	return [[[[self class] alloc] initWithMovieURL:inMovieURL delegate:inDelegate] autorelease];

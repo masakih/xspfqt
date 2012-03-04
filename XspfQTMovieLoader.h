@@ -79,6 +79,10 @@
 
 @property (assign) id<XspfQTMovieLoaderDelegate> delegate;
 
++ (id)loaderWithMovieURL:(NSURL *)moviewURL;
+- (id)initWithMovieURL:(NSURL *)moviewURL;
+
+// designed initializer
 + (id)loaderWithMovieURL:(NSURL *)movieURL delegate:(id<XspfQTMovieLoaderDelegate>)delegate;
 - (id)initWithMovieURL:(NSURL *)movieURL delegate:(id<XspfQTMovieLoaderDelegate>)delegate;
 
