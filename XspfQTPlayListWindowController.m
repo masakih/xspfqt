@@ -65,9 +65,13 @@
 
 #import "BSSUtil.h"
 
+@interface XspfQTPlayListWindowController()
+@property (readonly) XspfQTDocument *qtDocumnet;
+
+@property (assign) id observedObject;
+@end
 
 @interface XspfQTPlayListWindowController(Private)
-- (void)setObserveObject:(id)new;
 
 - (NSString *)clickedMoviePath;
 
@@ -78,6 +82,7 @@
 @end
 
 @implementation XspfQTPlayListWindowController
+@synthesize observedObject = _observedObject;
 
 #pragma mark ### Static variables ###
 static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
@@ -91,7 +96,7 @@ static NSString *const XspfQTTitleKey = @"title";
 - (void)dealloc
 {
 	[trackListTree removeObserver:self forKeyPath:@"selection"];
-	[self setObserveObject:nil];
+	self.observedObject = nil;
 	
 	[super dealloc];
 }
@@ -105,7 +110,7 @@ static NSString *const XspfQTTitleKey = @"title";
 					forKeyPath:@"selection"
 					   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 					   context:NULL];
-	[self setObserveObject:[trackListTree valueForKeyPath:@"selection.self"]];
+	self.observedObject = [trackListTree valueForKeyPath:@"selection.self"];
 	
 	[listView expandItem:[listView itemAtRow:0]];
 	
@@ -114,6 +119,11 @@ static NSString *const XspfQTTitleKey = @"title";
 									   NSFilenamesPboardType,
 									   NSURLPboardType,
 									   nil]];
+}
+
+- (XspfQTDocument *)qtDocumnet
+{
+	return (XspfQTDocument *)self.document;
 }
 
 #pragma mark ### Actions ###
@@ -125,7 +135,7 @@ static NSString *const XspfQTTitleKey = @"title";
 	NSIndexPath *selectionIndexPath = [trackListTree selectionIndexPath];
 	
 	if([selectionIndexPath length] > 1) {
-		[[[self document] trackList] setSelectionIndex:[selectionIndexPath indexAtPosition:1]];
+		[self.qtDocumnet.trackList setSelectionIndex:[selectionIndexPath indexAtPosition:1]];
 	}
 }
 - (IBAction)delete:(id)sender
@@ -215,23 +225,27 @@ static NSString *const XspfQTTitleKey = @"title";
 }
 
 #pragma mark ### KVO & KVC ###
-- (void)setObserveObject:(id)new
+- (void)setObservedObject:(id)new
 {
-	if(observedObject == new) return;
+	if(_observedObject == new) return;
 	
-	[observedObject removeObserver:self forKeyPath:XspfQTTitleKey];
+	[_observedObject removeObserver:self forKeyPath:XspfQTTitleKey];
 	
-	observedObject = new;
-	[observedObject addObserver:self
+	_observedObject = new;
+	[_observedObject addObserver:self
 				   forKeyPath:XspfQTTitleKey
 					  options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 					  context:NULL];
+}
+- (id)observedObject
+{
+	return _observedObject;
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if([keyPath isEqualToString:@"selection"]) {
 		id new = [object valueForKeyPath:@"selection.self"];
-		[self setObserveObject:new];
+		self.observedObject = new;
 	}
 	
 	if([keyPath isEqualToString:XspfQTTitleKey]) {
@@ -242,7 +256,7 @@ static NSString *const XspfQTTitleKey = @"title";
 		if([new isEqualTo:old]) return;
 		
 		id um = [[self document] undoManager];
-		[um registerUndoWithTarget:observedObject
+		[um registerUndoWithTarget:self.observedObject
 						  selector:@selector(setTitle:)
 							object:old];
 	}
@@ -251,23 +265,19 @@ static NSString *const XspfQTTitleKey = @"title";
 #pragma mark ### DataStructure Operations ###
 - (void)insertItemFromURL:(id)item atIndex:(NSUInteger)index
 {
-	id doc = [self document];
-	[doc insertComponentFromURL:item atIndex:index];
+	[self.qtDocumnet insertComponentFromURL:item atIndex:index];
 }
 - (void)insertItem:(id)item atIndex:(NSUInteger)index
 {
-	id doc = [self document];
-	[doc insertComponent:item atIndex:index];
+	[self.qtDocumnet insertComponent:item atIndex:index];
 }
 - (void)removeItem:(id)item
 {
-	id doc = [self document];
-	[doc removeComponent:item];
+	[self.qtDocumnet removeComponent:item];
 }
 - (void)moveItem:(id)item toIndex:(NSUInteger)index
 {
-	id doc = [self document];
-	[doc moveComponent:item toIndex:index];
+	[self.qtDocumnet moveComponent:item toIndex:index];
 }
 
 - (void)insertItemURL:(NSURL *)url atIndex:(NSUInteger)index
@@ -396,7 +406,7 @@ static NSString *const XspfQTTitleKey = @"title";
 	}
 	
 	if(index == -1) {
-		index = [[[self document] trackList] childrenCount];
+		index = self.qtDocumnet.trackList.childrenCount;
 	}
 	
 	id pb = [info draggingPasteboard];
@@ -416,8 +426,8 @@ static NSString *const XspfQTTitleKey = @"title";
 	id newItem = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 	if(!newItem) return NO;
 	
-	id doc = [self document];
-	NSInteger oldIndex = [[doc trackList] indexOfChild:newItem];
+	XspfQTDocument *doc = self.qtDocumnet;
+	NSInteger oldIndex = [doc.trackList indexOfChild:newItem];
 	
 	if(oldIndex == NSNotFound) {
 		// from other list.
@@ -431,7 +441,7 @@ static NSString *const XspfQTTitleKey = @"title";
 	}
 	
 	// change archive to original.
-	newItem = [[doc trackList] childAtIndex:oldIndex];
+	newItem = [doc.trackList childAtIndex:oldIndex];
 	
 	BOOL mustSelectionChange = NO;
 	if([newItem isSelected]) {
@@ -441,7 +451,7 @@ static NSString *const XspfQTTitleKey = @"title";
 	[self moveItem:newItem toIndex:index];
 	
 	if(mustSelectionChange) {
-		[[doc trackList] setSelectionIndex:index];
+		[doc.trackList setSelectionIndex:index];
 	}
 	
 	return YES;

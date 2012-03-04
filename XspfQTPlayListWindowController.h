@@ -66,7 +66,9 @@
 	IBOutlet NSOutlineView *listView;
 	IBOutlet NSTreeController *trackListTree;
 	
-	id observedObject;
+#ifndef __LP64__
+	id _observedObject;
+#endif
 }
 
 - (IBAction)showInFinder:(id)sender;
