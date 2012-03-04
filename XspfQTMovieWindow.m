@@ -7,7 +7,7 @@
 
 /*
  This source code is release under the New BSD License.
- Copyright (c) 2009, masakih
+ Copyright (c) 2009,2012, masakih
  All rights reserved.
  
  ソースコード形式かバイナリ形式か、変更するかしないかを問わず、以下の条件を満たす場合に
@@ -29,7 +29,7 @@
  されない）直接損害、間接損害、偶発的な損害、特別損害、懲罰的損害、または結果損害につい
  て、一切責任を負わないものとします。
  -------------------------------------------------------------------
- Copyright (c) 2009, masakih
+ Copyright (c) 2009,2012, masakih
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -61,8 +61,12 @@
 
 #import "XspfQTMovieWindow.h"
 
+@interface XspfQTMovieWindow()
+@property BOOL isChangingFullScreen;
+@end
 
 @implementation XspfQTMovieWindow
+@synthesize isChangingFullScreen = _isChangingFullScreen;
 
 static CGFloat titlebarHeight = 0;
 
@@ -78,22 +82,13 @@ static CGFloat titlebarHeight = 0;
 }
 - (NSRect)constrainFrameRect:(NSRect)frameRect toScreen:(NSScreen *)screen
 {
-	if(!isChangingFullScreen) {
+	if(!self.isChangingFullScreen) {
 		return [super constrainFrameRect:frameRect toScreen:screen];
 	}
 	
 	frameRect.origin.y += titlebarHeight;
 		
 	return frameRect;
-}
-
-- (void)setIsChangingFullScreen:(BOOL)flag
-{
-	isChangingFullScreen = flag;
-}
-- (CGFloat)titlebarHeight
-{
-	return titlebarHeight;
 }
 
 - (void)cancelOperation:(id)sender
