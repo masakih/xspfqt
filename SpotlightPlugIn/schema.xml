@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema version="1.0" xmlns="http://www.apple.com/metadata"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.apple.com/metadata file:///System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Resources/MetadataSchema.xsd">
+	<attributes>
+		<attribute name="com_masakih_xspf_movieNumber" multivalued="false" type="CFNumber" />
+		<attribute name="com_masakih_xspf_subtitle" multivalued="true" type="CFString" />
+		<attribute name="com_masakih_xspf_voiceActor" multivalued="true" type="CFString" />
+		<attribute name="com_masakih_xspf_products" multivalued="true" type="CFString" />
+		<attribute name="com_masakih_xspf_label" multivalued="false" type="CFNumber" />
+		<attribute name="kMDItemStarRating" multivalued="false" type="CFNumber" />
+    </attributes>
+	
+	
+    <types>
+        <type name="com.masakih.xspf">
+			<allattrs>
+				com_masakih_xspf_movieNumber
+				com_masakih_xspf_subtitle
+				com_masakih_xspf_voiceActor
+				com_masakih_xspf_products
+				com_masakih_xspf_label
+				kMDItemStarRating
+            </allattrs>
+			
+            <displayattrs>
+				kMDItemFSName
+				kMDItemTitle
+				com_masakih_xspf_movieNumber
+				com_masakih_xspf_subtitle
+				com_masakih_xspf_voiceActor
+				com_masakih_xspf_products
+				com_masakih_xspf_label
+				kMDItemStarRating
+            </displayattrs>
+            
+        </type>
+    </types>
+</schema>
+

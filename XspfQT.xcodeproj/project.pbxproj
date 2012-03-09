@@ -3,11 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 	objectVersion = 44;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */; };
+=======
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		8D15AC310486D014006FF6A4 /* XspfQTDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* XspfQTDocument.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -23,6 +30,7 @@
 		F426BB64108329A80084E8C5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13E42FBA07B3F13500E4EEF1 /* CoreData.framework */; };
 		F426BB65108329AA0084E8C5 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C304C0E68284C007F2DEC /* QTKit.framework */; };
 		F426BB67108329DC0084E8C5 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F426BB66108329DC0084E8C5 /* QuickLook.framework */; };
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 		F426BB7810832ABB0084E8C5 /* XspfQTComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C31CC0E682C3B007F2DEC /* XspfQTComponent.m */; };
 		F426BB7910832ABC0084E8C5 /* XspfQTContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F429BE510E8FAECB006EB717 /* XspfQTContainerComponent.m */; };
 		F426BB7A10832ABE0084E8C5 /* XspfQTPlaceholderComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */; };
@@ -36,11 +44,17 @@
 		F426BC96108357890084E8C5 /* XspfQTValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE570E6A2B5F009320B6 /* XspfQTValueTransformers.m */; };
 		F429BD700E8F969A006EB717 /* XspfQTPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */; };
 		F429BE520E8FAECB006EB717 /* XspfQTContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F429BE510E8FAECB006EB717 /* XspfQTContainerComponent.m */; };
+=======
+		F426BB8310832AF10084E8C5 /* XspfQuickLook.qlgenerator in CopyFiles */ = {isa = PBXBuildFile; fileRef = F426BB311083282A0084E8C5 /* XspfQuickLook.qlgenerator */; };
+		F426BBFC108344260084E8C5 /* XspfQLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F426BBFA108344260084E8C5 /* XspfQLUtilities.m */; };
+		F426BC96108357890084E8C5 /* XspfQTValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE570E6A2B5F009320B6 /* XspfQTValueTransformers.m */; };
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 		F441DCA50E69B82B009320B6 /* XspfQTMovieWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DCA40E69B82B009320B6 /* XspfQTMovieWindowController.m */; };
 		F441DE580E6A2B5F009320B6 /* XspfQTValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE570E6A2B5F009320B6 /* XspfQTValueTransformers.m */; };
 		F441DE5C0E6A2BDA009320B6 /* XspfQTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE5B0E6A2BDA009320B6 /* XspfQTAppDelegate.m */; };
 		F441DECB0E6A399D009320B6 /* XspfQTFullScreenWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DECA0E6A399D009320B6 /* XspfQTFullScreenWindow.m */; };
 		F441E0680E6A5131009320B6 /* XspfQTPlayListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F441E0670E6A5131009320B6 /* XspfQTPlayListWindowController.m */; };
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 		F44805081098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F44805071098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.m */; };
 		F448050B1098AD5F0014C2BB /* BSSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F448050A1098AD5F0014C2BB /* BSSUtil.m */; };
 		F44806EC109C6E440014C2BB /* XspfQTMovieTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = F44806EB109C6E440014C2BB /* XspfQTMovieTimer.m */; };
@@ -64,6 +78,82 @@
 		F4B809F30F6EBB33004BF2DD /* XspfQTPreference.nib in Resources */ = {isa = PBXBuildFile; fileRef = F4B809F10F6EBB33004BF2DD /* XspfQTPreference.nib */; };
 		F4D7CCCB0E868BFC0042F96C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4D7CCC90E868BFC0042F96C /* Localizable.strings */; };
 		F4D99B1F0E6B0F59006D72F4 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */; };
+=======
+		F448050B1098AD5F0014C2BB /* BSSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F448050A1098AD5F0014C2BB /* BSSUtil.m */; };
+		F44806EC109C6E440014C2BB /* XspfQTMovieTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = F44806EB109C6E440014C2BB /* XspfQTMovieTimer.m */; };
+		F45B04E3119F8CC7007BB540 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F45B04E2119F8CC7007BB540 /* Credits.rtf */; };
+		F484FC7B0F6BEB6F007C5596 /* XspfQTMovieLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F484FC7A0F6BEB6F007C5596 /* XspfQTMovieLoader.m */; };
+		F4854B3111A8C01F00E83859 /* GetMetadataForFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F48E519211A8BBDC00112632 /* GetMetadataForFile.m */; };
+		F4854B3211A8C02100E83859 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = F48E519311A8BBE800112632 /* main.c */; };
+		F4854B4A11A8C12400E83859 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F48E519711A8BC8200112632 /* InfoPlist.strings */; };
+		F4854C3E11A8C18B00E83859 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4854B5211A8C17700E83859 /* CoreServices.framework */; };
+		F4854C3F11A8C18D00E83859 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4854B4C11A8C14900E83859 /* CoreFoundation.framework */; };
+		F4854E2111A8D0BB00E83859 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C31EB0E682D66007F2DEC /* Foundation.framework */; };
+		F4854E2511A8D0C900E83859 /* HMXSPFComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33DF112C253C00D1DE39 /* HMXSPFComponent.m */; };
+		F4854E2611A8D0CB00E83859 /* HMXSPFContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E1112C253C00D1DE39 /* HMXSPFContainerComponent.m */; };
+		F4854E2711A8D0CC00E83859 /* HMXSPFPlaceholderComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E3112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m */; };
+		F4854E2811A8D0CD00E83859 /* HMXSPFPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E5112C253C00D1DE39 /* HMXSPFPlaylist.m */; };
+		F4854E2911A8D0CE00E83859 /* HMXSPFTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E7112C253C00D1DE39 /* HMXSPFTrack.m */; };
+		F4854E2A11A8D0D000E83859 /* HMXSPFTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E9112C253C00D1DE39 /* HMXSPFTrackList.m */; };
+		F4854E8D11A8D9E600E83859 /* NSPathUtilities-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33F9112C255800D1DE39 /* NSPathUtilities-HMExtensions.m */; };
+		F4854E9811A8DA0300E83859 /* NSURL-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33FB112C255800D1DE39 /* NSURL-HMExtensions.m */; };
+		F48B33EA112C253C00D1DE39 /* HMXSPFComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33DF112C253C00D1DE39 /* HMXSPFComponent.m */; };
+		F48B33EB112C253C00D1DE39 /* HMXSPFContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E1112C253C00D1DE39 /* HMXSPFContainerComponent.m */; };
+		F48B33EC112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E3112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m */; };
+		F48B33ED112C253C00D1DE39 /* HMXSPFPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E5112C253C00D1DE39 /* HMXSPFPlaylist.m */; };
+		F48B33EE112C253C00D1DE39 /* HMXSPFTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E7112C253C00D1DE39 /* HMXSPFTrack.m */; };
+		F48B33EF112C253C00D1DE39 /* HMXSPFTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E9112C253C00D1DE39 /* HMXSPFTrackList.m */; };
+		F48B33F0112C253C00D1DE39 /* HMXSPFComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33DF112C253C00D1DE39 /* HMXSPFComponent.m */; };
+		F48B33F1112C253C00D1DE39 /* HMXSPFContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E1112C253C00D1DE39 /* HMXSPFContainerComponent.m */; };
+		F48B33F2112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E3112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m */; };
+		F48B33F3112C253C00D1DE39 /* HMXSPFPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E5112C253C00D1DE39 /* HMXSPFPlaylist.m */; };
+		F48B33F4112C253C00D1DE39 /* HMXSPFTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E7112C253C00D1DE39 /* HMXSPFTrack.m */; };
+		F48B33F5112C253C00D1DE39 /* HMXSPFTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E9112C253C00D1DE39 /* HMXSPFTrackList.m */; };
+		F48B33FE112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33F7112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m */; };
+		F48B33FF112C255800D1DE39 /* NSPathUtilities-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33F9112C255800D1DE39 /* NSPathUtilities-HMExtensions.m */; };
+		F48B3400112C255800D1DE39 /* NSURL-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33FB112C255800D1DE39 /* NSURL-HMExtensions.m */; };
+		F48B3401112C255800D1DE39 /* NSWorkspace-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33FD112C255800D1DE39 /* NSWorkspace-HMExtensions.m */; };
+		F48B3402112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33F7112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m */; };
+		F48B3403112C255800D1DE39 /* NSPathUtilities-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33F9112C255800D1DE39 /* NSPathUtilities-HMExtensions.m */; };
+		F48B3404112C255800D1DE39 /* NSURL-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33FB112C255800D1DE39 /* NSURL-HMExtensions.m */; };
+		F48B3405112C255800D1DE39 /* NSWorkspace-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33FD112C255800D1DE39 /* NSWorkspace-HMExtensions.m */; };
+		F48B369D1130A87100D1DE39 /* XspfQTPreference.xib in Resources */ = {isa = PBXBuildFile; fileRef = F48B369B1130A87100D1DE39 /* XspfQTPreference.xib */; };
+		F48B36A31130A90A00D1DE39 /* XspfQTImformation.xib in Resources */ = {isa = PBXBuildFile; fileRef = F48B36A11130A90A00D1DE39 /* XspfQTImformation.xib */; };
+		F48B36A91130A97000D1DE39 /* XspfQTPlayList.xib in Resources */ = {isa = PBXBuildFile; fileRef = F48B36A71130A97000D1DE39 /* XspfQTPlayList.xib */; };
+		F48B36AF1130A9AA00D1DE39 /* XspfQTDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = F48B36AD1130A9AA00D1DE39 /* XspfQTDocument.xib */; };
+		F48B36B51130A9E700D1DE39 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F48B36B31130A9E700D1DE39 /* MainMenu.xib */; };
+		F48B5B200F54388100E0D1D0 /* XspfQTMovieWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B5B1F0F54388100E0D1D0 /* XspfQTMovieWindow.m */; };
+		F48DD1940F62A58E008A199C /* XspfQTMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = F48DD1930F62A58E008A199C /* XspfQTMovieView.m */; };
+		F48FDF190E7D4EE7001C33F3 /* XspfQTInformationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48FDF180E7D4EE7001C33F3 /* XspfQTInformationWindowController.m */; };
+		F492C1D80F55627B00D0C72A /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F492C1D70F55627B00D0C72A /* ApplicationServices.framework */; };
+		F49C304D0E68284C007F2DEC /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C304C0E68284C007F2DEC /* QTKit.framework */; };
+		F49C31EC0E682D66007F2DEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C31EB0E682D66007F2DEC /* Foundation.framework */; };
+		F4A4171B13C1F202000F4513 /* schema.xml in Resources */ = {isa = PBXBuildFile; fileRef = F48E519611A8BC6E00112632 /* schema.xml */; };
+		F4B8096E0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B8096D0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m */; };
+		F4C0C32F13E59F8600864D74 /* XspfMAppleRemoteSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C0C32E13E59F8600864D74 /* XspfMAppleRemoteSupport.m */; };
+		F4D24F8A11C4969200232358 /* XspfQT.icns in Resources */ = {isa = PBXBuildFile; fileRef = F4D24F8911C4969200232358 /* XspfQT.icns */; };
+		F4D7CCCB0E868BFC0042F96C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4D7CCC90E868BFC0042F96C /* Localizable.strings */; };
+		F4D99B1F0E6B0F59006D72F4 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */; };
+		F4DAE4D711B23EDD0047BEDA /* RemoteControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DAE4D011B23EDD0047BEDA /* RemoteControl.m */; };
+		F4DAE4D811B23EDD0047BEDA /* HIDRemoteControlDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DAE4D211B23EDD0047BEDA /* HIDRemoteControlDevice.m */; };
+		F4DAE4D911B23EDD0047BEDA /* AppleRemote.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DAE4D411B23EDD0047BEDA /* AppleRemote.m */; };
+		F4DAE4DA11B23EDD0047BEDA /* MultiClickRemoteBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DAE4D611B23EDD0047BEDA /* MultiClickRemoteBehavior.m */; };
+		F4DAE4E611B2442C0047BEDA /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DAE4E511B2442C0047BEDA /* IOKit.framework */; };
+		F4DAE5E711B24AB80047BEDA /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4DAE5E611B24AB80047BEDA /* license.txt */; };
+		F4F95F0B13BB6F9E00B01DF6 /* SpotlighterHelper_main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F95EE413BB6EEC00B01DF6 /* SpotlighterHelper_main.m */; };
+		F4F95F0C13BB6F9F00B01DF6 /* XspfSpotlighterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F95EED13BB6F0700B01DF6 /* XspfSpotlighterHelper.m */; };
+		F4F95F0D13BB6FAA00B01DF6 /* HMXSPFComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33DF112C253C00D1DE39 /* HMXSPFComponent.m */; };
+		F4F95F0E13BB6FAB00B01DF6 /* HMXSPFContainerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E1112C253C00D1DE39 /* HMXSPFContainerComponent.m */; };
+		F4F95F0F13BB6FAE00B01DF6 /* HMXSPFPlaceholderComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E3112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m */; };
+		F4F95F1013BB6FAF00B01DF6 /* HMXSPFPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E5112C253C00D1DE39 /* HMXSPFPlaylist.m */; };
+		F4F95F1113BB6FB000B01DF6 /* HMXSPFTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E7112C253C00D1DE39 /* HMXSPFTrack.m */; };
+		F4F95F1213BB6FB200B01DF6 /* HMXSPFTrackList.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33E9112C253C00D1DE39 /* HMXSPFTrackList.m */; };
+		F4F95F1513BB6FCE00B01DF6 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C304C0E68284C007F2DEC /* QTKit.framework */; };
+		F4F95F1613BB6FE200B01DF6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C31EB0E682D66007F2DEC /* Foundation.framework */; };
+		F4F95F1913BB6FFD00B01DF6 /* XspfQTValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = F441DE570E6A2B5F009320B6 /* XspfQTValueTransformers.m */; };
+		F4F95F3413BB705D00B01DF6 /* NSPathUtilities-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33F9112C255800D1DE39 /* NSPathUtilities-HMExtensions.m */; };
+		F4F95F3B13BB707300B01DF6 /* NSURL-HMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B33FB112C255800D1DE39 /* NSURL-HMExtensions.m */; };
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +186,10 @@
 		2A37F4ACFDCFA73011CA2CEA /* XspfQTDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTDocument.m; sourceTree = "<group>"; };
 		2A37F4AEFDCFA73011CA2CEA /* XspfQTDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTDocument.h; sourceTree = "<group>"; };
 		2A37F4B0FDCFA73011CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 		2A37F4B7FDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
+=======
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		32DBCF750370BD2300C91783 /* XspfQT_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQT_Prefix.pch; sourceTree = "<group>"; };
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,10 +200,13 @@
 		F426BB66108329DC0084E8C5 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = /System/Library/Frameworks/QuickLook.framework; sourceTree = "<absolute>"; };
 		F426BBFA108344260084E8C5 /* XspfQLUtilities.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = XspfQLUtilities.m; sourceTree = "<group>"; };
 		F426BBFB108344260084E8C5 /* XspfQLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQLUtilities.h; sourceTree = "<group>"; };
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 		F429BD6E0E8F969A006EB717 /* XspfQTPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlaylist.h; sourceTree = "<group>"; };
 		F429BD6F0E8F969A006EB717 /* XspfQTPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlaylist.m; sourceTree = "<group>"; };
 		F429BE500E8FAECB006EB717 /* XspfQTContainerComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTContainerComponent.h; sourceTree = "<group>"; };
 		F429BE510E8FAECB006EB717 /* XspfQTContainerComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTContainerComponent.m; sourceTree = "<group>"; };
+=======
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 		F441DCA30E69B82B009320B6 /* XspfQTMovieWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTMovieWindowController.h; sourceTree = "<group>"; };
 		F441DCA40E69B82B009320B6 /* XspfQTMovieWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTMovieWindowController.m; sourceTree = "<group>"; };
 		F441DE560E6A2B5F009320B6 /* XspfQTValueTransformers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTValueTransformers.h; sourceTree = "<group>"; };
@@ -121,34 +217,89 @@
 		F441DECA0E6A399D009320B6 /* XspfQTFullScreenWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTFullScreenWindow.m; sourceTree = "<group>"; };
 		F441E0660E6A5131009320B6 /* XspfQTPlayListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlayListWindowController.h; sourceTree = "<group>"; };
 		F441E0670E6A5131009320B6 /* XspfQTPlayListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlayListWindowController.m; sourceTree = "<group>"; };
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 		F44805061098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAppleEventDescriptor-Extensions.h"; sourceTree = "<group>"; };
 		F44805071098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAppleEventDescriptor-Extensions.m"; sourceTree = "<group>"; };
+=======
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 		F44805091098AD5F0014C2BB /* BSSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSSUtil.h; sourceTree = "<group>"; };
 		F448050A1098AD5F0014C2BB /* BSSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSSUtil.m; sourceTree = "<group>"; };
 		F44806EA109C6E440014C2BB /* XspfQTMovieTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTMovieTimer.h; sourceTree = "<group>"; };
 		F44806EB109C6E440014C2BB /* XspfQTMovieTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTMovieTimer.m; sourceTree = "<group>"; };
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 		F46870220E71963E00B4DAED /* XspfQTPlaceholderComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPlaceholderComponent.h; sourceTree = "<group>"; };
 		F46870230E71963E00B4DAED /* XspfQTPlaceholderComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPlaceholderComponent.m; sourceTree = "<group>"; };
+=======
+		F45B04E2119F8CC7007BB540 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 		F47DF8D11083260600DF2C17 /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
 		F47DF8D21083260600DF2C17 /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
 		F47DF8D31083260600DF2C17 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F47DF8D41083260600DF2C17 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		F47DF8DB1083262000DF2C17 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 		F47E2B1B0E7E87DD00DB1BE6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/XspfQTDocument.nib; sourceTree = "<group>"; };
 		F47E2B1E0E7E87FD00DB1BE6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/XspfQTPlayList.nib; sourceTree = "<group>"; };
 		F484FC790F6BEB6F007C5596 /* XspfQTMovieLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTMovieLoader.h; sourceTree = "<group>"; };
 		F484FC7A0F6BEB6F007C5596 /* XspfQTMovieLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTMovieLoader.m; sourceTree = "<group>"; };
 		F484FD530F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL-XspfQT-Extensions.h"; sourceTree = "<group>"; };
 		F484FD540F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL-XspfQT-Extensions.m"; sourceTree = "<group>"; };
+=======
+		F484FC790F6BEB6F007C5596 /* XspfQTMovieLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTMovieLoader.h; sourceTree = "<group>"; };
+		F484FC7A0F6BEB6F007C5596 /* XspfQTMovieLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTMovieLoader.m; sourceTree = "<group>"; };
+		F4854B4C11A8C14900E83859 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		F4854B5211A8C17700E83859 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		F48B33DE112C253C00D1DE39 /* HMXSPFComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMXSPFComponent.h; path = extFiles/HMXSPFComponent/HMXSPFComponent.h; sourceTree = "<group>"; };
+		F48B33DF112C253C00D1DE39 /* HMXSPFComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMXSPFComponent.m; path = extFiles/HMXSPFComponent/HMXSPFComponent.m; sourceTree = "<group>"; };
+		F48B33E0112C253C00D1DE39 /* HMXSPFContainerComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMXSPFContainerComponent.h; path = extFiles/HMXSPFComponent/HMXSPFContainerComponent.h; sourceTree = "<group>"; };
+		F48B33E1112C253C00D1DE39 /* HMXSPFContainerComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMXSPFContainerComponent.m; path = extFiles/HMXSPFComponent/HMXSPFContainerComponent.m; sourceTree = "<group>"; };
+		F48B33E2112C253C00D1DE39 /* HMXSPFPlaceholderComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMXSPFPlaceholderComponent.h; path = extFiles/HMXSPFComponent/HMXSPFPlaceholderComponent.h; sourceTree = "<group>"; };
+		F48B33E3112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMXSPFPlaceholderComponent.m; path = extFiles/HMXSPFComponent/HMXSPFPlaceholderComponent.m; sourceTree = "<group>"; };
+		F48B33E4112C253C00D1DE39 /* HMXSPFPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMXSPFPlaylist.h; path = extFiles/HMXSPFComponent/HMXSPFPlaylist.h; sourceTree = "<group>"; };
+		F48B33E5112C253C00D1DE39 /* HMXSPFPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMXSPFPlaylist.m; path = extFiles/HMXSPFComponent/HMXSPFPlaylist.m; sourceTree = "<group>"; };
+		F48B33E6112C253C00D1DE39 /* HMXSPFTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMXSPFTrack.h; path = extFiles/HMXSPFComponent/HMXSPFTrack.h; sourceTree = "<group>"; };
+		F48B33E7112C253C00D1DE39 /* HMXSPFTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMXSPFTrack.m; path = extFiles/HMXSPFComponent/HMXSPFTrack.m; sourceTree = "<group>"; };
+		F48B33E8112C253C00D1DE39 /* HMXSPFTrackList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMXSPFTrackList.h; path = extFiles/HMXSPFComponent/HMXSPFTrackList.h; sourceTree = "<group>"; };
+		F48B33E9112C253C00D1DE39 /* HMXSPFTrackList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMXSPFTrackList.m; path = extFiles/HMXSPFComponent/HMXSPFTrackList.m; sourceTree = "<group>"; };
+		F48B33F6112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAppleEventDescriptor-HMExtensions.h"; path = "extFiles/HMXSPFComponent/NSAppleEventDescriptor-HMExtensions.h"; sourceTree = "<group>"; };
+		F48B33F7112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAppleEventDescriptor-HMExtensions.m"; path = "extFiles/HMXSPFComponent/NSAppleEventDescriptor-HMExtensions.m"; sourceTree = "<group>"; };
+		F48B33F8112C255800D1DE39 /* NSPathUtilities-HMExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSPathUtilities-HMExtensions.h"; path = "extFiles/HMXSPFComponent/NSPathUtilities-HMExtensions.h"; sourceTree = "<group>"; };
+		F48B33F9112C255800D1DE39 /* NSPathUtilities-HMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSPathUtilities-HMExtensions.m"; path = "extFiles/HMXSPFComponent/NSPathUtilities-HMExtensions.m"; sourceTree = "<group>"; };
+		F48B33FA112C255800D1DE39 /* NSURL-HMExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL-HMExtensions.h"; path = "extFiles/HMXSPFComponent/NSURL-HMExtensions.h"; sourceTree = "<group>"; };
+		F48B33FB112C255800D1DE39 /* NSURL-HMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL-HMExtensions.m"; path = "extFiles/HMXSPFComponent/NSURL-HMExtensions.m"; sourceTree = "<group>"; };
+		F48B33FC112C255800D1DE39 /* NSWorkspace-HMExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWorkspace-HMExtensions.h"; path = "extFiles/HMXSPFComponent/NSWorkspace-HMExtensions.h"; sourceTree = "<group>"; };
+		F48B33FD112C255800D1DE39 /* NSWorkspace-HMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWorkspace-HMExtensions.m"; path = "extFiles/HMXSPFComponent/NSWorkspace-HMExtensions.m"; sourceTree = "<group>"; };
+		F48B369C1130A87100D1DE39 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/XspfQTPreference.xib; sourceTree = "<group>"; };
+		F48B369F1130A8E300D1DE39 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Japanese; path = Japanese.lproj/XspfQTPreference.xib; sourceTree = "<group>"; };
+		F48B36A21130A90A00D1DE39 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/XspfQTImformation.xib; sourceTree = "<group>"; };
+		F48B36A51130A95100D1DE39 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Japanese; path = Japanese.lproj/XspfQTImformation.xib; sourceTree = "<group>"; };
+		F48B36A81130A97000D1DE39 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/XspfQTPlayList.xib; sourceTree = "<group>"; };
+		F48B36AB1130A99000D1DE39 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Japanese; path = Japanese.lproj/XspfQTPlayList.xib; sourceTree = "<group>"; };
+		F48B36AE1130A9AA00D1DE39 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/XspfQTDocument.xib; sourceTree = "<group>"; };
+		F48B36B11130A9C300D1DE39 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Japanese; path = Japanese.lproj/XspfQTDocument.xib; sourceTree = "<group>"; };
+		F48B36B41130A9E700D1DE39 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F48B36B71130A9FC00D1DE39 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Japanese; path = Japanese.lproj/MainMenu.xib; sourceTree = "<group>"; };
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 		F48B5B1E0F54388100E0D1D0 /* XspfQTMovieWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTMovieWindow.h; sourceTree = "<group>"; };
 		F48B5B1F0F54388100E0D1D0 /* XspfQTMovieWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTMovieWindow.m; sourceTree = "<group>"; };
 		F48DD1920F62A58E008A199C /* XspfQTMovieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTMovieView.h; sourceTree = "<group>"; };
 		F48DD1930F62A58E008A199C /* XspfQTMovieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTMovieView.m; sourceTree = "<group>"; };
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 		F48FDF150E7D4EBE001C33F3 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/XspfQTImformation.nib; sourceTree = "<group>"; };
+=======
+		F48E519211A8BBDC00112632 /* GetMetadataForFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMetadataForFile.m; sourceTree = "<group>"; };
+		F48E519311A8BBE800112632 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		F48E519411A8BC4600112632 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F48E519611A8BC6E00112632 /* schema.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = schema.xml; sourceTree = "<group>"; };
+		F48E519811A8BC8200112632 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F48E519A11A8BC9600112632 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/schema.strings; sourceTree = "<group>"; };
+		F48E51A511A8BCF300112632 /* XspfSpotlight.mdimporter */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XspfSpotlight.mdimporter; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 		F48FDF170E7D4EE7001C33F3 /* XspfQTInformationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTInformationWindowController.h; sourceTree = "<group>"; };
 		F48FDF180E7D4EE7001C33F3 /* XspfQTInformationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTInformationWindowController.m; sourceTree = "<group>"; };
 		F492C1D70F55627B00D0C72A /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
 		F49C304C0E68284C007F2DEC /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 		F49C31CB0E682C3B007F2DEC /* XspfQTComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTComponent.h; sourceTree = "<group>"; };
 		F49C31CC0E682C3B007F2DEC /* XspfQTComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTComponent.m; sourceTree = "<group>"; };
 		F49C31EB0E682D66007F2DEC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -166,11 +317,38 @@
 		F4D7CCC00E868B4C0042F96C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/XspfQTDocument.nib; sourceTree = "<group>"; };
 		F4D7CCC10E868B4D0042F96C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/XspfQTImformation.nib; sourceTree = "<group>"; };
 		F4D7CCC20E868B4D0042F96C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/XspfQTPlayList.nib; sourceTree = "<group>"; };
+=======
+		F49C31EB0E682D66007F2DEC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		F4ADCEB511CD1FB1003631B7 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F4B8096C0F6EB373004BF2DD /* XspfQTPreferenceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfQTPreferenceWindowController.h; sourceTree = "<group>"; };
+		F4B8096D0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfQTPreferenceWindowController.m; sourceTree = "<group>"; };
+		F4C0C32D13E59F8600864D74 /* XspfMAppleRemoteSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfMAppleRemoteSupport.h; sourceTree = "<group>"; };
+		F4C0C32E13E59F8600864D74 /* XspfMAppleRemoteSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfMAppleRemoteSupport.m; sourceTree = "<group>"; };
+		F4D24F8911C4969200232358 /* XspfQT.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = XspfQT.icns; sourceTree = "<group>"; };
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 		F4D7CCCA0E868BFC0042F96C /* Japanese */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F4D7CCCC0E868C090042F96C /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F4D7CCEA0E8690E90042F96C /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = English; path = English.lproj/Localizable.strings.sed; sourceTree = "<group>"; };
 		F4D7CCEB0E8690F90042F96C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text; name = Japanese; path = Japanese.lproj/Localizable.strings.sed; sourceTree = "<group>"; };
 		F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
+=======
+		F4DAE4CF11B23EDD0047BEDA /* RemoteControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteControl.h; sourceTree = "<group>"; };
+		F4DAE4D011B23EDD0047BEDA /* RemoteControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteControl.m; sourceTree = "<group>"; };
+		F4DAE4D111B23EDD0047BEDA /* HIDRemoteControlDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIDRemoteControlDevice.h; sourceTree = "<group>"; };
+		F4DAE4D211B23EDD0047BEDA /* HIDRemoteControlDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HIDRemoteControlDevice.m; sourceTree = "<group>"; };
+		F4DAE4D311B23EDD0047BEDA /* AppleRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleRemote.h; sourceTree = "<group>"; };
+		F4DAE4D411B23EDD0047BEDA /* AppleRemote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleRemote.m; sourceTree = "<group>"; };
+		F4DAE4D511B23EDD0047BEDA /* MultiClickRemoteBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiClickRemoteBehavior.h; sourceTree = "<group>"; };
+		F4DAE4D611B23EDD0047BEDA /* MultiClickRemoteBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiClickRemoteBehavior.m; sourceTree = "<group>"; };
+		F4DAE4E511B2442C0047BEDA /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		F4DAE5E611B24AB80047BEDA /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
+		F4F95EE213BB6ECD00B01DF6 /* XspfSpotlighterHelper-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XspfSpotlighterHelper-Info.plist"; sourceTree = "<group>"; };
+		F4F95EE413BB6EEC00B01DF6 /* SpotlighterHelper_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotlighterHelper_main.m; sourceTree = "<group>"; };
+		F4F95EEC13BB6F0700B01DF6 /* XspfSpotlighterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XspfSpotlighterHelper.h; sourceTree = "<group>"; };
+		F4F95EED13BB6F0700B01DF6 /* XspfSpotlighterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XspfSpotlighterHelper.m; sourceTree = "<group>"; };
+		F4F95EF313BB6F3B00B01DF6 /* XspfSpotlighterHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XspfSpotlighterHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +361,10 @@
 				F49C31EC0E682D66007F2DEC /* Foundation.framework in Frameworks */,
 				F4D99B1F0E6B0F59006D72F4 /* Carbon.framework in Frameworks */,
 				F492C1D80F55627B00D0C72A /* ApplicationServices.framework in Frameworks */,
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
+=======
+				F4DAE4E611B2442C0047BEDA /* IOKit.framework in Frameworks */,
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +381,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
+=======
+		F48E51A311A8BCF300112632 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4854C3E11A8C18B00E83859 /* CoreServices.framework in Frameworks */,
+				F4854C3F11A8C18D00E83859 /* CoreFoundation.framework in Frameworks */,
+				F4854E2111A8D0BB00E83859 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4F95EF113BB6F3B00B01DF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4F95F1513BB6FCE00B01DF6 /* QTKit.framework in Frameworks */,
+				F4F95F1613BB6FE200B01DF6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -213,6 +417,12 @@
 		1058C7A8FEA54F5311CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
+=======
+				F4DAE4E511B2442C0047BEDA /* IOKit.framework */,
+				F4854B5211A8C17700E83859 /* CoreServices.framework */,
+				F4854B4C11A8C14900E83859 /* CoreFoundation.framework */,
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 				F492C1D70F55627B00D0C72A /* ApplicationServices.framework */,
 				F4D99B1E0E6B0F59006D72F4 /* Carbon.framework */,
 				F49C304C0E68284C007F2DEC /* QTKit.framework */,
@@ -228,6 +438,11 @@
 			children = (
 				8D15AC370486D014006FF6A4 /* XspfQT.app */,
 				F426BB311083282A0084E8C5 /* XspfQuickLook.qlgenerator */,
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
+=======
+				F48E51A511A8BCF300112632 /* XspfSpotlight.mdimporter */,
+				F4F95EF313BB6F3B00B01DF6 /* XspfSpotlighterHelper.app */,
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -235,6 +450,11 @@
 		2A37F4AAFDCFA73011CA2CEA /* XspfQT */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
+=======
+				F4DAE4CE11B23EC80047BEDA /* AppleRemoteControlWrapper */,
+				F48E518111A8BB8900112632 /* SpotlightPlugIn */,
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 				F47DF8CD108325D800DF2C17 /* QuickLookPlugIn */,
 				2A37F4ABFDCFA73011CA2CEA /* Classes */,
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
@@ -252,6 +472,11 @@
 				F448050A1098AD5F0014C2BB /* BSSUtil.m */,
 				F484FD8E0F6C8F1F007C5596 /* CocoaExtentions */,
 				F484FD8D0F6C8EDF007C5596 /* XspfQTComponent */,
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
+=======
+				F4C0C32D13E59F8600864D74 /* XspfMAppleRemoteSupport.h */,
+				F4C0C32E13E59F8600864D74 /* XspfMAppleRemoteSupport.m */,
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 				F44806EA109C6E440014C2BB /* XspfQTMovieTimer.h */,
 				F44806EB109C6E440014C2BB /* XspfQTMovieTimer.m */,
 				F441DE5A0E6A2BDA009320B6 /* XspfQTAppDelegate.h */,
@@ -294,6 +519,7 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 				F4D7CCE90E8690E90042F96C /* Localizable.strings.sed */,
 				F4D7CCC90E868BFC0042F96C /* Localizable.strings */,
 				2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */,
@@ -301,6 +527,17 @@
 				F47E2B1D0E7E87FD00DB1BE6 /* XspfQTPlayList.nib */,
 				F48FDF140E7D4EBE001C33F3 /* XspfQTImformation.nib */,
 				F4B809F10F6EBB33004BF2DD /* XspfQTPreference.nib */,
+=======
+				F4D24F8911C4969200232358 /* XspfQT.icns */,
+				F45B04E2119F8CC7007BB540 /* Credits.rtf */,
+				F48B369B1130A87100D1DE39 /* XspfQTPreference.xib */,
+				F48B36A11130A90A00D1DE39 /* XspfQTImformation.xib */,
+				F48B36A71130A97000D1DE39 /* XspfQTPlayList.xib */,
+				F48B36AD1130A9AA00D1DE39 /* XspfQTDocument.xib */,
+				F48B36B31130A9E700D1DE39 /* MainMenu.xib */,
+				F4D7CCE90E8690E90042F96C /* Localizable.strings.sed */,
+				F4D7CCC90E868BFC0042F96C /* Localizable.strings */,
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 				8D15AC360486D014006FF6A4 /* Info.plist */,
 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
 			);
@@ -334,6 +571,7 @@
 		F484FD8D0F6C8EDF007C5596 /* XspfQTComponent */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 				F49C31CB0E682C3B007F2DEC /* XspfQTComponent.h */,
 				F49C31CC0E682C3B007F2DEC /* XspfQTComponent.m */,
 				F46870220E71963E00B4DAED /* XspfQTPlaceholderComponent.h */,
@@ -346,6 +584,20 @@
 				F49C31F00E682D79007F2DEC /* XspfQTTrackList.m */,
 				F49C31F40E682E2B007F2DEC /* XspfQTTrack.h */,
 				F49C31F50E682E2B007F2DEC /* XspfQTTrack.m */,
+=======
+				F48B33DE112C253C00D1DE39 /* HMXSPFComponent.h */,
+				F48B33DF112C253C00D1DE39 /* HMXSPFComponent.m */,
+				F48B33E0112C253C00D1DE39 /* HMXSPFContainerComponent.h */,
+				F48B33E1112C253C00D1DE39 /* HMXSPFContainerComponent.m */,
+				F48B33E2112C253C00D1DE39 /* HMXSPFPlaceholderComponent.h */,
+				F48B33E3112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m */,
+				F48B33E4112C253C00D1DE39 /* HMXSPFPlaylist.h */,
+				F48B33E5112C253C00D1DE39 /* HMXSPFPlaylist.m */,
+				F48B33E6112C253C00D1DE39 /* HMXSPFTrack.h */,
+				F48B33E7112C253C00D1DE39 /* HMXSPFTrack.m */,
+				F48B33E8112C253C00D1DE39 /* HMXSPFTrackList.h */,
+				F48B33E9112C253C00D1DE39 /* HMXSPFTrackList.m */,
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 			);
 			name = XspfQTComponent;
 			sourceTree = "<group>";
@@ -353,16 +605,71 @@
 		F484FD8E0F6C8F1F007C5596 /* CocoaExtentions */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 				F44805061098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.h */,
 				F44805071098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.m */,
 				F484FD530F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.h */,
 				F484FD540F6C1AC6007C5596 /* NSURL-XspfQT-Extensions.m */,
 				F4B22C8D101BE195004D427C /* NSPathUtilities-XspfQT-Extensions.h */,
 				F4B22C8E101BE195004D427C /* NSPathUtilities-XspfQT-Extensions.m */,
+=======
+				F48B33F6112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.h */,
+				F48B33F7112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m */,
+				F48B33F8112C255800D1DE39 /* NSPathUtilities-HMExtensions.h */,
+				F48B33F9112C255800D1DE39 /* NSPathUtilities-HMExtensions.m */,
+				F48B33FA112C255800D1DE39 /* NSURL-HMExtensions.h */,
+				F48B33FB112C255800D1DE39 /* NSURL-HMExtensions.m */,
+				F48B33FC112C255800D1DE39 /* NSWorkspace-HMExtensions.h */,
+				F48B33FD112C255800D1DE39 /* NSWorkspace-HMExtensions.m */,
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 			);
 			name = CocoaExtentions;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
+=======
+		F48E518111A8BB8900112632 /* SpotlightPlugIn */ = {
+			isa = PBXGroup;
+			children = (
+				F4F95EDF13BB6EA200B01DF6 /* SpotlighterHelper */,
+				F48E519911A8BC9600112632 /* schema.strings */,
+				F48E519711A8BC8200112632 /* InfoPlist.strings */,
+				F48E519611A8BC6E00112632 /* schema.xml */,
+				F48E519411A8BC4600112632 /* Info.plist */,
+				F48E519311A8BBE800112632 /* main.c */,
+				F48E519211A8BBDC00112632 /* GetMetadataForFile.m */,
+			);
+			path = SpotlightPlugIn;
+			sourceTree = "<group>";
+		};
+		F4DAE4CE11B23EC80047BEDA /* AppleRemoteControlWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				F4DAE5E611B24AB80047BEDA /* license.txt */,
+				F4DAE4CF11B23EDD0047BEDA /* RemoteControl.h */,
+				F4DAE4D011B23EDD0047BEDA /* RemoteControl.m */,
+				F4DAE4D111B23EDD0047BEDA /* HIDRemoteControlDevice.h */,
+				F4DAE4D211B23EDD0047BEDA /* HIDRemoteControlDevice.m */,
+				F4DAE4D311B23EDD0047BEDA /* AppleRemote.h */,
+				F4DAE4D411B23EDD0047BEDA /* AppleRemote.m */,
+				F4DAE4D511B23EDD0047BEDA /* MultiClickRemoteBehavior.h */,
+				F4DAE4D611B23EDD0047BEDA /* MultiClickRemoteBehavior.m */,
+			);
+			path = AppleRemoteControlWrapper;
+			sourceTree = "<group>";
+		};
+		F4F95EDF13BB6EA200B01DF6 /* SpotlighterHelper */ = {
+			isa = PBXGroup;
+			children = (
+				F4F95EEC13BB6F0700B01DF6 /* XspfSpotlighterHelper.h */,
+				F4F95EED13BB6F0700B01DF6 /* XspfSpotlighterHelper.m */,
+				F4F95EE413BB6EEC00B01DF6 /* SpotlighterHelper_main.m */,
+				F4F95EE213BB6ECD00B01DF6 /* XspfSpotlighterHelper-Info.plist */,
+			);
+			name = SpotlighterHelper;
+			sourceTree = "<group>";
+		};
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -403,23 +710,81 @@
 			productReference = F426BB311083282A0084E8C5 /* XspfQuickLook.qlgenerator */;
 			productType = "com.apple.product-type.bundle";
 		};
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
+=======
+		F48E51A411A8BCF300112632 /* XspfSpotlight */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F48E51A911A8BCF300112632 /* Build configuration list for PBXNativeTarget "XspfSpotlight" */;
+			buildPhases = (
+				F48E51A111A8BCF300112632 /* Resources */,
+				F48E51A211A8BCF300112632 /* Sources */,
+				F48E51A311A8BCF300112632 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XspfSpotlight;
+			productName = XspfSpotlight;
+			productReference = F48E51A511A8BCF300112632 /* XspfSpotlight.mdimporter */;
+			productType = "com.apple.product-type.bundle";
+		};
+		F4F95EF213BB6F3B00B01DF6 /* XspfSpotlighterHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4F95EF813BB6F3B00B01DF6 /* Build configuration list for PBXNativeTarget "XspfSpotlighterHelper" */;
+			buildPhases = (
+				F4F95EEF13BB6F3B00B01DF6 /* Resources */,
+				F4F95EF013BB6F3B00B01DF6 /* Sources */,
+				F4F95EF113BB6F3B00B01DF6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XspfSpotlighterHelper;
+			productName = XspfSpotlighterHelper;
+			productReference = F4F95EF313BB6F3B00B01DF6 /* XspfSpotlighterHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 				ORGANIZATIONNAME = masakih;
 			};
 			buildConfigurationList = C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "XspfQT" */;
 			compatibilityVersion = "Xcode 3.0";
 			hasScannedForEncodings = 1;
+=======
+				LastUpgradeCheck = 0410;
+				ORGANIZATIONNAME = masakih;
+			};
+			buildConfigurationList = C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "XspfQT" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* XspfQT */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				8D15AC270486D014006FF6A4 /* XspfQT */,
 				F426BB301083282A0084E8C5 /* XspfQuickLook */,
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
+=======
+				F48E51A411A8BCF300112632 /* XspfSpotlight */,
+				F4F95EF213BB6F3B00B01DF6 /* XspfSpotlighterHelper */,
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 			);
 		};
 /* End PBXProject section */
@@ -429,6 +794,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 				8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */,
 				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
 				F48FDF160E7D4EBE001C33F3 /* XspfQTImformation.nib in Resources */,
@@ -436,6 +802,18 @@
 				F47E2B1F0E7E87FD00DB1BE6 /* XspfQTPlayList.nib in Resources */,
 				F4D7CCCB0E868BFC0042F96C /* Localizable.strings in Resources */,
 				F4B809F30F6EBB33004BF2DD /* XspfQTPreference.nib in Resources */,
+=======
+				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
+				F4D7CCCB0E868BFC0042F96C /* Localizable.strings in Resources */,
+				F48B369D1130A87100D1DE39 /* XspfQTPreference.xib in Resources */,
+				F48B36A31130A90A00D1DE39 /* XspfQTImformation.xib in Resources */,
+				F48B36A91130A97000D1DE39 /* XspfQTPlayList.xib in Resources */,
+				F48B36AF1130A9AA00D1DE39 /* XspfQTDocument.xib in Resources */,
+				F48B36B51130A9E700D1DE39 /* MainMenu.xib in Resources */,
+				F45B04E3119F8CC7007BB540 /* Credits.rtf in Resources */,
+				F4DAE5E711B24AB80047BEDA /* license.txt in Resources */,
+				F4D24F8A11C4969200232358 /* XspfQT.icns in Resources */,
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +825,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
+=======
+		F48E51A111A8BCF300112632 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4854B4A11A8C12400E83859 /* InfoPlist.strings in Resources */,
+				F4A4171B13C1F202000F4513 /* schema.xml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4F95EEF13BB6F3B00B01DF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -456,14 +853,18 @@
 			files = (
 				8D15AC310486D014006FF6A4 /* XspfQTDocument.m in Sources */,
 				8D15AC320486D014006FF6A4 /* main.m in Sources */,
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 				F49C31CD0E682C3B007F2DEC /* XspfQTComponent.m in Sources */,
 				F49C31F10E682D79007F2DEC /* XspfQTTrackList.m in Sources */,
 				F49C31F60E682E2B007F2DEC /* XspfQTTrack.m in Sources */,
+=======
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 				F441DCA50E69B82B009320B6 /* XspfQTMovieWindowController.m in Sources */,
 				F441DE580E6A2B5F009320B6 /* XspfQTValueTransformers.m in Sources */,
 				F441DE5C0E6A2BDA009320B6 /* XspfQTAppDelegate.m in Sources */,
 				F441DECB0E6A399D009320B6 /* XspfQTFullScreenWindow.m in Sources */,
 				F441E0680E6A5131009320B6 /* XspfQTPlayListWindowController.m in Sources */,
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 				F46870240E71963E00B4DAED /* XspfQTPlaceholderComponent.m in Sources */,
 				F48FDF190E7D4EE7001C33F3 /* XspfQTInformationWindowController.m in Sources */,
 				F429BD700E8F969A006EB717 /* XspfQTPlaylist.m in Sources */,
@@ -478,6 +879,31 @@
 				F44805081098ACD10014C2BB /* NSAppleEventDescriptor-Extensions.m in Sources */,
 				F448050B1098AD5F0014C2BB /* BSSUtil.m in Sources */,
 				F44806EC109C6E440014C2BB /* XspfQTMovieTimer.m in Sources */,
+=======
+				F48FDF190E7D4EE7001C33F3 /* XspfQTInformationWindowController.m in Sources */,
+				F48B5B200F54388100E0D1D0 /* XspfQTMovieWindow.m in Sources */,
+				F48DD1940F62A58E008A199C /* XspfQTMovieView.m in Sources */,
+				F484FC7B0F6BEB6F007C5596 /* XspfQTMovieLoader.m in Sources */,
+				F4B8096E0F6EB373004BF2DD /* XspfQTPreferenceWindowController.m in Sources */,
+				F41AC3520F7F0B88003B3DF0 /* XspfQTPreference.m in Sources */,
+				F448050B1098AD5F0014C2BB /* BSSUtil.m in Sources */,
+				F44806EC109C6E440014C2BB /* XspfQTMovieTimer.m in Sources */,
+				F48B33EA112C253C00D1DE39 /* HMXSPFComponent.m in Sources */,
+				F48B33EB112C253C00D1DE39 /* HMXSPFContainerComponent.m in Sources */,
+				F48B33EC112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m in Sources */,
+				F48B33ED112C253C00D1DE39 /* HMXSPFPlaylist.m in Sources */,
+				F48B33EE112C253C00D1DE39 /* HMXSPFTrack.m in Sources */,
+				F48B33EF112C253C00D1DE39 /* HMXSPFTrackList.m in Sources */,
+				F48B33FE112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m in Sources */,
+				F48B33FF112C255800D1DE39 /* NSPathUtilities-HMExtensions.m in Sources */,
+				F48B3400112C255800D1DE39 /* NSURL-HMExtensions.m in Sources */,
+				F48B3401112C255800D1DE39 /* NSWorkspace-HMExtensions.m in Sources */,
+				F4DAE4D711B23EDD0047BEDA /* RemoteControl.m in Sources */,
+				F4DAE4D811B23EDD0047BEDA /* HIDRemoteControlDevice.m in Sources */,
+				F4DAE4D911B23EDD0047BEDA /* AppleRemote.m in Sources */,
+				F4DAE4DA11B23EDD0047BEDA /* MultiClickRemoteBehavior.m in Sources */,
+				F4C0C32F13E59F8600864D74 /* XspfMAppleRemoteSupport.m in Sources */,
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +914,7 @@
 				F426BB4E108329400084E8C5 /* GenerateThumbnailForURL.m in Sources */,
 				F426BB4F108329420084E8C5 /* GeneratePreviewForURL.m in Sources */,
 				F426BB50108329450084E8C5 /* main.c in Sources */,
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 				F426BB7810832ABB0084E8C5 /* XspfQTComponent.m in Sources */,
 				F426BB7910832ABC0084E8C5 /* XspfQTContainerComponent.m in Sources */,
 				F426BB7A10832ABE0084E8C5 /* XspfQTPlaceholderComponent.m in Sources */,
@@ -498,6 +925,55 @@
 				F426BBD71083328F0084E8C5 /* NSURL-XspfQT-Extensions.m in Sources */,
 				F426BBFC108344260084E8C5 /* XspfQLUtilities.m in Sources */,
 				F426BC96108357890084E8C5 /* XspfQTValueTransformers.m in Sources */,
+=======
+				F426BBFC108344260084E8C5 /* XspfQLUtilities.m in Sources */,
+				F426BC96108357890084E8C5 /* XspfQTValueTransformers.m in Sources */,
+				F48B33F0112C253C00D1DE39 /* HMXSPFComponent.m in Sources */,
+				F48B33F1112C253C00D1DE39 /* HMXSPFContainerComponent.m in Sources */,
+				F48B33F2112C253C00D1DE39 /* HMXSPFPlaceholderComponent.m in Sources */,
+				F48B33F3112C253C00D1DE39 /* HMXSPFPlaylist.m in Sources */,
+				F48B33F4112C253C00D1DE39 /* HMXSPFTrack.m in Sources */,
+				F48B33F5112C253C00D1DE39 /* HMXSPFTrackList.m in Sources */,
+				F48B3402112C255800D1DE39 /* NSAppleEventDescriptor-HMExtensions.m in Sources */,
+				F48B3403112C255800D1DE39 /* NSPathUtilities-HMExtensions.m in Sources */,
+				F48B3404112C255800D1DE39 /* NSURL-HMExtensions.m in Sources */,
+				F48B3405112C255800D1DE39 /* NSWorkspace-HMExtensions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F48E51A211A8BCF300112632 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4854B3111A8C01F00E83859 /* GetMetadataForFile.m in Sources */,
+				F4854B3211A8C02100E83859 /* main.c in Sources */,
+				F4854E2511A8D0C900E83859 /* HMXSPFComponent.m in Sources */,
+				F4854E2611A8D0CB00E83859 /* HMXSPFContainerComponent.m in Sources */,
+				F4854E2711A8D0CC00E83859 /* HMXSPFPlaceholderComponent.m in Sources */,
+				F4854E2811A8D0CD00E83859 /* HMXSPFPlaylist.m in Sources */,
+				F4854E2911A8D0CE00E83859 /* HMXSPFTrack.m in Sources */,
+				F4854E2A11A8D0D000E83859 /* HMXSPFTrackList.m in Sources */,
+				F4854E8D11A8D9E600E83859 /* NSPathUtilities-HMExtensions.m in Sources */,
+				F4854E9811A8DA0300E83859 /* NSURL-HMExtensions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4F95EF013BB6F3B00B01DF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4F95F0B13BB6F9E00B01DF6 /* SpotlighterHelper_main.m in Sources */,
+				F4F95F0C13BB6F9F00B01DF6 /* XspfSpotlighterHelper.m in Sources */,
+				F4F95F0D13BB6FAA00B01DF6 /* HMXSPFComponent.m in Sources */,
+				F4F95F0E13BB6FAB00B01DF6 /* HMXSPFContainerComponent.m in Sources */,
+				F4F95F0F13BB6FAE00B01DF6 /* HMXSPFPlaceholderComponent.m in Sources */,
+				F4F95F1013BB6FAF00B01DF6 /* HMXSPFPlaylist.m in Sources */,
+				F4F95F1113BB6FB000B01DF6 /* HMXSPFTrack.m in Sources */,
+				F4F95F1213BB6FB200B01DF6 /* HMXSPFTrackList.m in Sources */,
+				F4F95F1913BB6FFD00B01DF6 /* XspfQTValueTransformers.m in Sources */,
+				F4F95F3413BB705D00B01DF6 /* NSPathUtilities-HMExtensions.m in Sources */,
+				F4F95F3B13BB707300B01DF6 /* NSURL-HMExtensions.m in Sources */,
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,10 +992,15 @@
 			isa = PBXVariantGroup;
 			children = (
 				089C1660FE840EACC02AAC07 /* English */,
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
+=======
+				F4ADCEB511CD1FB1003631B7 /* Japanese */,
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 		2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -571,6 +1052,75 @@
 				F4B809F40F6EBB47004BF2DD /* Japanese */,
 			);
 			name = XspfQTPreference.nib;
+=======
+		F47DF8DA1083262000DF2C17 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F47DF8DB1083262000DF2C17 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F48B369B1130A87100D1DE39 /* XspfQTPreference.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F48B369C1130A87100D1DE39 /* English */,
+				F48B369F1130A8E300D1DE39 /* Japanese */,
+			);
+			name = XspfQTPreference.xib;
+			sourceTree = "<group>";
+		};
+		F48B36A11130A90A00D1DE39 /* XspfQTImformation.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F48B36A21130A90A00D1DE39 /* English */,
+				F48B36A51130A95100D1DE39 /* Japanese */,
+			);
+			name = XspfQTImformation.xib;
+			sourceTree = "<group>";
+		};
+		F48B36A71130A97000D1DE39 /* XspfQTPlayList.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F48B36A81130A97000D1DE39 /* English */,
+				F48B36AB1130A99000D1DE39 /* Japanese */,
+			);
+			name = XspfQTPlayList.xib;
+			sourceTree = "<group>";
+		};
+		F48B36AD1130A9AA00D1DE39 /* XspfQTDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F48B36AE1130A9AA00D1DE39 /* English */,
+				F48B36B11130A9C300D1DE39 /* Japanese */,
+			);
+			name = XspfQTDocument.xib;
+			sourceTree = "<group>";
+		};
+		F48B36B31130A9E700D1DE39 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F48B36B41130A9E700D1DE39 /* English */,
+				F48B36B71130A9FC00D1DE39 /* Japanese */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		F48E519711A8BC8200112632 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F48E519811A8BC8200112632 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F48E519911A8BC9600112632 /* schema.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F48E519A11A8BC9600112632 /* English */,
+			);
+			name = schema.strings;
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 			sourceTree = "<group>";
 		};
 		F4D7CCC90E868BFC0042F96C /* Localizable.strings */ = {
@@ -599,8 +1149,11 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G4;
+=======
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = XspfQT_Prefix.pch;
@@ -619,7 +1172,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 				GCC_MODEL_TUNING = G4;
+=======
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = XspfQT_Prefix.pch;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -636,22 +1192,39 @@
 		C05733CC08A9546B00998B17 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+=======
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx10.7;
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 			};
 			name = Debug;
 		};
 		C05733CD08A9546B00998B17 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+=======
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx10.7;
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 			};
 			name = Release;
 		};
@@ -661,12 +1234,18 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+=======
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = QuickLookPlugIn/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 				PREBINDING = NO;
+=======
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 				PRODUCT_NAME = XspfQuickLook;
 				WRAPPER_EXTENSION = qlgenerator;
 			};
@@ -678,16 +1257,96 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = QuickLookPlugIn/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
 				PREBINDING = NO;
+=======
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				INFOPLIST_FILE = QuickLookPlugIn/Info.plist;
+				INSTALL_PATH = /Library/QuickLook;
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 				PRODUCT_NAME = XspfQuickLook;
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Release;
 		};
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
+=======
+		F48E51A711A8BCF300112632 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = SpotlightPlugIn/Info.plist;
+				INSTALL_PATH = /Library/Spotlight;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = XspfSpotlight;
+				WRAPPER_EXTENSION = mdimporter;
+			};
+			name = Debug;
+		};
+		F48E51A811A8BCF300112632 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INFOPLIST_FILE = SpotlightPlugIn/Info.plist;
+				INSTALL_PATH = /Library/Spotlight;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = XspfSpotlight;
+				WRAPPER_EXTENSION = mdimporter;
+			};
+			name = Release;
+		};
+		F4F95EF613BB6F3B00B01DF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Foundation.framework/Headers/Foundation.h";
+				INFOPLIST_FILE = "SpotlightPlugIn/XspfSpotlighterHelper-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = XspfSpotlighterHelper;
+			};
+			name = Debug;
+		};
+		F4F95EF713BB6F3B00B01DF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Foundation.framework/Headers/Foundation.h";
+				INFOPLIST_FILE = "SpotlightPlugIn/XspfSpotlighterHelper-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = XspfSpotlighterHelper;
+			};
+			name = Release;
+		};
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -718,6 +1377,27 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+<<<<<<< HEAD:XspfQT.xcodeproj/project.pbxproj
+=======
+		F48E51A911A8BCF300112632 /* Build configuration list for PBXNativeTarget "XspfSpotlight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F48E51A711A8BCF300112632 /* Debug */,
+				F48E51A811A8BCF300112632 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4F95EF813BB6F3B00B01DF6 /* Build configuration list for PBXNativeTarget "XspfSpotlighterHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4F95EF613BB6F3B00B01DF6 /* Debug */,
+				F4F95EF713BB6F3B00B01DF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+>>>>>>> trunk:XspfQT.xcodeproj/project.pbxproj
 /* End XCConfigurationList section */
 	};
 	rootObject = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
