@@ -3,20 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-//  Copyright 2008 masakih. All rights reserved.
-//
-
-#import "XspfQTPlayListWindowController.h"
-#import "XspfQTDocument.h"
-#import "XspfQTComponent.h"
-
-#import "BSSUtil.h"
-
-
-@interface XspfQTPlayListWindowController(Private)
-- (void)setObserveObject:(id)new;
-=======
 //
 
 /*
@@ -86,7 +72,6 @@
 @end
 
 @interface XspfQTPlayListWindowController(Private)
->>>>>>> trunk:XspfQTPlayListWindowController.m
 
 - (NSString *)clickedMoviePath;
 
@@ -97,10 +82,7 @@
 @end
 
 @implementation XspfQTPlayListWindowController
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-=======
 @synthesize observedObject = _observedObject;
->>>>>>> trunk:XspfQTPlayListWindowController.m
 
 #pragma mark ### Static variables ###
 static NSString *const XspfQTPlayListItemType = @"XspfQTPlayListItemType";
@@ -114,11 +96,7 @@ static NSString *const XspfQTTitleKey = @"title";
 - (void)dealloc
 {
 	[trackListTree removeObserver:self forKeyPath:@"selection"];
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-	[self setObserveObject:nil];
-=======
 	self.observedObject = nil;
->>>>>>> trunk:XspfQTPlayListWindowController.m
 	
 	[super dealloc];
 }
@@ -132,11 +110,7 @@ static NSString *const XspfQTTitleKey = @"title";
 					forKeyPath:@"selection"
 					   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 					   context:NULL];
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-	[self setObserveObject:[trackListTree valueForKeyPath:@"selection.self"]];
-=======
 	self.observedObject = [trackListTree valueForKeyPath:@"selection.self"];
->>>>>>> trunk:XspfQTPlayListWindowController.m
 	
 	[listView expandItem:[listView itemAtRow:0]];
 	
@@ -147,14 +121,11 @@ static NSString *const XspfQTTitleKey = @"title";
 									   nil]];
 }
 
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-=======
 - (XspfQTDocument *)qtDocumnet
 {
 	return (XspfQTDocument *)self.document;
 }
 
->>>>>>> trunk:XspfQTPlayListWindowController.m
 #pragma mark ### Actions ###
 - (IBAction)changeCurrentTrack:(id)sender
 {
@@ -164,11 +135,7 @@ static NSString *const XspfQTTitleKey = @"title";
 	NSIndexPath *selectionIndexPath = [trackListTree selectionIndexPath];
 	
 	if([selectionIndexPath length] > 1) {
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-		[[[self document] trackList] setSelectionIndex:[selectionIndexPath indexAtPosition:1]];
-=======
 		[self.qtDocumnet.trackList setSelectionIndex:[selectionIndexPath indexAtPosition:1]];
->>>>>>> trunk:XspfQTPlayListWindowController.m
 	}
 }
 - (IBAction)delete:(id)sender
@@ -190,8 +157,6 @@ static NSString *const XspfQTTitleKey = @"title";
 		openInfomationInFinderWithPath(path);
 	}
 }
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-=======
 - (IBAction)showHideWindow:(id)sender
 {
 	NSWindow *window = [self window];
@@ -201,20 +166,11 @@ static NSString *const XspfQTTitleKey = @"title";
 		[self showWindow:self];
 	}
 }
->>>>>>> trunk:XspfQTPlayListWindowController.m
 
 - (void)keyDown:(NSEvent *)theEvent
 {
 	if([theEvent isARepeat]) return;
 	
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-	unsigned short code = [theEvent keyCode];
-	if(code == 49 /* space bar */) {
-		[[self document] togglePlayAndPause:self];
-	}
-	if(code == 51 /* delete key */) {
-		[self delete:self];
-=======
 	NSString *charactor = [theEvent charactersIgnoringModifiers];
 	if([charactor length] == 0) return;
 	
@@ -226,7 +182,6 @@ static NSString *const XspfQTTitleKey = @"title";
 		case NSDeleteCharacter:
 			[self delete:self];
 			break;
->>>>>>> trunk:XspfQTPlayListWindowController.m
 	}
 }
 - (NSString *)clickedMoviePath
@@ -270,16 +225,6 @@ static NSString *const XspfQTTitleKey = @"title";
 }
 
 #pragma mark ### KVO & KVC ###
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-- (void)setObserveObject:(id)new
-{
-	if(observedObject == new) return;
-	
-	[observedObject removeObserver:self forKeyPath:XspfQTTitleKey];
-	
-	observedObject = new;
-	[observedObject addObserver:self
-=======
 - (void)setObservedObject:(id)new
 {
 	if(_observedObject == new) return;
@@ -288,27 +233,19 @@ static NSString *const XspfQTTitleKey = @"title";
 	
 	_observedObject = new;
 	[_observedObject addObserver:self
->>>>>>> trunk:XspfQTPlayListWindowController.m
 				   forKeyPath:XspfQTTitleKey
 					  options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 					  context:NULL];
 }
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-=======
 - (id)observedObject
 {
 	return _observedObject;
 }
->>>>>>> trunk:XspfQTPlayListWindowController.m
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if([keyPath isEqualToString:@"selection"]) {
 		id new = [object valueForKeyPath:@"selection.self"];
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-		[self setObserveObject:new];
-=======
 		self.observedObject = new;
->>>>>>> trunk:XspfQTPlayListWindowController.m
 	}
 	
 	if([keyPath isEqualToString:XspfQTTitleKey]) {
@@ -319,11 +256,7 @@ static NSString *const XspfQTTitleKey = @"title";
 		if([new isEqualTo:old]) return;
 		
 		id um = [[self document] undoManager];
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-		[um registerUndoWithTarget:observedObject
-=======
 		[um registerUndoWithTarget:self.observedObject
->>>>>>> trunk:XspfQTPlayListWindowController.m
 						  selector:@selector(setTitle:)
 							object:old];
 	}
@@ -332,25 +265,6 @@ static NSString *const XspfQTTitleKey = @"title";
 #pragma mark ### DataStructure Operations ###
 - (void)insertItemFromURL:(id)item atIndex:(NSUInteger)index
 {
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-	id doc = [self document];
-	[doc insertComponentFromURL:item atIndex:index];
-}
-- (void)insertItem:(id)item atIndex:(NSUInteger)index
-{
-	id doc = [self document];
-	[doc insertComponent:item atIndex:index];
-}
-- (void)removeItem:(id)item
-{
-	id doc = [self document];
-	[doc removeComponent:item];
-}
-- (void)moveItem:(id)item toIndex:(NSUInteger)index
-{
-	id doc = [self document];
-	[doc moveComponent:item toIndex:index];
-=======
 	[self.qtDocumnet insertComponentFromURL:item atIndex:index];
 }
 - (void)insertItem:(id)item atIndex:(NSUInteger)index
@@ -364,7 +278,6 @@ static NSString *const XspfQTTitleKey = @"title";
 - (void)moveItem:(id)item toIndex:(NSUInteger)index
 {
 	[self.qtDocumnet moveComponent:item toIndex:index];
->>>>>>> trunk:XspfQTPlayListWindowController.m
 }
 
 - (void)insertItemURL:(NSURL *)url atIndex:(NSUInteger)index
@@ -442,11 +355,7 @@ static NSString *const XspfQTTitleKey = @"title";
 	
 	id item = [[items objectAtIndex:0] representedObject];
 	
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-	if(![item isKindOfClass:[XspfQTComponent class]]) {
-=======
 	if(![item isKindOfClass:[HMXSPFComponent class]]) {
->>>>>>> trunk:XspfQTPlayListWindowController.m
 		NSLog(@"Ouch! %@", NSStringFromClass([item class]));
 		return NO;
 	}
@@ -497,11 +406,7 @@ static NSString *const XspfQTTitleKey = @"title";
 	}
 	
 	if(index == -1) {
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-		index = [[[self document] trackList] childrenCount];
-=======
 		index = self.qtDocumnet.trackList.childrenCount;
->>>>>>> trunk:XspfQTPlayListWindowController.m
 	}
 	
 	id pb = [info draggingPasteboard];
@@ -521,13 +426,8 @@ static NSString *const XspfQTTitleKey = @"title";
 	id newItem = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 	if(!newItem) return NO;
 	
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-	id doc = [self document];
-	NSInteger oldIndex = [[doc trackList] indexOfChild:newItem];
-=======
 	XspfQTDocument *doc = self.qtDocumnet;
 	NSInteger oldIndex = [doc.trackList indexOfChild:newItem];
->>>>>>> trunk:XspfQTPlayListWindowController.m
 	
 	if(oldIndex == NSNotFound) {
 		// from other list.
@@ -541,11 +441,7 @@ static NSString *const XspfQTTitleKey = @"title";
 	}
 	
 	// change archive to original.
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-	newItem = [[doc trackList] childAtIndex:oldIndex];
-=======
 	newItem = [doc.trackList childAtIndex:oldIndex];
->>>>>>> trunk:XspfQTPlayListWindowController.m
 	
 	BOOL mustSelectionChange = NO;
 	if([newItem isSelected]) {
@@ -555,11 +451,7 @@ static NSString *const XspfQTTitleKey = @"title";
 	[self moveItem:newItem toIndex:index];
 	
 	if(mustSelectionChange) {
-<<<<<<< HEAD:XspfQTPlayListWindowController.m
-		[[doc trackList] setSelectionIndex:index];
-=======
 		[doc.trackList setSelectionIndex:index];
->>>>>>> trunk:XspfQTPlayListWindowController.m
 	}
 	
 	return YES;

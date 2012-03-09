@@ -3,11 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 09/03/29.
-<<<<<<< HEAD:XspfQTPreference.m
-//  Copyright 2009 masakih. All rights reserved.
-//
-
-=======
 //
 
 /*
@@ -64,7 +59,6 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:XspfQTPreference.m
 #import "XspfQTPreference.h"
 
 XspfQTPreference *XspfQTPref = nil;
@@ -75,43 +69,21 @@ static NSString *BeginningPreloadPercentKey = @"beginingPreloadPercent";
 static NSString *EnablePreloadingKey = @"EnablePreloading";
 
 @implementation XspfQTPreference
-<<<<<<< HEAD:XspfQTPreference.m
-=======
 @synthesize beginingPreloadPercent = _beginingPreloadPercent;
 
->>>>>>> trunk:XspfQTPreference.m
 static XspfQTPreference *sharedInstance = nil;
 
 + (XspfQTPreference *)sharedInstance
 {
-<<<<<<< HEAD:XspfQTPreference.m
-    @synchronized(self) {
-        if (sharedInstance == nil) {
-            [[self alloc] init]; // assignment not done here
-        }
-    }
-=======
 	if (sharedInstance == nil) {
 		sharedInstance = [[super allocWithZone:NULL] init]; // assignment not done here
 	}
->>>>>>> trunk:XspfQTPreference.m
     return sharedInstance;
 }
 
 + (id)allocWithZone:(NSZone *)zone
 {
-<<<<<<< HEAD:XspfQTPreference.m
-    @synchronized(self) {
-        if (sharedInstance == nil) {
-            sharedInstance = [super allocWithZone:zone];
-			XspfQTPref = sharedInstance;
-            return sharedInstance;  // assignment and return on first allocation
-        }
-    }
-    return nil; //on subsequent allocation attempts return nil
-=======
     return [[self sharedInstance] retain];
->>>>>>> trunk:XspfQTPreference.m
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -126,17 +98,10 @@ static XspfQTPreference *sharedInstance = nil;
 
 - (NSUInteger)retainCount
 {
-<<<<<<< HEAD:XspfQTPreference.m
-    return UINT_MAX;  //denotes an object that cannot be released
-}
-
-- (void)release
-=======
     return NSUIntegerMax;  //denotes an object that cannot be released
 }
 
 - (oneway void)release
->>>>>>> trunk:XspfQTPreference.m
 {
     //do nothing
 }
@@ -147,8 +112,6 @@ static XspfQTPreference *sharedInstance = nil;
 }
 
 #pragma mark-
-<<<<<<< HEAD:XspfQTPreference.m
-=======
 + (void)initialize
 {
 	static BOOL isFirst = YES;
@@ -159,7 +122,6 @@ static XspfQTPreference *sharedInstance = nil;
 		XspfQTPref = [self sharedInstance];
 	}
 }
->>>>>>> trunk:XspfQTPreference.m
 - (id)init
 {
 	self = [super init];
@@ -190,27 +152,15 @@ static XspfQTPreference *sharedInstance = nil;
 }
 - (CGFloat)beginingPreloadPercent
 {
-<<<<<<< HEAD:XspfQTPreference.m
-	if(beginingPreloadPercent == 0.0) {
-		return beginingPreloadPercentPreset;
-	}
-	
-	return beginingPreloadPercent;
-=======
 	if(_beginingPreloadPercent == 0.0) {
 		return beginingPreloadPercentPreset;
 	}
 	
 	return _beginingPreloadPercent;
->>>>>>> trunk:XspfQTPreference.m
 }
 - (void)setBeginingPreloadPercent:(CGFloat)newPercent
 {
 	if(newPercent <= 0 || newPercent >= 1) return;
-<<<<<<< HEAD:XspfQTPreference.m
-	beginingPreloadPercent = newPercent;
-=======
 	_beginingPreloadPercent = newPercent;
->>>>>>> trunk:XspfQTPreference.m
 }
 @end

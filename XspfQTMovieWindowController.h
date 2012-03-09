@@ -3,11 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
-<<<<<<< HEAD:XspfQTMovieWindowController.h
-//  Copyright 2008 masakih. All rights reserved.
-//
-
-=======
 //
 
 /*
@@ -64,27 +59,15 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:XspfQTMovieWindowController.h
 #import <Cocoa/Cocoa.h>
 #import <QTKit/QTKit.h>
 
 
-<<<<<<< HEAD:XspfQTMovieWindowController.h
-@interface XspfQTMovieWindowController : NSWindowController
-=======
 @interface XspfQTMovieWindowController : NSWindowController <NSWindowDelegate>
->>>>>>> trunk:XspfQTMovieWindowController.h
 {
 	IBOutlet QTMovieView *qtView;
 	IBOutlet NSButton *playButton;
 	
-<<<<<<< HEAD:XspfQTMovieWindowController.h
-	NSWindow *fullscreenWindow;
-	NSRect normalModeSavedFrame;
-	BOOL fullScreenMode;
-	
-	QTMovie *qtMovie;
-=======
 	IBOutlet NSView *controllerView;
 	
 	NSWindow *fullscreenWindow;
@@ -94,7 +77,6 @@
 	BOOL _fullScreenMode;
 	QTMovie *_qtMovie;
 #endif
->>>>>>> trunk:XspfQTMovieWindowController.h
 	
 	NSPoint prevMouse;
 	NSDate *prevMouseMovedDate;
@@ -103,10 +85,7 @@
 	
 	BOOL isChangingFullScreen;
 }
-<<<<<<< HEAD:XspfQTMovieWindowController.h
-=======
 @property (retain)QTMovie *qtMovie;
->>>>>>> trunk:XspfQTMovieWindowController.h
 
 - (IBAction)turnUpVolume:(id)sender;
 - (IBAction)turnDownVolume:(id)sender;
@@ -116,27 +95,16 @@
 - (IBAction)backwardTagValueSecends:(id)sender;
 - (IBAction)nextTrack:(id)sender;
 - (IBAction)previousTrack:(id)sender;
-<<<<<<< HEAD:XspfQTMovieWindowController.h
-=======
 - (IBAction)gotoBeginningOrPreviousTrack:(id)sender;
->>>>>>> trunk:XspfQTMovieWindowController.h
 - (IBAction)normalSize:(id)sender;
 - (IBAction)halfSize:(id)sender;
 - (IBAction)doubleSize:(id)sender;
 - (IBAction)screenSize:(id)sender;
 
-<<<<<<< HEAD:XspfQTMovieWindowController.h
-- (void)play;
-- (void)stop;
-
-- (void)setQtMovie:(QTMovie *)qt;
-- (QTMovie *)qtMovie;
-=======
 - (IBAction)gotoThumbnailFrame:(id)sender;
 
 - (void)play;
 - (void)stop;
->>>>>>> trunk:XspfQTMovieWindowController.h
 @end
 
 extern NSString *XspfQTMovieDidStartNotification;

@@ -3,11 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 09/02/24.
-<<<<<<< HEAD:XspfQTMovieWindow.h
-//  Copyright 2009 masakih. All rights reserved.
-//
-
-=======
 //
 
 /*
@@ -64,24 +59,14 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:XspfQTMovieWindow.h
 #import <Cocoa/Cocoa.h>
 
 
 @interface XspfQTMovieWindow : NSWindow
-<<<<<<< HEAD:XspfQTMovieWindow.h
-{
-	BOOL isChangingFullScreen;
-}
-
-- (void)setIsChangingFullScreen:(BOOL)flag;
-- (CGFloat)titlebarHeight;
-=======
 #ifndef __LP64__
 {
 	BOOL _isChangingFullScreen;
 }
 #endif
->>>>>>> trunk:XspfQTMovieWindow.h
 
 @end

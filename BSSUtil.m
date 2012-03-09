@@ -11,11 +11,7 @@
 #import "stdarg.h"
 
 #import <Foundation/Foundation.h>
-<<<<<<< HEAD:BSSUtil.m
-#import "NSAppleEventDescriptor-Extensions.h"
-=======
 #import "NSAppleEventDescriptor-HMExtensions.h"
->>>>>>> trunk:BSSUtil.m
 
 
 #import <AppKit/NSWorkspace.h>

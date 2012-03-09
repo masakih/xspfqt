@@ -3,15 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 09/02/24.
-<<<<<<< HEAD:XspfQTMovieWindow.m
-//  Copyright 2009 masakih. All rights reserved.
-//
-
-#import "XspfQTMovieWindow.h"
-
-
-@implementation XspfQTMovieWindow
-=======
 //
 
 /*
@@ -76,7 +67,6 @@
 
 @implementation XspfQTMovieWindow
 @synthesize isChangingFullScreen = _isChangingFullScreen;
->>>>>>> trunk:XspfQTMovieWindow.m
 
 static CGFloat titlebarHeight = 0;
 
@@ -92,11 +82,7 @@ static CGFloat titlebarHeight = 0;
 }
 - (NSRect)constrainFrameRect:(NSRect)frameRect toScreen:(NSScreen *)screen
 {
-<<<<<<< HEAD:XspfQTMovieWindow.m
-	if(!isChangingFullScreen) {
-=======
 	if(!self.isChangingFullScreen) {
->>>>>>> trunk:XspfQTMovieWindow.m
 		return [super constrainFrameRect:frameRect toScreen:screen];
 	}
 	
@@ -105,15 +91,6 @@ static CGFloat titlebarHeight = 0;
 	return frameRect;
 }
 
-<<<<<<< HEAD:XspfQTMovieWindow.m
-- (void)setIsChangingFullScreen:(BOOL)flag
-{
-	isChangingFullScreen = flag;
-}
-- (CGFloat)titlebarHeight
-{
-	return titlebarHeight;
-=======
 - (void)cancelOperation:(id)sender
 {
 	if(_delegate && [_delegate respondsToSelector:_cmd]) {
@@ -121,6 +98,5 @@ static CGFloat titlebarHeight = 0;
 	}
 	
 	[super cancelOperation:sender];
->>>>>>> trunk:XspfQTMovieWindow.m
 }
 @end

@@ -3,11 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-//  Copyright 2008 masakih. All rights reserved.
-//
-
-=======
 //
 
 /*
@@ -64,16 +59,11 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:XspfQTMovieWindowController.m
 #import <Carbon/Carbon.h>
 
 #import "XspfQTMovieWindowController.h"
 #import "XspfQTDocument.h"
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-#import "XspfQTComponent.h"
-=======
 #import "HMXSPFComponent.h"
->>>>>>> trunk:XspfQTMovieWindowController.m
 #import "XspfQTFullScreenWindow.h"
 #import "XspfQTMovieWindow.h"
 
@@ -83,15 +73,12 @@
 NSString *XspfQTMovieDidStartNotification = @"XspfQTMovieDidStartNotification";
 NSString *XspfQTMovieDidPauseNotification = @"XspfQTMovieDidPauseNotification";
 
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-=======
 @interface XspfQTMovieWindowController()
 @property BOOL fullScreenMode;
 
 @property (readonly) XspfQTDocument *qtDocument;
 @property (readonly) XspfQTMovieWindow *qtWindow;
 @end
->>>>>>> trunk:XspfQTMovieWindowController.m
 
 @interface XspfQTMovieWindowController (Private)
 - (NSSize)windowSizeWithoutQTView;
@@ -100,11 +87,6 @@ NSString *XspfQTMovieDidPauseNotification = @"XspfQTMovieDidPauseNotification";
 - (NSWindow *)fullscreenWindow;
 - (void)movieDidStart;
 - (void)movieDidPause;
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-@end
-
-@implementation XspfQTMovieWindowController
-=======
 
 - (void)hideMenuBar;
 - (void)showMenuBar;
@@ -135,7 +117,6 @@ enum {
 @implementation XspfQTMovieWindowController
 @synthesize qtMovie = _qtMovie;
 @synthesize fullScreenMode = _fullScreenMode;
->>>>>>> trunk:XspfQTMovieWindowController.m
 
 #pragma mark ### Static variables ###
 static const float sVolumeDelta = 0.1;
@@ -156,11 +137,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc removeObserver:self];
 	
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	[self setQtMovie:nil];
-=======
 	self.qtMovie = nil;
->>>>>>> trunk:XspfQTMovieWindowController.m
 		
 	[fullscreenWindow release];
 	[self movieDidPause];
@@ -171,14 +148,9 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 - (void)awakeFromNib
 {
 	prevMouseMovedDate = [[NSDate dateWithTimeIntervalSinceNow:0.0] retain];
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	
-	id doc = [self document];
-=======
 	[[self window] setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
 	
 	XspfQTDocument *doc = self.qtDocument;
->>>>>>> trunk:XspfQTMovieWindowController.m
 	
 	[doc addObserver:self
 		  forKeyPath:kQTMovieKeyPath
@@ -195,11 +167,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 			   name:XspfQTDocumentWillCloseNotification
 			 object:doc];
 	
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	[[doc trackList] setSelectionIndex:0];
-=======
 	doc.trackList.selectionIndex = 0;
->>>>>>> trunk:XspfQTMovieWindowController.m
 	[self sizeTofitWidnow];
 	[self play];
 }
@@ -218,8 +186,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	}
 	return displayName;
 }
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-=======
 - (IBAction)showWindow:(id)sender
 {
 	if(!self.fullScreenMode) {
@@ -227,7 +193,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 		return;
 	}
 }
->>>>>>> trunk:XspfQTMovieWindowController.m
 
 #pragma mark ### KVO & KVC ###
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -237,11 +202,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 {
 	if([keyPath isEqualToString:kQTMovieKeyPath]) {
 		id new = [change objectForKey:NSKeyValueChangeNewKey];
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-		[self setQtMovie:new];
-=======
 		self.qtMovie = new;
->>>>>>> trunk:XspfQTMovieWindowController.m
 		return;
 	}
 	if([keyPath isEqualToString:kIsPlayedKeyPath]) {
@@ -257,39 +218,19 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 
 - (void)setQtMovie:(QTMovie *)qt
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	if(qtMovie == qt) return;
-	if([qtMovie isEqual:qt]) return;
-=======
 	if(_qtMovie == qt) return;
 	if([_qtMovie isEqual:qt]) return;
->>>>>>> trunk:XspfQTMovieWindowController.m
 	if(qt == (id)[NSNull null]) qt = nil;
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	if(qtMovie) {
-		[nc removeObserver:self name:nil object:qtMovie];
-=======
 	if(_qtMovie) {
 		[nc removeObserver:self name:nil object:_qtMovie];
->>>>>>> trunk:XspfQTMovieWindowController.m
 	}
 	if(qt) {
 		[nc addObserver:self selector:@selector(movieDidEndNotification:) name:QTMovieDidEndNotification object:qt];
 	}
 	
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	if(qtMovie) {
-		[qt setVolume:[qtMovie volume]];
-		[qt setMuted:[qtMovie muted]];
-	}
-	[qtMovie autorelease];
-	qtMovie = [qt retain];
-	
-	if(!qtMovie) return;
-=======
 	if(_qtMovie) {
 		[qt setVolume:[_qtMovie volume]];
 		[qt setMuted:[_qtMovie muted]];
@@ -298,7 +239,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	_qtMovie = [qt retain];
 	
 	if(!_qtMovie) return;
->>>>>>> trunk:XspfQTMovieWindowController.m
 	
 	[self synchronizeWindowTitleWithDocumentName];
 	[self sizeTofitWidnow];
@@ -306,9 +246,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 - (QTMovie *)qtMovie
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	return qtMovie;
-=======
 	return _qtMovie;
 }
 - (XspfQTDocument *)qtDocument
@@ -318,7 +255,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 - (XspfQTMovieWindow *)qtWindow
 {
 	return (XspfQTMovieWindow *)self.window;
->>>>>>> trunk:XspfQTMovieWindowController.m
 }
 
 #pragma mark ### Other functions ###
@@ -327,19 +263,11 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 {
 	if(windowSizeWithoutQTView.width == 0
 	   && windowSizeWithoutQTView.height == 0) {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-		QTMovie *curMovie = [self qtMovie];
-		if(!curMovie) return windowSizeWithoutQTView;
-		
-		NSSize qtViewSize = [qtView frame].size;
-		NSSize currentWindowSize = [[self window] frame].size;
-=======
 		QTMovie *curMovie = self.qtMovie;
 		if(!curMovie) return windowSizeWithoutQTView;
 		
 		NSSize qtViewSize = [qtView frame].size;
 		NSSize currentWindowSize = [self.window frame].size;
->>>>>>> trunk:XspfQTMovieWindowController.m
 		
 		windowSizeWithoutQTView = NSMakeSize(currentWindowSize.width - qtViewSize.width,
 											 currentWindowSize.height - qtViewSize.height);
@@ -349,13 +277,9 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 - (void)sizeTofitWidnow
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	id window = [self window];
-=======
 	if(self.fullScreenMode) return;
 	
 	id window = self.window;
->>>>>>> trunk:XspfQTMovieWindowController.m
 	NSRect frame = [window frame];
 	NSSize newSize = [self fitSizeToSize:frame.size];
 	frame.origin.y += frame.size.height - newSize.height;
@@ -365,11 +289,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 - (NSSize)fitSizeToSize:(NSSize)toSize
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	QTMovie *curMovie = [self qtMovie];
-=======
 	QTMovie *curMovie = self.qtMovie;
->>>>>>> trunk:XspfQTMovieWindowController.m
 	if(!curMovie) return toSize;
 	
 	NSSize delta = [self windowSizeWithoutQTView];
@@ -396,11 +316,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 
 - (void)setMovieSize:(NSSize)movieSize
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	NSRect newFrame = [[self window] frame];
-=======
 	NSRect newFrame = [self.window frame];
->>>>>>> trunk:XspfQTMovieWindowController.m
 	NSSize newSize;
 	
 	newSize = [self windowSizeWithoutQTView];
@@ -410,12 +326,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	newFrame.origin.y -= newSize.height - newFrame.size.height;	
 	newFrame.size = newSize;
 	
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	NSWindow *w = [self window];
-	[w setFrame:newFrame display:YES animate:YES];
-=======
 	[self.window setFrame:newFrame display:YES animate:YES];
->>>>>>> trunk:XspfQTMovieWindowController.m
 }
 - (void)movieDidStart
 {
@@ -446,42 +357,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 - (void)enterFullScreen
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	NSWindow *w = [self fullscreenWindow];
-	
-	normalModeSavedFrame = [qtView frame];
-	
-	XspfQTMovieWindow *player = (XspfQTMovieWindow *)[self window];
-	NSRect originalWFrame = [player frame];
-	
-	SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar);
-	
-	NSRect newWFrame = [[NSScreen mainScreen] frame];
-	
-	newWFrame.size.width += windowSizeWithoutQTView.width;
-	newWFrame.size.height += windowSizeWithoutQTView.height;
-	newWFrame.origin.y -= windowSizeWithoutQTView.height;
-	
-	isChangingFullScreen = YES;
-	[player setIsChangingFullScreen:YES];
-	
-	[player setFrame:newWFrame display:YES animate:YES];
-	
-	[player setIsChangingFullScreen:NO];
-	isChangingFullScreen = NO;
-	
-	[w setContentView:qtView];
-	[w makeKeyAndOrderFront:self];
-	
-	[w makeFirstResponder:qtView];
-	
-	[player orderOut:self];
-	[player setFrame:originalWFrame display:NO];
-}
-- (void)exitFullScreen
-{
-	XspfQTMovieWindow *player = (XspfQTMovieWindow *)[self window];
-=======
 	NSWindow *fullscreen = [self fullscreenWindow];
 	
 	normalModeSavedFrame = [qtView frame];
@@ -513,69 +388,24 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 - (void)exitFullScreen
 {
 	XspfQTMovieWindow *player = self.qtWindow;
->>>>>>> trunk:XspfQTMovieWindowController.m
 	NSRect originalWFrame = [player frame];
 	
 	// calculate new Window frame.
 	NSRect windowRect = originalWFrame;
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	NSSize movieSize = [[[self qtMovie] attributeForKey:QTMovieNaturalSizeAttribute] sizeValue];
-=======
 	NSSize movieSize = [[self.qtMovie attributeForKey:QTMovieNaturalSizeAttribute] sizeValue];
->>>>>>> trunk:XspfQTMovieWindowController.m
 	if(movieSize.width != 0) {		
 		CGFloat newViewHeight =  normalModeSavedFrame.size.width * (movieSize.height / movieSize.width);
 		
 		windowRect.size.height = newViewHeight + windowSizeWithoutQTView.height;
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-		windowRect.origin.y -= windowRect.size.height - originalWFrame.size.height + [player titlebarHeight];
-	}
-	
-	isChangingFullScreen = YES;
-	[player setIsChangingFullScreen:YES];
-	
-	// caluculate screen size window frame.
-	NSRect screenWFrame = [[NSScreen mainScreen] frame];	
-	screenWFrame.size.width += windowSizeWithoutQTView.width;
-	screenWFrame.size.height += windowSizeWithoutQTView.height;
-	screenWFrame.origin.y -= windowSizeWithoutQTView.height;
-	[player setFrame:screenWFrame display:NO];
-	
-	isChangingFullScreen = NO;
-=======
 		windowRect.origin.y -= windowRect.size.height - originalWFrame.size.height;
 	}
 
 	[player setFrame:windowRect display:NO];
 	[player orderWindow:NSWindowBelow relativeTo:[fullscreenWindow windowNumber]];
->>>>>>> trunk:XspfQTMovieWindowController.m
 	
 	// move QTView.
 	[qtView retain];
 	{
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-//		[qtView removeFromSuperview];
-		NSRect fViewRec = [qtView frame];
-		
-		// for do not flushing qtview.
-		[fullscreenWindow setContentView:[[[NSView alloc] initWithFrame:fViewRec] autorelease]];
-		
-		fViewRec.origin.y += windowSizeWithoutQTView.height - [player titlebarHeight];
-		[qtView setFrame:fViewRec];
-		[[player contentView] addSubview:qtView];
-	}
-	[qtView release];
-	
-	[player makeKeyAndOrderFront:self];
-	[player makeFirstResponder:qtView];
-	
-	[fullscreenWindow orderOut:self];
-	
-	[player setFrame:windowRect display:YES animate:YES];
-	
-	[NSMenu setMenuBarVisible:YES];
-	[player setIsChangingFullScreen:NO];
-=======
 		NSRect movieViewFrame = [[player contentView] frame];
 		movieViewFrame.size.height -= [controllerView frame].size.height;
 		movieViewFrame.origin.y = [controllerView frame].size.height;
@@ -603,7 +433,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	
 	[player makeKeyAndOrderFront:self];
 	[player makeFirstResponder:qtView];
->>>>>>> trunk:XspfQTMovieWindowController.m
 }
 
 - (NSWindow *)fullscreenWindow
@@ -616,15 +445,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 																   backing:NSBackingStoreBuffered
 																	 defer:YES];
 	[fullscreenWindow setReleasedWhenClosed:NO];
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	[fullscreenWindow setBackgroundColor:[NSColor blackColor]];
-	[fullscreenWindow setDelegate:self];
-	[fullscreenWindow setWindowController:self];
-	
-	return fullscreenWindow;
-}
-
-=======
 	[fullscreenWindow setBackgroundColor:[[NSColor blackColor] colorWithAlphaComponent:0.5]];
 	[fullscreenWindow setDelegate:self];
 	[fullscreenWindow setWindowController:self];
@@ -658,7 +478,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	[NSApp setPresentationOptions:
 	 currentPresentation & ~(NSApplicationPresentationAutoHideDock | NSApplicationPresentationAutoHideMenuBar)];
 }
->>>>>>> trunk:XspfQTMovieWindowController.m
 #pragma mark ### Actions ###
 - (IBAction)togglePlayAndPause:(id)sender
 {
@@ -668,13 +487,10 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 		[self play];
 	}
 }
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-=======
 - (IBAction)gotoBeginning:(id)sender
 {
 	[qtView gotoBeginning:sender];
 }
->>>>>>> trunk:XspfQTMovieWindowController.m
 
 - (IBAction)turnUpVolume:(id)sender
 {
@@ -690,14 +506,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 - (IBAction)toggleFullScreenMode:(id)sender
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	if(fullScreenMode) {
-		[self exitFullScreen];
-		fullScreenMode = NO;
-	} else {
-		[self enterFullScreen];
-		fullScreenMode = YES;
-=======
 	if([self.window respondsToSelector:@selector(toggleFullScreen:)]) {
 		[self.window toggleFullScreen:self];
 		return;
@@ -709,7 +517,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	} else {
 		[self enterFullScreen];
 		self.fullScreenMode = YES;
->>>>>>> trunk:XspfQTMovieWindowController.m
 	}
 }
 
@@ -720,20 +527,12 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	int tag = [sender tag];
 	if(tag == 0) return;
 	
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	QTTime current = [[self qtMovie] currentTime];
-=======
 	QTTime current = [self.qtMovie currentTime];
->>>>>>> trunk:XspfQTMovieWindowController.m
 	NSTimeInterval cur;
 	if(!QTGetTimeInterval(current, &cur)) return;
 	
 	QTTime new = QTMakeTimeWithTimeInterval(cur + tag);
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	[[self qtMovie] setCurrentTime:new];
-=======
 	[self.qtMovie setCurrentTime:new];
->>>>>>> trunk:XspfQTMovieWindowController.m
 }
 - (IBAction)backwardTagValueSecends:(id)sender
 {
@@ -742,36 +541,21 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	int tag = [sender tag];
 	if(tag == 0) return;
 	
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	QTTime current = [[self qtMovie] currentTime];
-=======
 	QTTime current = [self.qtMovie currentTime];
->>>>>>> trunk:XspfQTMovieWindowController.m
 	NSTimeInterval cur;
 	if(!QTGetTimeInterval(current, &cur)) return;
 	
 	QTTime new = QTMakeTimeWithTimeInterval(cur - tag);
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	[[self qtMovie] setCurrentTime:new];
-=======
 	[self.qtMovie setCurrentTime:new];
->>>>>>> trunk:XspfQTMovieWindowController.m
 }
 - (IBAction)nextTrack:(id)sender
 {
 	[qtView pause:sender];
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	[[[self document] trackList] next];
-=======
 	[self.qtDocument.trackList next];
->>>>>>> trunk:XspfQTMovieWindowController.m
 }
 - (IBAction)previousTrack:(id)sender
 {
 	[qtView pause:sender];
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	[[[self document] trackList] previous];
-=======
 	[self.qtDocument.trackList previous];
 }
 - (IBAction)gotoBeginningOrPreviousTrack:(id)sender
@@ -804,20 +588,13 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	
 	QTTime new = QTMakeTimeWithTimeInterval(time);
 	[self.qtMovie setCurrentTime:new];
->>>>>>> trunk:XspfQTMovieWindowController.m
 }
 
 - (IBAction)normalSize:(id)sender
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	if(fullScreenMode) return;
-	
-	QTMovie *curMovie = [self qtMovie];
-=======
 	if(self.fullScreenMode) return;
 	
 	QTMovie *curMovie = self.qtMovie;
->>>>>>> trunk:XspfQTMovieWindowController.m
 	if(!curMovie) return;
 	
 	NSSize movieSize = [[curMovie attributeForKey:QTMovieNaturalSizeAttribute] sizeValue];
@@ -827,15 +604,9 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 - (IBAction)halfSize:(id)sender
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	if(fullScreenMode) return;
-	
-	QTMovie *curMovie = [self qtMovie];
-=======
 	if(self.fullScreenMode) return;
 	
 	QTMovie *curMovie = self.qtMovie;
->>>>>>> trunk:XspfQTMovieWindowController.m
 	if(!curMovie) return;
 	
 	NSSize movieSize = [[curMovie attributeForKey:QTMovieNaturalSizeAttribute] sizeValue];
@@ -848,15 +619,9 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 - (IBAction)doubleSize:(id)sender
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	if(fullScreenMode) return;
-	
-	QTMovie *curMovie = [self qtMovie];
-=======
 	if(self.fullScreenMode) return;
 	
 	QTMovie *curMovie = self.qtMovie;
->>>>>>> trunk:XspfQTMovieWindowController.m
 	if(!curMovie) return;
 	
 	NSSize movieSize = [[curMovie attributeForKey:QTMovieNaturalSizeAttribute] sizeValue];
@@ -869,10 +634,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 - (IBAction)screenSize:(id)sender
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	//
-	//
-=======
 	if(self.fullScreenMode) return;
 	
 	NSSize screenSize = [[NSScreen mainScreen] visibleFrame].size;
@@ -896,27 +657,18 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	windowFrame.size = newSize;
 	windowFrame.origin.y = [[NSScreen mainScreen] visibleFrame].origin.y;
 	[self.window setFrame:windowFrame display:YES animate:YES];
->>>>>>> trunk:XspfQTMovieWindowController.m
 }
 
 #pragma mark ### Notification & Timer ###
 - (void)movieDidEndNotification:(id)notification
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	[[[self document] trackList] next];
-=======
 	[self.qtDocument.trackList next];
->>>>>>> trunk:XspfQTMovieWindowController.m
 }
 
 // call from XspfQTMovieTimer.
 - (void)updateTimeIfNeeded:(id)timer
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	QTMovie *qt = [self qtMovie];
-=======
 	QTMovie *qt = self.qtMovie;
->>>>>>> trunk:XspfQTMovieWindowController.m
 	if(qt) {
 		// force update time indicator.
 		[qt willChangeValueForKey:@"currentTime"];
@@ -929,11 +681,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 		prevMouse = mouse;
 		[prevMouseMovedDate autorelease];
 		prevMouseMovedDate = [[NSDate dateWithTimeIntervalSinceNow:0.0] retain];
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	} else if(fullScreenMode && [prevMouseMovedDate timeIntervalSinceNow] < -3.0 ) {
-=======
 	} else if(self.fullScreenMode && [prevMouseMovedDate timeIntervalSinceNow] < -3.0 ) {
->>>>>>> trunk:XspfQTMovieWindowController.m
 		[NSCursor setHiddenUntilMouseMoves:YES];
 		//
 		// hide controller.
@@ -943,11 +691,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 #pragma mark ### NSResponder ###
 - (void)cancelOperation:(id)sender
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	if(fullScreenMode) {
-=======
 	if(self.fullScreenMode) {
->>>>>>> trunk:XspfQTMovieWindowController.m
 		[self toggleFullScreenMode:self];
 	}
 }
@@ -955,14 +699,9 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 #pragma mark ### NSMenu valivation ###
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	if([menuItem action] == @selector(toggleFullScreenMode:)) {
-		if(fullScreenMode) {
-=======
 	SEL action = [menuItem action];
 	if(action == @selector(toggleFullScreenMode:)) {
 		if(self.fullScreenMode) {
->>>>>>> trunk:XspfQTMovieWindowController.m
 			[menuItem setTitle:NSLocalizedString(@"Exit Full Screen", @"Exit Full Screen")];
 		} else {
 			[menuItem setTitle:NSLocalizedString(@"Full Screen", @"Full Screen")];
@@ -970,16 +709,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 		return YES;
 	}
 	
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	if([menuItem action] == @selector(screenSize:)) {
-		return NO;
-	}
-	
-	if([menuItem action] == @selector(normalSize:)
-	   || [menuItem action] == @selector(halfSize:)
-	   || [menuItem action] == @selector(doubleSize:)) {
-		if(fullScreenMode) {
-=======
 	if(action == @selector(gotoThumbnailFrame:)) {
 		if(!self.qtDocument.trackList.thumbnailTrack) return NO;
 	}
@@ -989,7 +718,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 	   || action == @selector(doubleSize:)
 	   || action == @selector(screenSize:)) {
 		if(self.fullScreenMode) {
->>>>>>> trunk:XspfQTMovieWindowController.m
 			return NO;
 		} else {
 			return YES;
@@ -1004,11 +732,7 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 {
 	id doc = [notification object];
 	
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	if(fullScreenMode) {
-=======
 	if(self.fullScreenMode) {
->>>>>>> trunk:XspfQTMovieWindowController.m
 		[self toggleFullScreenMode:self];
 	}
 	
@@ -1023,20 +747,13 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 - (BOOL)windowShouldClose:(id)sender
 {
 	[qtView pause:self];
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-	[self setQtMovie:nil];
-=======
 	self.qtMovie = nil;
->>>>>>> trunk:XspfQTMovieWindowController.m
 		
 	return YES;
 }
 - (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
 {
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-=======
 	if(self.fullScreenMode) return frameSize;
->>>>>>> trunk:XspfQTMovieWindowController.m
 	if(isChangingFullScreen) return frameSize;
 	
 	return [self fitSizeToSize:frameSize];
@@ -1050,8 +767,6 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 		}
 	}
 }
-<<<<<<< HEAD:XspfQTMovieWindowController.m
-=======
 - (void)hideController:(id)sender
 {
 	for(NSView *view in [controllerView subviews]) {
@@ -1094,5 +809,4 @@ static NSString *const kVolumeKeyPath = @"qtMovie.volume";
 }
 
 
->>>>>>> trunk:XspfQTMovieWindowController.m
 @end

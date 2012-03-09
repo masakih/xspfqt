@@ -3,11 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
-<<<<<<< HEAD:XspfQTAppDelegate.m
-//  Copyright 2008 masakih. All rights reserved.
-//
-
-=======
 //
 
 /*
@@ -64,7 +59,6 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:XspfQTAppDelegate.m
 #import "XspfQTAppDelegate.h"
 
 #import "XspfQTPreference.h"
@@ -73,40 +67,22 @@
 #import "XspfQTPreferenceWindowController.h"
 
 
-<<<<<<< HEAD:XspfQTAppDelegate.m
-=======
 #import "XspfMAppleRemoteSupport.h"
 
 
 
->>>>>>> trunk:XspfQTAppDelegate.m
 @implementation XspfQTAppDelegate
 
 + (void)initialize
 {
-<<<<<<< HEAD:XspfQTAppDelegate.m
-	[NSValueTransformer setValueTransformer:[[[XspfQTTimeTransformer alloc] init] autorelease]
-									forName:@"XspfQTTimeTransformer"];
-	[NSValueTransformer setValueTransformer:[[[XspfQTTimeDateTransformer alloc] init] autorelease]
-									forName:@"XspfQTTimeDateTransformer"];
-	[NSValueTransformer setValueTransformer:[[[XspfQTSizeToStringTransformer alloc] init] autorelease]
-									forName:@"XspfQTSizeToStringTransformer"];
-	[NSValueTransformer setValueTransformer:[[[XspfQTFileSizeStringTransformer alloc] init] autorelease]
-									forName:@"XspfQTFileSizeStringTransformer"];
-	
-=======
->>>>>>> trunk:XspfQTAppDelegate.m
 	[XspfQTPreference sharedInstance];
 }
 
 - (void)awakeFromNib
 {
-<<<<<<< HEAD:XspfQTAppDelegate.m
-=======
 	appleRemoteSupprt = [[XspfMAppleRemoteSupport alloc] init];
 
 	
->>>>>>> trunk:XspfQTAppDelegate.m
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:self
 		   selector:@selector(windowDidBecomeMain:)
@@ -122,11 +98,8 @@
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc removeObserver:self];
 	
-<<<<<<< HEAD:XspfQTAppDelegate.m
-=======
 	[appleRemoteSupprt release];
 	
->>>>>>> trunk:XspfQTAppDelegate.m
 	[super dealloc];
 }
 
@@ -149,12 +122,6 @@
 }
 - (IBAction)togglePlayAndPause:(id)sender
 {
-<<<<<<< HEAD:XspfQTAppDelegate.m
-	[[mainWindowStore windowController] togglePlayAndPause:sender];
-}
-- (IBAction)nextTrack:(id)sender
-{
-=======
 	id windowController = [mainWindowStore windowController];
 	if(![windowController respondsToSelector:@selector(togglePlayAndPause:)]) return;
 	[windowController togglePlayAndPause:sender];
@@ -163,30 +130,18 @@
 {
 	id windowController = [mainWindowStore windowController];
 	if(![windowController respondsToSelector:@selector(nextTrack:)]) return;
->>>>>>> trunk:XspfQTAppDelegate.m
 	[[mainWindowStore windowController] nextTrack:sender];
 }
 - (IBAction)previousTrack:(id)sender
 {
-<<<<<<< HEAD:XspfQTAppDelegate.m
-=======
 	id windowController = [mainWindowStore windowController];
 	if(![windowController respondsToSelector:@selector(previousTrack:)]) return;
->>>>>>> trunk:XspfQTAppDelegate.m
 	[[mainWindowStore windowController] previousTrack:sender];
 }
 
 #pragma mark ### NSMenu valivation ###
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
-<<<<<<< HEAD:XspfQTAppDelegate.m
-	if([menuItem action] == @selector(openInformationPanel:)) {
-		return YES;
-	}
-	if([menuItem action] == @selector(showPreferenceWindow:)) {
-		return YES;
-	}
-=======
 	SEL action = [menuItem action];
 	
 	id windowController = [mainWindowStore windowController];
@@ -200,7 +155,6 @@
 		if(![windowController respondsToSelector:@selector(previousTrack:)]) return NO;
 	}
 	if(action == @selector(showPreferenceWindow:)) return YES;
->>>>>>> trunk:XspfQTAppDelegate.m
 	
 	if([menuItem tag] == 10000) {
 		NSWindow *m = mainWindowStore;

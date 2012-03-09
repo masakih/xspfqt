@@ -1,5 +1,3 @@
-<<<<<<< HEAD:QuickLookPlugIn/GenerateThumbnailForURL.m
-=======
 //
 
 /*
@@ -56,7 +54,6 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:QuickLookPlugIn/GenerateThumbnailForURL.m
 #import <CoreFoundation/CoreFoundation.h>
 #import <CoreServices/CoreServices.h>
 #import <QuickLook/QuickLook.h>
@@ -83,11 +80,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	// generate from XML.
 	do {
 		NSTimeInterval time = DBL_MIN;
-<<<<<<< HEAD:QuickLookPlugIn/GenerateThumbnailForURL.m
-		XspfQTComponent *component = thumbnailTrack(url, &time);
-=======
 		HMXSPFComponent *component = thumbnailTrack(url, &time);
->>>>>>> trunk:QuickLookPlugIn/GenerateThumbnailForURL.m
 		if(!component) break;
 		if(time ==  DBL_MIN) break;
 		if(QLThumbnailRequestIsCancelled(thumbnail)) {

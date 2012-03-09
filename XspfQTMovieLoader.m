@@ -3,21 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 09/03/14.
-<<<<<<< HEAD:XspfQTMovieLoader.m
-//  Copyright 2009 masakih. All rights reserved.
-//
-
-#import "XspfQTMovieLoader.h"
-
-#import "NSURL-XspfQT-Extensions.h"
-
-@implementation XspfQTMovieLoader
-+ (id)loaderWithMovieURL:(NSURL *)inMovieURL delegate:(id)inDelegate
-{
-	return [[[[self class] alloc] initWithMovieURL:inMovieURL delegate:inDelegate] autorelease];
-}
-- (id)initWithMovieURL:(NSURL *)inMovieURL delegate:(id)inDelegate
-=======
 //
 
 /*
@@ -102,27 +87,18 @@
 	return [[[[self class] alloc] initWithMovieURL:inMovieURL delegate:inDelegate] autorelease];
 }
 - (id)initWithMovieURL:(NSURL *)inMovieURL delegate:(id<XspfQTMovieLoaderDelegate>)inDelegate
->>>>>>> trunk:XspfQTMovieLoader.m
 {
 	self = [super init];
 	if(self) {
 		
 		@try {
-<<<<<<< HEAD:XspfQTMovieLoader.m
-			[self setDelegate:inDelegate];
-=======
 			self.delegate = inDelegate;
->>>>>>> trunk:XspfQTMovieLoader.m
 		}
 		@catch (XspfQTMovieLoader *me) {
 			[self autorelease];
 			return nil;
 		}
-<<<<<<< HEAD:XspfQTMovieLoader.m
-		[self setMovieURL:inMovieURL];
-=======
 		self.movieURL = inMovieURL;
->>>>>>> trunk:XspfQTMovieLoader.m
 	}
 	
 	return self;
@@ -130,53 +106,14 @@
 
 - (void)dealloc
 {
-<<<<<<< HEAD:XspfQTMovieLoader.m
-	[movieURL release];
-	[movie release];
-=======
 	self.movieURL = nil;
 	self.qtMovie = nil;
->>>>>>> trunk:XspfQTMovieLoader.m
 	
 	[super dealloc];
 }
 
 - (void)setMovieURL:(NSURL *)url
 {
-<<<<<<< HEAD:XspfQTMovieLoader.m
-	if([url isEqualUsingLocalhost:movieURL]) return;
-	
-	[self setQTMovie:nil];
-	[movieURL autorelease];
-	movieURL = [url retain];
-}
-- (NSURL *)movieURL
-{
-	return movieURL;
-}
-- (void)setQTMovie:(QTMovie *)newMovie
-{
-	[movie release];
-	movie = [newMovie retain];
-}
-- (QTMovie *)qtMovie
-{
-	return movie;
-}
-
-- (void)setDelegate:(id)inDelegate
-{
-	if(inDelegate && ![inDelegate respondsToSelector:@selector(setQTMovie:)]) {
-		NSLog(@"Delegate should be respond to selector setQTMovie:");
-		@throw self;
-	}
-	
-	delegate = inDelegate;
-}
-- (id)delegate
-{
-	return delegate;
-=======
 	if([url isEqualUsingLocalhost:_movieURL]) return;
 	
 	self.qtMovie = nil;
@@ -186,45 +123,25 @@
 - (NSURL *)movieURL
 {
 	return _movieURL;
->>>>>>> trunk:XspfQTMovieLoader.m
 }
 
 - (void)load
 {
 	QTMovie *newMovie = nil;
 	
-<<<<<<< HEAD:XspfQTMovieLoader.m
-	if(movie) return;
-		
-	if(![QTMovie canInitWithURL:movieURL]) goto finish;
-	
-	NSError *error = nil;
-	//	NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
-	//						   [self location], QTMovieURLAttribute,
-	//						   [NSNumber numberWithBool:NO], QTMovieOpenAsyncOKAttribute,
-	//						   nil];
-	//	movie = [[QTMovie alloc] initWithAttributes:attrs error:&error];
-	newMovie = [[QTMovie alloc] initWithURL:movieURL error:&error];
-=======
 	if(self.qtMovie) return;
 		
 	if(![QTMovie canInitWithURL:self.movieURL]) goto finish;
 	
 	NSError *error = nil;
 	newMovie = [[QTMovie alloc] initWithURL:self.movieURL error:&error];
->>>>>>> trunk:XspfQTMovieLoader.m
 	if(error) {
 		NSLog(@"%@", error);
 	}
 	
 finish:
-<<<<<<< HEAD:XspfQTMovieLoader.m
-	[self setQTMovie:[newMovie autorelease]];
-	[delegate setQTMovie:movie];
-=======
 	self.qtMovie = [newMovie autorelease];
 	[self.delegate setQTMovie:self.qtMovie];
->>>>>>> trunk:XspfQTMovieLoader.m
 }
 - (void)loadInBG
 {

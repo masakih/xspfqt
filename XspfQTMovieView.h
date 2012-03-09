@@ -3,11 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 09/03/07.
-<<<<<<< HEAD:XspfQTMovieView.h
-//  Copyright 2009 masakih. All rights reserved.
-//
-
-=======
 //
 
 /*
@@ -64,7 +59,6 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:XspfQTMovieView.h
 #import <QTKit/QTKit.h>
 
 

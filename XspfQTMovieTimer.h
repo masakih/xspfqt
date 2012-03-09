@@ -3,11 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori, Masaki on 09/10/31.
-<<<<<<< HEAD:XspfQTMovieTimer.h
-//  Copyright 2009 masakih. All rights reserved.
-//
-
-=======
 //
 
 /*
@@ -64,7 +59,6 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:XspfQTMovieTimer.h
 #import <Cocoa/Cocoa.h>
 
 #import "XspfQTDocument.h"
@@ -85,12 +79,9 @@
 - (void)put:(XspfQTDocument *)doc;
 
 @end
-<<<<<<< HEAD:XspfQTMovieTimer.h
-=======
 
 @interface NSObject(XspfQTMovieTimer)
 - (void)checkPreload:(NSTimer *)timer;
 - (void)updateTimeIfNeeded:(NSTimer *)timer;
 @end
 
->>>>>>> trunk:XspfQTMovieTimer.h

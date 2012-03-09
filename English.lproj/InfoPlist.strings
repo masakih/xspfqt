@@ -3,14 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleGetInfoString</key>
-<<<<<<< HEAD:English.lproj/InfoPlist.strings
-	<string>XspfQT 1.9</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>© masakih, 2008-2010</string>
-=======
 	<string>XspfQT 1.12.1</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>© masakih, 2008-2011</string>
->>>>>>> trunk:English.lproj/InfoPlist.strings
 </dict>
 </plist>

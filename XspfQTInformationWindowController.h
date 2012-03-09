@@ -3,11 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/09/14.
-<<<<<<< HEAD:XspfQTInformationWindowController.h
-//  Copyright 2008 masakih. All rights reserved.
-//
-
-=======
 //
 
 /*
@@ -64,7 +59,6 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:XspfQTInformationWindowController.h
 #import <Cocoa/Cocoa.h>
 
 

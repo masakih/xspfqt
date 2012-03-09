@@ -3,12 +3,6 @@
  *  XspfQT
  *
  *  Created by Hori, Masaki on 09/10/12.
-<<<<<<< HEAD:QuickLookPlugIn/XspfQLUtilities.m
- *  Copyright 2009 masakih. All rights reserved.
- *
- */
-
-=======
  *
  */
 
@@ -66,17 +60,12 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:QuickLookPlugIn/XspfQLUtilities.m
 #import "XspfQLUtilities.h"
 
 #import <QTKit/QTKit.h>
 
 #import "XspfQTDocument.h"
-<<<<<<< HEAD:QuickLookPlugIn/XspfQLUtilities.m
-#import "XspfQTComponent.h"
-=======
 #import "HMXSPFComponent.h"
->>>>>>> trunk:QuickLookPlugIn/XspfQLUtilities.m
 #import "XspfQTValueTransformers.h"
 
 #if 1
@@ -115,11 +104,7 @@ static QTMovie *loadFromMovieURL(NSURL *url)
 }
 #endif
 
-<<<<<<< HEAD:QuickLookPlugIn/XspfQLUtilities.m
-XspfQTComponent *componentForURL(CFURLRef url)
-=======
 HMXSPFComponent *componentForURL(CFURLRef url)
->>>>>>> trunk:QuickLookPlugIn/XspfQLUtilities.m
 {
 	NSError *theErr = nil;
 	
@@ -133,15 +118,9 @@ HMXSPFComponent *componentForURL(CFURLRef url)
 		return nil;
 	}
 	NSXMLElement *root = [d rootElement];
-<<<<<<< HEAD:QuickLookPlugIn/XspfQLUtilities.m
-	XspfQTComponent *pl = [XspfQTComponent xspfComponemtWithXMLElement:root];
-	if(!pl) {
-		NSLog(@"Can not create XspfQTComponent.");
-=======
 	HMXSPFComponent *pl = [HMXSPFComponent xspfComponentWithXMLElement:root];
 	if(!pl) {
 		NSLog(@"Can not create HMXSPFComponent.");
->>>>>>> trunk:QuickLookPlugIn/XspfQLUtilities.m
 		return nil;
 	}
 	
@@ -152,15 +131,9 @@ QTMovie *firstMovie(CFURLRef url)
 {
 	QTMovie *result = nil;
 	
-<<<<<<< HEAD:QuickLookPlugIn/XspfQLUtilities.m
-	XspfQTComponent *pl = componentForURL(url);
-
-	XspfQTComponent *trackList = [pl childAtIndex:0];
-=======
 	HMXSPFComponent *pl = componentForURL(url);
 
 	HMXSPFComponent *trackList = [pl childAtIndex:0];
->>>>>>> trunk:QuickLookPlugIn/XspfQLUtilities.m
 	[trackList setSelectionIndex:0];
 	NSURL *movieURL = [trackList movieLocation];
 	if(!movieURL) {
@@ -191,28 +164,16 @@ NSSize maxSizeForFrame(NSSize size, CGSize frame)
 	return result;
 }
 
-<<<<<<< HEAD:QuickLookPlugIn/XspfQLUtilities.m
-XspfQTComponent *thumbnailTrack(CFURLRef url, NSTimeInterval *thumbnailTime)
-{
-	XspfQTComponent *component = componentForURL(url);
-	
-	XspfQTComponent *result = [component thumbnailTrack];
-=======
 HMXSPFComponent *thumbnailTrack(CFURLRef url, NSTimeInterval *thumbnailTime)
 {
 	HMXSPFComponent *component = componentForURL(url);
 	
 	HMXSPFComponent *result = [component thumbnailTrack];
->>>>>>> trunk:QuickLookPlugIn/XspfQLUtilities.m
 	NSTimeInterval ti = [component thumbnailTimeInterval];
 	*thumbnailTime = ti;
 	return result;
 }
-<<<<<<< HEAD:QuickLookPlugIn/XspfQLUtilities.m
-CGImageRef thumbnailForTrackTime(QLThumbnailRequestRef thumbnail, XspfQTComponent *track, NSTimeInterval time, CGSize size)
-=======
 CGImageRef thumbnailForTrackTime(QLThumbnailRequestRef thumbnail, HMXSPFComponent *track, NSTimeInterval time, CGSize size)
->>>>>>> trunk:QuickLookPlugIn/XspfQLUtilities.m
 {
 	NSError *theErr = nil;
 	QTMovie *movie = loadFromMovieURL([track movieLocation]);

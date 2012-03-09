@@ -3,11 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
-<<<<<<< HEAD:XspfQTValueTransformers.h
-//  Copyright 2008 masakih. All rights reserved.
-//
-
-=======
 //
 
 /*
@@ -64,7 +59,6 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:XspfQTValueTransformers.h
 #import <Cocoa/Cocoa.h>
 
 

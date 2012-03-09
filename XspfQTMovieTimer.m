@@ -3,11 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori, Masaki on 09/10/31.
-<<<<<<< HEAD:XspfQTMovieTimer.m
-//  Copyright 2009 masakih. All rights reserved.
-//
-
-=======
 //
 
 /*
@@ -64,7 +59,6 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:XspfQTMovieTimer.m
 #import "XspfQTMovieTimer.h"
 
 

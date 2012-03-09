@@ -1,5 +1,3 @@
-<<<<<<< HEAD:QuickLookPlugIn/GeneratePreviewForURL.m
-=======
 //
 
 /*
@@ -56,7 +54,6 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:QuickLookPlugIn/GeneratePreviewForURL.m
 #import <CoreFoundation/CoreFoundation.h>
 #import <CoreServices/CoreServices.h>
 #import <QuickLook/QuickLook.h>

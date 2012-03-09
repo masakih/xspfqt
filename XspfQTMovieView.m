@@ -3,11 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 09/03/07.
-<<<<<<< HEAD:XspfQTMovieView.m
-//  Copyright 2009 masakih. All rights reserved.
-//
-
-=======
 //
 
 /*
@@ -64,7 +59,6 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:XspfQTMovieView.m
 #import "XspfQTMovieView.h"
 
 
@@ -72,27 +66,6 @@
 
 - (void)keyDown:(NSEvent *)event
 {
-<<<<<<< HEAD:XspfQTMovieView.m
-#define kPeriodKeyCode	47
-#define kRightKeyCode	123
-#define kLeftKeyCode	124
-#define kDownKeyCode	125
-#define kUpKeyCode		126
-	//
-	switch([event keyCode]) {
-		case kPeriodKeyCode:
-		case kRightKeyCode:
-		case kLeftKeyCode:
-		case kDownKeyCode:
-		case kUpKeyCode:
-			return;
-	}
-	
-//	NSLog(@"KeyCode -> %d", [event keyCode]);
-	
-	[super keyDown:event];
-}
-=======
 	NSString *charactor = [event charactersIgnoringModifiers];
 	if([charactor length] == 0) return [super keyDown:event];
 	
@@ -158,5 +131,4 @@
 	
 //	[super scrollWheel:theEvent];
 }
->>>>>>> trunk:XspfQTMovieView.m
 @end

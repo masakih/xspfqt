@@ -3,13 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
-<<<<<<< HEAD:XspfQTAppDelegate.h
-//  Copyright 2008 masakih. All rights reserved.
-//
-
-#import <Cocoa/Cocoa.h>
-
-=======
 //
 
 /*
@@ -69,16 +62,12 @@
 #import <Cocoa/Cocoa.h>
 
 @class XspfMAppleRemoteSupport;
->>>>>>> trunk:XspfQTAppDelegate.h
 
 @interface XspfQTAppDelegate : NSObject
 {
 	NSWindow *mainWindowStore;
-<<<<<<< HEAD:XspfQTAppDelegate.h
-=======
 	
 	XspfMAppleRemoteSupport *appleRemoteSupprt;
->>>>>>> trunk:XspfQTAppDelegate.h
 }
 
 - (IBAction)openInformationPanel:(id)sender;

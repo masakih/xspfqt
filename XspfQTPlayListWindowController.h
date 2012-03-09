@@ -3,11 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/31.
-<<<<<<< HEAD:XspfQTPlayListWindowController.h
-//  Copyright 2008 masakih. All rights reserved.
-//
-
-=======
 //
 
 /*
@@ -64,7 +59,6 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:XspfQTPlayListWindowController.h
 #import <Cocoa/Cocoa.h>
 
 @interface XspfQTPlayListWindowController : NSWindowController
@@ -72,23 +66,16 @@
 	IBOutlet NSOutlineView *listView;
 	IBOutlet NSTreeController *trackListTree;
 	
-<<<<<<< HEAD:XspfQTPlayListWindowController.h
-	id observedObject;
-=======
 #ifndef __LP64__
 	id _observedObject;
 #endif
->>>>>>> trunk:XspfQTPlayListWindowController.h
 }
 
 - (IBAction)showInFinder:(id)sender;
 - (IBAction)showInformationInFinder:(id)sender;
 
-<<<<<<< HEAD:XspfQTPlayListWindowController.h
-=======
 - (IBAction)showHideWindow:(id)sender;
 
->>>>>>> trunk:XspfQTPlayListWindowController.h
 @end
 
 

@@ -3,14 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/09/14.
-<<<<<<< HEAD:XspfQTInformationWindowController.m
-//  Copyright 2008 masakih. All rights reserved.
-//
-
-#import "XspfQTInformationWindowController.h"
-#import "XspfQTDocument.h"
-
-=======
 //
 
 /*
@@ -70,18 +62,14 @@
 #import "XspfQTInformationWindowController.h"
 #import "XspfQTDocument.h"
 #import "HMXSPFComponent.h"
->>>>>>> trunk:XspfQTInformationWindowController.m
 
 static NSString *const XspfQTDocumentQtMovieKeyPath = @"playingMovie";
 static NSString *const XspfQTCurrentTrackKey = @"currentTrack";
 
-<<<<<<< HEAD:XspfQTInformationWindowController.m
-=======
 @interface XspfQTInformationWindowController()
 @property (readonly) XspfQTDocument *currentDocument;
 @end
 
->>>>>>> trunk:XspfQTInformationWindowController.m
 @implementation XspfQTInformationWindowController
 static XspfQTInformationWindowController *sharedInstance = nil;
 
@@ -89,30 +77,15 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 {
     @synchronized(self) {
         if (sharedInstance == nil) {
-<<<<<<< HEAD:XspfQTInformationWindowController.m
-            [[self alloc] init]; // assignment not done here
-        }
-=======
 			sharedInstance = [[super allocWithZone:NULL] init];
 		}
->>>>>>> trunk:XspfQTInformationWindowController.m
     }
     return sharedInstance;
 }
 
 + (id)allocWithZone:(NSZone *)zone
 {
-<<<<<<< HEAD:XspfQTInformationWindowController.m
-    @synchronized(self) {
-        if (sharedInstance == nil) {
-            sharedInstance = [super allocWithZone:zone];
-            return sharedInstance;  // assignment and return on first allocation
-        }
-    }
-    return nil; //on subsequent allocation attempts return nil
-=======
     return [[self sharedInstance] retain];
->>>>>>> trunk:XspfQTInformationWindowController.m
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -130,11 +103,7 @@ static XspfQTInformationWindowController *sharedInstance = nil;
     return UINT_MAX;  //denotes an object that cannot be released
 }
 
-<<<<<<< HEAD:XspfQTInformationWindowController.m
-- (void)release
-=======
 - (oneway void)release
->>>>>>> trunk:XspfQTInformationWindowController.m
 {
     //do nothing
 }
@@ -225,11 +194,7 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 		[observedDocs addObject:doc];
 	}
 }
-<<<<<<< HEAD:XspfQTInformationWindowController.m
-- (id)currentDocument
-=======
 - (XspfQTDocument *)currentDocument
->>>>>>> trunk:XspfQTInformationWindowController.m
 {
 	id doc = [[NSDocumentController sharedDocumentController] currentDocument];
 	if(!doc) return nil;
@@ -237,26 +202,6 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 	
 	return doc;
 }
-<<<<<<< HEAD:XspfQTInformationWindowController.m
-- (id)currentTrack
-{
-	id doc = [self currentDocument];
-	
-	return [doc valueForKeyPath:@"trackList.currentTrack"];
-}
-- (id)movieAttributes
-{
-	id doc = [self currentDocument];
-	
-	return [doc valueForKeyPath:@"playingMovie.movieAttributes"];
-}
-
-- (id)trackAttributesByType:(NSString *)type
-{
-	id doc = [self currentDocument];
-	
-	id movie = [doc valueForKeyPath:XspfQTDocumentQtMovieKeyPath];
-=======
 - (HMXSPFComponent *)currentTrack
 {
 	return self.currentDocument.trackList.currentTrack;
@@ -269,25 +214,16 @@ static XspfQTInformationWindowController *sharedInstance = nil;
 - (NSDictionary *)trackAttributesByType:(NSString *)type
 {
 	id movie = self.currentDocument.playingMovie;
->>>>>>> trunk:XspfQTInformationWindowController.m
 	NSArray *tracks = [movie tracksOfMediaType:type];
 	if(!tracks || [tracks count] == 0) return nil;
 	
 	return [[tracks objectAtIndex:0] trackAttributes];
 }
-<<<<<<< HEAD:XspfQTInformationWindowController.m
-- (id)soundTrackAttributes
-{
-	return [self trackAttributesByType:QTMediaTypeSound];
-}
-- (id)videoTrackAttributes
-=======
 - (NSDictionary *)soundTrackAttributes
 {
 	return [self trackAttributesByType:QTMediaTypeSound];
 }
 - (NSDictionary *)videoTrackAttributes
->>>>>>> trunk:XspfQTInformationWindowController.m
 {
 	return [self trackAttributesByType:QTMediaTypeVideo];
 }

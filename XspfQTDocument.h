@@ -3,11 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 08/08/29.
-<<<<<<< HEAD:XspfQTDocument.h
-//  Copyright masakih 2008 . All rights reserved.
-//
-
-=======
 //
 
 /*
@@ -64,37 +59,19 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:XspfQTDocument.h
 
 #import <Cocoa/Cocoa.h>
 #import <QTKit/QTKit.h>
 
-<<<<<<< HEAD:XspfQTDocument.h
-@class XspfQTComponent;
-@class XspfQTMovieWindowController;
-=======
 @class HMXSPFComponent;
 @class XspfQTMovieWindowController;
 @class XspfQTPlayListWindowController;
->>>>>>> trunk:XspfQTDocument.h
 
 @class XspfQTMovieLoader;
 @class QTMovie;
 
 @interface XspfQTDocument : NSDocument
 {
-<<<<<<< HEAD:XspfQTDocument.h
-	XspfQTComponent* playlist;
-	XspfQTMovieWindowController *movieWindowController;
-	NSWindowController *playListWindowController;
-	
-	QTMovie *playingMovie;
-	XspfQTMovieLoader *loader;
-	NSTimeInterval playingMovieDuration;
-	
-	BOOL didPreloading;
-}
-=======
 	XspfQTMovieWindowController *movieWindowController;
 	XspfQTPlayListWindowController *playListWindowController;
 	
@@ -109,7 +86,6 @@
 @property (readonly) HMXSPFComponent *trackList;
 @property (readonly, retain) QTMovie *playingMovie;
 
->>>>>>> trunk:XspfQTDocument.h
 
 - (IBAction)togglePlayAndPause:(id)sender;
 - (IBAction)showPlayList:(id)sender;
@@ -117,17 +93,9 @@
 - (IBAction)setThumbnailFrame:(id)sender;
 - (IBAction)removeThumbnail:(id)sender;
 
-<<<<<<< HEAD:XspfQTDocument.h
-- (XspfQTComponent *)trackList;
-
-- (void)insertComponent:(XspfQTComponent *)item atIndex:(NSUInteger)index;
-- (void)removeComponent:(XspfQTComponent *)item;
-- (void)moveComponent:(XspfQTComponent *)item toIndex:(NSUInteger)index;
-=======
 - (void)insertComponent:(HMXSPFComponent *)item atIndex:(NSUInteger)index;
 - (void)removeComponent:(HMXSPFComponent *)item;
 - (void)moveComponent:(HMXSPFComponent *)item toIndex:(NSUInteger)index;
->>>>>>> trunk:XspfQTDocument.h
 
 // throw self, if can not insert.
 - (void)insertComponentFromURL:(NSURL *)url atIndex:(NSUInteger)index;

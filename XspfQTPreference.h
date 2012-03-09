@@ -3,11 +3,6 @@
 //  XspfQT
 //
 //  Created by Hori,Masaki on 09/03/29.
-<<<<<<< HEAD:XspfQTPreference.h
-//  Copyright 2009 masakih. All rights reserved.
-//
-
-=======
 //
 
 /*
@@ -64,22 +59,10 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
->>>>>>> trunk:XspfQTPreference.h
 #import <Cocoa/Cocoa.h>
 
 
 @interface XspfQTPreference : NSObject
-<<<<<<< HEAD:XspfQTPreference.h
-{
-	CGFloat beginingPreloadPercent;
-}
-
-+ (XspfQTPreference *)sharedInstance;
-
-- (BOOL)preloadingEnabled;
-- (CGFloat)beginingPreloadPercent;
-- (void)setBeginingPreloadPercent:(CGFloat)newPercent;
-=======
 #ifndef __LP64__
 {
 	CGFloat _beginingPreloadPercent;
@@ -90,7 +73,6 @@
 @property CGFloat beginingPreloadPercent;
 
 + (XspfQTPreference *)sharedInstance;
->>>>>>> trunk:XspfQTPreference.h
 
 @end
 
